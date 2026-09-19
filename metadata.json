@@ -1,0 +1,6 @@
+{
+  "name": "TITAN AI AGENCY",
+  "description": "Digital Solutions Built for Business. Websites, AI Agents, Voice Agents, AI Chatbots, Business Automation, and Custom AI Solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
