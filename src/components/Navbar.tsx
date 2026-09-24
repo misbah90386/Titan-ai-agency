@@ -12,6 +12,7 @@ const NAV_ITEMS: NavItem[] = [
   { name: 'Services', path: '/services' },
   { name: 'About', path: '/about' },
   { name: 'Mission & Vision', path: '/mission-vision' },
+  { name: 'Blog', path: '/blog' },
   { name: 'Contact', path: '/contact' }
 ];
 

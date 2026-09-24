@@ -10,6 +10,8 @@ import { ServicesPage } from './pages/ServicesPage';
 import { AboutPage } from './pages/AboutPage';
 import { MissionVisionPage } from './pages/MissionVisionPage';
 import { ContactPage } from './pages/ContactPage';
+import { BlogPage } from './pages/BlogPage';
+import { BlogArticlePage } from './pages/BlogArticlePage';
 
 export default function App() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/mission-vision" element={<MissionVisionPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogArticlePage />} />
             <Route path="/contact" element={<ContactPage />} />
             {/* Fallback to Home */}
             <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,0 +1,24 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Proxy /api/blogs to the Netlify Serverless Function
+[[redirects]]
+  from = "/api/blogs"
+  to = "/.netlify/functions/blogs"
+  status = 200
+
+[[redirects]]
+  from = "/api/blogs/*"
+  to = "/.netlify/functions/blogs/:splat"
+  status = 200
+
+# Client-side SPA routing fallback for React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
