@@ -6,9 +6,33 @@ import { FinalCTA } from '../components/FinalCTA';
 import { ServiceModal } from '../components/ServiceModal';
 import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceItem } from '../types';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export const HomePage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+
+  usePageSEO({
+    title: 'Titan AI Agency | AI Automation & AI Solutions for Businesses',
+    description:
+      'Titan AI Agency helps businesses automate operations, generate leads and improve efficiency with AI agents, AI automation, voice AI and custom digital solutions.',
+    canonicalPath: '/',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Titan AI Agency',
+      url: 'https://titanaiagency.netlify.app/',
+      logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+      description:
+        'Titan AI Agency provides AI automation, AI agents, voice AI and digital solutions for businesses.',
+      sameAs: ['https://www.instagram.com/titanaiagency.sa?stkn=MWZsZHR5d2Q1Zzdk'],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+966534182945',
+        contactType: 'sales',
+        availableLanguage: ['English', 'Arabic'],
+      },
+    },
+  });
 
   const getServiceIcon = (id: string) => {
     switch (id) {

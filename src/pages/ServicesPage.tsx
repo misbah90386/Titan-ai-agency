@@ -5,10 +5,75 @@ import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceModal } from '../components/ServiceModal';
 import { ServiceItem } from '../types';
 import { FinalCTA } from '../components/FinalCTA';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export const ServicesPage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const location = useLocation();
+
+  usePageSEO({
+    title: 'AI Automation Services & AI Agents | Titan AI Agency',
+    description:
+      'Explore Titan AI Agency services: AI business automation, autonomous AI agents, voice AI, custom chatbots, high-converting websites, and bespoke technology solutions.',
+    canonicalPath: '/services',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Titan AI Agency Services',
+      url: 'https://titanaiagency.netlify.app/services',
+      numberOfItems: 6,
+      itemListElement: [
+        {
+          '@type': 'Service',
+          position: 1,
+          name: 'Websites & 3D Web Development',
+          description:
+            'High-converting, performance-engineered modern websites with 3D elements and conversion architecture.',
+          provider: { '@type': 'Organization', name: 'Titan AI Agency' },
+        },
+        {
+          '@type': 'Service',
+          position: 2,
+          name: 'AI Agents',
+          description:
+            'Autonomous multi-step software engines integrated into operational workflows and databases.',
+          provider: { '@type': 'Organization', name: 'Titan AI Agency' },
+        },
+        {
+          '@type': 'Service',
+          position: 3,
+          name: 'AI Voice Agents',
+          description:
+            'Sub-second low-latency voice conversational systems for outbound lead qualification and inbound customer support.',
+          provider: { '@type': 'Organization', name: 'Titan AI Agency' },
+        },
+        {
+          '@type': 'Service',
+          position: 4,
+          name: 'AI Chatbots',
+          description:
+            'Knowledge-grounded customer service and lead capture bots with zero-hallucination guardrails.',
+          provider: { '@type': 'Organization', name: 'Titan AI Agency' },
+        },
+        {
+          '@type': 'Service',
+          position: 5,
+          name: 'Business Automation',
+          description:
+            'Event-driven integration pipelines connecting CRMs, ERPs, billing, and fulfillment operations.',
+          provider: { '@type': 'Organization', name: 'Titan AI Agency' },
+        },
+        {
+          '@type': 'Service',
+          position: 6,
+          name: 'Custom AI Solutions',
+          description:
+            'Bespoke machine learning architectures, internal productivity tools, and specialized AI systems.',
+          provider: { '@type': 'Organization', name: 'Titan AI Agency' },
+        },
+      ],
+    },
+  });
 
   useEffect(() => {
     // Handle anchor hash scrolling e.g. #websites, #ai-agents

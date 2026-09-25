@@ -6,6 +6,7 @@ import { BlogCTA } from '../components/blog/BlogCTA';
 import { getBlogPosts } from '../services/blogService';
 import { NormalizedBlogPost } from '../types/blog';
 import { AlertCircle, RefreshCw, Sparkles, Inbox } from 'lucide-react';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export const BlogPage: React.FC = () => {
   const [posts, setPosts] = useState<NormalizedBlogPost[]>([]);
@@ -14,6 +15,27 @@ export const BlogPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [isLive, setIsLive] = useState(false);
+
+  usePageSEO({
+    title: 'AI, Automation & Business Insights | Titan AI Agency',
+    description:
+      'Explore practical insights on artificial intelligence, business automation, AI agents, voice AI, modern web development, and digital scaling strategies.',
+    canonicalPath: '/blog',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: 'Titan AI Agency Insights',
+      url: 'https://titanaiagency.netlify.app/blog',
+      description:
+        'Explore practical insights on artificial intelligence, business automation, AI agents, voice AI, modern web development, and digital scaling strategies.',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Titan AI Agency',
+        url: 'https://titanaiagency.netlify.app/',
+        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+      },
+    },
+  });
 
   const fetchArticles = async () => {
     setLoading(true);
@@ -32,18 +54,6 @@ export const BlogPage: React.FC = () => {
 
   useEffect(() => {
     fetchArticles();
-  }, []);
-
-  // Update SEO for main blog index
-  useEffect(() => {
-    document.title = 'TITAN Insights — Articles & Intelligence on AI, Automation & Tech';
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute(
-        'content',
-        'Explore practical insights on artificial intelligence, automation, AI agents, websites, marketing, and how modern technology can help businesses grow.'
-      );
-    }
   }, []);
 
   // Compute distinct categories

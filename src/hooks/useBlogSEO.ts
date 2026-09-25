@@ -11,6 +11,16 @@ function setMetaTag(selector: string, attrName: string, attrValue: string, conte
   element.setAttribute('content', content);
 }
 
+function setCanonical(url: string) {
+  let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+  if (!link) {
+    link = document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    document.head.appendChild(link);
+  }
+  link.setAttribute('href', url);
+}
+
 /**
  * Custom hook to dynamically manage complete SEO, OpenGraph, Twitter,
  * and Schema.org JSON-LD structured data for blog pages.
@@ -20,18 +30,22 @@ export function useBlogSEO(post: NormalizedBlogPost | null) {
     if (!post) return;
 
     const previousTitle = document.title;
-    const origin = typeof window !== 'undefined' ? window.location.origin : '';
-    const currentUrl = typeof window !== 'undefined' ? window.location.href : `${origin}/blog/${post.slug}`;
+    const origin = 'https://titanaiagency.netlify.app';
+    const currentUrl = `${origin}/blog/${post.slug}`;
+    const defaultImage = `${origin}/titan-logo.png`;
 
     // 1. Page Title & Meta Description
-    const pageTitle = post.meta.seoTitle || `${post.title} — TITAN AI AGENCY`;
+    const pageTitle = post.meta.seoTitle || `${post.title} | Titan AI Agency`;
     const metaDescription =
-      post.meta.seoDescription || post.excerpt || `${post.title} - Read insights from TITAN AI Agency.`;
+      post.meta.seoDescription || post.excerpt || `${post.title} - Read practical AI, automation and technology insights from Titan AI Agency.`;
 
     document.title = pageTitle;
 
     // Standard Description
     setMetaTag('meta[name="description"]', 'name', 'description', metaDescription);
+
+    // Canonical URL
+    setCanonical(currentUrl);
 
     // Keywords if provided
     if (post.meta.keywords) {
@@ -46,18 +60,14 @@ export function useBlogSEO(post: NormalizedBlogPost | null) {
     setMetaTag('meta[property="og:description"]', 'property', 'og:description', post.meta.ogDescription || metaDescription);
     setMetaTag('meta[property="og:type"]', 'property', 'og:type', post.meta.ogType || 'article');
     setMetaTag('meta[property="og:url"]', 'property', 'og:url', post.meta.ogUrl || currentUrl);
-    setMetaTag('meta[property="og:site_name"]', 'property', 'og:site_name', post.meta.ogSiteName || 'TITAN AI AGENCY');
-    if (post.featuredImage) {
-      setMetaTag('meta[property="og:image"]', 'property', 'og:image', post.featuredImage);
-    }
+    setMetaTag('meta[property="og:site_name"]', 'property', 'og:site_name', post.meta.ogSiteName || 'Titan AI Agency');
+    setMetaTag('meta[property="og:image"]', 'property', 'og:image', post.featuredImage || defaultImage);
 
     // 3. Twitter Card
     setMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
     setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', post.meta.ogTitle || pageTitle);
     setMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', post.meta.ogDescription || metaDescription);
-    if (post.featuredImage) {
-      setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', post.featuredImage);
-    }
+    setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', post.featuredImage || defaultImage);
 
     // 4. Article Specific Metadata
     if (post.publishedAt) {
@@ -93,7 +103,7 @@ export function useBlogSEO(post: NormalizedBlogPost | null) {
         },
         headline: post.title,
         description: metaDescription,
-        image: post.featuredImage ? [post.featuredImage] : undefined,
+        image: post.featuredImage ? [post.featuredImage] : [defaultImage],
         datePublished: post.publishedAt,
         dateModified: post.updatedAt || post.publishedAt,
         author: {
@@ -103,10 +113,11 @@ export function useBlogSEO(post: NormalizedBlogPost | null) {
         },
         publisher: {
           '@type': 'Organization',
-          name: 'TITAN AI AGENCY',
+          name: 'Titan AI Agency',
+          url: 'https://titanaiagency.netlify.app/',
           logo: {
             '@type': 'ImageObject',
-            url: `${origin}/titan-logo.png`,
+            url: defaultImage,
           },
         },
         articleSection: post.primaryCategory,

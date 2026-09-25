@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
         >
           <img
             src="/titan-logo.png"
-            alt="TITAN AI AGENCY Logo"
+            alt="Titan AI Agency - AI Automation & Digital Solutions"
             className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl object-cover border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.35)] group-hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] group-hover:border-blue-400/70 transition-all duration-300"
             referrerPolicy="no-referrer"
           />

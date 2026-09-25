@@ -1,8 +1,29 @@
 import React from 'react';
 import { Sparkles, Target, Eye, Compass, Shield, ArrowDown, Cpu, Globe, Rocket, CheckCircle2, Terminal } from 'lucide-react';
 import { FinalCTA } from '../components/FinalCTA';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export const MissionVisionPage: React.FC = () => {
+  usePageSEO({
+    title: 'Our Mission & Vision | Titan AI Agency',
+    description:
+      'Discover the mission and vision of Titan AI Agency: building purposeful, reliable AI systems, simplifying business operations, and advancing practical enterprise AI.',
+    canonicalPath: '/mission-vision',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Our Mission & Vision | Titan AI Agency',
+      url: 'https://titanaiagency.netlify.app/mission-vision',
+      description:
+        'Discover the mission and vision of Titan AI Agency: building purposeful, reliable AI systems, simplifying business operations, and advancing practical enterprise AI.',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Titan AI Agency',
+        url: 'https://titanaiagency.netlify.app/',
+        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+      },
+    },
+  });
   const missionTenets = [
     { title: 'Build useful technology', desc: 'Software engineered strictly to address genuine friction, eliminating bloated, performative code.' },
     { title: 'Simplify complex processes', desc: 'Transforming unwieldy, multi-step operations into streamlined, manageable software workflows.' },

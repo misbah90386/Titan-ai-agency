@@ -2,8 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ShieldCheck, Terminal, Layers, Cpu, CheckCircle2, Sparkles, Compass, Lightbulb, Hammer, RefreshCw } from 'lucide-react';
 import { FinalCTA } from '../components/FinalCTA';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 export const AboutPage: React.FC = () => {
+  usePageSEO({
+    title: 'About Titan AI Agency | AI Solutions for Modern Businesses',
+    description:
+      'About Titan AI Agency. We engineer dependable AI systems, automation pipelines, and high-performance digital architectures tailored for modern enterprise growth.',
+    canonicalPath: '/about',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'AboutPage',
+      name: 'About Titan AI Agency',
+      url: 'https://titanaiagency.netlify.app/about',
+      description:
+        'About Titan AI Agency. We engineer dependable AI systems, automation pipelines, and high-performance digital architectures tailored for modern enterprise growth.',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Titan AI Agency',
+        url: 'https://titanaiagency.netlify.app/',
+        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+      },
+    },
+  });
   const domains = [
     { name: 'Web Development', desc: 'Robust frontend architectures, responsive portals, and modern web applications built for reliability and speed.' },
     { name: 'AI Systems', desc: 'Machine learning inference engines, semantic vector stores, and custom computational workflows.' },

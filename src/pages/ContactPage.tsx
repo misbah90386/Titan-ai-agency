@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
+import { usePageSEO } from '../hooks/usePageSEO';
 
 // Clearly labeled configuration variable for WhatsApp number as specified
 export const YOUR_WHATSAPP_NUMBER = '+966 53 418 2945';
@@ -11,6 +12,32 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURICompo
 )}`;
 
 export const ContactPage: React.FC = () => {
+  usePageSEO({
+    title: 'Contact Titan AI Agency | AI Automation Solutions',
+    description:
+      'Connect directly with Titan AI Agency via WhatsApp for custom AI automation, AI agents, workflow optimization, and business development inquiries.',
+    canonicalPath: '/contact',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'ContactPage',
+      name: 'Contact Titan AI Agency',
+      url: 'https://titanaiagency.netlify.app/contact',
+      description:
+        'Connect directly with Titan AI Agency via WhatsApp for custom AI automation, AI agents, workflow optimization, and business development inquiries.',
+      mainEntity: {
+        '@type': 'Organization',
+        name: 'Titan AI Agency',
+        url: 'https://titanaiagency.netlify.app/',
+        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+966534182945',
+          contactType: 'sales',
+          availableLanguage: ['English', 'Arabic'],
+        },
+      },
+    },
+  });
   return (
     <div id="contact-page-root" className="min-h-screen bg-[#06080d] text-slate-100 pt-28 pb-20 flex flex-col justify-center relative overflow-hidden">
       {/* Background ambient lighting and subtle technical grid */}
