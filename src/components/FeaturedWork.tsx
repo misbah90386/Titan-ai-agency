@@ -74,13 +74,25 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
 
 const WHATSAPP_BASE = 'https://wa.me/966534182945?text=';
 
-export const FeaturedWork: React.FC = () => {
+export interface FeaturedWorkProps {
+  id?: string;
+  badge?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
+  id = 'featured-work',
+  badge = 'Selected Work & Concepts',
+  title = 'Explore What We Can Build',
+  subtitle = 'Review live demos and concepts illustrating how TITAN AI AGENCY engineers responsive websites, conversational assistants, and automated workflows for businesses.',
+}) => {
   const getWhatsAppUrl = (message: string) => {
     return `${WHATSAPP_BASE}${encodeURIComponent(message)}`;
   };
 
   return (
-    <section id="featured-work" className="relative py-20 sm:py-28 bg-[#04060b] border-t border-white/[0.06] overflow-hidden">
+    <section id={id} className="relative py-20 sm:py-28 bg-[#04060b] border-t border-white/[0.06] overflow-hidden">
       {/* Subtle Ambient Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -89,13 +101,13 @@ export const FeaturedWork: React.FC = () => {
         {/* Section Heading */}
         <div className="max-w-3xl mb-14">
           <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
-            Selected Work & Concepts
+            {badge}
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            Explore What We Can Build
+            {title}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
-            Review live demos and concepts illustrating how TITAN AI AGENCY engineers responsive websites, conversational assistants, and automated workflows for businesses.
+            {subtitle}
           </p>
         </div>
 

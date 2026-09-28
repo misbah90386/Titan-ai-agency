@@ -62,6 +62,25 @@ export const HomePage: React.FC = () => {
     'https://wa.me/966534182945?text=' +
     encodeURIComponent('Hello TITAN AI AGENCY, I would like to discuss a project for my business.');
 
+  const getServiceRoute = (id: string): string => {
+    switch (id) {
+      case 'websites':
+        return '/services/website-design';
+      case 'ai-agents':
+        return '/services/ai-agents';
+      case 'ai-chatbots':
+        return '/services/ai-chatbots';
+      case 'ai-voice-agents':
+        return '/services/ai-voice-agents';
+      case 'business-automation':
+        return '/services/business-automation';
+      case 'ai-video-creation':
+        return '/services/ai-video-creation';
+      default:
+        return `/services#${id}`;
+    }
+  };
+
   return (
     <div id="home-page-root" className="min-h-screen bg-[#06080d] text-slate-100">
       
@@ -211,7 +230,7 @@ export const HomePage: React.FC = () => {
 
                   <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between gap-3">
                     <Link
-                      to={`/services#${service.id}`}
+                      to={getServiceRoute(service.id)}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
                     >
                       <span>Learn Details</span>

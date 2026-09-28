@@ -1,4 +1,5 @@
 # Netlify redirects file for SPA routing and API proxy
-/api/blogs    /.netlify/functions/blogs    200
-/api/blogs/*  /.netlify/functions/blogs/:splat  200
-/*            /index.html                  200
+/api/blogs          /.netlify/functions/blogs        200
+/api/blogs/*        /.netlify/functions/blogs/:splat  200
+/services/websites  /services/website-design         301
+/*                  /index.html                      200

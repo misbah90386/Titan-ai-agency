@@ -7,6 +7,12 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
+import { WebsiteDesignPage } from './pages/services/WebsiteDesignPage';
+import { AIAgentsPage } from './pages/services/AIAgentsPage';
+import { AIChatbotsPage } from './pages/services/AIChatbotsPage';
+import { AIVoiceAgentsPage } from './pages/services/AIVoiceAgentsPage';
+import { BusinessAutomationPage } from './pages/services/BusinessAutomationPage';
+import { AIVideoCreationPage } from './pages/services/AIVideoCreationPage';
 import { AboutPage } from './pages/AboutPage';
 import { MissionVisionPage } from './pages/MissionVisionPage';
 import { ContactPage } from './pages/ContactPage';
@@ -23,6 +29,13 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/website-design" element={<WebsiteDesignPage />} />
+            <Route path="/services/websites" element={<Navigate to="/services/website-design" replace />} />
+            <Route path="/services/ai-agents" element={<AIAgentsPage />} />
+            <Route path="/services/ai-chatbots" element={<AIChatbotsPage />} />
+            <Route path="/services/ai-voice-agents" element={<AIVoiceAgentsPage />} />
+            <Route path="/services/business-automation" element={<BusinessAutomationPage />} />
+            <Route path="/services/ai-video-creation" element={<AIVideoCreationPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/mission-vision" element={<MissionVisionPage />} />
             <Route path="/blog" element={<BlogPage />} />

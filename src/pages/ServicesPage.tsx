@@ -96,6 +96,25 @@ export const ServicesPage: React.FC = () => {
     }
   }, [location]);
 
+  const getDedicatedPath = (id: string): string => {
+    switch (id) {
+      case 'websites':
+        return '/services/website-design';
+      case 'ai-agents':
+        return '/services/ai-agents';
+      case 'ai-chatbots':
+        return '/services/ai-chatbots';
+      case 'ai-voice-agents':
+        return '/services/ai-voice-agents';
+      case 'business-automation':
+        return '/services/business-automation';
+      case 'ai-video-creation':
+        return '/services/ai-video-creation';
+      default:
+        return `/services#${id}`;
+    }
+  };
+
   return (
     <div id="services-page-root" className="min-h-screen bg-[#06080d] text-slate-100 pt-28">
       {/* Header Banner */}
@@ -114,19 +133,20 @@ export const ServicesPage: React.FC = () => {
           </h1>
 
           <p className="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
-            TITAN designs, engineers, and deploys high-performance digital systems for modern business operations. Explore our full spectrum of specialized capabilities below.
+            TITAN designs, engineers, and deploys high-performance digital systems for modern business operations in Riyadh and remotely. Explore our dedicated capability guides below.
           </p>
 
-          {/* Quick Jump Bar */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
+          {/* Quick Jump Bar with Dedicated Page Links */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-2.5 max-w-4xl mx-auto">
             {SERVICES_DATA.map((srv) => (
-              <a
+              <Link
                 key={srv.id}
-                href={`#${srv.id}`}
-                className="px-3.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-mono text-slate-300 hover:text-white transition-colors"
+                to={getDedicatedPath(srv.id)}
+                className="px-3.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-blue-500/40 text-xs font-mono text-slate-300 hover:text-white transition-all flex items-center gap-1.5"
               >
-                {srv.title}
-              </a>
+                <span>{srv.title}</span>
+                <ArrowRight className="w-3 h-3 text-blue-400" />
+              </Link>
             ))}
           </div>
         </div>
@@ -202,6 +222,15 @@ export const ServicesPage: React.FC = () => {
 
                   {/* Action Buttons */}
                   <div className="flex flex-wrap items-center gap-4 pt-4">
+                    <Link
+                      to={getDedicatedPath(service.id)}
+                      id={`view-dedicated-guide-${service.id}`}
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(37,99,235,0.35)] transition-all group"
+                    >
+                      <span>Explore Dedicated Guide & Scope</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+
                     <a
                       href={serviceWhatsappUrl}
                       target="_blank"
@@ -209,7 +238,7 @@ export const ServicesPage: React.FC = () => {
                       className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>Discuss {service.title} on WhatsApp</span>
+                      <span>Discuss on WhatsApp</span>
                     </a>
 
                     {service.id === 'ai-video-creation' && (
@@ -228,7 +257,7 @@ export const ServicesPage: React.FC = () => {
                       id={`learn-more-service-${service.id}`}
                       className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-sm font-medium transition-colors"
                     >
-                      <span>View Specifications</span>
+                      <span>Quick Specs</span>
                       <ArrowRight className="w-4 h-4 text-blue-400" />
                     </button>
                   </div>

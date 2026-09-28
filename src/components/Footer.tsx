@@ -53,37 +53,32 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
-                <Link to="/services#websites" className="hover:text-blue-400 transition-colors">
+                <Link to="/services/website-design" className="hover:text-blue-400 transition-colors">
                   Website Design & Dev
                 </Link>
               </li>
               <li>
-                <Link to="/services#ai-agents" className="hover:text-blue-400 transition-colors">
+                <Link to="/services/ai-agents" className="hover:text-blue-400 transition-colors">
                   AI Agents
                 </Link>
               </li>
               <li>
-                <Link to="/services#ai-voice-agents" className="hover:text-blue-400 transition-colors">
-                  AI Voice Agents
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#ai-chatbots" className="hover:text-blue-400 transition-colors">
+                <Link to="/services/ai-chatbots" className="hover:text-blue-400 transition-colors">
                   AI Chatbots
                 </Link>
               </li>
               <li>
-                <Link to="/services#business-automation" className="hover:text-blue-400 transition-colors">
+                <Link to="/services/ai-voice-agents" className="hover:text-blue-400 transition-colors">
+                  AI Voice Agents
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/business-automation" className="hover:text-blue-400 transition-colors">
                   Business Automation
                 </Link>
               </li>
               <li>
-                <Link to="/services#custom-ai-solutions" className="hover:text-blue-400 transition-colors">
-                  Custom AI Solutions
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#ai-video-creation" className="hover:text-blue-400 transition-colors">
+                <Link to="/services/ai-video-creation" className="hover:text-blue-400 transition-colors">
                   AI Video Creation
                 </Link>
               </li>
