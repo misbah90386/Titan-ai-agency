@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, CheckCircle2, Terminal, Shield, MessageCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, CheckCircle2, Terminal, Shield, MessageCircle, Sparkles, Play } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceModal } from '../components/ServiceModal';
 import { ServiceItem } from '../types';
@@ -211,6 +211,17 @@ export const ServicesPage: React.FC = () => {
                       <MessageCircle className="w-4 h-4" />
                       <span>Discuss {service.title} on WhatsApp</span>
                     </a>
+
+                    {service.id === 'ai-video-creation' && (
+                      <Link
+                        to="/#video-showcase"
+                        id="watch-video-demo-btn"
+                        className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 hover:text-white border border-blue-500/40 text-sm font-semibold transition-all group shadow-[0_0_15px_rgba(59,130,246,0.15)]"
+                      >
+                        <Play className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                        <span>Watch Video Demo</span>
+                      </Link>
+                    )}
 
                     <button
                       onClick={() => setSelectedService(service)}

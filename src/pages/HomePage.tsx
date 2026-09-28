@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck } from 'lucide-react';
 import { HeroShowcaseVisual } from '../components/HeroShowcaseVisual';
 import { FeaturedWork } from '../components/FeaturedWork';
+import { VideoShowcase } from '../components/VideoShowcase';
 import { ProcessSection } from '../components/ProcessSection';
 import { FAQSection } from '../components/FAQSection';
 import { FinalCTA } from '../components/FinalCTA';
@@ -146,6 +147,9 @@ export const HomePage: React.FC = () => {
 
       {/* 2. FEATURED WORK SECTION */}
       <FeaturedWork />
+
+      {/* 2.5 VIDEO SHOWCASE SECTION */}
+      <VideoShowcase />
 
       {/* 3. SERVICES SECTION */}
       <section id="services-preview-section" className="relative py-20 sm:py-28 bg-[#05070c] border-t border-white/[0.06]">
