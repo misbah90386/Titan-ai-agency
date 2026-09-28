@@ -155,13 +155,15 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="pt-2">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 uppercase tracking-wider"
+                <a
+                  href="https://wa.me/966534182945?text=Hello%20TITAN%20AI%20AGENCY,%20I%20would%20like%20to%20discuss%20a%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 uppercase tracking-wider transition-colors"
                 >
                   <span>Start WhatsApp Chat</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

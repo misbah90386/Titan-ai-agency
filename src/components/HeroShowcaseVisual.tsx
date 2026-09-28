@@ -41,7 +41,7 @@ export const HeroShowcaseVisual: React.FC = () => {
           {/* Mock Website Body */}
           <div className="p-3.5 sm:p-4 space-y-2.5">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-white tracking-wide">METROPOLIS REALTY</span>
+              <span className="font-bold text-white tracking-wide">REAL ESTATE DEMO</span>
               <span className="text-[10px] font-semibold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
                 Book Consultation
               </span>
@@ -95,7 +95,7 @@ export const HeroShowcaseVisual: React.FC = () => {
                 </p>
                 <div className="mt-1.5 flex items-center gap-1.5 text-[9px] font-mono text-slate-400">
                   <Clock className="w-2.5 h-2.5 text-blue-400" />
-                  <span>Responded in under 2 seconds</span>
+                  <span>Sample automated reply</span>
                 </div>
               </div>
             </div>
