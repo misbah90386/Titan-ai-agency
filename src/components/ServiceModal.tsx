@@ -1,6 +1,6 @@
 import React from 'react';
 import { ServiceItem } from '../types';
-import { X, CheckCircle2, ArrowRight, Layers, Clock, Cpu, Globe, PhoneCall, MessageSquare, Workflow, MessageCircle } from 'lucide-react';
+import { X, CheckCircle2, ArrowRight, Layers, Clock, Cpu, Globe, PhoneCall, MessageSquare, Workflow, Video, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface ServiceModalProps {
@@ -29,6 +29,8 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) 
         return <MessageSquare className="w-6 h-6 text-blue-400" />;
       case 'business-automation':
         return <Workflow className="w-6 h-6 text-blue-400" />;
+      case 'ai-video-creation':
+        return <Video className="w-6 h-6 text-blue-400" />;
       case 'custom-ai-solutions':
       default:
         return <Layers className="w-6 h-6 text-blue-400" />;

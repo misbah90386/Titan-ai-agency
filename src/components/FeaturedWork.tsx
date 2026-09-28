@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, ArrowRight, Building, Smartphone, Laptop, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, ArrowRight, Building, Cake, UtensilsCrossed, CheckCircle2 } from 'lucide-react';
 
 export interface ProjectItem {
   id: string;
@@ -7,9 +7,12 @@ export interface ProjectItem {
   label: string;
   description: string;
   url: string;
+  domain: string;
   category: string;
+  whatsappMessage: string;
   highlights: string[];
   screenshot?: string;
+  mockupType: 'real-estate' | 'bakery' | 'restaurant';
 }
 
 export const FEATURED_PROJECTS: ProjectItem[] = [
@@ -20,21 +23,66 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     description:
       'A property website concept demonstrating how a real estate business can present its services and encourage enquiries.',
     url: 'https://celebrated-biscuit-a7f671.netlify.app/',
+    domain: 'celebrated-biscuit-a7f671.netlify.app',
     category: 'Website Design & Development',
+    whatsappMessage:
+      'Hello TITAN AI AGENCY, I saw your Real Estate Website Concept and would like to discuss a similar project for my business.',
     highlights: [
       'Clean modern property portfolio presentation',
       'Direct enquiry capture and consultation booking',
-      'Fluid responsiveness on mobile, tablet, and desktop',
-      'Fast loading speed and intuitive navigation'
-    ]
+      'Fluid responsiveness on mobile, tablet, and desktop'
+    ],
+    mockupType: 'real-estate'
+  },
+  {
+    id: 'custom-cake-bakery',
+    name: 'Custom Cake Bakery Website',
+    label: 'Demo Project',
+    description:
+      'An elegant bakery website concept featuring a cake gallery and a cake customisation interface with estimated pricing and a WhatsApp enquiry flow.',
+    url: 'https://sweet-dream-bakes.netlify.app/',
+    domain: 'sweet-dream-bakes.netlify.app',
+    category: 'Bakery & Food',
+    whatsappMessage:
+      'Hello TITAN AI AGENCY, I saw your Custom Cake Bakery Website demo and would like to discuss a similar project in Bakery & Food.',
+    highlights: [
+      'Visual cake gallery and customization flow',
+      'Interactive pricing estimator and inquiry trigger',
+      'Direct WhatsApp order workflow integration'
+    ],
+    mockupType: 'bakery'
+  },
+  {
+    id: 'chicken-restaurant',
+    name: 'Chicken Restaurant Website',
+    label: 'Demo Project',
+    description:
+      'A chicken restaurant website concept showcasing a design approach for a food business.',
+    url: 'https://cerulean-begonia-2ecb7d.netlify.app/',
+    domain: 'cerulean-begonia-2ecb7d.netlify.app',
+    category: 'Restaurant & Food',
+    whatsappMessage:
+      'Hello TITAN AI AGENCY, I saw your Chicken Restaurant Website demo and would like to discuss a similar project in Restaurant & Food.',
+    highlights: [
+      'Bold culinary brand identity and visual layout',
+      'Structured food menu and dish presentation',
+      'Mobile-optimized design built for food customers'
+    ],
+    mockupType: 'restaurant'
   }
 ];
 
+const WHATSAPP_BASE = 'https://wa.me/966534182945?text=';
+
 export const FeaturedWork: React.FC = () => {
+  const getWhatsAppUrl = (message: string) => {
+    return `${WHATSAPP_BASE}${encodeURIComponent(message)}`;
+  };
+
   return (
     <section id="featured-work" className="relative py-20 sm:py-28 bg-[#04060b] border-t border-white/[0.06] overflow-hidden">
       {/* Subtle Ambient Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -51,176 +99,252 @@ export const FeaturedWork: React.FC = () => {
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 gap-10">
+        {/* Projects Grid: 3 columns on wide screens, 2 columns on tablets, 1 column on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {FEATURED_PROJECTS.map((project) => (
             <div
               key={project.id}
-              className="group rounded-3xl bg-slate-900/40 border border-white/[0.08] hover:border-blue-500/40 p-6 sm:p-10 transition-all duration-300 shadow-xl"
+              className="group flex flex-col rounded-3xl bg-slate-900/40 border border-white/[0.08] hover:border-blue-500/40 p-5 sm:p-6 transition-all duration-300 shadow-xl hover:shadow-2xl h-full"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Browser-Style Frame */}
+              <div className="rounded-2xl bg-[#080c16] border border-white/[0.1] overflow-hidden shadow-lg flex flex-col">
                 
-                {/* Left Column: Project Details */}
-                <div className="lg:col-span-6 space-y-6">
-                  <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30">
-                      {project.label}
-                    </span>
-                    <span className="text-xs font-mono text-slate-400">
-                      {project.category}
-                    </span>
+                {/* Browser Chrome Header */}
+                <div className="flex items-center justify-between px-3 py-2.5 bg-[#0d1322] border-b border-white/[0.08] text-[11px] font-mono text-slate-400">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-rose-500/80" />
+                    <span className="w-2 h-2 rounded-full bg-amber-500/80" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
                   </div>
-
-                  <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight group-hover:text-blue-300 transition-colors">
-                    {project.name}
-                  </h3>
-
-                  <p className="text-slate-300 text-base leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Highlights */}
-                  <div className="space-y-2.5 pt-2">
-                    {project.highlights.map((highlight, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-300">
-                        <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
-                        <span>{highlight}</span>
-                      </div>
-                    ))}
+                  <div className="px-2 py-0.5 rounded bg-black/50 text-slate-300 text-[10px] flex items-center gap-1.5 truncate max-w-[170px] sm:max-w-[190px]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                    <span className="truncate">{project.domain}</span>
                   </div>
-
-                  {/* Action Button */}
-                  <div className="pt-4 flex flex-wrap items-center gap-4">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(37,99,235,0.35)] hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all duration-200"
-                    >
-                      <span>View Live Demo</span>
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-
-                    <a
-                      href="https://wa.me/966534182945?text=Hello%20TITAN%20AI%20AGENCY,%20I%20saw%20your%20Real%20Estate%20Website%20Concept%20and%20would%20like%20to%20discuss%20a%20similar%20project%20for%20my%20business."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-200 hover:text-white text-sm font-medium transition-colors"
-                    >
-                      <span>Discuss a Similar Project</span>
-                      <ArrowRight className="w-4 h-4 text-emerald-400" />
-                    </a>
-                  </div>
+                  <span className="text-[10px] text-blue-400 font-medium shrink-0">Live Demo</span>
                 </div>
 
-                {/* Right Column: Illustrative Live Interface Preview Frame */}
-                <div className="lg:col-span-6">
-                  <div className="rounded-2xl bg-[#080c16] border border-white/[0.1] overflow-hidden shadow-2xl">
-                    
-                    {/* Browser Chrome Header */}
-                    <div className="flex items-center justify-between px-4 py-3 bg-[#0d1322] border-b border-white/[0.08] text-xs font-mono text-slate-400">
-                      <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-rose-500/70" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
+                {/* Uploaded Screenshot or Illustrative Preview */}
+                {project.screenshot ? (
+                  <div className="relative group overflow-hidden bg-black/40">
+                    <img
+                      src={project.screenshot}
+                      alt={`${project.name} preview`}
+                      className="w-full h-auto aspect-[16/11] object-cover object-top border-b border-white/[0.06] transition-transform duration-500 group-hover:scale-[1.02]"
+                      loading="lazy"
+                    />
+                    <div className="p-2.5 bg-[#0d1322] border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-slate-400">
+                      <span>Live Website Screenshot</span>
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 flex items-center gap-1 font-sans font-medium"
+                      >
+                        <span>Open Live Site</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                  </div>
+                ) : project.mockupType === 'real-estate' ? (
+                  /* 1. Real Estate Illustrative Preview */
+                  <div className="p-3.5 sm:p-4 space-y-2.5 bg-gradient-to-b from-[#0b101c] to-[#080c16] flex flex-col justify-between min-h-[220px]">
+                    <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+                      <div className="flex items-center gap-1.5">
+                        <Building className="w-3.5 h-3.5 text-blue-400" />
+                        <span className="font-bold text-white text-xs tracking-wide">REAL ESTATE DEMO</span>
                       </div>
-                      <div className="px-2.5 sm:px-3 py-1 rounded-md bg-black/50 text-slate-300 text-[11px] sm:text-xs flex items-center gap-1.5 sm:gap-2 truncate max-w-[160px] xs:max-w-[220px] sm:max-w-[280px]">
-                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                        <span className="truncate">celebrated-biscuit-a7f671.netlify.app</span>
+                      <div className="flex items-center gap-2 text-[10px] text-slate-400">
+                        <span>Properties</span>
+                        <span className="text-blue-400 font-medium">Contact</span>
                       </div>
-                      <span className="text-[10px] sm:text-[11px] text-blue-400 font-medium shrink-0">Live Demo</span>
                     </div>
 
-                    {/* Interactive Preview Canvas or Uploaded Screenshot */}
-                    {project.screenshot ? (
-                      <div className="relative group overflow-hidden bg-black/40">
-                        <img
-                          src={project.screenshot}
-                          alt={`${project.name} preview`}
-                          className="w-full h-auto aspect-[16/10] object-cover object-top border-b border-white/[0.06] transition-transform duration-500 group-hover:scale-[1.02]"
-                          loading="lazy"
-                        />
-                        <div className="p-3 bg-[#0d1322] border-t border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-slate-400">
-                          <span className="text-slate-400">Live Website Screenshot</span>
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:text-blue-300 flex items-center gap-1 font-sans font-medium"
-                          >
-                            <span>Open Live Site</span>
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        </div>
+                    <div className="rounded-lg bg-[#0e1628] border border-white/[0.06] p-2.5 space-y-1.5">
+                      <div className="text-[9px] font-mono text-blue-400 uppercase tracking-wider">
+                        Architecture & Listings
                       </div>
-                    ) : (
-                      <div className="p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#0b101c] to-[#080c16]">
-                        {/* Nav Bar Mock */}
-                        <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
-                          <div className="flex items-center gap-2">
-                            <Building className="w-4 h-4 text-blue-400" />
-                            <span className="font-bold text-white text-sm tracking-wide">REAL ESTATE DEMO</span>
-                          </div>
-                          <div className="flex items-center gap-2.5 sm:gap-3 text-xs text-slate-400">
-                            <span className="hover:text-white">Properties</span>
-                            <span className="hover:text-white">Commercial</span>
-                            <span className="text-blue-400 font-medium">Contact</span>
-                          </div>
-                        </div>
-
-                        {/* Hero Banner Mock */}
-                        <div className="rounded-xl bg-[#0e1628] border border-white/[0.06] p-4 sm:p-5 space-y-2.5 sm:space-y-3">
-                          <div className="text-[10px] font-mono text-blue-400 uppercase tracking-wider">
-                            Premium Real Estate Architecture
-                          </div>
-                          <div className="text-base sm:text-lg font-bold text-white leading-snug">
-                            Find Exceptional Homes & High-Yield Commercial Spaces
-                          </div>
-                          <p className="text-xs text-slate-400 leading-relaxed">
-                            Tailored search, verified listings, and direct scheduling with real estate advisors.
-                          </p>
-                          
-                          <div className="flex items-center gap-2 pt-2">
-                            <span className="px-3 py-1 rounded bg-blue-600 text-white text-xs font-semibold">
-                              Explore Listings
-                            </span>
-                            <span className="px-3 py-1 rounded bg-white/[0.05] border border-white/10 text-slate-300 text-xs">
-                              Schedule Tour
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Sample Listings Mini Cards */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-                          <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] space-y-1">
-                            <div className="text-[10px] font-mono text-emerald-400">FOR SALE</div>
-                            <div className="font-bold text-white truncate">The Horizon Penthouse</div>
-                            <div className="text-slate-400 text-[11px]">$1,250,000 · 3 Beds</div>
-                          </div>
-                          <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.06] space-y-1">
-                            <div className="text-[10px] font-mono text-blue-400">COMMERCIAL</div>
-                            <div className="font-bold text-white truncate">Metro Tech Tower</div>
-                            <div className="text-slate-400 text-[11px]">8,500 sq ft · Floor 14</div>
-                          </div>
-                        </div>
-
-                        {/* Preview Label Footer */}
-                        <div className="pt-2 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono text-slate-500">
-                          <span>Illustrative Demo Preview</span>
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-400 hover:underline flex items-center gap-1"
-                          >
-                            <span>Open Live Netlify Site</span>
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
-                        </div>
+                      <div className="text-xs font-bold text-white leading-tight">
+                        Exceptional Homes & Commercial Suites
                       </div>
-                    )}
+                      <div className="flex items-center gap-1.5 pt-1">
+                        <span className="px-2 py-0.5 rounded bg-blue-600 text-white text-[9px] font-semibold">
+                          Explore Listings
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-white/[0.05] border border-white/10 text-slate-300 text-[9px]">
+                          Schedule Tour
+                        </span>
+                      </div>
+                    </div>
 
+                    <div className="grid grid-cols-2 gap-2 text-[10px]">
+                      <div className="p-2 rounded bg-white/[0.02] border border-white/[0.06] space-y-0.5">
+                        <div className="text-[8px] font-mono text-emerald-400">FOR SALE</div>
+                        <div className="font-semibold text-white truncate text-[10px]">Horizon Penthouse</div>
+                        <div className="text-slate-400 text-[9px]">$1.25M · 3 Beds</div>
+                      </div>
+                      <div className="p-2 rounded bg-white/[0.02] border border-white/[0.06] space-y-0.5">
+                        <div className="text-[8px] font-mono text-blue-400">COMMERCIAL</div>
+                        <div className="font-semibold text-white truncate text-[10px]">Metro Tech Tower</div>
+                        <div className="text-slate-400 text-[9px]">Floor 14 Suite</div>
+                      </div>
+                    </div>
+
+                    <div className="pt-1 flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-white/[0.04]">
+                      <span>Illustrative Demo Preview</span>
+                      <span className="text-blue-400">Live Demo</span>
+                    </div>
                   </div>
+                ) : project.mockupType === 'bakery' ? (
+                  /* 2. Bakery Illustrative Preview */
+                  <div className="p-3.5 sm:p-4 space-y-2.5 bg-gradient-to-b from-[#0b101c] to-[#080c16] flex flex-col justify-between min-h-[220px]">
+                    <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+                      <div className="flex items-center gap-1.5">
+                        <Cake className="w-3.5 h-3.5 text-pink-400" />
+                        <span className="font-bold text-white text-xs tracking-wide">BAKERY DEMO</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-[10px] text-slate-400">
+                        <span>Cake Gallery</span>
+                        <span className="text-pink-400 font-medium">Customizer</span>
+                      </div>
+                    </div>
+
+                    <div className="rounded-lg bg-[#140e1c] border border-pink-500/10 p-2.5 space-y-1.5">
+                      <div className="text-[9px] font-mono text-pink-400 uppercase tracking-wider">
+                        Artisan Bakes & Customizer
+                      </div>
+                      <div className="text-xs font-bold text-white leading-tight">
+                        Handcrafted Cakes & Celebration Tier Designs
+                      </div>
+                      <div className="flex items-center gap-1.5 pt-1">
+                        <span className="px-2 py-0.5 rounded bg-pink-600 text-white text-[9px] font-semibold">
+                          Customize Cake
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-white/[0.05] border border-white/10 text-slate-300 text-[9px]">
+                          Pricing Flow
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 text-[10px]">
+                      <div className="p-2 rounded bg-white/[0.02] border border-white/[0.06] space-y-0.5">
+                        <div className="text-[8px] font-mono text-pink-400">CUSTOM TIER</div>
+                        <div className="font-semibold text-white truncate text-[10px]">Velvet Berry Gateau</div>
+                        <div className="text-slate-400 text-[9px]">Live Price Estimate</div>
+                      </div>
+                      <div className="p-2 rounded bg-white/[0.02] border border-white/[0.06] space-y-0.5">
+                        <div className="text-[8px] font-mono text-amber-400">WEDDING SPEC</div>
+                        <div className="font-semibold text-white truncate text-[10px]">Floral 3-Tier Special</div>
+                        <div className="text-slate-400 text-[9px]">WhatsApp Enquiry</div>
+                      </div>
+                    </div>
+
+                    <div className="pt-1 flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-white/[0.04]">
+                      <span>Illustrative Demo Preview</span>
+                      <span className="text-pink-400">Live Demo</span>
+                    </div>
+                  </div>
+                ) : (
+                  /* 3. Restaurant Illustrative Preview - Strictly no unverified online ordering, payment, reservations or delivery claims */
+                  <div className="p-3.5 sm:p-4 space-y-2.5 bg-gradient-to-b from-[#0b101c] to-[#080c16] flex flex-col justify-between min-h-[220px]">
+                    <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
+                      <div className="flex items-center gap-1.5">
+                        <UtensilsCrossed className="w-3.5 h-3.5 text-amber-400" />
+                        <span className="font-bold text-white text-xs tracking-wide">RESTAURANT DEMO</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-[10px] text-slate-400">
+                        <span>Signature Menu</span>
+                        <span className="text-amber-400 font-medium">Our Story</span>
+                      </div>
+                    </div>
+
+                    <div className="rounded-lg bg-[#19140c] border border-amber-500/10 p-2.5 space-y-1.5">
+                      <div className="text-[9px] font-mono text-amber-400 uppercase tracking-wider">
+                        Food Brand Design Approach
+                      </div>
+                      <div className="text-xs font-bold text-white leading-tight">
+                        Crispy Recipe & Signature Food Presentation
+                      </div>
+                      <div className="flex items-center gap-1.5 pt-1">
+                        <span className="px-2 py-0.5 rounded bg-amber-600 text-white text-[9px] font-semibold">
+                          Explore Menu
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-white/[0.05] border border-white/10 text-slate-300 text-[9px]">
+                          Location & Hours
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 text-[10px]">
+                      <div className="p-2 rounded bg-white/[0.02] border border-white/[0.06] space-y-0.5">
+                        <div className="text-[8px] font-mono text-amber-400">SIGNATURE</div>
+                        <div className="font-semibold text-white truncate text-[10px]">Crispy Tender Combo</div>
+                        <div className="text-slate-400 text-[9px]">Secret Blend Spices</div>
+                      </div>
+                      <div className="p-2 rounded bg-white/[0.02] border border-white/[0.06] space-y-0.5">
+                        <div className="text-[8px] font-mono text-rose-400">HOUSE SPECIAL</div>
+                        <div className="font-semibold text-white truncate text-[10px]">Smoked Wings Platter</div>
+                        <div className="text-slate-400 text-[9px]">Menu Showcase</div>
+                      </div>
+                    </div>
+
+                    <div className="pt-1 flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-white/[0.04]">
+                      <span>Illustrative Demo Preview</span>
+                      <span className="text-amber-400">Live Demo</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Project Details */}
+              <div className="flex-1 flex flex-col pt-5 space-y-3.5">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30">
+                    {project.label}
+                  </span>
+                  <span className="text-xs font-mono text-slate-400 truncate">
+                    {project.category}
+                  </span>
+                </div>
+
+                <h3 className="font-display text-xl font-bold text-white tracking-tight group-hover:text-blue-300 transition-colors">
+                  {project.name}
+                </h3>
+
+                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed min-h-[4.25rem]">
+                  {project.description}
+                </p>
+
+                {/* Highlights */}
+                <div className="space-y-2 pt-2 border-t border-white/[0.06]">
+                  {project.highlights.map((highlight, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" />
+                      <span>{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Action Buttons Pinned to Bottom */}
+                <div className="mt-auto pt-5 space-y-2.5">
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.45)] transition-all duration-200"
+                  >
+                    <span>View Live Demo</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+
+                  <a
+                    href={getWhatsAppUrl(project.whatsappMessage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-200 hover:text-white text-xs font-medium transition-colors"
+                  >
+                    <span>Discuss a Similar Project</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-emerald-400" />
+                  </a>
                 </div>
 
               </div>

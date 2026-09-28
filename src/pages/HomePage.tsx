@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, MessageCircle, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck } from 'lucide-react';
 import { HeroShowcaseVisual } from '../components/HeroShowcaseVisual';
 import { FeaturedWork } from '../components/FeaturedWork';
 import { ProcessSection } from '../components/ProcessSection';
@@ -49,6 +49,8 @@ export const HomePage: React.FC = () => {
         return <MessageSquare className="w-5 h-5 text-blue-400" />;
       case 'business-automation':
         return <Workflow className="w-5 h-5 text-blue-400" />;
+      case 'ai-video-creation':
+        return <Video className="w-5 h-5 text-blue-400" />;
       case 'custom-ai-solutions':
       default:
         return <Layers className="w-5 h-5 text-blue-400" />;
@@ -158,7 +160,7 @@ export const HomePage: React.FC = () => {
                 Our Core Services
               </h2>
               <p className="mt-3 text-slate-300 text-base leading-relaxed">
-                Practical websites, conversational tools, and automated workflows designed to solve genuine business bottlenecks.
+                Practical websites, conversational tools, automated workflows, and AI video content designed to solve genuine business bottlenecks.
               </p>
             </div>
             
@@ -172,13 +174,15 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          {/* Six Service Cards */}
+          {/* Seven Service Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES_DATA.map((service) => {
               const whatsappServiceUrl =
                 'https://wa.me/966534182945?text=' +
                 encodeURIComponent(
-                  `Hello TITAN AI AGENCY, I am interested in ${service.title} for my business.`
+                  service.id === 'ai-video-creation'
+                    ? 'Hello TITAN AI AGENCY, I am interested in AI video creation for my business.'
+                    : `Hello TITAN AI AGENCY, I am interested in ${service.title} for my business.`
                 );
 
               return (
@@ -202,13 +206,13 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between gap-3">
-                    <button
-                      onClick={() => setSelectedService(service)}
+                    <Link
+                      to={`/services#${service.id}`}
                       className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
                     >
                       <span>Learn Details</span>
                       <ArrowRight className="w-3.5 h-3.5 text-blue-400" />
-                    </button>
+                    </Link>
 
                     <a
                       href={whatsappServiceUrl}

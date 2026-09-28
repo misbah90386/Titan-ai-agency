@@ -211,5 +211,47 @@ export const SERVICES_DATA: ServiceItem[] = [
     ],
     technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Cloud APIs'],
     typicalTimeline: 'Agreed upon project scoping'
+  },
+  {
+    id: 'ai-video-creation',
+    title: 'AI Video Creation',
+    heading: 'AI Videos for Your Business',
+    category: 'Visual Content & AI Video',
+    iconName: 'Video',
+    shortDescription:
+      'Custom AI-generated videos for product showcases, business promotions, property concepts, and social media content.',
+    overview:
+      'Turn your ideas into visual content for your business. We create AI-generated video concepts tailored to your message, brand style, and intended audience.',
+    subcategories: [
+      'Business promotional videos',
+      'Product showcase videos',
+      'Real estate concept videos',
+      'Restaurant and bakery promotional content',
+      'Social media reels and short advertisements',
+      'Educational and explainer videos'
+    ],
+    features: [
+      'Visual storytelling aligned with your core business message and branding',
+      'Structured concept, script, and format agreed before production begins',
+      'Custom aspect ratios tailored for vertical reels (9:16) or landscape media (16:9)',
+      'Voiceover integration and synchronized captions adapted to your audience',
+      'Structured collaborative review and agreed revision checkpoints',
+      'High-definition video delivery ready for publishing across your digital channels'
+    ],
+    deliverables: [
+      'Agreed visual concept and structured script outline',
+      'AI-generated video composition in agreed resolution & format',
+      'Voiceover & caption integration (where requested)',
+      'Review cycle and agreed project revisions',
+      'Final video file delivery'
+    ],
+    technologies: ['Generative Video Models', 'Audio Synthesis', 'Scripting & Prompting', 'Post-Production', 'MP4/H.264'],
+    typicalTimeline: 'Agreed upon project scoping',
+    processNote:
+      'Share your idea and any available brand assets. We agree on the concept, script, format, scope, and price before production, then create the video and review it with you.',
+    termsNote:
+      'Duration, aspect ratio, voiceover, captions, revisions, and delivery time are agreed for each project based on your requirements.',
+    disclaimerNote:
+      'For property and product videos, AI-generated scenes are illustrative concepts unless based on verified reference material. Generated scenes are not presented as actual footage of a real property or product.'
   }
 ];

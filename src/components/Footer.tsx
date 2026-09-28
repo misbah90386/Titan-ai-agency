@@ -82,6 +82,11 @@ export const Footer: React.FC = () => {
                   Custom AI Solutions
                 </Link>
               </li>
+              <li>
+                <Link to="/services#ai-video-creation" className="hover:text-blue-400 transition-colors">
+                  AI Video Creation
+                </Link>
+              </li>
             </ul>
           </div>
 

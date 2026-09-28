@@ -1,6 +1,7 @@
 export interface ServiceItem {
   id: string;
   title: string;
+  heading?: string;
   shortDescription: string;
   iconName: string;
   category: string;
@@ -10,6 +11,9 @@ export interface ServiceItem {
   deliverables: string[];
   technologies: string[];
   typicalTimeline: string;
+  processNote?: string;
+  termsNote?: string;
+  disclaimerNote?: string;
 }
 
 export interface ContactFormData {

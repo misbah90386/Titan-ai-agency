@@ -16,14 +16,14 @@ export const ServicesPage: React.FC = () => {
   usePageSEO({
     title: 'AI Automation Services & AI Agents | Titan AI Agency',
     description:
-      'Explore Titan AI Agency services: Website Design & Development, AI Agents, AI Voice Agents, AI Chatbots, Business Automation, and Custom AI Solutions.',
+      'Explore Titan AI Agency services: Website Design & Development, AI Agents, AI Voice Agents, AI Chatbots, Business Automation, Custom AI Solutions, and AI Video Creation.',
     canonicalPath: '/services',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       name: 'Titan AI Agency Services',
       url: 'https://titanaiagency.netlify.app/services',
-      numberOfItems: 6,
+      numberOfItems: 7,
       itemListElement: [
         {
           '@type': 'Service',
@@ -71,6 +71,14 @@ export const ServicesPage: React.FC = () => {
           name: 'Custom AI Solutions',
           description:
             'Tailored systems developed around your business requirements.',
+          provider: { '@type': 'Organization', name: 'Titan AI Agency' },
+        },
+        {
+          '@type': 'Service',
+          position: 7,
+          name: 'AI Video Creation',
+          description:
+            'Custom AI-generated videos for product showcases, business promotions, property concepts, and social media content.',
           provider: { '@type': 'Organization', name: 'Titan AI Agency' },
         },
       ],
@@ -130,7 +138,9 @@ export const ServicesPage: React.FC = () => {
           const serviceWhatsappUrl =
             'https://wa.me/966534182945?text=' +
             encodeURIComponent(
-              `Hello TITAN AI AGENCY, I would like to discuss ${service.title} for my business.`
+              service.id === 'ai-video-creation'
+                ? 'Hello TITAN AI AGENCY, I am interested in AI video creation for my business.'
+                : `Hello TITAN AI AGENCY, I would like to discuss ${service.title} for my business.`
             );
 
           return (
@@ -152,17 +162,30 @@ export const ServicesPage: React.FC = () => {
                   </div>
 
                   <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                    {service.title}
+                    {service.heading || service.title}
                   </h2>
 
                   <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
                     {service.overview}
                   </p>
 
+                  {/* Process note if present */}
+                  {service.processNote && (
+                    <div className="p-4 rounded-xl bg-blue-500/[0.06] border border-blue-500/20 space-y-1.5">
+                      <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold flex items-center gap-2">
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>Brief & Production Process</span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        {service.processNote}
+                      </p>
+                    </div>
+                  )}
+
                   {/* Subcategories */}
                   <div>
                     <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-3">
-                      Scope & Capabilities:
+                      {service.id === 'ai-video-creation' ? 'Project Types & Video Formats:' : 'Scope & Capabilities:'}
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {service.subcategories.map((sub, idx) => (
@@ -201,7 +224,7 @@ export const ServicesPage: React.FC = () => {
                 </div>
 
                 {/* Right Side: Technical Specs, Deliverables & Stack */}
-                <div className="lg:col-span-5 space-y-6">
+                <div className="lg:col-span-5 space-y-5">
                   <div className="rounded-2xl bg-black/40 border border-white/[0.08] p-6 space-y-5">
                     <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
                       <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold flex items-center gap-2">
@@ -209,7 +232,7 @@ export const ServicesPage: React.FC = () => {
                         <span>Included Deliverables</span>
                       </div>
                       <span className="text-[11px] font-mono text-slate-400">
-                        30 Days Support
+                        Structured Milestones
                       </span>
                     </div>
 
@@ -238,6 +261,25 @@ export const ServicesPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
+
+                  {/* Project Terms Note if present */}
+                  {service.termsNote && (
+                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.08] text-xs text-slate-300 leading-relaxed">
+                      <strong className="text-white block font-medium mb-1">Scope & Specification Policy</strong>
+                      {service.termsNote}
+                    </div>
+                  )}
+
+                  {/* Disclaimer Note if present */}
+                  {service.disclaimerNote && (
+                    <div className="p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/20 text-xs text-slate-300 leading-relaxed">
+                      <strong className="text-amber-300 block font-medium mb-1 flex items-center gap-1.5">
+                        <Shield className="w-3.5 h-3.5" />
+                        <span>Illustrative Concept Policy</span>
+                      </strong>
+                      {service.disclaimerNote}
+                    </div>
+                  )}
 
                   {/* Operational Quality Callout */}
                   <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-500/20 flex items-start gap-3">

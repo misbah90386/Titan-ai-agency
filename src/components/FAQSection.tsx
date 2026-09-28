@@ -11,7 +11,7 @@ export const FAQS: FAQItem[] = [
   {
     question: 'What services do you provide?',
     answer:
-      'TITAN AI AGENCY provides six core services: Website Design & Development, AI Agents for task assistance, AI Voice Agents for supported telephone communication, AI Chatbots for website customer inquiries, Business Automation to connect tools and workflows, and Custom AI Solutions engineered around specific business requirements.'
+      'TITAN AI AGENCY provides seven core services: Website Design & Development, AI Agents for task assistance, AI Voice Agents for supported telephone communication, AI Chatbots for website customer inquiries, Business Automation to connect tools and workflows, Custom AI Solutions engineered around specific business requirements, and AI Video Creation for product showcases and business promotions.'
   },
   {
     question: 'Can you redesign an existing website?',
