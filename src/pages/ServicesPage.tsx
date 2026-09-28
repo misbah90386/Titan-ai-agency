@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, CheckCircle2, Terminal, Shield, Zap, Sparkles } from 'lucide-react';
+import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, CheckCircle2, Terminal, Shield, MessageCircle, Sparkles } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceModal } from '../components/ServiceModal';
 import { ServiceItem } from '../types';
+import { ProcessSection } from '../components/ProcessSection';
+import { FAQSection } from '../components/FAQSection';
 import { FinalCTA } from '../components/FinalCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
 
@@ -14,7 +16,7 @@ export const ServicesPage: React.FC = () => {
   usePageSEO({
     title: 'AI Automation Services & AI Agents | Titan AI Agency',
     description:
-      'Explore Titan AI Agency services: AI business automation, autonomous AI agents, voice AI, custom chatbots, high-converting websites, and bespoke technology solutions.',
+      'Explore Titan AI Agency services: Website Design & Development, AI Agents, AI Voice Agents, AI Chatbots, Business Automation, and Custom AI Solutions.',
     canonicalPath: '/services',
     structuredData: {
       '@context': 'https://schema.org',
@@ -26,9 +28,9 @@ export const ServicesPage: React.FC = () => {
         {
           '@type': 'Service',
           position: 1,
-          name: 'Websites & 3D Web Development',
+          name: 'Website Design & Development',
           description:
-            'High-converting, performance-engineered modern websites with 3D elements and conversion architecture.',
+            'Professional, responsive websites that present your business clearly and make it easy for customers to contact you.',
           provider: { '@type': 'Organization', name: 'Titan AI Agency' },
         },
         {
@@ -36,7 +38,7 @@ export const ServicesPage: React.FC = () => {
           position: 2,
           name: 'AI Agents',
           description:
-            'Autonomous multi-step software engines integrated into operational workflows and databases.',
+            'AI assistants designed to help with specific business tasks and workflows.',
           provider: { '@type': 'Organization', name: 'Titan AI Agency' },
         },
         {
@@ -44,7 +46,7 @@ export const ServicesPage: React.FC = () => {
           position: 3,
           name: 'AI Voice Agents',
           description:
-            'Sub-second low-latency voice conversational systems for outbound lead qualification and inbound customer support.',
+            'Voice assistants for supported enquiry, appointment, and communication workflows.',
           provider: { '@type': 'Organization', name: 'Titan AI Agency' },
         },
         {
@@ -52,7 +54,7 @@ export const ServicesPage: React.FC = () => {
           position: 4,
           name: 'AI Chatbots',
           description:
-            'Knowledge-grounded customer service and lead capture bots with zero-hallucination guardrails.',
+            'Conversational assistants that answer common questions and collect enquiries.',
           provider: { '@type': 'Organization', name: 'Titan AI Agency' },
         },
         {
@@ -60,7 +62,7 @@ export const ServicesPage: React.FC = () => {
           position: 5,
           name: 'Business Automation',
           description:
-            'Event-driven integration pipelines connecting CRMs, ERPs, billing, and fulfillment operations.',
+            'Connected workflows that reduce repetitive tasks and keep information moving between tools.',
           provider: { '@type': 'Organization', name: 'Titan AI Agency' },
         },
         {
@@ -68,7 +70,7 @@ export const ServicesPage: React.FC = () => {
           position: 6,
           name: 'Custom AI Solutions',
           description:
-            'Bespoke machine learning architectures, internal productivity tools, and specialized AI systems.',
+            'Tailored systems developed around your business requirements.',
           provider: { '@type': 'Organization', name: 'Titan AI Agency' },
         },
       ],
@@ -125,7 +127,11 @@ export const ServicesPage: React.FC = () => {
       {/* Detailed Services Breakdown */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-24">
         {SERVICES_DATA.map((service, index) => {
-          const isEven = index % 2 === 0;
+          const serviceWhatsappUrl =
+            'https://wa.me/966534182945?text=' +
+            encodeURIComponent(
+              `Hello TITAN AI AGENCY, I would like to discuss ${service.title} for my business.`
+            );
 
           return (
             <section
@@ -153,10 +159,10 @@ export const ServicesPage: React.FC = () => {
                     {service.overview}
                   </p>
 
-                  {/* Subcategories required by prompt */}
+                  {/* Subcategories */}
                   <div>
                     <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-3">
-                      Scope & Modalities Covered:
+                      Scope & Capabilities:
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {service.subcategories.map((sub, idx) => (
@@ -173,21 +179,24 @@ export const ServicesPage: React.FC = () => {
 
                   {/* Action Buttons */}
                   <div className="flex flex-wrap items-center gap-4 pt-4">
+                    <a
+                      href={serviceWhatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Discuss {service.title} on WhatsApp</span>
+                    </a>
+
                     <button
                       onClick={() => setSelectedService(service)}
                       id={`learn-more-service-${service.id}`}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(37,99,235,0.35)] transition-all"
+                      className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-sm font-medium transition-colors"
                     >
-                      <span>Learn More</span>
-                      <ArrowRight className="w-4 h-4" />
+                      <span>View Specifications</span>
+                      <ArrowRight className="w-4 h-4 text-blue-400" />
                     </button>
-
-                    <Link
-                      to={`/contact?service=${encodeURIComponent(service.title)}`}
-                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-sm font-medium transition-colors"
-                    >
-                      <span>Inquire About {service.title}</span>
-                    </Link>
                   </div>
                 </div>
 
@@ -197,10 +206,10 @@ export const ServicesPage: React.FC = () => {
                     <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
                       <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold flex items-center gap-2">
                         <Terminal className="w-4 h-4" />
-                        <span>System Deliverables</span>
+                        <span>Included Deliverables</span>
                       </div>
-                      <span className="text-[11px] font-mono text-slate-500">
-                        {service.typicalTimeline}
+                      <span className="text-[11px] font-mono text-slate-400">
+                        30 Days Support
                       </span>
                     </div>
 
@@ -215,7 +224,7 @@ export const ServicesPage: React.FC = () => {
 
                     <div className="pt-4 border-t border-white/[0.06]">
                       <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2">
-                        Core Technology Stack
+                        Technologies & Standards
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {service.technologies.map((tech) => (
@@ -230,12 +239,12 @@ export const ServicesPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Architecture Callout */}
+                  {/* Operational Quality Callout */}
                   <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-500/20 flex items-start gap-3">
                     <Shield className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
                     <div className="text-xs text-slate-300 leading-relaxed">
-                      <strong className="text-white block font-medium mb-0.5">Enterprise Guardrails & Standards</strong>
-                      All solutions are deployed with strict data isolation, zero arbitrary third-party leaks, and modular maintainable codebases.
+                      <strong className="text-white block font-medium mb-0.5">Reliable & Transparent</strong>
+                      All solutions are scoped clearly before launch, tested on real devices, and delivered with 30 days of free support.
                     </div>
                   </div>
                 </div>
@@ -244,6 +253,12 @@ export const ServicesPage: React.FC = () => {
           );
         })}
       </div>
+
+      {/* Process Section */}
+      <ProcessSection />
+
+      {/* FAQs Section */}
+      <FAQSection />
 
       {/* Final CTA */}
       <FinalCTA />

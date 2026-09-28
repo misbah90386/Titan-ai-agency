@@ -110,8 +110,8 @@ export const MissionVisionPage: React.FC = () => {
               We bridge the gap between complex software advances and concrete business applications. Rather than chasing fleeting tech jargon, our engineering practice is dedicated to building robust software systems that reduce friction, automate workflows, and operate reliably every single day.
             </p>
 
-            <div className="p-4 rounded-xl bg-slate-900/50 border border-white/[0.08] text-xs font-mono text-slate-300">
-              <div className="text-blue-400 font-semibold mb-1">// MISSION MANDATE:</div>
+            <div className="p-4 rounded-xl bg-slate-900/50 border border-white/[0.08] text-xs text-slate-300">
+              <div className="text-blue-400 font-semibold mb-1">Our Core Commitment:</div>
               "Practical engineering delivering measurable operational clarity for real businesses."
             </div>
           </div>

@@ -11,6 +11,10 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURICompo
   'Hello TITAN AI AGENCY, I have a project in mind and would like to discuss digital solutions.'
 )}`;
 
+const CLOSING_WHATSAPP_URL = `https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURIComponent(
+  "Hello TITAN AI AGENCY, let's build our next business solution."
+)}`;
+
 export const ContactPage: React.FC = () => {
   usePageSEO({
     title: 'Contact Titan AI Agency | AI Automation Solutions',
@@ -38,6 +42,7 @@ export const ContactPage: React.FC = () => {
       },
     },
   });
+
   return (
     <div id="contact-page-root" className="min-h-screen bg-[#06080d] text-slate-100 pt-28 pb-20 flex flex-col justify-center relative overflow-hidden">
       {/* Background ambient lighting and subtle technical grid */}
@@ -45,8 +50,9 @@ export const ContactPage: React.FC = () => {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 right-1/4 w-[400px] h-[300px] bg-emerald-500/5 rounded-full blur-[130px] pointer-events-none" />
 
+      {/* Primary WhatsApp Contact Hero */}
       <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center w-full">
-        {/* Subtle pill badge */}
+        {/* Label */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 uppercase tracking-widest mb-8">
           <Sparkles className="w-3.5 h-3.5" />
           <span>Direct Contact</span>
@@ -92,11 +98,34 @@ export const ContactPage: React.FC = () => {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
 
-          {/* Subtle status indicator */}
+          {/* Direct status note */}
           <div className="mt-6 flex items-center justify-center gap-2 text-xs font-mono text-emerald-400">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Direct Line • Fast Response</span>
+            <span>Direct Line · Fast Response</span>
           </div>
+        </div>
+      </section>
+
+      {/* Strong Closing Section */}
+      <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 w-full text-center">
+        <div className="rounded-3xl bg-gradient-to-b from-slate-900/60 to-[#0b101c]/80 border border-blue-500/20 p-8 sm:p-12 shadow-xl">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-4 uppercase">
+            LET’S BUILD YOUR NEXT BUSINESS SOLUTION.
+          </h2>
+          <p className="text-slate-300 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+            Tell us what your business needs. We’ll help you define the right next step.
+          </p>
+          <a
+            href={CLOSING_WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            id="contact-start-conversation-btn"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-base shadow-[0_0_25px_rgba(16,185,129,0.35)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] transition-all duration-200"
+          >
+            <MessageCircle className="w-5 h-5" />
+            <span>Start a Conversation</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
       </section>
     </div>

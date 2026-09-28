@@ -24,14 +24,9 @@ export const Footer: React.FC = () => {
               </span>
             </Link>
 
-            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              Digital Solutions Built for Business. Engineering high-performance websites, autonomous AI agents, voice interfaces, and workflow automation systems.
+            <p className="text-sm text-slate-300 max-w-sm leading-relaxed">
+              Founded by Saad Naeem. We build websites, AI assistants, and automated workflows that help businesses capture enquiries, respond faster, and reduce repetitive work.
             </p>
-
-            <div className="pt-2 flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>SYSTEMS ACTIVE • ACCEPTING CLIENT PROJECTS</span>
-            </div>
 
             <div className="pt-2 flex items-center gap-3">
               <a
@@ -46,8 +41,8 @@ export const Footer: React.FC = () => {
               </a>
             </div>
 
-            <div className="pt-1 text-xs text-slate-500 font-mono">
-              ENGINEERING EXCELLENCE • ENTERPRISE QUALITY
+            <div className="pt-1 text-xs text-slate-400">
+              Transparent scoping · 30 days free post-launch support
             </div>
           </div>
 
@@ -59,7 +54,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm text-slate-400">
               <li>
                 <Link to="/services#websites" className="hover:text-blue-400 transition-colors">
-                  Websites
+                  Website Design & Dev
                 </Link>
               </li>
               <li>
@@ -108,7 +103,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/about" className="hover:text-blue-400 transition-colors">
-                  About TITAN
+                  About Saad & TITAN
                 </Link>
               </li>
               <li>
@@ -118,7 +113,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/blog" className="hover:text-blue-400 transition-colors">
-                  Blog
+                  Blog Insights
                 </Link>
               </li>
               <li>
@@ -164,7 +159,7 @@ export const Footer: React.FC = () => {
                   to="/contact"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 uppercase tracking-wider"
                 >
-                  <span>Submit Project Brief</span>
+                  <span>Start WhatsApp Chat</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </li>
@@ -177,12 +172,10 @@ export const Footer: React.FC = () => {
           <div>
             © {new Date().getFullYear()} TITAN AI AGENCY. All rights reserved.
           </div>
-          <div className="flex items-center gap-6">
-            <span>Engineering-First Methodology</span>
-            <span>Deterministic AI Safeguards</span>
-            <Link to="/contact" className="hover:text-slate-300 transition-colors">
-              Privacy & Security Policy
-            </Link>
+          <div className="flex items-center gap-6 text-slate-400">
+            <span>Direct Founder Collaboration</span>
+            <span>30 Days Free Launch Support</span>
+            <span>100% Client Code Ownership</span>
           </div>
         </div>
       </div>

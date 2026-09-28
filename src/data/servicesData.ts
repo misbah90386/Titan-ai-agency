@@ -3,197 +3,213 @@ import { ServiceItem } from '../types';
 export const SERVICES_DATA: ServiceItem[] = [
   {
     id: 'websites',
-    title: 'Websites',
-    category: 'Digital Infrastructure',
+    title: 'Website Design & Development',
+    category: 'Web Development',
     iconName: 'Globe',
-    shortDescription: 'Modern, responsive, professional websites built around the needs of a business.',
-    overview: 'High-performance web applications and corporate websites engineered for clarity, speed, and cross-platform reliability. Every site is built with modern frontend architecture and clean typography.',
+    shortDescription:
+      'Professional, responsive websites that present your business clearly and make it easy for customers to contact you.',
+    overview:
+      'We design and build clean, fast, and responsive websites tailored to your business goals. From modern corporate sites to conversion-focused landing pages, every website is engineered for excellent mobile performance, clean design, and effortless customer contact.',
     subcategories: [
       'Business websites',
       'Landing pages',
-      'E-commerce websites',
-      'Custom websites',
-      'Responsive design',
-      'Modern UI/UX'
+      'Service showcase sites',
+      'Responsive design for all screens',
+      'Contact & lead capture flows',
+      'SEO & accessibility foundations'
     ],
     features: [
-      'Engineered with modern frameworks (React, Next.js, Vite)',
-      'Fully responsive fluid layouts tailored for all screen viewports',
-      'Search engine optimized semantic HTML and structured schema',
-      'Sub-second initial load speeds and Core Web Vitals optimization',
-      'Accessible UI compliant with WCAG accessibility standards',
-      'Secure content management system (CMS) integrations'
+      'Modern, responsive layouts engineered for phones, tablets, and desktops',
+      'Clear, high-converting calls to action and direct WhatsApp/enquiry routing',
+      'Fast loading times optimized for real-world business visitors',
+      'Clean typography, branded color palettes, and intuitive navigation',
+      'Semantic structure prepared for search engines and Google Search Console',
+      'Full source code ownership with easy ongoing maintenance'
     ],
     deliverables: [
-      'Custom UI/UX component design system',
-      'Fully tested production codebase',
-      'Cross-device responsive test suites',
-      'Analytics and conversion tracking setup',
-      'Deployment pipeline & hosting configuration'
+      'Custom responsive website design and development',
+      'Direct WhatsApp and enquiry integration',
+      'Cross-device testing and performance check',
+      'Google Search Console and XML sitemap setup',
+      'Deployment to reliable cloud hosting',
+      '30 days of post-launch support'
     ],
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Vite', 'Node.js'],
-    typicalTimeline: '2 - 6 weeks depending on scale'
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'HTML5/Semantic Web'],
+    typicalTimeline: 'Agreed upon project scoping'
   },
   {
     id: 'ai-agents',
     title: 'AI Agents',
-    category: 'Intelligent Systems',
+    category: 'AI Assistants',
     iconName: 'Cpu',
-    shortDescription: 'Custom AI agents designed to handle specific tasks and workflows.',
-    overview: 'Autonomous and semi-autonomous software agents that execute multi-step business logic, reason over complex internal documents, and integrate with your existing operational software.',
+    shortDescription:
+      'AI assistants designed to help with specific business tasks and workflows.',
+    overview:
+      'We build purposeful AI assistants configured to handle repetitive operational tasks, retrieve verified business information, and assist your team in day-to-day operations with controlled guardrails.',
     subcategories: [
-      'Custom AI agents',
-      'Task automation',
-      'Business assistants',
-      'Workflow agents',
-      'Information processing',
-      'Custom integrations'
+      'Task-specific assistants',
+      'Document & knowledge lookup',
+      'Operational support tools',
+      'Internal workflow helpers',
+      'Data extraction & summarization',
+      'System integrations'
     ],
     features: [
-      'Custom-configured tool-calling and API execution logic',
-      'Retrieval-Augmented Generation (RAG) over internal databases',
-      'Deterministic guardrails ensuring output precision and compliance',
-      'Role-based security protocols for enterprise data protection',
-      'Continuous audit logging of agent decision trees and actions',
-      'Seamless multi-platform integration (CRMs, ERPs, messaging)'
+      'Configured with strict business guardrails to prevent unverified answers',
+      'Connected to your business documents, FAQs, and product knowledge',
+      'Helps staff draft responses, search guidelines, and parse complex information',
+      'Respects data security and operational privacy requirements',
+      'Audit logs for oversight and ongoing system improvement',
+      'Step-by-step human review options for sensitive tasks'
     ],
     deliverables: [
-      'Domain-adapted AI agent runtime',
-      'Custom tool & API connector bridge',
-      'Evaluation benchmarks & accuracy harness',
-      'Real-time observability dashboard',
-      'Operational playbook & security documentation'
+      'Configured AI assistant tailored to your specific task',
+      'Knowledge base ingestion and structured prompt setup',
+      'User-friendly interface or tool integration',
+      'Staff operating guide and best practice guidelines',
+      '30 days of post-launch support'
     ],
-    technologies: ['Python', 'TypeScript', 'LangChain/LlamaIndex', 'PostgreSQL/Vector', 'REST/gRPC APIs'],
-    typicalTimeline: '3 - 8 weeks'
+    technologies: ['TypeScript', 'Python', 'FastAPI', 'Retrieval Systems', 'REST APIs'],
+    typicalTimeline: 'Agreed upon project scoping'
   },
   {
     id: 'ai-voice-agents',
     title: 'AI Voice Agents',
     category: 'Voice Technology',
     iconName: 'PhoneCall',
-    shortDescription: 'AI-powered voice assistants for business communication and customer interactions.',
-    overview: 'Natural, ultra-low-latency voice interfaces that manage inbound phone calls, schedule client appointments, and triage customer queries with human-grade conversational flow.',
+    shortDescription:
+      'Voice assistants for supported enquiry, appointment, and communication workflows.',
+    overview:
+      'We build low-latency voice assistants designed to handle structured customer calls, answer common questions, collect caller details, and route appointment requests efficiently.',
     subcategories: [
-      'AI phone assistants',
-      'Voice-based customer interactions',
-      'Appointment handling',
-      'Customer inquiries',
-      'Call automation'
+      'Inbound enquiry handling',
+      'Appointment scheduling assistance',
+      'Frequently asked questions on calls',
+      'Caller details capture',
+      'Call summary & notification routing',
+      'Human handoff protocols'
     ],
     features: [
-      'Ultra-low latency speech-to-speech interaction loops (<600ms)',
-      'Realistic acoustic models with interruption handling (barge-in)',
-      'Direct synchronization with calendar and booking engines',
-      'Automated caller verification and CRM record lookup',
-      'Intelligent transfer protocols to human team members',
-      'Full call transcription, sentiment tagging, and summary logs'
+      'Natural, low-latency conversational speech interface',
+      'Structured conversational flows designed for business clarity',
+      'Automated caller details capture sent directly to your email or WhatsApp',
+      'Clear fallback routing to your team for complex requests',
+      'Call recording summaries and transcript generation',
+      'Configured for your business operating hours and policies'
     ],
     deliverables: [
-      'Telephony gateway connection (SIP / WebRTC)',
-      'Custom conversational prompt & dialogue engine',
-      'Calendar and database integration endpoints',
-      'Real-time call transcription & analysis pipeline',
-      'Live fallback routing system'
+      'Telephony or web-voice configuration',
+      'Custom dialogue flow and conversational scripts',
+      'Notification triggers for team follow-up',
+      'Testing across common caller scenarios',
+      '30 days of post-launch support'
     ],
-    technologies: ['WebRTC', 'Streaming STT/TTS', 'FastAPI', 'Telephony APIs', 'Node.js'],
-    typicalTimeline: '3 - 6 weeks'
+    technologies: ['Speech Processing', 'WebRTC', 'FastAPI', 'Telephony Gateways', 'Node.js'],
+    typicalTimeline: 'Agreed upon project scoping'
   },
   {
     id: 'ai-chatbots',
     title: 'AI Chatbots',
     category: 'Conversational AI',
     iconName: 'MessageSquare',
-    shortDescription: 'Intelligent chatbots for websites, customer support, inquiries, and lead collection.',
-    overview: 'Precision-tuned conversational interfaces deployed on websites and client portals to answer inquiries, collect qualified leads, and resolve frequent support requests 24/7.',
+    shortDescription:
+      'Conversational assistants that answer common questions and collect enquiries.',
+    overview:
+      'Engage website visitors 24/7 with a conversational assistant grounded in your business knowledge. Answer common questions instantly, qualify customer interest, and capture verified contact enquiries directly.',
     subcategories: [
-      'Website chatbots',
-      'Customer support',
-      'Business information',
-      'Lead collection',
-      'Automated conversations'
+      'Website customer assistants',
+      'FAQ resolution',
+      'Lead and enquiry capture',
+      'Service guides and recommendations',
+      'Business hours and location info',
+      'Direct WhatsApp redirection'
     ],
     features: [
-      'Grounded strictly in verified business knowledge bases',
-      'Dynamic interactive lead capture and qualification questionnaires',
-      'Seamless ticket escalation to human support agents',
-      'Multi-language detection and localized conversational response',
-      'Embeddable widget customized to match exact brand aesthetics',
-      'Weekly automated query insight reports identifying user trends'
+      'Answers common questions based strictly on your official business data',
+      'Interactive enquiry capture collecting customer needs and contact details',
+      'Clean branded widget matching your website design',
+      'Direct one-tap WhatsApp escalation when visitors prefer chatting with you',
+      'Works seamlessly on mobile phones and desktop computers',
+      'Weekly summaries of frequent visitor questions to help refine your copy'
     ],
     deliverables: [
-      'Lightweight embeddable web chat widget',
-      'Knowledge ingestion pipeline & vector index',
-      'Lead capture webhook directly to CRM/Email',
-      'Admin monitoring and analytics interface',
-      'Custom response styling & brand integration'
+      'Embeddable chat widget customized for your brand',
+      'Knowledge base ingestion and approved response sets',
+      'Instant notification setup (WhatsApp/Email) when a lead arrives',
+      'Testing across mobile and desktop environments',
+      '30 days of post-launch support'
     ],
-    technologies: ['React Widget', 'Vector DB', 'Semantic Search', 'Webhooks', 'Express/FastAPI'],
-    typicalTimeline: '2 - 4 weeks'
+    technologies: ['React Widget', 'Semantic Search', 'REST APIs', 'Webhooks'],
+    typicalTimeline: 'Agreed upon project scoping'
   },
   {
     id: 'business-automation',
     title: 'Business Automation',
-    category: 'Process Engineering',
+    category: 'Process Workflows',
     iconName: 'Workflow',
-    shortDescription: 'Automated workflows that reduce repetitive manual work and connect business processes.',
-    overview: 'End-to-end process automation architectures connecting disparate software tools, synchronizing data silos, and eliminating repetitive manual copy-paste bottlenecks.',
+    shortDescription:
+      'Connected workflows that reduce repetitive tasks and keep information moving between tools.',
+    overview:
+      'Eliminate manual data copying and slow follow-ups. We connect your website, CRM, messaging tools, and internal software so enquiries are routed instantly and notifications reach the right team member immediately.',
     subcategories: [
-      'Workflow automation',
-      'Repetitive task automation',
-      'Data processing',
-      'Notifications',
-      'Connecting different business systems'
+      'Enquiry & lead routing',
+      'Cross-tool data sync',
+      'Instant WhatsApp/Email notifications',
+      'Customer intake automation',
+      'Document & invoice generation triggers',
+      'Repetitive task reduction'
     ],
     features: [
-      'Bidirectional data synchronization across CRMs, ERPs, and spreadsheets',
-      'Automated document extraction, parsing, and structured filing',
-      'Event-driven instant alert systems via Slack, Teams, Email, or SMS',
-      'Resilient retry logic and idempotent transaction handling',
-      'Zero manual data re-entry across sales, finance, and operations',
-      'Comprehensive error telemetry and automated exception routing'
+      'Enquiries from your website flow automatically to your phone or CRM',
+      'Instant notifications sent when an urgent client request arrives',
+      'Eliminates duplicate manual data entry across multiple applications',
+      'Robust error-checking so no customer request gets silently dropped',
+      'Clear logs so you can see every action taken by the workflow',
+      'Scales cleanly as your enquiry volume grows'
     ],
     deliverables: [
-      'Custom microservice connectors and webhook handlers',
-      'Process mapping and logic workflow blueprints',
-      'Automated data sanitization and validation pipeline',
-      'Monitoring alerts and failure notification channels',
-      'Architecture documentation & maintenance guide'
+      'Workflow architecture blueprint and process map',
+      'Configured integrations between your business tools',
+      'End-to-end testing with sample customer workflows',
+      'Alert channels for any system exceptions',
+      '30 days of post-launch support'
     ],
-    technologies: ['Serverless', 'Message Queues', 'REST APIs', 'Node.js', 'Python', 'Webhooks'],
-    typicalTimeline: '2 - 5 weeks'
+    technologies: ['Serverless Functions', 'Webhooks', 'REST APIs', 'Node.js', 'Zapier/Make/Custom'],
+    typicalTimeline: 'Agreed upon project scoping'
   },
   {
     id: 'custom-ai-solutions',
     title: 'Custom AI Solutions',
-    category: 'Specialized Engineering',
+    category: 'Custom Engineering',
     iconName: 'Layers',
-    shortDescription: 'Custom AI-powered systems and tools designed for specific business requirements.',
-    overview: 'Bespoke computational models, domain-specific algorithms, and custom analytical systems engineered when off-the-shelf software and standard services cannot meet exact organizational needs.',
+    shortDescription:
+      'Tailored systems developed around your business requirements.',
+    overview:
+      'When standard off-the-shelf software doesn’t fit your workflow, we engineer custom digital solutions and AI tools built around your exact operational needs, data formats, and team structure.',
     subcategories: [
-      'Custom AI solutions',
-      'Proprietary model fine-tuning',
-      'Specialized enterprise tools',
-      'Custom internal dashboards',
-      'Predictive computation engines',
-      'Bespoke data processing pipelines'
+      'Custom web applications',
+      'Bespoke operational dashboards',
+      'Proprietary data parsing tools',
+      'Specialized client portals',
+      'Internal team tools',
+      'Bespoke software architecture'
     ],
     features: [
-      'Tailored model architecture adapted to proprietary business data',
-      'Custom analytical dashboards with interactive visualizations',
-      'Private cloud or on-premise infrastructure deployment options',
-      'End-to-end data pipeline from raw ingestion to model inferencing',
-      'Rigorous security compliance matching enterprise governance standards',
-      'Modular architecture engineered for future technological iteration'
+      'Built specifically around your real business workflows and operational constraints',
+      'Modern, intuitive user interfaces that require minimal training for your team',
+      'Secure architecture respecting your business privacy and proprietary data',
+      'Clean, maintainable source code owned entirely by your business',
+      'Designed to adapt and evolve as your company expands',
+      'Direct collaboration with our engineering team throughout development'
     ],
     deliverables: [
-      'Custom machine learning or inferencing pipeline',
-      'Bespoke frontend dashboard or command center',
-      'Isolated cloud deployment architecture',
-      'Full source code, API keys, and model weights',
-      'Technical team training and system handoff documentation'
+      'Full architectural scoping and requirement specification',
+      'Custom developed application or software module',
+      'Cross-device responsive interface and secure backend',
+      'Full source code and deployment handover',
+      '30 days of post-launch support'
     ],
-    technologies: ['PyTorch', 'TensorFlow', 'Docker', 'Kubernetes', 'FastAPI', 'React'],
-    typicalTimeline: '4 - 12 weeks'
+    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Cloud APIs'],
+    typicalTimeline: 'Agreed upon project scoping'
   }
 ];
