@@ -50,7 +50,7 @@ export interface BlogPost {
   readingTime?: string | number;
   estimatedReadingTime?: string | number;
   seoScore?: number;
-  structuredData?: Record<string, any> | string;
+  structuredData?: Record<string, any> | string | any[];
   meta?: UpliftMeta;
   freshness?: UpliftFreshnessInfo;
   customFields?: Record<string, any>;
@@ -73,7 +73,7 @@ export interface NormalizedBlogPost {
   updatedAt?: string;
   readingTime: string;
   seoScore?: number;
-  structuredData?: Record<string, any>;
+  structuredData?: Record<string, any> | any[];
   meta: UpliftMeta;
   freshness?: UpliftFreshnessInfo;
   customFields?: Record<string, any>;

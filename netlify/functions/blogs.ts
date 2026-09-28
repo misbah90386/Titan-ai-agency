@@ -61,28 +61,44 @@ export const handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => 
 
       if (!response.ok) {
         console.warn(`[Netlify blogs function] Uplift API returned status ${response.status}: ${response.statusText}`);
-        // Fall back gracefully to internal posts if upstream error occurs
         return serveFallback(slug, `Uplift AI responded with HTTP ${response.status}`);
       }
 
       const json = await response.json();
       
-      // Normalize Uplift response payload (supports { data: [...] }, { blogs: [...] }, or raw array [...])
+      // Robustly extract articles from Uplift payload
+      // Supports { data: { blogs: [...] } }, { blogs: [...] }, { data: [...] }, or raw array [...]
       let rawArticles: any[] = [];
       if (Array.isArray(json)) {
         rawArticles = json;
+      } else if (Array.isArray(json.data?.blogs)) {
+        rawArticles = json.data.blogs;
+      } else if (Array.isArray(json.data?.posts)) {
+        rawArticles = json.data.posts;
+      } else if (Array.isArray(json.data?.articles)) {
+        rawArticles = json.data.articles;
       } else if (Array.isArray(json.data)) {
         rawArticles = json.data;
       } else if (Array.isArray(json.blogs)) {
         rawArticles = json.blogs;
       } else if (Array.isArray(json.posts)) {
         rawArticles = json.posts;
+      } else if (Array.isArray(json.articles)) {
+        rawArticles = json.articles;
       } else if (Array.isArray(json.items)) {
         rawArticles = json.items;
       } else if (json && typeof json === 'object') {
-        // Single object or unknown container
-        rawArticles = [json];
+        if (json.title || json.headline || json.slug) {
+          rawArticles = [json];
+        } else if (json.data && (json.data.title || json.data.headline || json.data.slug)) {
+          rawArticles = [json.data];
+        }
       }
+
+      // Filter out invalid items that lack title/slug/content
+      rawArticles = rawArticles.filter(
+        (item) => item && typeof item === 'object' && (item.title || item.headline || item.slug)
+      );
 
       // If specific slug is requested
       if (slug) {
@@ -106,7 +122,7 @@ export const handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => 
         }
 
         // Check fallback if slug wasn't in Uplift
-        const fallbackFound = FALLBACK_BLOG_POSTS.find((p) => p.slug === slug);
+        const fallbackFound = FALLBACK_BLOG_POSTS.find((p) => p.slug === slug || p.id === slug);
         if (fallbackFound) {
           return {
             statusCode: 200,
@@ -129,6 +145,11 @@ export const handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => 
         };
       }
 
+      // If rawArticles is empty, serve fallback articles to ensure high quality content
+      if (rawArticles.length === 0) {
+        return serveFallback(undefined, 'Uplift returned 0 articles; using bundled agency articles.');
+      }
+
       return {
         statusCode: 200,
         headers: {
@@ -149,12 +170,12 @@ export const handler = async (event: NetlifyEvent): Promise<NetlifyResponse> => 
   }
 
   // UPLIFT_API_TOKEN is not yet set in Netlify environment variables
-  return serveFallback(slug, 'UPLIFT_API_TOKEN not configured in Netlify environment variables; using high-fidelity agency articles.');
+  return serveFallback(slug, 'UPLIFT_API_TOKEN not configured in Netlify environment variables; using bundled agency articles.');
 };
 
 function serveFallback(slug?: string, notice?: string): NetlifyResponse {
   if (slug) {
-    const found = FALLBACK_BLOG_POSTS.find((p) => p.slug === slug);
+    const found = FALLBACK_BLOG_POSTS.find((p) => p.slug === slug || p.id === slug);
     if (found) {
       return {
         statusCode: 200,
