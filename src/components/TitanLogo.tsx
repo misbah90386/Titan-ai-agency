@@ -42,6 +42,8 @@ interface TitanLogoProps {
   showText?: boolean;
   className?: string;
   iconClassName?: string;
+  titleClassName?: string;
+  subtitleClassName?: string;
   useFullImage?: boolean;
 }
 
@@ -51,6 +53,8 @@ export const TitanLogo: React.FC<TitanLogoProps> = ({
   showText = true,
   className = '',
   iconClassName = 'w-10 h-10 sm:w-11 sm:h-11',
+  titleClassName,
+  subtitleClassName,
   useFullImage = false
 }) => {
   const isDark = variant === 'dark';
@@ -65,7 +69,7 @@ export const TitanLogo: React.FC<TitanLogoProps> = ({
   }
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-3.5 select-none ${className}`}>
       {/* Exact 3D Metallic Emblem Icon from provided logo */}
       <div className="relative shrink-0 flex items-center justify-center">
         <TitanIcon className={iconClassName} />
@@ -76,9 +80,9 @@ export const TitanLogo: React.FC<TitanLogoProps> = ({
         <div className="flex flex-col leading-none">
           <div className="flex items-center gap-1.5">
             <span
-              className={`font-display font-extrabold tracking-[0.14em] text-lg sm:text-xl ${
-                isDark ? 'text-white' : 'text-[#071A33]'
-              }`}
+              className={`font-display font-extrabold tracking-[0.16em] ${
+                titleClassName || 'text-xl sm:text-[22px] md:text-2xl'
+              } ${isDark ? 'text-white' : 'text-[#071A33]'}`}
             >
               TIT
               {/* Custom 'A' with cyan chevron & blue dot matching the logo */}
@@ -89,7 +93,11 @@ export const TitanLogo: React.FC<TitanLogoProps> = ({
               N
             </span>
           </div>
-          <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.24em] text-[#00D1FF] uppercase mt-0.5">
+          <span
+            className={`font-bold tracking-[0.28em] text-[#00D1FF] uppercase mt-1 ${
+              subtitleClassName || 'text-[11px] sm:text-[12px]'
+            }`}
+          >
             AI AGENCY
           </span>
           {showTagline && (

@@ -84,45 +84,62 @@ export const HomePage: React.FC = () => {
   return (
     <div id="home-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33]">
       
-      {/* 1. HERO SECTION (Dark Premium Navy) */}
-      <section id="hero-section" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-titan-hero text-white">
-        {/* Subtle grid and ambient lighting */}
-        <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#00D1FF]/10 rounded-full blur-[130px] pointer-events-none" />
-        <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
+      {/* 1. HERO SECTION (Dark Premium Navy with Subtle Tech Accents) */}
+      <section id="hero-section" className="relative pt-24 pb-10 sm:pt-26 sm:pb-12 lg:pt-24 lg:pb-12 xl:pt-28 xl:pb-14 overflow-hidden bg-titan-hero text-white">
+        {/* Subtle grid and understated network node details */}
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-15 pointer-events-none" />
+        <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00D1FF" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#3BA9FF" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+          <path d="M 120 180 L 320 260 L 450 150 L 680 230 L 900 110 L 1150 210" stroke="url(#netGrad)" strokeWidth="1" strokeDasharray="4 6" fill="none" />
+          <path d="M 200 430 L 380 320 L 580 400 L 820 280 L 1020 380" stroke="url(#netGrad)" strokeWidth="1" strokeDasharray="3 5" fill="none" />
+          <circle cx="320" cy="260" r="2.5" fill="#00D1FF" />
+          <circle cx="450" cy="150" r="2" fill="#3BA9FF" />
+          <circle cx="680" cy="230" r="2.5" fill="#00D1FF" />
+          <circle cx="900" cy="110" r="2" fill="#3BA9FF" />
+          <circle cx="380" cy="320" r="2" fill="#00D1FF" />
+          <circle cx="580" cy="400" r="2.5" fill="#3BA9FF" />
+          <circle cx="820" cy="280" r="2" fill="#00D1FF" />
+        </svg>
+        <div className="absolute top-1/4 -left-32 w-80 h-80 bg-[#00D1FF]/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-6 right-0 w-80 h-80 bg-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
             
             {/* Left Column: Headline & Value Proposition */}
-            <div className="lg:col-span-7 space-y-7 text-left">
+            <div className="lg:col-span-7 space-y-4 lg:space-y-4.5 xl:space-y-5 text-left">
               {/* Agency Brand Tag */}
-              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.06] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
                 <TitanIcon className="w-4 h-4" />
                 <span>TITAN AI AGENCY</span>
               </div>
 
-              {/* Headline */}
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
+              {/* Headline: Tight line-height, white primary line, cyan/blue brand gradient second line */}
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold text-white tracking-tight leading-[1.02] sm:leading-[1.03]">
                 PROFESSIONAL WEBSITES.{' '}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] via-[#3BA9FF] to-white">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] via-[#22B8FF] to-[#3BA9FF]">
                   SMARTER BUSINESS AUTOMATION.
                 </span>
               </h1>
 
               {/* Supporting Text */}
-              <p className="text-lg sm:text-xl text-[#EAF7FF]/90 font-normal leading-relaxed max-w-2xl">
+              <p className="text-sm sm:text-base lg:text-[1.0625rem] text-[#EAF7FF]/90 font-normal leading-relaxed max-w-2xl">
                 TITAN AI AGENCY builds websites, AI assistants, and automated workflows that help businesses capture enquiries, respond faster, and reduce repetitive work.
               </p>
 
               {/* Hero Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
                 <a
                   href={heroWhatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   id="hero-discuss-project-btn"
-                  className="btn-titan-primary inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold"
+                  className="btn-titan-primary inline-flex items-center justify-center gap-2.5 px-6 py-3.5 sm:px-7 sm:py-3.5 text-base font-bold shadow-[0_4px_18px_rgba(0,209,255,0.3)]"
                 >
                   <MessageCircle className="w-5 h-5 stroke-[2.5]" />
                   <span>Discuss Your Project</span>
@@ -132,24 +149,24 @@ export const HomePage: React.FC = () => {
                 <a
                   href="#featured-work"
                   id="hero-explore-work-btn"
-                  className="btn-titan-secondary-dark inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-semibold"
+                  className="btn-titan-secondary-dark inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-6 sm:py-3.5 text-base font-semibold"
                 >
                   <span>Explore Our Work</span>
                 </a>
               </div>
 
               {/* Value Markers */}
-              <div className="pt-6 border-t border-white/[0.1] grid grid-cols-3 gap-4 text-xs font-mono text-[#8FA0BA]">
+              <div className="pt-3 mt-1 border-t border-white/[0.08] grid grid-cols-3 gap-3 text-xs font-mono text-[#8FA0BA]">
                 <div>
-                  <div className="text-white font-semibold text-sm">Direct WhatsApp</div>
+                  <div className="text-white font-semibold text-xs sm:text-sm">Direct WhatsApp</div>
                   <div className="text-[#8FA0BA] text-[11px]">Straightforward chat</div>
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-sm">30-Day Support</div>
+                  <div className="text-white font-semibold text-xs sm:text-sm">30-Day Support</div>
                   <div className="text-[#8FA0BA] text-[11px]">Free after launch</div>
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-sm">Full Ownership</div>
+                  <div className="text-white font-semibold text-xs sm:text-sm">Full Ownership</div>
                   <div className="text-[#8FA0BA] text-[11px]">Your code & tools</div>
                 </div>
               </div>

@@ -45,13 +45,18 @@ export const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Logo Lockup */}
+        {/* Brand Logo Lockup - Slightly increased for wordmark legibility */}
         <Link
           to="/"
           id="nav-brand-logo"
           className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform hover:scale-[1.01]"
         >
-          <TitanLogo variant="dark" iconClassName="w-10 h-10 sm:w-11 sm:h-11 drop-shadow-[0_0_12px_rgba(0,209,255,0.35)]" />
+          <TitanLogo
+            variant="dark"
+            iconClassName="w-12 h-12 sm:w-[50px] sm:h-[50px] drop-shadow-[0_0_16px_rgba(0,209,255,0.4)]"
+            titleClassName="text-[22px] sm:text-[24px] md:text-[26px] tracking-[0.16em]"
+            subtitleClassName="text-[12px] sm:text-[13px] tracking-[0.28em]"
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -78,24 +83,24 @@ export const Navbar: React.FC = () => {
           })}
         </nav>
 
-        {/* Right Action Zone */}
-        <div className="hidden lg:flex items-center gap-3">
+        {/* Right Action Zone: Clear hierarchy - Start Your Project is strongest CTA */}
+        <div className="hidden lg:flex items-center gap-4">
           <a
             href="https://wa.me/966534182945?text=Hello%20TITAN%20AI%20AGENCY,%20I%20would%20like%20to%20inquire%20about%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
             id="nav-whatsapp-btn"
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/[0.05] hover:bg-[#00D1FF]/10 border border-[#3BA9FF]/30 text-[#EAF7FF] hover:text-[#00D1FF] text-xs font-semibold tracking-wide transition-all"
+            className="inline-flex items-center gap-1.5 px-2 py-1 text-slate-400 hover:text-white text-xs font-normal tracking-wide transition-colors group"
             title="Chat with TITAN on WhatsApp"
           >
-            <MessageCircle className="w-3.5 h-3.5 text-[#00D1FF]" />
-            <span className="font-mono text-xs">+966 53 418 2945</span>
+            <MessageCircle className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#00D1FF] transition-colors" />
+            <span className="font-mono text-[11px] text-slate-400 group-hover:text-slate-200 transition-colors">+966 53 418 2945</span>
           </a>
 
           <Link
             to="/contact"
             id="nav-get-started-btn"
-            className="btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm"
+            className="btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold shadow-[0_4px_16px_rgba(0,209,255,0.3)] hover:shadow-[0_6px_24px_rgba(0,209,255,0.5)] transition-all"
           >
             <span>Start Your Project</span>
             <ArrowRight className="w-4 h-4 stroke-[2.5]" />
@@ -108,16 +113,16 @@ export const Navbar: React.FC = () => {
             href="https://wa.me/966534182945?text=Hello%20TITAN%20AI%20AGENCY,%20I%20would%20like%20to%20inquire%20about%20your%20services."
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-lg bg-white/[0.06] border border-[#00D1FF]/30 text-[#00D1FF]"
+            className="p-2 rounded-lg text-slate-400 hover:text-[#00D1FF] transition-colors"
             aria-label="WhatsApp"
           >
             <MessageCircle className="w-4 h-4" />
           </a>
           <Link
             to="/contact"
-            className="btn-titan-primary px-3.5 py-1.5 text-xs font-bold"
+            className="btn-titan-primary px-3 py-1.5 text-xs font-bold"
           >
-            Start
+            Start Project
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
