@@ -6,18 +6,15 @@ import {
   Navigation,
   MessageCircle,
   ArrowRight,
-  ShieldCheck,
   CheckCircle2,
-  Layers,
-  Sparkles,
-  MapPin,
-  ExternalLink
+  MapPin
 } from 'lucide-react';
 import { usePageSEO } from '../../hooks/usePageSEO';
 import { FeaturedWork } from '../../components/FeaturedWork';
 import { ServiceProcessSteps } from '../../components/services/ServiceProcessSteps';
 import { ServiceFAQList } from '../../components/services/ServiceFAQList';
 import { ServiceCTASection } from '../../components/services/ServiceCTASection';
+import { TitanIcon } from '../../components/TitanLogo';
 
 const WHATSAPP_MSG =
   'Hello TITAN AI AGENCY, I am interested in discussing a website design project for my business.';
@@ -110,32 +107,33 @@ export const WebsiteDesignPage: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[#06080d] text-slate-100 pt-28">
-      {/* 1. Hero Section */}
-      <section className="relative py-16 sm:py-24 border-b border-white/[0.06] overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+    <div className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      {/* 1. Hero Section (Dark Premium Navy) */}
+      <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-blue-400 transition-colors">Home</Link>
+          <nav className="flex items-center gap-2 text-xs font-mono text-[#8FA0BA] mb-6" aria-label="Breadcrumb">
+            <Link to="/" className="hover:text-[#00D1FF] transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/services" className="hover:text-blue-400 transition-colors">Services</Link>
+            <Link to="/services" className="hover:text-[#00D1FF] transition-colors">Services</Link>
             <span>/</span>
-            <span className="text-white">Website Design</span>
+            <span className="text-white font-medium">Website Design</span>
           </nav>
 
           <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono font-semibold text-blue-400 uppercase tracking-widest">
-              <MapPin className="w-3.5 h-3.5 text-blue-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+              <MapPin className="w-3.5 h-3.5 text-[#00D1FF]" />
               <span>Available in Riyadh & Remotely</span>
             </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15]">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
               Website Design for Growing Businesses
             </h1>
 
-            <p className="text-base sm:text-xl text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal">
               We design and build clean, fast, and responsive websites that present your business clearly, guide visitors intuitively, and convert interest into direct enquiries.
             </p>
 
@@ -144,76 +142,76 @@ export const WebsiteDesignPage: React.FC = () => {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
+                className="btn-titan-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 stroke-[2.5]" />
                 <span>Discuss Your Project on WhatsApp</span>
               </a>
 
               <a
                 href="#scope-deliverables"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-sm font-medium transition-colors"
+                className="btn-titan-secondary-dark inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
               >
                 <span>View Deliverables & Scope</span>
-                <ArrowRight className="w-4 h-4 text-blue-400" />
+                <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Core Foundations */}
-      <section className="relative py-16 sm:py-20 bg-[#05070c]">
+      {/* 2. Core Foundations (Light Section) */}
+      <section className="relative py-16 sm:py-24 bg-[#FFFFFF] border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
               Engineering Principles
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
               Websites Engineered for Real Business Results
             </h2>
-            <p className="mt-3 text-slate-300 text-base leading-relaxed">
+            <p className="mt-3 text-[#536477] text-base leading-relaxed">
               Every website we build is crafted around four fundamental pillars that ensure smooth visitor experiences and direct communication.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="rounded-2xl bg-slate-900/40 border border-white/[0.08] p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                <Smartphone className="w-5 h-5" />
+            <div className="card-titan-light p-6 space-y-3">
+              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
+                <Smartphone className="w-5 h-5 text-[#00D1FF]" />
               </div>
-              <h3 className="font-display text-lg font-bold text-white">Fluid Responsiveness</h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <h3 className="font-display text-lg font-bold text-[#071A33]">Fluid Responsiveness</h3>
+              <p className="text-sm text-[#536477] leading-relaxed">
                 Flawless layout adaptation across phones, tablets, laptops, and desktop screens with zero visual clipping or horizontal scrolling.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-slate-900/40 border border-white/[0.08] p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                <Navigation className="w-5 h-5" />
+            <div className="card-titan-light p-6 space-y-3">
+              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#3BA9FF]">
+                <Navigation className="w-5 h-5 text-[#3BA9FF]" />
               </div>
-              <h3 className="font-display text-lg font-bold text-white">Clear Navigation</h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <h3 className="font-display text-lg font-bold text-[#071A33]">Clear Navigation</h3>
+              <p className="text-sm text-[#536477] leading-relaxed">
                 Simple, logical page structure that helps visitors find services, portfolios, operating information, and pricing indicators quickly.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-slate-900/40 border border-white/[0.08] p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
-                <Globe className="w-5 h-5" />
+            <div className="card-titan-light p-6 space-y-3">
+              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
+                <Globe className="w-5 h-5 text-[#00D1FF]" />
               </div>
-              <h3 className="font-display text-lg font-bold text-white">Sub-Second Speed</h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                Modern React and Vite architectures delivering instant page transitions and passing Google Core Web Vitals performance benchmarks.
+              <h3 className="font-display text-lg font-bold text-[#071A33]">Sub-Second Speed</h3>
+              <p className="text-sm text-[#536477] leading-relaxed">
+                Modern React architectures delivering instant page transitions and passing Google Core Web Vitals performance benchmarks.
               </p>
             </div>
 
-            <div className="rounded-2xl bg-slate-900/40 border border-white/[0.08] p-6 space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-                <MessageCircle className="w-5 h-5" />
+            <div className="card-titan-light p-6 space-y-3">
+              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-emerald-600">
+                <MessageCircle className="w-5 h-5 text-emerald-600" />
               </div>
-              <h3 className="font-display text-lg font-bold text-white">Direct WhatsApp Action</h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <h3 className="font-display text-lg font-bold text-[#071A33]">Direct WhatsApp Action</h3>
+              <p className="text-sm text-[#536477] leading-relaxed">
                 One-tap enquiry triggers connecting prospects directly to your WhatsApp number with prefilled context for instant follow-up.
               </p>
             </div>
@@ -221,17 +219,17 @@ export const WebsiteDesignPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Practical Business Use Cases */}
-      <section className="relative py-16 sm:py-24 bg-[#04060a] border-t border-white/[0.06]">
+      {/* 3. Practical Business Use Cases (Clean Ice Blue Section) */}
+      <section className="relative py-16 sm:py-24 bg-[#EAF7FF]/50 border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
               Tailored Configurations
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
               Practical Use Cases Across Industries
             </h2>
-            <p className="mt-3 text-slate-300 text-base leading-relaxed">
+            <p className="mt-3 text-[#536477] text-base leading-relaxed">
               We engineer websites tailored to how your customers actually browse, evaluate options, and reach out to make purchases.
             </p>
           </div>
@@ -240,18 +238,18 @@ export const WebsiteDesignPage: React.FC = () => {
             {USE_CASES.map((uc, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-slate-900/40 border border-white/[0.08] p-7 space-y-4 shadow-lg"
+                className="card-titan-light p-7 space-y-4"
               >
-                <h3 className="font-display text-xl font-bold text-white">
+                <h3 className="font-display text-xl font-bold text-[#071A33]">
                   {uc.title}
                 </h3>
-                <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                <p className="text-sm text-[#536477] leading-relaxed font-normal">
                   {uc.description}
                 </p>
-                <div className="pt-2 border-t border-white/[0.06] space-y-2">
+                <div className="pt-2 border-t border-slate-100 space-y-2">
                   {uc.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-slate-300 font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                    <div key={i} className="flex items-center gap-2 text-xs text-[#536477] font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -262,7 +260,7 @@ export const WebsiteDesignPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Portfolio Evidence (The 3 Real Demo Projects) */}
+      {/* 4. Portfolio Evidence (Live Case Studies) */}
       <FeaturedWork
         id="website-portfolio-demos"
         badge="Live Portfolio Demonstrations"
@@ -270,35 +268,35 @@ export const WebsiteDesignPage: React.FC = () => {
         subtitle="Review three responsive demo projects demonstrating our design approach, navigation standards, and enquiry conversion flows. All three links are live interactive demos."
       />
 
-      {/* 5. Deliverables & Scope */}
-      <section id="scope-deliverables" className="relative py-16 sm:py-24 bg-[#05070d] border-t border-white/[0.06]">
+      {/* 5. Deliverables & Scope (Deep Navy Section) */}
+      <section id="scope-deliverables" className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
-              <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold">
                 Transparent Boundaries
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
                 Included Deliverables & Technical Scope
               </h2>
-              <p className="text-slate-300 text-base leading-relaxed">
+              <p className="text-[#8FA0BA] text-base leading-relaxed">
                 We believe in complete transparency before code is written. Every project has a written scope specification and defined milestones.
               </p>
-              <div className="p-4 rounded-xl bg-blue-500/[0.06] border border-blue-500/20 text-xs text-slate-300 leading-relaxed">
-                <strong className="text-white block font-medium mb-1">Custom Integrations Notice</strong>
+              <div className="p-4 rounded-xl bg-[#0B1F4B]/80 border border-[#00D1FF]/30 text-xs text-[#EAF7FF] leading-relaxed">
+                <strong className="text-[#00D1FF] block font-bold mb-1">Custom Integrations Notice</strong>
                 Booking engines, e-commerce checkout, table reservations, and CRM routing are available as structured features agreed according to your specific project requirements.
               </div>
             </div>
 
             <div className="lg:col-span-7">
-              <div className="rounded-2xl bg-black/40 border border-white/[0.08] p-7 space-y-4">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold mb-2">
+              <div className="card-titan-dark p-7 space-y-4 bg-[#0B1F4B]/60 border border-[#00D1FF]/20">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#00D1FF] font-bold mb-2">
                   Scope Checklist
                 </h3>
                 <ul className="space-y-3.5">
                   {DELIVERABLES.map((deliv, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <li key={i} className="flex items-start gap-3 text-sm text-[#EAF7FF]">
+                      <CheckCircle2 className="w-4 h-4 text-[#00D1FF] shrink-0 mt-0.5" />
                       <span>{deliv}</span>
                     </li>
                   ))}

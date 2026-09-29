@@ -2,98 +2,95 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   MessageSquare,
-  Clock,
-  UserCheck,
   CheckCircle2,
   ArrowRight,
   MessageCircle,
-  Sparkles,
   MapPin,
-  HelpCircle,
-  Send,
   Bot,
-  User
+  User,
+  Send
 } from 'lucide-react';
 import { usePageSEO } from '../../hooks/usePageSEO';
 import { ServiceProcessSteps } from '../../components/services/ServiceProcessSteps';
 import { ServiceFAQList } from '../../components/services/ServiceFAQList';
 import { ServiceCTASection } from '../../components/services/ServiceCTASection';
+import { TitanIcon } from '../../components/TitanLogo';
 
 const WHATSAPP_MSG =
-  'Hello TITAN AI AGENCY, I am interested in discussing an AI chatbot for my business website.';
+  'Hello TITAN AI AGENCY, I am interested in discussing AI Chatbots for my website.';
 const WHATSAPP_URL = `https://wa.me/966534182945?text=${encodeURIComponent(WHATSAPP_MSG)}`;
 
 const USE_CASES = [
   {
-    title: '24/7 Inbound Customer Enquiry Intake',
+    title: 'Website FAQ & Operating Info Assistant',
     description:
-      'Engage website visitors after business hours, collect their specific service requirements and contact info, and ensure no prospective lead leaves without leaving their details.',
-    features: ['Instant greeting & lead capture', 'Structured intake fields', 'Instant notification to your team']
+      'Grounded conversational widget that instantly resolves customer questions regarding services, prices, business hours, location directions, and booking procedures.',
+    features: ['Instant 24/7 responsiveness', 'Strict grounding on verified documentation', 'Custom widget matching website branding']
   },
   {
-    title: 'Instant FAQ & Business Information',
+    title: 'Inbound Lead Capture & Qualification',
     description:
-      'Answer recurring questions regarding your service offerings, branch locations, operating hours, delivery policies, and general company information using approved documents.',
-    features: ['Grounded knowledge source', 'Reduces repetitive support tickets', 'Up-to-date business data']
+      'Engages visitors in natural dialogue to collect essential project details, timeline expectations, and phone/email contacts before handing off to sales.',
+    features: ['Polite qualification flow', 'Email & WhatsApp alert notifications', 'Direct sync to CRM or spreadsheet']
   },
   {
-    title: 'Preliminary Lead Qualification',
+    title: 'Seamless WhatsApp Routing Trigger',
     description:
-      'Ask structured qualifying questions—such as timeline, project type, or specific requirements—to help your sales team prioritize consultations effectively.',
-    features: ['Tailored question flows', 'Lead profile enrichment', 'Pre-consultation context']
+      'When an inquiry requires custom estimation or personal discussion, the bot provides a direct prefilled WhatsApp link so prospects continue talking to your team seamlessly.',
+    features: ['Prefilled context messages', 'Zero-friction customer transition', 'Mobile-first click-to-chat']
   },
   {
-    title: 'Seamless WhatsApp & Human Escalation',
+    title: 'Multilingual Arabic & English Support',
     description:
-      'When a customer requests human assistance or asks a complex question, the chatbot provides an immediate one-tap transition to your WhatsApp chat or email support.',
-    features: ['Direct WhatsApp transfer', 'Contextual conversation handoff', 'No frustrating dead-ends']
+      'Effortlessly handles inquiries in both English and Arabic, providing localized, culturally appropriate responses for businesses in Saudi Arabia.',
+    features: ['Natural Arabic comprehension', 'Bilingual tone matching', 'Contextual language switching']
   }
 ];
 
 const DELIVERABLES = [
-  'Custom branded chat widget styled to match your website design and typography',
-  'Knowledge base configuration referencing your verified FAQs, service lists, and policies',
-  'Strict response boundaries preventing unverified answers or hallucinated promises',
-  'Lead capture flow recording visitor name, phone/email, and inquiry description',
-  'Automated team notifications (via WhatsApp or email) whenever a new enquiry arrives',
-  'One-tap escalation button routing conversations to your human team members',
-  'Cross-browser and mobile device testing to ensure responsive usability',
-  '30 days of post-launch support, response auditing, and knowledge refinements'
+  'Custom chat widget UI styled in your brand colors and typography',
+  'Approved business knowledge base integration and strict prompt boundaries',
+  'Lead notification webhooks via WhatsApp, Email, or CRM',
+  'Bilingual language support (Arabic and English)',
+  'Testing across mobile and desktop browsers to verify responsive behavior',
+  'Embed snippet or React component ready for single-line site integration',
+  'Admin documentation for updating FAQs and knowledge documents',
+  '30 days of post-launch tuning and conversational monitoring support'
 ];
 
 const FAQS = [
   {
-    question: 'Can the chatbot guarantee 100% perfect answers to every question?',
+    question: 'How do you prevent the chatbot from providing incorrect prices or facts?',
     answer:
-      'No chatbot can guarantee perfection for every possible phrasing. However, our chatbots are built to minimize errors by strictly answering only from your approved business data. When a query falls outside the verified materials, the bot gracefully informs the visitor and offers an instant connection to your human team on WhatsApp.'
+      'The chatbot is strictly grounded on your verified business documents and service lists. We program explicit boundaries instructing it to admit when information is unavailable and offer a direct WhatsApp transfer to your human staff.'
   },
   {
-    question: 'How does the chatbot hand off conversations to a human?',
+    question: 'Can the chatbot handle both Arabic and English inquiries?',
     answer:
-      'Whenever a visitor requests to speak with a person, or when their question requires custom evaluation, the widget presents an immediate WhatsApp action button with their enquiry context pre-filled. This ensures a frictionless handoff without forcing customers to repeat themselves.'
+      'Yes. Our chatbots understand and respond naturally in both Arabic and English, allowing businesses in Saudi Arabia and regional markets to serve diverse customer bases effortlessly.'
   },
   {
-    question: 'Does the chatbot work on mobile phones as well as desktops?',
+    question: 'How difficult is it to install the chatbot on my existing website?',
     answer:
-      'Yes. Our chat widgets are engineered mobile-first. They expand cleanly on mobile viewports without covering important site elements or trapping the screen, and they load quickly on cellular data.'
+      'Integration is straightforward. We provide a lightweight, optimized script tag or React component that loads asynchronously without slowing down your website.'
   },
   {
-    question: 'Do you configure chatbots for businesses in Riyadh and across Saudi Arabia?',
+    question: 'What notifications do we receive when a lead initiates chat?',
     answer:
-      'Yes. We build chatbots for companies operating in Riyadh, throughout Saudi Arabia, and remotely. We can ground the chatbot in Arabic and English content, ensuring it speaks naturally to your target clientele.'
+      'You can receive real-time notifications via WhatsApp, Telegram, email, or a webhook directly to your CRM whenever a visitor provides their contact information.'
   }
 ];
 
 export const AIChatbotsPage: React.FC = () => {
   usePageSEO({
-    title: 'AI Chatbots for Businesses in Riyadh | TITAN AI Agency',
+    title: 'AI Chatbots for Businesses | TITAN AI Agency',
     description:
-      'Intelligent AI chatbots for business websites in Riyadh and remotely. Answer questions 24/7 from approved company data, collect leads, and escalate to your team.',
+      'Custom AI chatbots for businesses in Riyadh and remotely. Grounded 24/7 customer support, bilingual Arabic & English, and seamless WhatsApp lead capture.',
     canonicalPath: '/services/ai-chatbots',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'AI Chatbots for Business Websites',
+      name: 'AI Chatbots for Businesses',
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
@@ -101,7 +98,7 @@ export const AIChatbotsPage: React.FC = () => {
         logo: 'https://titanaiagency.netlify.app/titan-logo.png'
       },
       description:
-        'Conversational assistants grounded in approved business information to answer common questions 24/7, qualify inquiries, and escalate to human staff.',
+        'Conversational assistants that answer common questions and collect enquiries in Riyadh and remotely.',
       areaServed: [
         { '@type': 'City', name: 'Riyadh' },
         { '@type': 'Country', name: 'Saudi Arabia' }
@@ -110,31 +107,32 @@ export const AIChatbotsPage: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen bg-[#06080d] text-slate-100 pt-28">
-      {/* 1. Hero Section */}
-      <section className="relative py-16 sm:py-24 border-b border-white/[0.06] overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+    <div className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      {/* 1. Hero Section (Dark Premium Navy) */}
+      <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-blue-400 transition-colors">Home</Link>
+          <nav className="flex items-center gap-2 text-xs font-mono text-[#8FA0BA] mb-6" aria-label="Breadcrumb">
+            <Link to="/" className="hover:text-[#00D1FF] transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/services" className="hover:text-blue-400 transition-colors">Services</Link>
+            <Link to="/services" className="hover:text-[#00D1FF] transition-colors">Services</Link>
             <span>/</span>
-            <span className="text-white">AI Chatbots</span>
+            <span className="text-white font-medium">AI Chatbots</span>
           </nav>
 
           <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono font-semibold text-blue-400 uppercase tracking-widest">
-              <MapPin className="w-3.5 h-3.5 text-blue-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+              <MapPin className="w-3.5 h-3.5 text-[#00D1FF]" />
               <span>Available in Riyadh & Remotely</span>
             </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15]">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
               AI Chatbots for Business Enquiries
             </h1>
 
-            <p className="text-base sm:text-xl text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal">
               Answer common questions 24/7 using approved business information, collect visitor contact details, and seamlessly hand off conversations to your human team on WhatsApp.
             </p>
 
@@ -143,35 +141,35 @@ export const AIChatbotsPage: React.FC = () => {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
+                className="btn-titan-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold"
               >
-                <MessageCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 stroke-[2.5]" />
                 <span>Discuss Your Project on WhatsApp</span>
               </a>
 
               <a
                 href="#chatbot-demo-concept"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-sm font-medium transition-colors"
+                className="btn-titan-secondary-dark inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
               >
                 <span>View Chatbot Preview</span>
-                <ArrowRight className="w-4 h-4 text-blue-400" />
+                <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Practical Business Use Cases */}
-      <section className="relative py-16 sm:py-24 bg-[#05070c]">
+      {/* 2. Practical Business Use Cases (Clean White) */}
+      <section className="relative py-16 sm:py-24 bg-[#FFFFFF] border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
               Customer Experience
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
               Practical Use Cases for Customer Engagement
             </h2>
-            <p className="mt-3 text-slate-300 text-base leading-relaxed">
+            <p className="mt-3 text-[#536477] text-base leading-relaxed">
               Designed to help website visitors find quick answers while ensuring your business never misses an off-hours enquiry.
             </p>
           </div>
@@ -180,21 +178,21 @@ export const AIChatbotsPage: React.FC = () => {
             {USE_CASES.map((uc, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl bg-slate-900/40 border border-white/[0.08] p-7 space-y-4 shadow-lg"
+                className="card-titan-light p-7 space-y-4"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                  <MessageSquare className="w-5 h-5" />
+                <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
+                  <MessageSquare className="w-5 h-5 text-[#00D1FF]" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-white">
+                <h3 className="font-display text-xl font-bold text-[#071A33]">
                   {uc.title}
                 </h3>
-                <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                <p className="text-sm text-[#536477] leading-relaxed font-normal">
                   {uc.description}
                 </p>
-                <div className="pt-2 border-t border-white/[0.06] space-y-2">
+                <div className="pt-2 border-t border-slate-100 space-y-2">
                   {uc.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-slate-300 font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                    <div key={i} className="flex items-center gap-2 text-xs text-[#536477] font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -205,37 +203,38 @@ export const AIChatbotsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Clearly Labelled Chatbot UI Demonstration Concept */}
-      <section id="chatbot-demo-concept" className="relative py-16 sm:py-24 bg-[#04060a] border-t border-white/[0.06]">
+      {/* 3. Clearly Labelled Chatbot UI Demonstration Concept (Deep Navy) */}
+      <section id="chatbot-demo-concept" className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#00D1FF]/15 text-[#00D1FF] border border-[#00D1FF]/30 mb-3">
+              <TitanIcon className="w-4 h-4" />
               <span>Demonstration Concept</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               Example Interaction: FAQ Resolution & Lead Capture
             </h2>
-            <p className="mt-3 text-slate-300 text-base leading-relaxed">
+            <p className="mt-3 text-[#8FA0BA] text-base leading-relaxed">
               Illustrative preview showing how a grounded chatbot answers questions using verified business info and invites the user to chat on WhatsApp.
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto rounded-3xl bg-[#090d18] border border-white/[0.1] shadow-2xl overflow-hidden">
+          <div className="max-w-2xl mx-auto rounded-3xl bg-[#0B1F4B] border border-[#00D1FF]/25 shadow-2xl overflow-hidden">
             {/* Widget Header */}
-            <div className="flex items-center justify-between px-6 py-4 bg-[#0d1322] border-b border-white/[0.08]">
+            <div className="flex items-center justify-between px-6 py-4 bg-[#04142E] border-b border-white/[0.08]">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                    <Bot className="w-5 h-5" />
+                  <div className="w-9 h-9 rounded-full bg-[#00D1FF] flex items-center justify-center text-[#04142E] font-bold">
+                    <Bot className="w-5 h-5 text-[#04142E]" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0d1322]" />
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-[#04142E]" />
                 </div>
                 <div>
                   <div className="font-display text-sm font-bold text-white">TITAN Agency Assistant</div>
-                  <div className="text-[11px] font-mono text-emerald-400">Grounded Business AI • Online</div>
+                  <div className="text-[11px] font-mono text-[#00D1FF]">Grounded Business AI • Online</div>
                 </div>
               </div>
-              <span className="text-[11px] font-mono text-slate-400 px-2 py-0.5 rounded bg-white/[0.04] border border-white/[0.08]">
+              <span className="text-[11px] font-mono text-[#8FA0BA] px-2.5 py-0.5 rounded bg-white/[0.06] border border-white/10">
                 DEMO PREVIEW
               </span>
             </div>
@@ -244,17 +243,17 @@ export const AIChatbotsPage: React.FC = () => {
             <div className="p-6 space-y-4">
               {/* Bot Message 1 */}
               <div className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-full bg-blue-600/30 border border-blue-500/40 flex items-center justify-center shrink-0 text-blue-400 text-xs">
+                <div className="w-7 h-7 rounded-full bg-[#00D1FF]/20 border border-[#00D1FF]/30 flex items-center justify-center shrink-0 text-[#00D1FF] text-xs">
                   <Bot className="w-4 h-4" />
                 </div>
-                <div className="rounded-2xl rounded-tl-sm bg-slate-800/80 p-3.5 text-xs sm:text-sm text-slate-200 border border-white/[0.06] max-w-[85%]">
-                  Hello! How can I assist you with TITAN AI AGENCY's services today?
+                <div className="rounded-2xl rounded-tl-sm bg-[#04142E] p-3.5 text-xs sm:text-sm text-[#EAF7FF] border border-white/[0.08] max-w-[85%]">
+                  Hello! How can I assist you with TITAN AI AGENCY's digital solutions today?
                 </div>
               </div>
 
               {/* User Message */}
               <div className="flex items-start gap-3 justify-end">
-                <div className="rounded-2xl rounded-tr-sm bg-blue-600 p-3.5 text-xs sm:text-sm text-white max-w-[85%]">
+                <div className="rounded-2xl rounded-tr-sm bg-gradient-to-r from-[#00D1FF] to-[#3BA9FF] p-3.5 text-xs sm:text-sm text-[#04142E] font-semibold max-w-[85%]">
                   Do you develop custom websites for businesses in Riyadh?
                 </div>
                 <div className="w-7 h-7 rounded-full bg-slate-700 flex items-center justify-center shrink-0 text-slate-300 text-xs">
@@ -264,14 +263,14 @@ export const AIChatbotsPage: React.FC = () => {
 
               {/* Bot Message 2 */}
               <div className="flex items-start gap-3">
-                <div className="w-7 h-7 rounded-full bg-blue-600/30 border border-blue-500/40 flex items-center justify-center shrink-0 text-blue-400 text-xs">
+                <div className="w-7 h-7 rounded-full bg-[#00D1FF]/20 border border-[#00D1FF]/30 flex items-center justify-center shrink-0 text-[#00D1FF] text-xs">
                   <Bot className="w-4 h-4" />
                 </div>
-                <div className="rounded-2xl rounded-tl-sm bg-slate-800/80 p-3.5 text-xs sm:text-sm text-slate-200 border border-white/[0.06] max-w-[85%] space-y-2">
+                <div className="rounded-2xl rounded-tl-sm bg-[#04142E] p-3.5 text-xs sm:text-sm text-[#EAF7FF] border border-white/[0.08] max-w-[85%] space-y-2">
                   <p>
-                    Yes, absolutely! We build responsive, high-performance websites for businesses in Riyadh and remotely, complete with WhatsApp enquiry integration and full code ownership.
+                    Yes, absolutely! We engineer responsive, high-performance websites for businesses in Riyadh and remotely, complete with WhatsApp enquiry integration and 100% client code ownership.
                   </p>
-                  <p className="text-[11px] text-slate-400 font-mono">
+                  <p className="text-[11px] text-[#8FA0BA] font-mono">
                     Would you like to connect directly with our engineering team on WhatsApp to review your requirements?
                   </p>
                   <a
@@ -288,14 +287,14 @@ export const AIChatbotsPage: React.FC = () => {
             </div>
 
             {/* Mock Input Bar */}
-            <div className="p-4 bg-[#0d1322] border-t border-white/[0.08] flex items-center gap-2">
+            <div className="p-4 bg-[#04142E] border-t border-white/[0.08] flex items-center gap-2">
               <input
                 type="text"
                 disabled
                 placeholder="Type your question... (Demo concept)"
                 className="flex-grow bg-black/40 border border-white/[0.08] rounded-xl px-4 py-2 text-xs text-slate-400 focus:outline-none cursor-not-allowed"
               />
-              <button disabled className="p-2 rounded-xl bg-blue-600/50 text-white/50 cursor-not-allowed">
+              <button disabled className="p-2 rounded-xl bg-[#00D1FF]/50 text-[#04142E] cursor-not-allowed">
                 <Send className="w-4 h-4" />
               </button>
             </div>
@@ -303,35 +302,35 @@ export const AIChatbotsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. Deliverables & Scope */}
-      <section className="relative py-16 sm:py-24 bg-[#05070d] border-t border-white/[0.06]">
+      {/* 4. Deliverables & Scope (Light Section) */}
+      <section className="relative py-16 sm:py-24 bg-[#F8FAFF] border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
-              <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold">
                 Transparent Boundaries
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
                 Deliverables & Engineering Standards
               </h2>
-              <p className="text-slate-300 text-base leading-relaxed">
+              <p className="text-[#536477] text-base leading-relaxed">
                 We configure chatbots with clean styling, verified prompt boundaries, and dependable notification webhooks.
               </p>
-              <div className="p-4 rounded-xl bg-blue-500/[0.06] border border-blue-500/20 text-xs text-slate-300 leading-relaxed">
-                <strong className="text-white block font-medium mb-1">Knowledge Grounding Policy</strong>
+              <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs text-[#536477] leading-relaxed">
+                <strong className="text-[#071A33] block font-bold mb-1">Knowledge Grounding Policy</strong>
                 Every chatbot is strictly grounded in your verified documents. We do not enable open-ended hallucination or claims outside your approved scope.
               </div>
             </div>
 
             <div className="lg:col-span-7">
-              <div className="rounded-2xl bg-black/40 border border-white/[0.08] p-7 space-y-4">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold mb-2">
+              <div className="card-titan-light p-7 space-y-4">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#071A33] font-bold mb-2">
                   Included in Every Deployment
                 </h3>
                 <ul className="space-y-3.5">
                   {DELIVERABLES.map((deliv, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <li key={i} className="flex items-start gap-3 text-sm text-[#536477]">
+                      <CheckCircle2 className="w-4 h-4 text-[#00D1FF] shrink-0 mt-0.5" />
                       <span>{deliv}</span>
                     </li>
                   ))}

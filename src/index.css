@@ -1,32 +1,154 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --titan-navy-deep: #0B1F4B;
+    --titan-navy-dark: #04142E;
+    --titan-cyan: #00D1FF;
+    --titan-sky: #3BA9FF;
+    --titan-ice: #EAF7FF;
+    --titan-clean-white: #F8FAFF;
+    --titan-pure-white: #FFFFFF;
+    --titan-text-primary: #071A33;
+    --titan-text-secondary: #536477;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--titan-text-primary);
+    background-color: var(--titan-clean-white);
   }
   
   h1, h2, h3, .font-display {
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
-/* Custom electric blue gradients and subtle glass glow */
-.glow-blue {
-  box-shadow: 0 0 35px -5px rgba(59, 130, 246, 0.25);
+/* Premium Brand Utilities */
+.bg-titan-hero {
+  background: linear-gradient(135deg, #04142E 0%, #0B1F4B 60%, #073B69 100%);
 }
 
-.glow-blue-sm {
-  box-shadow: 0 0 15px -2px rgba(59, 130, 246, 0.3);
+.bg-titan-navy-dark {
+  background-color: #04142E;
 }
 
-.glow-line {
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+.bg-titan-navy-deep {
+  background-color: #0B1F4B;
 }
 
-.grid-pattern {
+.bg-titan-ice {
+  background-color: #EAF7FF;
+}
+
+.bg-titan-clean {
+  background-color: #F8FAFF;
+}
+
+.text-titan-cyan {
+  color: #00D1FF;
+}
+
+.text-titan-sky {
+  color: #3BA9FF;
+}
+
+.text-titan-primary {
+  color: #071A33;
+}
+
+.text-titan-secondary {
+  color: #536477;
+}
+
+/* Primary Button Styling */
+.btn-titan-primary {
+  background: linear-gradient(135deg, #00D1FF 0%, #3BA9FF 100%);
+  color: #04142E;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px 0 rgba(0, 209, 255, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-titan-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 8px 24px 0 rgba(0, 209, 255, 0.35);
+}
+
+/* Secondary Button Styling */
+.btn-titan-secondary {
+  background: transparent;
+  color: #0B1F4B;
+  border: 1px solid #3BA9FF;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-titan-secondary:hover {
+  background-color: #EAF7FF;
+  border-color: #00D1FF;
+  transform: translateY(-1px);
+}
+
+.btn-titan-secondary-dark {
+  background: rgba(255, 255, 255, 0.05);
+  color: #F8FAFF;
+  border: 1px solid rgba(0, 209, 255, 0.4);
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-titan-secondary-dark:hover {
+  background: rgba(0, 209, 255, 0.12);
+  border-color: #00D1FF;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+/* Card Styles */
+.card-titan-light {
+  background: #FFFFFF;
+  border: 1px solid rgba(59, 169, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(11, 31, 75, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-titan-light:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 209, 255, 0.45);
+  box-shadow: 0 14px 32px -4px rgba(0, 209, 255, 0.12);
+}
+
+.card-titan-dark {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 209, 255, 0.15);
+  border-radius: 16px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-titan-dark:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 209, 255, 0.4);
+  box-shadow: 0 14px 32px -4px rgba(0, 209, 255, 0.16);
+}
+
+/* Ambient Visual Grids & Subtle Wave Patterns */
+.bg-digital-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(59, 169, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 169, 255, 0.07) 1px, transparent 1px);
 }
 
+.bg-digital-grid-dark {
+  background-size: 44px 44px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 209, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 209, 255, 0.05) 1px, transparent 1px);
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-import { ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { TitanIcon } from '../components/TitanLogo';
 
 // Clearly labeled configuration variable for WhatsApp number as specified
 export const YOUR_WHATSAPP_NUMBER = '+966 53 418 2945';
@@ -44,44 +45,42 @@ export const ContactPage: React.FC = () => {
   });
 
   return (
-    <div id="contact-page-root" className="min-h-screen bg-[#06080d] text-slate-100 pt-28 pb-20 flex flex-col justify-center relative overflow-hidden">
+    <div id="contact-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20 pb-20 flex flex-col justify-center relative overflow-hidden">
       {/* Background ambient lighting and subtle technical grid */}
-      <div className="absolute inset-0 grid-pattern opacity-25 pointer-events-none" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[400px] h-[300px] bg-emerald-500/5 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute inset-0 bg-digital-grid opacity-50 pointer-events-none" />
 
       {/* Primary WhatsApp Contact Hero */}
-      <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 text-center w-full">
+      <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center w-full">
         {/* Label */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 uppercase tracking-widest mb-8">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Direct Contact</span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono text-[#0B1F4B] font-bold uppercase tracking-widest mb-8">
+          <TitanIcon className="w-4 h-4" />
+          <span>Direct Founder Contact</span>
         </div>
 
         {/* Heading: Let's Talk. */}
-        <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+        <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-[#071A33] tracking-tight mb-6 leading-tight">
           Let's Talk.
         </h1>
 
         {/* Supporting Text */}
-        <p className="text-lg sm:text-2xl text-slate-300 font-normal leading-relaxed max-w-2xl mx-auto mb-12">
+        <p className="text-lg sm:text-2xl text-[#536477] font-normal leading-relaxed max-w-2xl mx-auto mb-12">
           Have a project in mind? Contact TITAN directly on WhatsApp.
         </p>
 
         {/* Minimal, Premium WhatsApp Card */}
         <div
           id="whatsapp-contact-card"
-          className="max-w-md mx-auto rounded-3xl bg-slate-900/40 border border-white/[0.08] hover:border-blue-500/30 p-8 sm:p-10 shadow-2xl backdrop-blur-sm transition-all duration-300"
+          className="max-w-md mx-auto rounded-3xl bg-white border border-[#3BA9FF]/25 hover:border-[#00D1FF] p-8 sm:p-10 shadow-[0_10px_40px_rgba(11,31,75,0.06)] hover:shadow-[0_15px_50px_rgba(0,209,255,0.15)] transition-all duration-300"
         >
           {/* WhatsApp Icon and Label */}
           <div className="flex flex-col items-center justify-center mb-6">
-            <div className="w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4 shadow-[0_0_25px_rgba(16,185,129,0.25)]">
+            <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-500/30 flex items-center justify-center text-emerald-600 mb-4 shadow-sm">
               <MessageCircle className="w-8 h-8" />
             </div>
-            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-slate-400 mb-1">
+            <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[#536477] mb-1">
               WhatsApp
             </span>
-            <span className="text-2xl sm:text-3xl font-mono font-bold text-white tracking-wide">
+            <span className="text-2xl sm:text-3xl font-mono font-bold text-[#071A33] tracking-wide">
               {YOUR_WHATSAPP_NUMBER}
             </span>
           </div>
@@ -92,27 +91,27 @@ export const ContactPage: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             id="chat-on-whatsapp-btn"
-            className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-base sm:text-lg shadow-[0_0_25px_rgba(16,185,129,0.4)] hover:shadow-[0_0_35px_rgba(16,185,129,0.6)] hover:scale-[1.02] active:scale-[0.99] transition-all duration-200 group"
+            className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base sm:text-lg shadow-lg hover:shadow-emerald-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 group"
           >
             <span>Chat on WhatsApp</span>
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
 
           {/* Direct status note */}
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs font-mono text-emerald-400">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="mt-6 flex items-center justify-center gap-2 text-xs font-mono text-emerald-600 font-semibold">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>Direct Line · Fast Response</span>
           </div>
         </div>
       </section>
 
-      {/* Strong Closing Section */}
-      <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 w-full text-center">
-        <div className="rounded-3xl bg-gradient-to-b from-slate-900/60 to-[#0b101c]/80 border border-blue-500/20 p-8 sm:p-12 shadow-xl">
+      {/* Strong Closing Section (Deep Navy) */}
+      <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 w-full text-center">
+        <div className="rounded-3xl bg-gradient-to-b from-[#0B1F4B] to-[#04142E] border border-[#00D1FF]/25 p-8 sm:p-12 text-white shadow-xl">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-4 uppercase">
-            LET’S BUILD YOUR NEXT BUSINESS SOLUTION.
+            LET’S BUILD YOUR NEXT <span className="text-[#00D1FF]">BUSINESS SOLUTION.</span>
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-[#EAF7FF]/90 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed font-normal">
             Tell us what your business needs. We’ll help you define the right next step.
           </p>
           <a
@@ -120,11 +119,11 @@ export const ContactPage: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             id="contact-start-conversation-btn"
-            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-base shadow-[0_0_25px_rgba(16,185,129,0.35)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] transition-all duration-200"
+            className="btn-titan-primary inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold"
           >
-            <MessageCircle className="w-5 h-5" />
+            <MessageCircle className="w-5 h-5 stroke-[2.5]" />
             <span>Start a Conversation</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 stroke-[2.5]" />
           </a>
         </div>
       </section>

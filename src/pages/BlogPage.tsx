@@ -88,7 +88,7 @@ export const BlogPage: React.FC = () => {
   }, [posts, selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#06080d] text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFF] text-[#071A33] flex flex-col pt-20">
       {/* Blog Hero Section */}
       <BlogHero
         categories={categories}
@@ -100,25 +100,25 @@ export const BlogPage: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <section className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
+      <section className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
         {/* Loading State */}
         {loading && <BlogLoadingSkeleton count={6} />}
 
         {/* Error State */}
         {!loading && error && (
-          <div className="max-w-xl mx-auto p-8 rounded-2xl bg-[#0f1422] border border-red-500/20 text-center space-y-4 shadow-xl">
-            <div className="w-12 h-12 mx-auto rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400">
+          <div className="max-w-xl mx-auto p-8 rounded-2xl bg-white border border-red-500/20 text-center space-y-4 shadow-lg">
+            <div className="w-12 h-12 mx-auto rounded-full bg-red-50 border border-red-500/30 flex items-center justify-center text-red-500">
               <AlertCircle className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-display font-semibold text-white">
+            <h3 className="text-xl font-display font-semibold text-[#071A33]">
               Unable to Retrieve Insights
             </h3>
-            <p className="text-slate-400 text-sm">
+            <p className="text-[#536477] text-sm">
               We encountered an issue synchronizing articles. Please check your network connection or try refreshing.
             </p>
             <button
               onClick={fetchArticles}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all shadow-[0_0_15px_rgba(37,99,235,0.3)]"
+              className="btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm"
             >
               <RefreshCw className="w-4 h-4" />
               <span>Retry Connection</span>
@@ -126,16 +126,16 @@ export const BlogPage: React.FC = () => {
           </div>
         )}
 
-        {/* Empty State (Explicit requirement: "No articles available yet. New insights are coming soon.") */}
+        {/* Empty State */}
         {!loading && !error && posts.length === 0 && (
-          <div className="max-w-lg mx-auto p-12 text-center space-y-4 rounded-2xl bg-[#090d16] border border-white/[0.06]">
-            <div className="w-12 h-12 mx-auto rounded-full bg-blue-500/10 border border-blue-500/25 flex items-center justify-center text-blue-400">
+          <div className="max-w-lg mx-auto p-12 text-center space-y-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
+            <div className="w-12 h-12 mx-auto rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
               <Inbox className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-display font-bold text-white">
+            <h3 className="text-xl font-display font-bold text-[#071A33]">
               No articles available yet. New insights are coming soon.
             </h3>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-[#536477]">
               Our engineering and strategy teams are preparing fresh research. Check back shortly or reach out to TITAN directly on WhatsApp.
             </p>
           </div>
@@ -144,13 +144,13 @@ export const BlogPage: React.FC = () => {
         {/* Search / Filter Zero State */}
         {!loading && !error && posts.length > 0 && filteredPosts.length === 0 && (
           <div className="max-w-md mx-auto py-16 text-center space-y-4">
-            <div className="w-12 h-12 mx-auto rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400">
+            <div className="w-12 h-12 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-[#536477]">
               <AlertCircle className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-display font-semibold text-white">
+            <h3 className="text-lg font-display font-semibold text-[#071A33]">
               No matching articles found
             </h3>
-            <p className="text-sm text-slate-400">
+            <p className="text-sm text-[#536477]">
               No insights matched &quot;{searchQuery}&quot; in the {selectedCategory} category.
             </p>
             <button
@@ -158,7 +158,7 @@ export const BlogPage: React.FC = () => {
                 setSearchQuery('');
                 setSelectedCategory('All');
               }}
-              className="text-xs font-semibold text-blue-400 hover:text-blue-300 underline underline-offset-4"
+              className="text-xs font-semibold text-[#00D1FF] hover:text-[#3BA9FF] underline underline-offset-4"
             >
               Reset filters and view all
             </button>

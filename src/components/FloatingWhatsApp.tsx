@@ -14,7 +14,7 @@ export const FloatingWhatsApp: React.FC = () => {
     >
       {/* Expanded Quick Message Bubble */}
       {isOpen && (
-        <div className="pointer-events-auto mb-3 w-[calc(100vw-2rem)] max-w-xs sm:w-80 max-h-[calc(100vh-12rem)] overflow-y-auto rounded-2xl bg-[#090d16] border border-emerald-500/30 p-4 shadow-[0_10px_35px_rgba(0,0,0,0.6)] animate-in fade-in slide-in-from-bottom-3 duration-200">
+        <div className="pointer-events-auto mb-3 w-[calc(100vw-2rem)] max-w-xs sm:w-80 max-h-[calc(100vh-12rem)] overflow-y-auto rounded-2xl bg-[#04142E] border border-emerald-500/30 p-4 shadow-[0_10px_35px_rgba(4,20,46,0.6)] animate-in fade-in slide-in-from-bottom-3 duration-200">
           <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck } from 'lucide-react';
 import { HeroShowcaseVisual } from '../components/HeroShowcaseVisual';
 import { FeaturedWork } from '../components/FeaturedWork';
-import { VideoShowcase } from '../components/VideoShowcase';
 import { ProcessSection } from '../components/ProcessSection';
 import { FAQSection } from '../components/FAQSection';
 import { FinalCTA } from '../components/FinalCTA';
@@ -11,6 +10,7 @@ import { ServiceModal } from '../components/ServiceModal';
 import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceItem } from '../types';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { TitanIcon } from '../components/TitanLogo';
 
 export const HomePage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -41,20 +41,20 @@ export const HomePage: React.FC = () => {
   const getServiceIcon = (id: string) => {
     switch (id) {
       case 'websites':
-        return <Globe className="w-5 h-5 text-blue-400" />;
+        return <Globe className="w-5 h-5 text-[#00D1FF]" />;
       case 'ai-agents':
-        return <Cpu className="w-5 h-5 text-blue-400" />;
+        return <Cpu className="w-5 h-5 text-[#00D1FF]" />;
       case 'ai-voice-agents':
-        return <PhoneCall className="w-5 h-5 text-blue-400" />;
+        return <PhoneCall className="w-5 h-5 text-[#00D1FF]" />;
       case 'ai-chatbots':
-        return <MessageSquare className="w-5 h-5 text-blue-400" />;
+        return <MessageSquare className="w-5 h-5 text-[#00D1FF]" />;
       case 'business-automation':
-        return <Workflow className="w-5 h-5 text-blue-400" />;
+        return <Workflow className="w-5 h-5 text-[#00D1FF]" />;
       case 'ai-video-creation':
-        return <Video className="w-5 h-5 text-blue-400" />;
+        return <Video className="w-5 h-5 text-[#00D1FF]" />;
       case 'custom-ai-solutions':
       default:
-        return <Layers className="w-5 h-5 text-blue-400" />;
+        return <Layers className="w-5 h-5 text-[#00D1FF]" />;
     }
   };
 
@@ -82,36 +82,36 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div id="home-page-root" className="min-h-screen bg-[#06080d] text-slate-100">
+    <div id="home-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33]">
       
-      {/* 1. HERO SECTION */}
-      <section id="hero-section" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      {/* 1. HERO SECTION (Dark Premium Navy) */}
+      <section id="hero-section" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-titan-hero text-white">
         {/* Subtle grid and ambient lighting */}
-        <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
-        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-10 right-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
+        <div className="absolute top-1/4 -left-32 w-96 h-96 bg-[#00D1FF]/10 rounded-full blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
             {/* Left Column: Headline & Value Proposition */}
-            <div className="lg:col-span-7 space-y-8 text-left">
+            <div className="lg:col-span-7 space-y-7 text-left">
               {/* Agency Brand Tag */}
-              <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-blue-400 uppercase tracking-widest">
-                <span className="w-2 h-2 rounded-full bg-blue-400" />
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+                <TitanIcon className="w-4 h-4" />
                 <span>TITAN AI AGENCY</span>
               </div>
 
-              {/* Exact Requested Headline */}
+              {/* Headline */}
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.12]">
                 PROFESSIONAL WEBSITES.{' '}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-white">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] via-[#3BA9FF] to-white">
                   SMARTER BUSINESS AUTOMATION.
                 </span>
               </h1>
 
-              {/* Exact Requested Supporting Text */}
-              <p className="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
+              {/* Supporting Text */}
+              <p className="text-lg sm:text-xl text-[#EAF7FF]/90 font-normal leading-relaxed max-w-2xl">
                 TITAN AI AGENCY builds websites, AI assistants, and automated workflows that help businesses capture enquiries, respond faster, and reduce repetitive work.
               </p>
 
@@ -122,40 +122,40 @@ export const HomePage: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   id="hero-discuss-project-btn"
-                  className="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-base shadow-[0_0_25px_rgba(16,185,129,0.35)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] transition-all duration-200"
+                  className="btn-titan-primary inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5 stroke-[2.5]" />
                   <span>Discuss Your Project</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                 </a>
 
                 <a
                   href="#featured-work"
                   id="hero-explore-work-btn"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white font-medium text-base border border-white/10 transition-all duration-200"
+                  className="btn-titan-secondary-dark inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-semibold"
                 >
                   <span>Explore Our Work</span>
                 </a>
               </div>
 
               {/* Value Markers */}
-              <div className="pt-6 border-t border-white/[0.06] grid grid-cols-3 gap-4 text-xs font-mono text-slate-400">
+              <div className="pt-6 border-t border-white/[0.1] grid grid-cols-3 gap-4 text-xs font-mono text-[#8FA0BA]">
                 <div>
-                  <div className="text-slate-200 font-semibold text-sm">Direct WhatsApp</div>
-                  <div className="text-slate-400 text-[11px]">Straightforward chat</div>
+                  <div className="text-white font-semibold text-sm">Direct WhatsApp</div>
+                  <div className="text-[#8FA0BA] text-[11px]">Straightforward chat</div>
                 </div>
                 <div>
-                  <div className="text-slate-200 font-semibold text-sm">30-Day Support</div>
-                  <div className="text-slate-400 text-[11px]">Free after launch</div>
+                  <div className="text-white font-semibold text-sm">30-Day Support</div>
+                  <div className="text-[#8FA0BA] text-[11px]">Free after launch</div>
                 </div>
                 <div>
-                  <div className="text-slate-200 font-semibold text-sm">Full Ownership</div>
-                  <div className="text-slate-400 text-[11px]">Your code & tools</div>
+                  <div className="text-white font-semibold text-sm">Full Ownership</div>
+                  <div className="text-[#8FA0BA] text-[11px]">Your code & tools</div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Work Preview Visual (Demonstrating Website, Conversation, Workflow) */}
+            {/* Right Column: Work Preview Visual */}
             <div className="lg:col-span-5 flex items-center justify-center">
               <HeroShowcaseVisual />
             </div>
@@ -164,25 +164,22 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. FEATURED WORK SECTION */}
+      {/* 2. FEATURED WORK SECTION (Light Case Studies Portfolio) */}
       <FeaturedWork />
 
-      {/* 2.5 VIDEO SHOWCASE SECTION */}
-      <VideoShowcase />
-
-      {/* 3. SERVICES SECTION */}
-      <section id="services-preview-section" className="relative py-20 sm:py-28 bg-[#05070c] border-t border-white/[0.06]">
+      {/* 3. CORE SERVICES SECTION (Clean White / Light Ice Blue) */}
+      <section id="services-preview-section" className="relative py-20 sm:py-28 bg-[#FFFFFF] border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
             <div className="max-w-2xl">
-              <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
                 What We Build & Deliver
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
                 Our Core Services
               </h2>
-              <p className="mt-3 text-slate-300 text-base leading-relaxed">
+              <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
                 Practical websites, conversational tools, automated workflows, and AI video content designed to solve genuine business bottlenecks.
               </p>
             </div>
@@ -190,7 +187,7 @@ export const HomePage: React.FC = () => {
             <Link
               to="/services"
               id="view-all-services-header-btn"
-              className="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 group"
+              className="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-bold text-[#0B1F4B] hover:text-[#00D1FF] group transition-colors"
             >
               <span>View Full Services Page</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -212,36 +209,37 @@ export const HomePage: React.FC = () => {
                 <div
                   key={service.id}
                   id={`home-service-card-${service.id}`}
-                  className="group relative rounded-2xl bg-slate-900/40 hover:bg-slate-900/70 border border-white/[0.08] hover:border-blue-500/40 p-7 transition-all duration-300 flex flex-col justify-between shadow-lg"
+                  className="card-titan-light p-7 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5 group-hover:border-blue-400/40 transition-colors">
+                    {/* Small blue icon above each service title */}
+                    <div className="w-12 h-12 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center mb-5 group-hover:border-[#00D1FF] transition-colors">
                       {getServiceIcon(service.id)}
                     </div>
 
-                    <h3 className="font-display text-xl font-bold text-white mb-2.5 group-hover:text-blue-300 transition-colors">
+                    <h3 className="font-display text-xl font-bold text-[#071A33] mb-2.5 group-hover:text-[#0B1F4B] transition-colors">
                       {service.title}
                     </h3>
 
-                    <p className="text-sm text-slate-300 leading-relaxed mb-6">
+                    <p className="text-sm text-[#536477] leading-relaxed mb-6">
                       {service.shortDescription}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between gap-3">
+                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
                     <Link
                       to={getServiceRoute(service.id)}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B1F4B] hover:text-[#00D1FF] transition-colors"
                     >
                       <span>Learn Details</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-blue-400" />
+                      <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF]" />
                     </Link>
 
                     <a
                       href={whatsappServiceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300 transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-500 transition-colors"
                       title={`Enquire on WhatsApp about ${service.title}`}
                     >
                       <MessageCircle className="w-3.5 h-3.5" />
@@ -257,36 +255,36 @@ export const HomePage: React.FC = () => {
             <Link
               to="/services"
               id="view-all-services-cta-btn"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 text-slate-200 hover:text-white text-sm font-semibold transition-colors"
+              className="btn-titan-secondary inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold"
             >
               <span>Explore Full Service Specifications</span>
-              <ArrowRight className="w-4 h-4 text-blue-400" />
+              <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 4. PROCESS SECTION (From Idea to Launch) */}
+      {/* 4. PROCESS SECTION (From Blueprint to Production) */}
       <ProcessSection />
 
-      {/* 5. ABOUT PREVIEW SECTION */}
-      <section id="about-preview-section" className="relative py-20 sm:py-28 bg-[#04060a] border-t border-white/[0.06]">
+      {/* 5. ABOUT PREVIEW SECTION (Corporate Clean Deep Navy Section) */}
+      <section id="about-preview-section" className="relative py-20 sm:py-28 bg-[#04142E] border-t border-[#00D1FF]/20 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold">
-                Agency Background
+              <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold">
+                Corporate Background
               </div>
 
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
                 About TITAN AI AGENCY
               </h2>
 
-              <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
-                TITAN AI AGENCY was founded by <strong className="text-white font-semibold">Saad Naeem</strong> to help businesses improve their online presence and everyday operations through websites, AI tools, and automation.
+              <p className="text-base sm:text-lg text-[#EAF7FF] leading-relaxed font-normal">
+                TITAN AI AGENCY was founded by <strong className="text-white font-semibold">Saad Naeem</strong> to help businesses improve their online presence and everyday operations through high-performance websites, AI tools, and automation.
               </p>
 
-              <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-[#8FA0BA] leading-relaxed">
                 Rather than promoting speculative trends or making unsubstantiated claims, we focus on genuine business requirements: diagnosing where your workflows lose time, building dependable software to fix those friction points, and delivering clean, maintainable systems that your business owns completely.
               </p>
 
@@ -294,56 +292,56 @@ export const HomePage: React.FC = () => {
                 <Link
                   to="/about"
                   id="meet-titan-learn-more-btn"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 font-semibold text-sm transition-colors"
+                  className="btn-titan-secondary-dark inline-flex items-center gap-2.5 px-6 py-3.5 text-sm font-semibold"
                 >
                   <span>Learn More About TITAN & Saad Naeem</span>
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
+                  <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
                 </Link>
               </div>
             </div>
 
             {/* Right Column: Practical Tenets */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-slate-900/50 border border-white/[0.08] p-6 sm:p-8 space-y-5">
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold">
+              <div className="card-titan-dark p-6 sm:p-8 space-y-5 bg-[#0B1F4B]/90 border border-[#00D1FF]/20">
+                <div className="text-xs font-mono uppercase tracking-wider text-[#00D1FF] font-bold">
                   How We Operate
                 </div>
 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-blue-400 font-bold text-xs">1</span>
+                    <div className="w-7 h-7 rounded-lg bg-[#00D1FF]/10 border border-[#00D1FF]/30 flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[#00D1FF] font-bold text-xs">1</span>
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-white">Direct Communication</div>
-                      <div className="text-xs text-slate-400">Work directly with the builder without intermediary account layers.</div>
+                      <div className="text-xs text-[#8FA0BA]">Work directly with founder Saad Naeem without intermediary account layers.</div>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-blue-400 font-bold text-xs">2</span>
+                    <div className="w-7 h-7 rounded-lg bg-[#3BA9FF]/10 border border-[#3BA9FF]/30 flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[#3BA9FF] font-bold text-xs">2</span>
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-white">Pragmatic Technology Selection</div>
-                      <div className="text-xs text-slate-400">We choose tools to solve verified constraints, never to chase hype.</div>
+                      <div className="text-sm font-semibold text-white">Pragmatic Engineering</div>
+                      <div className="text-xs text-[#8FA0BA]">We choose technology to solve verified business constraints, never to chase hype.</div>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-blue-400 font-bold text-xs">3</span>
+                    <div className="w-7 h-7 rounded-lg bg-[#00D1FF]/10 border border-[#00D1FF]/30 flex items-center justify-center shrink-0 mt-0.5">
+                      <span className="text-[#00D1FF] font-bold text-xs">3</span>
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-white">Post-Launch Care</div>
-                      <div className="text-xs text-slate-400">30 days of free support to verify that everything works as promised.</div>
+                      <div className="text-xs text-[#8FA0BA]">30 days of free support to verify that everything operates flawlessly.</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono text-slate-500">
-                  <span>PRACTICAL & MEASURED</span>
-                  <span className="text-blue-400">TITAN AI AGENCY</span>
+                <div className="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
+                  <span>PRAGMATIC & MEASURED</span>
+                  <span className="text-[#00D1FF] font-semibold">TITAN AI AGENCY</span>
                 </div>
               </div>
             </div>
@@ -351,10 +349,10 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. FAQS SECTION */}
+      {/* 6. FAQS SECTION (Clean White) */}
       <FAQSection />
 
-      {/* 7. FINAL CLOSING CTA SECTION */}
+      {/* 7. FINAL CLOSING CTA SECTION (Deep Navy) */}
       <FinalCTA />
 
       {/* Modals for Interactive Inspection */}

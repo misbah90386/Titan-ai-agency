@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <defs>
+    <!-- Background subtle gradient -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="60%" stop-color="#F8FAFF"/>
+      <stop offset="100%" stop-color="#EAF7FF"/>
+    </linearGradient>
+
+    <!-- Chrome / Metallic Blue Gradients for Emblem -->
+    <linearGradient id="cyanSky" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+
+    <linearGradient id="deepBlueGlow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="50%" stop-color="#0B57D0"/>
+      <stop offset="100%" stop-color="#04142E"/>
+    </linearGradient>
+
+    <linearGradient id="wingGradLeft" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#3BA9FF"/>
+      <stop offset="35%" stop-color="#00D1FF"/>
+      <stop offset="70%" stop-color="#0B3C78"/>
+      <stop offset="100%" stop-color="#04142E"/>
+    </linearGradient>
+
+    <linearGradient id="wingGradRight" x1="100%" y1="0%" x2="0%" y2="80%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="40%" stop-color="#2563EB"/>
+      <stop offset="85%" stop-color="#04142E"/>
+    </linearGradient>
+
+    <linearGradient id="stemLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="30%" stop-color="#0080FF"/>
+      <stop offset="100%" stop-color="#071A33"/>
+    </linearGradient>
+
+    <linearGradient id="stemRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3BA9FF"/>
+      <stop offset="40%" stop-color="#0052CC"/>
+      <stop offset="100%" stop-color="#04142E"/>
+    </linearGradient>
+
+    <linearGradient id="outerRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00B4D8"/>
+      <stop offset="50%" stop-color="#0077B6"/>
+      <stop offset="100%" stop-color="#023E8A"/>
+    </linearGradient>
+
+    <filter id="subtleDrop" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0066FF" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="1000" fill="url(#bgGlow)"/>
+
+  <!-- EMBLEM GROUP (Centered at X=500, Y=330, Radius ~ 190) -->
+  <g id="titan-emblem" filter="url(#subtleDrop)">
+    <!-- Outer Crescent Arcs -->
+    <!-- Left Crescent Arc -->
+    <path d="M 480 148 C 360 160 270 260 270 380 C 270 470 320 546 395 586 C 365 520 355 450 365 375 C 372 315 408 248 460 200 Z"
+          fill="url(#wingGradLeft)"/>
+    <path d="M 395 586 C 350 530 330 450 330 380 C 330 280 390 200 480 160 C 470 190 410 250 395 340 C 385 410 405 510 440 560 Z"
+          fill="url(#outerRingGrad)" opacity="0.6"/>
+
+    <!-- Right Crescent Arc -->
+    <path d="M 520 148 C 640 160 730 260 730 380 C 730 470 680 546 605 586 C 635 520 645 450 635 375 C 628 315 592 248 540 200 Z"
+          fill="url(#wingGradRight)"/>
+    <path d="M 605 586 C 650 530 670 450 670 380 C 670 280 610 200 520 160 C 530 190 590 250 605 340 C 615 410 595 510 560 560 Z"
+      fill="url(#outerRingGrad)" opacity="0.6"/>
+
+    <!-- Top Cap Triangles (North/South alignment) -->
+    <path d="M 500 145 L 470 195 L 530 195 Z" fill="#00D1FF" opacity="0.9"/>
+
+    <!-- Central "T" Wings (Horizontal Bar) -->
+    <!-- Left Wing Upper -->
+    <path d="M 500 270 L 320 270 L 260 275 L 360 325 L 500 325 Z" fill="url(#wingGradLeft)"/>
+    <!-- Left Wing Lower Bevel -->
+    <path d="M 360 325 L 435 480 L 495 510 L 495 325 Z" fill="url(#stemLeft)"/>
+    <!-- Left Wing Highlight Edge -->
+    <path d="M 500 270 L 260 275 L 360 325 Z" fill="#00D1FF" opacity="0.4"/>
+
+    <!-- Right Wing Upper -->
+    <path d="M 500 270 L 680 270 L 740 275 L 640 325 L 500 325 Z" fill="url(#wingGradRight)"/>
+    <!-- Right Wing Lower Bevel -->
+    <path d="M 640 325 L 565 480 L 505 510 L 505 325 Z" fill="url(#stemRight)"/>
+    <!-- Right Wing Highlight Edge -->
+    <path d="M 500 270 L 740 275 L 640 325 Z" fill="#3BA9FF" opacity="0.3"/>
+
+    <!-- Center Faceted Stem / Column -->
+    <!-- Left Half Column -->
+    <path d="M 495 270 L 435 325 L 435 490 L 495 595 Z" fill="url(#stemLeft)"/>
+    <!-- Left Column Specular Highlight -->
+    <path d="M 495 270 L 450 320 L 450 470 L 495 550 Z" fill="#00D1FF" opacity="0.5"/>
+
+    <!-- Right Half Column -->
+    <path d="M 505 270 L 565 325 L 565 490 L 505 595 Z" fill="url(#stemRight)"/>
+    <!-- Right Column Edge -->
+    <path d="M 505 270 L 550 320 L 550 470 L 505 550 Z" fill="#3BA9FF" opacity="0.35"/>
+
+    <!-- Center Line Inset Groove -->
+    <line x1="500" y1="268" x2="500" y2="598" stroke="#04142E" stroke-width="4"/>
+    <line x1="500" y1="270" x2="500" y2="400" stroke="#00D1FF" stroke-width="2"/>
+  </g>
+
+  <!-- TYPOGRAPHY -->
+  <!-- "TITAN" -->
+  <g id="titan-text" fill="#071A33" font-family="'Plus Jakarta Sans', 'Inter', system-ui, sans-serif" font-weight="900">
+    <!-- Letter T -->
+    <path d="M 85 640 H 220 V 675 H 170 V 785 H 135 V 675 H 85 Z"/>
+    
+    <!-- Letter I -->
+    <path d="M 265 640 H 300 V 785 H 265 Z"/>
+
+    <!-- Letter T -->
+    <path d="M 345 640 H 480 V 675 H 430 V 785 H 395 V 675 H 345 Z"/>
+
+    <!-- Letter A (Stylized with apex cyan dot) -->
+    <g>
+      <path d="M 570 640 L 640 785 H 595 L 575 740 H 510 L 495 785 H 455 L 525 640 Z M 560 705 L 542 665 L 525 705 Z" fill="url(#deepBlueGlow)"/>
+      <!-- Cyan apex dot inside stylized A -->
+      <circle cx="602" cy="762" r="16" fill="#00D1FF"/>
+    </g>
+
+    <!-- Letter N -->
+    <path d="M 685 640 H 725 L 795 745 V 640 H 830 V 785 H 790 L 720 680 V 785 H 685 Z"/>
+  </g>
+
+  <!-- "AI AGENCY" -->
+  <text x="500" y="865"
+        text-anchor="middle"
+        font-family="'Plus Jakarta Sans', 'Inter', sans-serif"
+        font-weight="800"
+        font-size="52"
+        letter-spacing="18"
+        fill="#00D1FF">
+    AI AGENCY
+  </text>
+
+  <!-- Tagline: "Digital Solutions Built for Business" with flanking rules -->
+  <g id="titan-tagline">
+    <line x1="95" y1="928" x2="190" y2="928" stroke="#00D1FF" stroke-width="3" stroke-linecap="round"/>
+    <text x="500" y="936"
+          text-anchor="middle"
+          font-family="'Plus Jakarta Sans', 'Inter', sans-serif"
+          font-weight="600"
+          font-size="28"
+          letter-spacing="1.5"
+          fill="#071A33">
+      Digital Solutions Built for Business
+    </text>
+    <line x1="810" y1="928" x2="905" y2="928" stroke="#00D1FF" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

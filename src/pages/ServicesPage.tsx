@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, CheckCircle2, Terminal, Shield, MessageCircle, Sparkles, Play } from 'lucide-react';
+import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, CheckCircle2, Terminal, Shield, MessageCircle, Sparkles, Video } from 'lucide-react';
 import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceModal } from '../components/ServiceModal';
 import { ServiceItem } from '../types';
@@ -8,6 +8,7 @@ import { ProcessSection } from '../components/ProcessSection';
 import { FAQSection } from '../components/FAQSection';
 import { FinalCTA } from '../components/FinalCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { TitanIcon } from '../components/TitanLogo';
 
 export const ServicesPage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -86,7 +87,6 @@ export const ServicesPage: React.FC = () => {
   });
 
   useEffect(() => {
-    // Handle anchor hash scrolling e.g. #websites, #ai-agents
     if (location.hash) {
       const id = location.hash.replace('#', '');
       const element = document.getElementById(id);
@@ -115,45 +115,65 @@ export const ServicesPage: React.FC = () => {
     }
   };
 
+  const getServiceIcon = (id: string) => {
+    switch (id) {
+      case 'websites':
+        return <Globe className="w-6 h-6 text-[#00D1FF]" />;
+      case 'ai-agents':
+        return <Cpu className="w-6 h-6 text-[#00D1FF]" />;
+      case 'ai-voice-agents':
+        return <PhoneCall className="w-6 h-6 text-[#00D1FF]" />;
+      case 'ai-chatbots':
+        return <MessageSquare className="w-6 h-6 text-[#00D1FF]" />;
+      case 'business-automation':
+        return <Workflow className="w-6 h-6 text-[#00D1FF]" />;
+      case 'ai-video-creation':
+        return <Video className="w-6 h-6 text-[#00D1FF]" />;
+      case 'custom-ai-solutions':
+      default:
+        return <Layers className="w-6 h-6 text-[#00D1FF]" />;
+    }
+  };
+
   return (
-    <div id="services-page-root" className="min-h-screen bg-[#06080d] text-slate-100 pt-28">
-      {/* Header Banner */}
-      <section className="relative py-16 sm:py-24 border-b border-white/[0.06] overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
+    <div id="services-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      {/* Header Banner (Dark Premium Navy) */}
+      <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 uppercase tracking-widest mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest mb-6">
+            <TitanIcon className="w-4 h-4" />
             <span>Digital Solutions Portfolio</span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
             Services & Solutions
           </h1>
 
-          <p className="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
-            TITAN designs, engineers, and deploys high-performance digital systems for modern business operations in Riyadh and remotely. Explore our dedicated capability guides below.
+          <p className="text-base sm:text-xl text-[#EAF7FF]/90 max-w-3xl mx-auto leading-relaxed font-normal">
+            TITAN designs, engineers, and deploys high-performance digital systems for modern business operations. Explore our dedicated capability guides below.
           </p>
 
-          {/* Quick Jump Bar with Dedicated Page Links */}
+          {/* Quick Jump Bar */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-2.5 max-w-4xl mx-auto">
             {SERVICES_DATA.map((srv) => (
               <Link
                 key={srv.id}
                 to={getDedicatedPath(srv.id)}
-                className="px-3.5 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-blue-500/40 text-xs font-mono text-slate-300 hover:text-white transition-all flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] border border-white/10 hover:border-[#00D1FF]/40 text-xs font-semibold text-[#EAF7FF] hover:text-[#00D1FF] transition-all flex items-center gap-1.5"
               >
                 <span>{srv.title}</span>
-                <ArrowRight className="w-3 h-3 text-blue-400" />
+                <ArrowRight className="w-3 h-3 text-[#00D1FF]" />
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Detailed Services Breakdown */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-24">
+      {/* Detailed Services Breakdown (Light Background with card-titan-light) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-16">
         {SERVICES_DATA.map((service, index) => {
           const serviceWhatsappUrl =
             'https://wa.me/966534182945?text=' +
@@ -167,36 +187,37 @@ export const ServicesPage: React.FC = () => {
             <section
               key={service.id}
               id={service.id}
-              className="scroll-mt-28 relative rounded-3xl bg-slate-900/30 border border-white/[0.08] hover:border-blue-500/30 p-8 sm:p-12 transition-colors duration-300"
+              className="scroll-mt-28 card-titan-light p-8 sm:p-12 relative"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 {/* Left Side: Core Description and Subcategories */}
                 <div className="lg:col-span-7 space-y-6">
                   <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30 uppercase">
-                      {service.category}
-                    </span>
-                    <span className="text-xs font-mono text-slate-500">
-                      SERVICE 0{index + 1}
-                    </span>
+                    <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center shrink-0">
+                      {getServiceIcon(service.id)}
+                    </div>
+                    <div>
+                      <span className="text-xs font-mono font-bold text-[#0B1F4B] uppercase tracking-wider block">
+                        {service.category} · SERVICE 0{index + 1}
+                      </span>
+                      <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#071A33] tracking-tight">
+                        {service.heading || service.title}
+                      </h2>
+                    </div>
                   </div>
 
-                  <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight">
-                    {service.heading || service.title}
-                  </h2>
-
-                  <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+                  <p className="text-[#536477] text-base leading-relaxed font-normal">
                     {service.overview}
                   </p>
 
                   {/* Process note if present */}
                   {service.processNote && (
-                    <div className="p-4 rounded-xl bg-blue-500/[0.06] border border-blue-500/20 space-y-1.5">
-                      <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold flex items-center gap-2">
-                        <Sparkles className="w-3.5 h-3.5" />
+                    <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 space-y-1.5">
+                      <div className="text-xs font-mono uppercase tracking-wider text-[#0B1F4B] font-bold flex items-center gap-2">
+                        <Sparkles className="w-3.5 h-3.5 text-[#00D1FF]" />
                         <span>Brief & Production Process</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
                         {service.processNote}
                       </p>
                     </div>
@@ -204,16 +225,16 @@ export const ServicesPage: React.FC = () => {
 
                   {/* Subcategories */}
                   <div>
-                    <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-semibold mb-3">
+                    <h3 className="text-xs font-mono uppercase tracking-wider text-[#071A33] font-bold mb-3">
                       {service.id === 'ai-video-creation' ? 'Project Types & Video Formats:' : 'Scope & Capabilities:'}
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                       {service.subcategories.map((sub, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center gap-2.5 p-2.5 rounded-lg bg-white/[0.02] border border-white/[0.06] text-sm text-slate-200"
+                          className="flex items-center gap-2.5 p-2.5 rounded-xl bg-[#F8FAFF] border border-slate-200/80 text-sm font-medium text-[#071A33]"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shrink-0" />
                           <span>{sub}</span>
                         </div>
                       ))}
@@ -221,79 +242,68 @@ export const ServicesPage: React.FC = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex flex-wrap items-center gap-4 pt-4">
+                  <div className="flex flex-wrap items-center gap-3.5 pt-4">
                     <Link
                       to={getDedicatedPath(service.id)}
                       id={`view-dedicated-guide-${service.id}`}
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(37,99,235,0.35)] transition-all group"
+                      className="btn-titan-primary inline-flex items-center gap-2 px-6 py-3 text-sm font-bold"
                     >
                       <span>Explore Dedicated Guide & Scope</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                     </Link>
 
                     <a
                       href={serviceWhatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
+                      className="btn-titan-secondary inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold"
                     >
                       <MessageCircle className="w-4 h-4" />
                       <span>Discuss on WhatsApp</span>
                     </a>
 
-                    {service.id === 'ai-video-creation' && (
-                      <Link
-                        to="/#video-showcase"
-                        id="watch-video-demo-btn"
-                        className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 hover:text-white border border-blue-500/40 text-sm font-semibold transition-all group shadow-[0_0_15px_rgba(59,130,246,0.15)]"
-                      >
-                        <Play className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
-                        <span>Watch Video Demo</span>
-                      </Link>
-                    )}
-
                     <button
                       onClick={() => setSelectedService(service)}
                       id={`learn-more-service-${service.id}`}
-                      className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 hover:text-white border border-white/10 text-sm font-medium transition-colors"
+                      className="px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#071A33] text-sm font-semibold transition-colors flex items-center gap-1.5"
                     >
                       <span>Quick Specs</span>
-                      <ArrowRight className="w-4 h-4 text-blue-400" />
+                      <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF]" />
                     </button>
                   </div>
                 </div>
 
                 {/* Right Side: Technical Specs, Deliverables & Stack */}
                 <div className="lg:col-span-5 space-y-5">
-                  <div className="rounded-2xl bg-black/40 border border-white/[0.08] p-6 space-y-5">
-                    <div className="flex items-center justify-between pb-3 border-b border-white/[0.06]">
-                      <div className="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold flex items-center gap-2">
+                  <div className="rounded-2xl bg-[#04142E] text-white p-6 space-y-5 border border-[#00D1FF]/20 shadow-md">
+                    <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
+                      <div className="text-xs font-mono uppercase tracking-wider text-[#00D1FF] font-bold flex items-center gap-2">
                         <Terminal className="w-4 h-4" />
                         <span>Included Deliverables</span>
                       </div>
-                      <span className="text-[11px] font-mono text-slate-400">
+                      <span className="text-[11px] font-mono text-[#8FA0BA]">
                         Structured Milestones
                       </span>
                     </div>
 
                     <ul className="space-y-2.5">
                       {service.deliverables.map((deliv, i) => (
-                        <li key={i} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                        <li key={i} className="text-xs sm:text-sm text-[#EAF7FF] flex items-start gap-2.5">
+                          <CheckCircle2 className="w-4 h-4 text-[#00D1FF] shrink-0 mt-0.5" />
                           <span>{deliv}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="pt-4 border-t border-white/[0.06]">
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block mb-2">
+                    <div className="pt-4 border-t border-white/[0.08]">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#8FA0BA] block mb-2 font-bold">
                         Technologies & Standards
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {service.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-2.5 py-1 rounded bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-slate-300"
+                            className="px-2.5 py-1 rounded-lg bg-white/[0.06] border border-white/10 text-xs font-mono text-[#EAF7FF]"
                           >
                             {tech}
                           </span>
@@ -304,28 +314,17 @@ export const ServicesPage: React.FC = () => {
 
                   {/* Project Terms Note if present */}
                   {service.termsNote && (
-                    <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.08] text-xs text-slate-300 leading-relaxed">
-                      <strong className="text-white block font-medium mb-1">Scope & Specification Policy</strong>
+                    <div className="p-4 rounded-xl bg-[#F8FAFF] border border-slate-200 text-xs text-[#536477] leading-relaxed">
+                      <strong className="text-[#071A33] block font-bold mb-1">Scope & Specification Policy</strong>
                       {service.termsNote}
                     </div>
                   )}
 
-                  {/* Disclaimer Note if present */}
-                  {service.disclaimerNote && (
-                    <div className="p-4 rounded-xl bg-amber-500/[0.06] border border-amber-500/20 text-xs text-slate-300 leading-relaxed">
-                      <strong className="text-amber-300 block font-medium mb-1 flex items-center gap-1.5">
-                        <Shield className="w-3.5 h-3.5" />
-                        <span>Illustrative Concept Policy</span>
-                      </strong>
-                      {service.disclaimerNote}
-                    </div>
-                  )}
-
                   {/* Operational Quality Callout */}
-                  <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-500/20 flex items-start gap-3">
-                    <Shield className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
-                    <div className="text-xs text-slate-300 leading-relaxed">
-                      <strong className="text-white block font-medium mb-0.5">Reliable & Transparent</strong>
+                  <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-start gap-3">
+                    <Shield className="w-5 h-5 text-[#3BA9FF] shrink-0 mt-0.5" />
+                    <div className="text-xs text-[#536477] leading-relaxed">
+                      <strong className="text-[#071A33] block font-bold mb-0.5">Reliable & Transparent</strong>
                       All solutions are scoped clearly before launch, tested on real devices, and delivered with 30 days of free support.
                     </div>
                   </div>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { Sparkles, Target, Eye, Compass, Shield, ArrowDown, Cpu, Globe, Rocket, CheckCircle2, Terminal } from 'lucide-react';
+import { Target, Eye, CheckCircle2 } from 'lucide-react';
 import { FinalCTA } from '../components/FinalCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { TitanIcon } from '../components/TitanLogo';
 
 export const MissionVisionPage: React.FC = () => {
   usePageSEO({
@@ -67,51 +68,51 @@ export const MissionVisionPage: React.FC = () => {
   ];
 
   return (
-    <div id="mission-vision-root" className="min-h-screen bg-[#06080d] text-slate-100 pt-28">
-      {/* 1. HERO */}
-      <section className="relative py-20 sm:py-28 border-b border-white/[0.06] overflow-hidden text-center">
-        <div className="absolute inset-0 grid-pattern opacity-35 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-blue-600/15 rounded-full blur-[150px] pointer-events-none" />
+    <div id="mission-vision-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      {/* 1. HERO (Dark Premium Navy) */}
+      <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden text-center">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 text-xs font-mono text-blue-400 uppercase tracking-widest mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest mb-6">
+            <TitanIcon className="w-4 h-4" />
             <span>Strategic Foundations</span>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
             Our Mission & Vision
           </h1>
 
-          <p className="text-xl sm:text-2xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-[#EAF7FF]/90 font-normal leading-relaxed max-w-3xl mx-auto">
             Building useful technology today while creating a bigger vision for tomorrow.
           </p>
         </div>
       </section>
 
-      {/* 2. OUR MISSION */}
-      <section id="our-mission-section" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/[0.06]">
+      {/* 2. OUR MISSION (Clean White Section) */}
+      <section id="our-mission-section" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 font-semibold uppercase">
-              <Target className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono text-[#0B1F4B] font-bold uppercase">
+              <Target className="w-4 h-4 text-[#00D1FF]" />
               <span>Current Purpose</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
               Our Mission
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-[#071A33] font-medium leading-relaxed">
               TITAN's mission is to create useful, accessible, modern digital solutions that help businesses use technology more effectively.
             </p>
 
-            <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#536477] leading-relaxed">
               We bridge the gap between complex software advances and concrete business applications. Rather than chasing fleeting tech jargon, our engineering practice is dedicated to building robust software systems that reduce friction, automate workflows, and operate reliably every single day.
             </p>
 
-            <div className="p-4 rounded-xl bg-slate-900/50 border border-white/[0.08] text-xs text-slate-300">
-              <div className="text-blue-400 font-semibold mb-1">Our Core Commitment:</div>
+            <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs text-[#071A33]">
+              <div className="text-[#0B1F4B] font-bold mb-1">Our Core Commitment:</div>
               "Practical engineering delivering measurable operational clarity for real businesses."
             </div>
           </div>
@@ -121,16 +122,16 @@ export const MissionVisionPage: React.FC = () => {
               {missionTenets.map((tenet, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-blue-500/30 transition-all space-y-2"
+                  className="card-titan-light p-5 space-y-2"
                 >
-                  <div className="flex items-center gap-2 text-blue-400 font-mono text-xs font-semibold">
-                    <CheckCircle2 className="w-4 h-4 text-blue-400" />
-                    <span>TENET 0{idx + 1}</span>
+                  <div className="flex items-center gap-2 text-[#00D1FF] font-mono text-xs font-bold">
+                    <CheckCircle2 className="w-4 h-4 text-[#00D1FF]" />
+                    <span className="text-[#0B1F4B]">TENET 0{idx + 1}</span>
                   </div>
-                  <h3 className="font-display text-base font-bold text-white">
+                  <h3 className="font-display text-base font-bold text-[#071A33]">
                     {tenet.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
                     {tenet.desc}
                   </p>
                 </div>
@@ -140,30 +141,30 @@ export const MissionVisionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. OUR VISION */}
-      <section id="our-vision-section" className="py-20 sm:py-28 bg-[#04060b] border-b border-white/[0.06]">
+      {/* 3. OUR VISION (Deep Navy Background) */}
+      <section id="our-vision-section" className="py-20 sm:py-28 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-400 font-semibold uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] font-bold uppercase">
                 <Eye className="w-4 h-4" />
                 <span>Long-Term Horizon</span>
               </div>
 
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
                 Our Vision
               </h2>
 
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-[#EAF7FF] leading-relaxed font-normal">
                 TITAN's vision is to become a technology company known for building powerful digital systems, AI solutions, intelligent agents, automation tools, and other advanced technologies.
               </p>
 
-              <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-[#8FA0BA] leading-relaxed">
                 As we deliver targeted solutions for businesses today, we are systematically investing our engineering bandwidth into the future. Our trajectory aims at creating scalable software products, sophisticated agentic runtimes, and resilient automation platforms that empower businesses at scale.
               </p>
 
-              <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-500/20 text-xs text-slate-300 leading-relaxed">
-                <strong className="text-blue-400 block font-mono uppercase mb-1">
+              <div className="p-4 rounded-xl bg-[#0B1F4B] border border-[#00D1FF]/30 text-xs text-[#EAF7FF] leading-relaxed">
+                <strong className="text-[#00D1FF] block font-mono uppercase mb-1">
                   Clarifying Current vs. Future Scope
                 </strong>
                 We are transparent about where we stand: today, we are a focused digital solutions agency delivering production websites, agents, and automations. Our vision represents our intentional long-term direction and ongoing research, not premature claims.
@@ -175,16 +176,16 @@ export const MissionVisionPage: React.FC = () => {
                 {visionTenets.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-blue-500/30 flex items-start gap-4 transition-all"
+                    className="card-titan-dark p-4 flex items-start gap-4"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 font-mono text-xs font-bold text-blue-400 mt-0.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#00D1FF]/15 border border-[#00D1FF]/30 flex items-center justify-center shrink-0 font-mono text-xs font-bold text-[#00D1FF] mt-0.5">
                       {idx + 1}
                     </div>
                     <div>
                       <h3 className="font-display text-base font-bold text-white mb-1">
                         {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#8FA0BA] leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -196,64 +197,66 @@ export const MissionVisionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. WHAT WE BELIEVE */}
-      <section id="what-we-believe-section" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-white/[0.06]">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
-            Guiding Philosophy
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
-            What We Believe
-          </h2>
-          <p className="text-slate-300 text-base leading-relaxed">
-            The core principles that govern how TITAN designs software, selects technology stacks, and handles client partnerships.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {beliefs.map((belief, i) => (
-            <div
-              key={i}
-              className={`p-7 rounded-2xl bg-slate-900/40 border border-white/[0.08] hover:border-blue-500/40 transition-colors flex flex-col justify-between ${
-                i === 4 ? 'md:col-span-2 lg:col-span-1' : ''
-              }`}
-            >
-              <div>
-                <span className="text-xs font-mono font-bold text-blue-400 px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 mb-4 inline-block">
-                  PRINCIPLE 0{i + 1}
-                </span>
-
-                <h3 className="font-display text-xl font-bold text-white mb-3">
-                  {belief.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                  {belief.desc}
-                </p>
-              </div>
-
-              <div className="pt-6 border-t border-white/[0.06] mt-6 text-[10px] font-mono text-slate-500 uppercase">
-                TITAN STANDARD
-              </div>
+      {/* 4. WHAT WE BELIEVE (Clean Ice Blue Background) */}
+      <section id="what-we-believe-section" className="py-20 sm:py-28 bg-[#EAF7FF]/60 border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
+              Guiding Philosophy
             </div>
-          ))}
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight mb-4">
+              What We Believe
+            </h2>
+            <p className="text-[#536477] text-base leading-relaxed">
+              The core principles that govern how TITAN designs software, selects technology stacks, and handles client partnerships.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {beliefs.map((belief, i) => (
+              <div
+                key={i}
+                className={`card-titan-light p-7 flex flex-col justify-between ${
+                  i === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+                }`}
+              >
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#0B1F4B] px-2.5 py-1 rounded-lg bg-[#EAF7FF] border border-[#3BA9FF]/30 mb-4 inline-block">
+                    PRINCIPLE 0{i + 1}
+                  </span>
+
+                  <h3 className="font-display text-xl font-bold text-[#071A33] mb-3">
+                    {belief.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                    {belief.desc}
+                  </p>
+                </div>
+
+                <div className="pt-5 border-t border-slate-100 mt-6 text-[10px] font-mono text-[#00D1FF] font-semibold uppercase">
+                  TITAN STANDARD
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 5. WHAT WE WANT TO BUILD: Visual Timeline / Roadmap */}
-      <section id="roadmap-section" className="py-20 sm:py-28 bg-[#04060a] border-b border-white/[0.06]">
+      {/* 5. WHAT WE WANT TO BUILD: Visual Roadmap (Deep Navy) */}
+      <section id="roadmap-section" className="py-20 sm:py-28 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-2">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
               Technological Trajectory
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
               What We Want to Build
             </h2>
-            <p className="text-slate-300 text-base leading-relaxed">
+            <p className="text-[#8FA0BA] text-base leading-relaxed">
               A transparent view of our evolution: active production systems today, near-term platform expansions, and our long-term research horizon.
             </p>
-            <div className="mt-4 text-xs font-mono text-blue-400 px-3 py-1 inline-block rounded-full bg-blue-500/10 border border-blue-500/20">
+            <div className="mt-4 text-xs font-mono text-[#00D1FF] px-3 py-1 inline-block rounded-full bg-white/[0.06] border border-[#00D1FF]/30">
               * The "Next" and "Future" tiers represent TITAN's vision and direction, not current products.
             </div>
           </div>
@@ -261,13 +264,13 @@ export const MissionVisionPage: React.FC = () => {
           {/* Timeline Cards Container */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative">
             {/* Tier 1: TODAY */}
-            <div className="relative rounded-2xl bg-gradient-to-b from-slate-900/80 to-[#070b14]/90 border border-blue-500/40 p-7 shadow-[0_0_30px_rgba(37,99,235,0.15)] flex flex-col justify-between">
+            <div className="relative rounded-2xl bg-gradient-to-b from-[#0B1F4B] to-[#04142E] border border-[#00D1FF]/40 p-7 shadow-[0_0_30px_rgba(0,209,255,0.15)] flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/[0.08]">
-                  <span className="text-xs font-mono font-bold text-blue-400 tracking-wider uppercase">
+                  <span className="text-xs font-mono font-bold text-[#00D1FF] tracking-wider uppercase">
                     STAGE 01
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#00D1FF]/15 text-[#00D1FF] border border-[#00D1FF]/30">
                     LIVE TODAY
                   </span>
                 </div>
@@ -276,47 +279,47 @@ export const MissionVisionPage: React.FC = () => {
                   Today
                 </h3>
 
-                <p className="text-xs text-slate-400 mb-6">
+                <p className="text-xs text-[#8FA0BA] mb-6">
                   Active production systems and services delivered directly to businesses:
                 </p>
 
-                <ul className="space-y-3 text-sm text-slate-200">
-                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                <ul className="space-y-3 text-sm text-[#EAF7FF]">
+                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF]" />
                     <span className="font-semibold">Websites</span>
                   </li>
-                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF]" />
                     <span className="font-semibold">AI Agents</span>
                   </li>
-                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF]" />
                     <span className="font-semibold">Voice Agents</span>
                   </li>
-                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF]" />
                     <span className="font-semibold">Chatbots</span>
                   </li>
-                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF]" />
                     <span className="font-semibold">Business Automation</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-slate-400">
+              <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#00D1FF] font-semibold">
                 STATUS: DEPLOYING ACTIVELY
               </div>
             </div>
 
             {/* Tier 2: NEXT */}
-            <div className="relative rounded-2xl bg-gradient-to-b from-slate-900/60 to-[#070b14]/70 border border-white/[0.12] p-7 flex flex-col justify-between">
+            <div className="relative rounded-2xl bg-[#0B1F4B]/60 border border-white/[0.12] p-7 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/[0.08]">
-                  <span className="text-xs font-mono font-bold text-slate-400 tracking-wider uppercase">
+                  <span className="text-xs font-mono font-bold text-[#8FA0BA] tracking-wider uppercase">
                     STAGE 02
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-blue-500/10 text-blue-300 border border-blue-500/25">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-[#3BA9FF]/10 text-[#3BA9FF] border border-[#3BA9FF]/25">
                     DEVELOPMENT HORIZON
                   </span>
                 </div>
@@ -325,43 +328,43 @@ export const MissionVisionPage: React.FC = () => {
                   Next
                 </h3>
 
-                <p className="text-xs text-slate-400 mb-6">
+                <p className="text-xs text-[#8FA0BA] mb-6">
                   Expanding from custom agency builds into repeatable platforms and advanced runtimes:
                 </p>
 
-                <ul className="space-y-3 text-sm text-slate-300">
+                <ul className="space-y-3 text-sm text-[#EAF7FF]/80">
                   <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#3BA9FF]" />
                     <span>More advanced AI systems</span>
                   </li>
                   <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#3BA9FF]" />
                     <span>Custom platforms</span>
                   </li>
                   <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#3BA9FF]" />
                     <span>Intelligent business tools</span>
                   </li>
                   <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#3BA9FF]" />
                     <span>Advanced automation</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-slate-500">
+              <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#8FA0BA]">
                 STATUS: R&D & PROTOTYPING
               </div>
             </div>
 
             {/* Tier 3: FUTURE */}
-            <div className="relative rounded-2xl bg-gradient-to-b from-slate-900/40 to-[#070b14]/50 border border-white/[0.08] p-7 flex flex-col justify-between">
+            <div className="relative rounded-2xl bg-[#04142E] border border-white/[0.08] p-7 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/[0.08]">
-                  <span className="text-xs font-mono font-bold text-slate-500 tracking-wider uppercase">
+                  <span className="text-xs font-mono font-bold text-[#8FA0BA] tracking-wider uppercase">
                     STAGE 03
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-white/[0.05] text-slate-400 border border-white/[0.1]">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-white/[0.05] text-[#8FA0BA] border border-white/[0.1]">
                     FUTURE VISION
                   </span>
                 </div>
@@ -370,11 +373,11 @@ export const MissionVisionPage: React.FC = () => {
                   Future
                 </h3>
 
-                <p className="text-xs text-slate-400 mb-6">
+                <p className="text-xs text-[#8FA0BA] mb-6">
                   Long-term aspiration as a foundational technology company:
                 </p>
 
-                <ul className="space-y-3 text-sm text-slate-400">
+                <ul className="space-y-3 text-sm text-[#8FA0BA]">
                   <li className="flex items-center gap-2.5 p-2 rounded-lg bg-white/[0.02] border border-white/[0.06]">
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
                     <span>Large-scale technology products</span>
@@ -394,7 +397,7 @@ export const MissionVisionPage: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-slate-500">
+              <div className="mt-8 pt-4 border-t border-white/[0.06] text-xs font-mono text-[#8FA0BA]">
                 STATUS: STRATEGIC NORTH STAR
               </div>
             </div>
@@ -402,25 +405,24 @@ export const MissionVisionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. THE TITAN MINDSET */}
-      <section id="titan-mindset-section" className="py-24 sm:py-32 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="p-8 sm:p-14 rounded-3xl bg-slate-900/40 border border-blue-500/20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-600/5 to-transparent pointer-events-none" />
-
-          <div className="text-xs font-mono uppercase tracking-widest text-blue-400 font-semibold mb-4">
-            Core Agency Doctrine
+      {/* 6. THE TITAN MINDSET (Clean White Section) */}
+      <section id="titan-mindset-section" className="py-20 sm:py-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="p-8 sm:p-14 rounded-3xl bg-gradient-to-b from-[#0B1F4B] to-[#04142E] text-white border border-[#00D1FF]/25 shadow-xl relative overflow-hidden">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] font-bold uppercase tracking-widest mb-4">
+            <TitanIcon className="w-4 h-4" />
+            <span>Core Agency Doctrine</span>
           </div>
 
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-8">
             Think Bigger. Build Smarter. <br />
-            <span className="text-blue-400">Keep Moving Forward.</span>
+            <span className="text-[#00D1FF]">Keep Moving Forward.</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-[#EAF7FF]/90 max-w-2xl mx-auto leading-relaxed font-normal">
             Technology is in a continuous state of evolution. At TITAN, our engineering mindset is built on constant learning, methodical experimentation, disciplined construction, and relentless improvement. We don't rely on complacency or yesterday's patterns—we engineer software designed for what's ahead.
           </p>
 
-          <div className="mt-10 flex items-center justify-center gap-8 text-xs font-mono text-slate-500 uppercase tracking-widest">
+          <div className="mt-10 flex items-center justify-center gap-8 text-xs font-mono text-[#00D1FF] font-semibold uppercase tracking-widest">
             <span>DISCIPLINE</span>
             <span>•</span>
             <span>CRAFTSMANSHIP</span>

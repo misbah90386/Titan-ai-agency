@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="icWingLeft" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#3BA9FF"/>
+      <stop offset="35%" stop-color="#00D1FF"/>
+      <stop offset="70%" stop-color="#0B3C78"/>
+      <stop offset="100%" stop-color="#04142E"/>
+    </linearGradient>
+
+    <linearGradient id="icWingRight" x1="100%" y1="0%" x2="0%" y2="80%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="40%" stop-color="#2563EB"/>
+      <stop offset="85%" stop-color="#04142E"/>
+    </linearGradient>
+
+    <linearGradient id="icStemLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="30%" stop-color="#0080FF"/>
+      <stop offset="100%" stop-color="#071A33"/>
+    </linearGradient>
+
+    <linearGradient id="icStemRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3BA9FF"/>
+      <stop offset="40%" stop-color="#0052CC"/>
+      <stop offset="100%" stop-color="#04142E"/>
+    </linearGradient>
+
+    <linearGradient id="icOuterRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00B4D8"/>
+      <stop offset="50%" stop-color="#0077B6"/>
+      <stop offset="100%" stop-color="#023E8A"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(-250, -100)">
+    <!-- Outer Crescent Arcs -->
+    <path d="M 480 148 C 360 160 270 260 270 380 C 270 470 320 546 395 586 C 365 520 355 450 365 375 C 372 315 408 248 460 200 Z"
+          fill="url(#icWingLeft)"/>
+    <path d="M 395 586 C 350 530 330 450 330 380 C 330 280 390 200 480 160 C 470 190 410 250 395 340 C 385 410 405 510 440 560 Z"
+          fill="url(#icOuterRing)" opacity="0.6"/>
+
+    <path d="M 520 148 C 640 160 730 260 730 380 C 730 470 680 546 605 586 C 635 520 645 450 635 375 C 628 315 592 248 540 200 Z"
+          fill="url(#icWingRight)"/>
+    <path d="M 605 586 C 650 530 670 450 670 380 C 670 280 610 200 520 160 C 530 190 590 250 605 340 C 615 410 595 510 560 560 Z"
+          fill="url(#icOuterRing)" opacity="0.6"/>
+
+    <path d="M 500 145 L 470 195 L 530 195 Z" fill="#00D1FF" opacity="0.9"/>
+
+    <!-- Central "T" Wings -->
+    <path d="M 500 270 L 320 270 L 260 275 L 360 325 L 500 325 Z" fill="url(#icWingLeft)"/>
+    <path d="M 360 325 L 435 480 L 495 510 L 495 325 Z" fill="url(#icStemLeft)"/>
+    <path d="M 500 270 L 260 275 L 360 325 Z" fill="#00D1FF" opacity="0.4"/>
+
+    <path d="M 500 270 L 680 270 L 740 275 L 640 325 L 500 325 Z" fill="url(#icWingRight)"/>
+    <path d="M 640 325 L 565 480 L 505 510 L 505 325 Z" fill="url(#icStemRight)"/>
+    <path d="M 500 270 L 740 275 L 640 325 Z" fill="#3BA9FF" opacity="0.3"/>
+
+    <!-- Center Column -->
+    <path d="M 495 270 L 435 325 L 435 490 L 495 595 Z" fill="url(#icStemLeft)"/>
+    <path d="M 495 270 L 450 320 L 450 470 L 495 550 Z" fill="#00D1FF" opacity="0.5"/>
+
+    <path d="M 505 270 L 565 325 L 565 490 L 505 595 Z" fill="url(#icStemRight)"/>
+    <path d="M 505 270 L 550 320 L 550 470 L 505 550 Z" fill="#3BA9FF" opacity="0.35"/>
+
+    <line x1="500" y1="268" x2="500" y2="598" stroke="#04142E" stroke-width="4"/>
+    <line x1="500" y1="270" x2="500" y2="400" stroke="#00D1FF" stroke-width="2"/>
+  </g>
+</svg>
