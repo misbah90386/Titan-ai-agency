@@ -30,7 +30,7 @@ export const RelatedArticles: React.FC<RelatedArticlesProps> = ({ currentPost, a
             <Sparkles className="w-3.5 h-3.5" />
             <span>FURTHER READING</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-white">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-[#071A33]">
             Related Insights &amp; Articles
           </h2>
         </div>

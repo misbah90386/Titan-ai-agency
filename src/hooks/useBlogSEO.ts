@@ -56,18 +56,24 @@ export function useBlogSEO(post: NormalizedBlogPost | null) {
     }
 
     // 2. OpenGraph Meta Tags
+    const ogImageUrl = post.featuredImage
+      ? post.featuredImage.startsWith('http')
+        ? post.featuredImage
+        : `${origin}${post.featuredImage}`
+      : defaultImage;
+
     setMetaTag('meta[property="og:title"]', 'property', 'og:title', post.meta.ogTitle || pageTitle);
     setMetaTag('meta[property="og:description"]', 'property', 'og:description', post.meta.ogDescription || metaDescription);
     setMetaTag('meta[property="og:type"]', 'property', 'og:type', post.meta.ogType || 'article');
     setMetaTag('meta[property="og:url"]', 'property', 'og:url', post.meta.ogUrl || currentUrl);
     setMetaTag('meta[property="og:site_name"]', 'property', 'og:site_name', post.meta.ogSiteName || 'Titan AI Agency');
-    setMetaTag('meta[property="og:image"]', 'property', 'og:image', post.featuredImage || defaultImage);
+    setMetaTag('meta[property="og:image"]', 'property', 'og:image', ogImageUrl);
 
     // 3. Twitter Card
     setMetaTag('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image');
     setMetaTag('meta[name="twitter:title"]', 'name', 'twitter:title', post.meta.ogTitle || pageTitle);
     setMetaTag('meta[name="twitter:description"]', 'name', 'twitter:description', post.meta.ogDescription || metaDescription);
-    setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', post.featuredImage || defaultImage);
+    setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', ogImageUrl);
 
     // 4. Article Specific Metadata
     if (post.publishedAt) {

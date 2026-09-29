@@ -83,6 +83,12 @@
 
   <!-- Insights / Blog Articles -->
   <url>
+    <loc>https://titanaiagency.netlify.app/blog/why-every-business-needs-a-professional-website-2026</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://titanaiagency.netlify.app/blog/what-are-ai-agents-and-when-does-your-business-need-one</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>

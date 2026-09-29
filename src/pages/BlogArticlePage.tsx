@@ -265,7 +265,7 @@ export const BlogArticlePage: React.FC = () => {
           <div className="mb-12 rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100 aspect-[16/9] w-full">
             <img
               src={post.featuredImage}
-              alt={post.title}
+              alt={`${post.title} – Professional business website, SEO visibility, and AI automation guide by TITAN AI Agency`}
               className="w-full h-full object-cover object-center"
             />
           </div>
