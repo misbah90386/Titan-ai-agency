@@ -1,5 +1,6 @@
 import React from 'react';
 import { ExternalLink, ArrowRight, Building, Cake, UtensilsCrossed, CheckCircle2 } from 'lucide-react';
+import { FadeIn } from './motion/MotionComponents';
 
 export interface ProjectItem {
   id: string;
@@ -99,43 +100,46 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
-        <div className="max-w-3xl mb-14">
-          <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-            {badge}
+        <FadeIn direction="up">
+          <div className="max-w-3xl mb-14">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
+              {badge}
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+              {title}
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
+              {subtitle}
+            </p>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
-            {title}
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
-            {subtitle}
-          </p>
-        </div>
+        </FadeIn>
 
         {/* Projects Grid: 3 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {FEATURED_PROJECTS.map((project) => (
-            <div
-              key={project.id}
-              className="card-titan-light group flex flex-col p-5 sm:p-6 h-full"
-            >
-              {/* Browser-Style Frame */}
-              <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col">
-                
-                {/* Browser Chrome Header */}
-                <div className="flex items-center justify-between px-3 py-2 bg-[#0B1F4B] border-b border-white/[0.08] text-[11px] font-mono text-slate-300">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-rose-500/80" />
-                    <span className="w-2 h-2 rounded-full bg-amber-500/80" />
-                    <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+          {FEATURED_PROJECTS.map((project, idx) => (
+            <FadeIn key={project.id} delay={idx * 0.1} direction="up" distance={35} duration={0.7}>
+              <div
+                className="card-titan-light group flex flex-col p-5 sm:p-6 h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_-4px_rgba(0,209,255,0.22)] transition-all duration-300"
+              >
+                {/* Browser-Style Frame */}
+                <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/40 transition-colors duration-300">
+                  
+                  {/* Browser Chrome Header */}
+                  <div className="flex items-center justify-between px-3 py-2 bg-[#0B1F4B] border-b border-white/[0.08] text-[11px] font-mono text-slate-300">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-rose-500/80" />
+                      <span className="w-2 h-2 rounded-full bg-amber-500/80" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                    </div>
+                    <div className="px-2 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px] sm:max-w-[190px]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse shrink-0" />
+                      <span className="truncate">{project.domain}</span>
+                    </div>
+                    <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Live Demo</span>
                   </div>
-                  <div className="px-2 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px] sm:max-w-[190px]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse shrink-0" />
-                    <span className="truncate">{project.domain}</span>
-                  </div>
-                  <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Live Demo</span>
-                </div>
 
-                {/* Project Mockup Representation */}
+                  {/* Project Mockup Representation with 1.04 zoom on card hover */}
+                  <div className="overflow-hidden transition-transform duration-300 group-hover:scale-[1.04]">
                 {project.mockupType === 'real-estate' ? (
                   <div className="p-4 space-y-3 bg-gradient-to-b from-[#071A33] to-[#04142E] flex flex-col justify-between min-h-[210px] text-white">
                     <div className="flex items-center justify-between pb-2 border-b border-white/10">
@@ -257,6 +261,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     </div>
                   </div>
                 )}
+                  </div>
               </div>
 
               {/* Project Details */}
@@ -268,7 +273,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                   <span className="text-[#3BA9FF] font-medium">{project.category}</span>
                 </div>
 
-                <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#0B1F4B] transition-colors">
+                <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#00D1FF] group-hover:-translate-y-0.5 transition-all duration-250">
                   {project.name}
                 </h3>
 
@@ -292,25 +297,26 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-titan-primary w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-sm"
+                    className="btn-titan-primary w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-sm group/btn"
                   >
                     <span>View Live Demo</span>
-                    <ExternalLink className="w-4 h-4 stroke-[2.5]" />
+                    <ExternalLink className="w-4 h-4 stroke-[2.5] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-250" />
                   </a>
 
                   <a
                     href={getWhatsAppUrl(project.whatsappMessage)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-titan-secondary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs"
+                    className="btn-titan-secondary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs group/wa"
                   >
                     <span>Discuss a Similar Project</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF] group-hover/wa:translate-x-1 transition-transform duration-250" />
                   </a>
                 </div>
 
               </div>
             </div>
+            </FadeIn>
           ))}
         </div>
 

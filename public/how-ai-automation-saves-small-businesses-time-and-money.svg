@@ -1,0 +1,350 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020814"/>
+      <stop offset="40%" stop-color="#041228"/>
+      <stop offset="80%" stop-color="#071938"/>
+      <stop offset="100%" stop-color="#09214A"/>
+    </linearGradient>
+
+    <!-- Electric Cyan - Sky Blue Gradients -->
+    <linearGradient id="cyan-blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#3BA9FF"/>
+    </linearGradient>
+
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071A36" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#030E20" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <linearGradient id="panel-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#09234A"/>
+      <stop offset="100%" stop-color="#04132B"/>
+    </linearGradient>
+
+    <!-- Glowing Node Gradients -->
+    <linearGradient id="node-glow-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+
+    <linearGradient id="node-glow-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+
+    <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D1FF" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#38BDF8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#00D1FF" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Authentic TITAN Emblem Gradients -->
+    <linearGradient id="wingGradLeft" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" stop-color="#3BA9FF"/>
+      <stop offset="35%" stop-color="#00D1FF"/>
+      <stop offset="70%" stop-color="#0B3C78"/>
+      <stop offset="100%" stop-color="#04142E"/>
+    </linearGradient>
+    <linearGradient id="wingGradRight" x1="100%" y1="0%" x2="0%" y2="80%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="40%" stop-color="#2563EB"/>
+      <stop offset="85%" stop-color="#04142E"/>
+    </linearGradient>
+    <linearGradient id="stemLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D1FF"/>
+      <stop offset="30%" stop-color="#0080FF"/>
+      <stop offset="100%" stop-color="#071A33"/>
+    </linearGradient>
+    <linearGradient id="stemRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3BA9FF"/>
+      <stop offset="40%" stop-color="#0052CC"/>
+      <stop offset="100%" stop-color="#04142E"/>
+    </linearGradient>
+    <linearGradient id="outerRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00B4D8"/>
+      <stop offset="50%" stop-color="#0077B6"/>
+      <stop offset="100%" stop-color="#023E8A"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="cyan-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="panel-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="25" flood-color="#000000" flood-opacity="0.75"/>
+    </filter>
+  </defs>
+
+  <!-- Base Background -->
+  <rect width="1200" height="675" fill="url(#bg-grad)"/>
+
+  <!-- Tech Grid Background Pattern -->
+  <g opacity="0.08" stroke="#3BA9FF" stroke-width="1">
+    <line x1="0" y1="75" x2="1200" y2="75" />
+    <line x1="0" y1="150" x2="1200" y2="150" />
+    <line x1="0" y1="225" x2="1200" y2="225" />
+    <line x1="0" y1="300" x2="1200" y2="300" />
+    <line x1="0" y1="375" x2="1200" y2="375" />
+    <line x1="0" y1="450" x2="1200" y2="450" />
+    <line x1="0" y1="525" x2="1200" y2="525" />
+    <line x1="0" y1="600" x2="1200" y2="600" />
+    <line x1="100" y1="0" x2="100" y2="675" />
+    <line x1="200" y1="0" x2="200" y2="675" />
+    <line x1="300" y1="0" x2="300" y2="675" />
+    <line x1="400" y1="0" x2="400" y2="675" />
+    <line x1="500" y1="0" x2="500" y2="675" />
+    <line x1="600" y1="0" x2="600" y2="675" />
+    <line x1="700" y1="0" x2="700" y2="675" />
+    <line x1="800" y1="0" x2="800" y2="675" />
+    <line x1="900" y1="0" x2="900" y2="675" />
+    <line x1="1000" y1="0" x2="1000" y2="675" />
+    <line x1="1100" y1="0" x2="1100" y2="675" />
+  </g>
+
+  <!-- Ambient Glowing Orbs -->
+  <circle cx="200" cy="180" r="180" fill="#00D1FF" opacity="0.08" filter="url(#soft-glow)"/>
+  <circle cx="1020" cy="480" r="220" fill="#3BA9FF" opacity="0.07" filter="url(#soft-glow)"/>
+  <circle cx="600" cy="380" r="250" fill="#00D1FF" opacity="0.06" filter="url(#soft-glow)"/>
+
+  <!-- Top Brand Navigation Bar -->
+  <g transform="translate(60, 42)">
+    <!-- TITAN AI AGENCY Authentic Logo Lockup -->
+    <g transform="translate(0, 0)">
+      <!-- Outer Hex Ring Icon -->
+      <polygon points="18,3 31,10.5 31,25.5 18,33 5,25.5 5,10.5" fill="none" stroke="url(#outerRingGrad)" stroke-width="2.2" opacity="0.9"/>
+      <!-- Inner Emblem Shapes -->
+      <polygon points="18,5 29,11.5 24,14.5 18,11 12,14.5 7,11.5" fill="url(#wingGradLeft)"/>
+      <polygon points="12,17 18,13.5 18,28 14,26" fill="url(#stemLeft)"/>
+      <polygon points="24,17 18,13.5 18,28 22,26" fill="url(#stemRight)"/>
+      <polygon points="18,23 22,26 18,31 14,26" fill="#00D1FF"/>
+      
+      <!-- Wordmark -->
+      <text x="44" y="21" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" font-weight="900" font-size="16" fill="#FFFFFF" letter-spacing="3.5">TITAN</text>
+      <text x="110" y="21" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" font-weight="700" font-size="12" fill="#00D1FF" letter-spacing="2.5">AI AGENCY</text>
+    </g>
+
+    <!-- Category Pill Badge -->
+    <g transform="translate(930, -4)">
+      <rect x="0" y="0" width="150" height="28" rx="14" fill="#041226" stroke="#00D1FF" stroke-width="1.2" stroke-opacity="0.5"/>
+      <circle cx="16" cy="14" r="3.5" fill="#00D1FF" filter="url(#cyan-glow)"/>
+      <text x="27" y="18" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#00D1FF" letter-spacing="1.5">AI AUTOMATION</text>
+    </g>
+  </g>
+
+  <!-- Main Headline Zone -->
+  <g transform="translate(60, 118)">
+    <text x="0" y="0" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" font-weight="900" font-size="35" fill="#FFFFFF" letter-spacing="-0.5">
+      HOW AI AUTOMATION SAVES
+    </text>
+    <text x="0" y="44" font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" font-weight="900" font-size="35" fill="url(#cyan-blue-grad)" letter-spacing="-0.5">
+      BUSINESSES TIME &amp; MONEY
+    </text>
+
+    <!-- Subtitle / Value Drivers Strip -->
+    <g transform="translate(0, 72)">
+      <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="600" fill="#A5C4E8" letter-spacing="1">
+        <tspan fill="#00D1FF">●</tspan> Automate  <tspan fill="#3BA9FF" dx="10">●</tspan> Respond Faster  <tspan fill="#00D1FF" dx="10">●</tspan> Reduce Repetitive Work  <tspan fill="#3BA9FF" dx="10">●</tspan> Scale Profitably
+      </text>
+    </g>
+  </g>
+
+  <!-- Central Automation Dashboard / Workflow Hub -->
+  <g transform="translate(60, 248)" filter="url(#panel-shadow)">
+    <!-- Main Hub Glass Card -->
+    <rect x="0" y="0" width="1080" height="380" rx="20" fill="url(#card-grad)" stroke="#00D1FF" stroke-width="1.5" stroke-opacity="0.35"/>
+
+    <!-- Dashboard Header Bar -->
+    <rect x="0" y="0" width="1080" height="42" rx="20" fill="#030C1C" opacity="0.8"/>
+    <rect x="0" y="24" width="1080" height="18" fill="#030C1C" opacity="0.8"/>
+    <line x1="0" y1="42" x2="1080" y2="42" stroke="#00D1FF" stroke-width="1" stroke-opacity="0.2"/>
+
+    <!-- Window Controls -->
+    <circle cx="22" cy="21" r="5" fill="#EF4444" opacity="0.85"/>
+    <circle cx="38" cy="21" r="5" fill="#F59E0B" opacity="0.85"/>
+    <circle cx="54" cy="21" r="5" fill="#10B981" opacity="0.85"/>
+    
+    <text x="80" y="26" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#8FA0BA">TITAN WORKFLOW ENGINE · REAL-TIME ENTERPRISE DISPATCH</text>
+    
+    <!-- Status Pill -->
+    <g transform="translate(930, 11)">
+      <rect width="130" height="20" rx="10" fill="#041A33" stroke="#10B981" stroke-width="1" stroke-opacity="0.6"/>
+      <circle cx="12" cy="10" r="3" fill="#10B981"/>
+      <text x="22" y="13.5" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#34D399" letter-spacing="1">PIPELINE ACTIVE</text>
+    </g>
+
+    <!-- Connecting Bus Line Across Workflow Stages -->
+    <g transform="translate(0, 130)">
+      <line x1="120" y1="0" x2="960" y2="0" stroke="url(#line-grad)" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.7"/>
+      <!-- Flow Direction Arrows -->
+      <polygon points="310,-4 320,0 310,4" fill="#00D1FF"/>
+      <polygon points="520,-4 530,0 520,4" fill="#00D1FF"/>
+      <polygon points="730,-4 740,0 730,4" fill="#00D1FF"/>
+    </g>
+
+    <!-- Stage 1: Inbound Lead (Website / Form) -->
+    <g transform="translate(60, 68)">
+      <rect x="0" y="0" width="170" height="125" rx="14" fill="url(#panel-grad)" stroke="#3BA9FF" stroke-width="1.2" stroke-opacity="0.4"/>
+      <!-- Icon Container -->
+      <rect x="14" y="14" width="36" height="36" rx="8" fill="#041630" stroke="#00D1FF" stroke-width="1"/>
+      <!-- Globe / Form Icon -->
+      <circle cx="32" cy="32" r="10" fill="none" stroke="#00D1FF" stroke-width="1.5"/>
+      <ellipse cx="32" cy="32" rx="4" ry="10" fill="none" stroke="#00D1FF" stroke-width="1.2"/>
+      <line x1="22" y1="32" x2="42" y2="32" stroke="#00D1FF" stroke-width="1.2"/>
+
+      <text x="58" y="28" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#00D1FF" letter-spacing="1">STEP 01</text>
+      <text x="58" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">Web Lead</text>
+
+      <text x="14" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#C2D8F2">New inquiry submitted</text>
+      <text x="14" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7E9BB8">Form · Quote Request</text>
+
+      <rect x="14" y="100" width="142" height="15" rx="3" fill="#041224"/>
+      <text x="20" y="111" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#38BDF8">Event: instant_trigger</text>
+    </g>
+
+    <!-- Stage 2: Omnichannel Contact (WhatsApp / Email) -->
+    <g transform="translate(270, 68)">
+      <rect x="0" y="0" width="170" height="125" rx="14" fill="url(#panel-grad)" stroke="#00D1FF" stroke-width="1.2" stroke-opacity="0.5"/>
+      <rect x="14" y="14" width="36" height="36" rx="8" fill="#041630" stroke="#22C55E" stroke-width="1"/>
+      <!-- WhatsApp/Chat Bubble Icon -->
+      <path d="M 26 26 C 26 23 38 23 38 28 C 38 31 34 32 32 35 L 28 38 L 29 35 C 27 34 26 31 26 26 Z" fill="#22C55E"/>
+      <circle cx="31" cy="29" r="1.5" fill="#041630"/>
+      <circle cx="34" cy="29" r="1.5" fill="#041630"/>
+
+      <text x="58" y="28" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#22C55E" letter-spacing="1">STEP 02</text>
+      <text x="58" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">WhatsApp &amp; Msg</text>
+
+      <text x="14" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#C2D8F2">Instant automated reply</text>
+      <text x="14" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7E9BB8">Direct WhatsApp Sync</text>
+
+      <rect x="14" y="100" width="142" height="15" rx="3" fill="#041224"/>
+      <text x="20" y="111" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#22C55E">Status: delivered (0.2s)</text>
+    </g>
+
+    <!-- Stage 3: AI Engine / Triage & Qualifier (Centerpiece) -->
+    <g transform="translate(480, 58)">
+      <rect x="0" y="0" width="180" height="145" rx="16" fill="#072044" stroke="#00D1FF" stroke-width="1.8" filter="url(#cyan-glow)"/>
+      <rect x="14" y="14" width="40" height="40" rx="10" fill="#020E22" stroke="#00D1FF" stroke-width="1.4"/>
+      
+      <!-- AI Brain / Chip Nodes Icon -->
+      <rect x="26" y="26" width="16" height="16" rx="3" fill="none" stroke="#00D1FF" stroke-width="1.5"/>
+      <line x1="22" y1="30" x2="26" y2="30" stroke="#3BA9FF" stroke-width="1.5"/>
+      <line x1="22" y1="38" x2="26" y2="38" stroke="#3BA9FF" stroke-width="1.5"/>
+      <line x1="42" y1="30" x2="46" y2="30" stroke="#3BA9FF" stroke-width="1.5"/>
+      <line x1="42" y1="38" x2="46" y2="38" stroke="#3BA9FF" stroke-width="1.5"/>
+      <circle cx="34" cy="34" r="3" fill="#00D1FF"/>
+
+      <text x="62" y="28" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#00D1FF" letter-spacing="1">CORE BRAIN</text>
+      <text x="62" y="44" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="900" fill="#FFFFFF">AI Qualifier</text>
+
+      <text x="14" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#EAF7FF">Intent classification</text>
+      <text x="14" y="92" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#9FBAD6">Auto-extracts client budget</text>
+      <text x="14" y="106" font-family="'JetBrains Mono', monospace" font-size="9" fill="#00D1FF">Score: 98% High-Intent</text>
+
+      <rect x="14" y="118" width="152" height="16" rx="4" fill="#031124" stroke="#00D1FF" stroke-width="0.8" stroke-opacity="0.4"/>
+      <text x="20" y="130" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#38BDF8">Route: Priority Sales</text>
+    </g>
+
+    <!-- Stage 4: CRM & Database Synchronization -->
+    <g transform="translate(690, 68)">
+      <rect x="0" y="0" width="170" height="125" rx="14" fill="url(#panel-grad)" stroke="#3BA9FF" stroke-width="1.2" stroke-opacity="0.4"/>
+      <rect x="14" y="14" width="36" height="36" rx="8" fill="#041630" stroke="#38BDF8" stroke-width="1"/>
+      
+      <!-- Database Cylinders Icon -->
+      <ellipse cx="32" cy="26" rx="8" ry="3" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
+      <path d="M 24 26 L 24 33 C 24 35 40 35 40 33 L 40 26" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
+      <path d="M 24 33 L 24 40 C 24 42 40 42 40 40 L 40 33" fill="none" stroke="#38BDF8" stroke-width="1.2"/>
+
+      <text x="58" y="28" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#38BDF8" letter-spacing="1">STEP 03</text>
+      <text x="58" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">CRM Database</text>
+
+      <text x="14" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#C2D8F2">Zero duplicate entry</text>
+      <text x="14" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7E9BB8">Sheets · HubSpot · SQL</text>
+
+      <rect x="14" y="100" width="142" height="15" rx="3" fill="#041224"/>
+      <text x="20" y="111" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#38BDF8">Record: synced_clean</text>
+    </g>
+
+    <!-- Stage 5: Calendar / Appointment Booking -->
+    <g transform="translate(890, 68)">
+      <rect x="0" y="0" width="150" height="125" rx="14" fill="url(#panel-grad)" stroke="#3BA9FF" stroke-width="1.2" stroke-opacity="0.4"/>
+      <rect x="14" y="14" width="36" height="36" rx="8" fill="#041630" stroke="#00D1FF" stroke-width="1"/>
+      
+      <!-- Calendar Icon -->
+      <rect x="24" y="25" width="16" height="14" rx="2" fill="none" stroke="#00D1FF" stroke-width="1.2"/>
+      <line x1="24" y1="29" x2="40" y2="29" stroke="#00D1FF" stroke-width="1"/>
+      <line x1="28" y1="23" x2="28" y2="26" stroke="#00D1FF" stroke-width="1.2"/>
+      <line x1="36" y1="23" x2="36" y2="26" stroke="#00D1FF" stroke-width="1.2"/>
+
+      <text x="58" y="28" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#00D1FF" letter-spacing="1">STEP 04</text>
+      <text x="58" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">Calendar Sync</text>
+
+      <text x="14" y="74" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="600" fill="#C2D8F2">Auto-booked slots</text>
+      <text x="14" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="#7E9BB8">Reminders Dispatched</text>
+
+      <rect x="14" y="100" width="122" height="15" rx="3" fill="#041224"/>
+      <text x="20" y="111" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#10B981">Confirmed: 11:00 AM</text>
+    </g>
+
+    <!-- Bottom Metrics & ROI Proof Bar -->
+    <g transform="translate(60, 225)">
+      <!-- Divider Line -->
+      <line x1="0" y1="0" x2="960" y2="0" stroke="#00D1FF" stroke-width="1" stroke-opacity="0.15"/>
+
+      <!-- Metric 1: Time Saved -->
+      <g transform="translate(30, 24)">
+        <text x="0" y="0" font-family="'Plus Jakarta Sans', sans-serif" font-size="32" font-weight="900" fill="#00D1FF">10+ Hrs</text>
+        <text x="0" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#FFFFFF">Saved Weekly Per Employee</text>
+        <text x="0" y="36" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#7E9BB8">No manual copy-pasting</text>
+      </g>
+
+      <!-- Metric 2: Response Speed -->
+      <g transform="translate(280, 24)">
+        <text x="0" y="0" font-family="'Plus Jakarta Sans', sans-serif" font-size="32" font-weight="900" fill="#38BDF8">&lt; 30 Sec</text>
+        <text x="0" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#FFFFFF">First Response Time</text>
+        <text x="0" y="36" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#7E9BB8">24/7/365 active capture</text>
+      </g>
+
+      <!-- Metric 3: Lead Retention -->
+      <g transform="translate(530, 24)">
+        <text x="0" y="0" font-family="'Plus Jakarta Sans', sans-serif" font-size="32" font-weight="900" fill="#00D1FF">+40%</text>
+        <text x="0" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#FFFFFF">Higher Inquiry Conversion</text>
+        <text x="0" y="36" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#7E9BB8">Zero dropped website leads</text>
+      </g>
+
+      <!-- Metric 4: Client Code Ownership -->
+      <g transform="translate(760, 24)">
+        <text x="0" y="0" font-family="'Plus Jakarta Sans', sans-serif" font-size="32" font-weight="900" fill="#10B981">100%</text>
+        <text x="0" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="700" fill="#FFFFFF">Direct IP &amp; Code Ownership</text>
+        <text x="0" y="36" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#7E9BB8">Built for your business stack</text>
+      </g>
+    </g>
+
+    <!-- Mini Real-Time Bar Graph on bottom right -->
+    <g transform="translate(940, 310)">
+      <rect x="0" y="28" width="8" height="24" rx="2" fill="#00D1FF" opacity="0.6"/>
+      <rect x="14" y="16" width="8" height="36" rx="2" fill="#38BDF8" opacity="0.8"/>
+      <rect x="28" y="22" width="8" height="30" rx="2" fill="#00D1FF" opacity="0.7"/>
+      <rect x="42" y="8" width="8" height="44" rx="2" fill="#00D1FF"/>
+      <rect x="56" y="2" width="8" height="50" rx="2" fill="#38BDF8"/>
+      <rect x="70" y="14" width="8" height="38" rx="2" fill="#10B981"/>
+    </g>
+
+  </g>
+</svg>

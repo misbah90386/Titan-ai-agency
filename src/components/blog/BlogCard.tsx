@@ -24,21 +24,33 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   })();
 
   return (
-    <article className="card-titan-light group relative flex flex-col h-full overflow-hidden">
+    <article className="card-titan-light group relative flex flex-col h-full overflow-hidden hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_-4px_rgba(0,209,255,0.22)] transition-all duration-300">
       {/* Featured Image Container */}
       <Link to={`/blog/${post.slug}`} className="relative block aspect-[16/9] w-full overflow-hidden bg-slate-100">
         <img
           src={post.featuredImage}
-          alt={post.title}
+          alt={
+            post.slug === 'how-ai-automation-saves-small-businesses-time-and-money'
+              ? 'AI automation for small businesses – TITAN AI Agency'
+              : post.slug === 'why-every-business-needs-a-professional-website-2026'
+              ? 'Professional business website in 2026 – TITAN AI Agency'
+              : post.title
+          }
           loading="lazy"
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          className={`w-full h-full object-cover object-center ${
+            post.slug === 'why-every-business-needs-a-professional-website-2026'
+              ? 'group-hover:scale-[1.02]'
+              : 'group-hover:scale-[1.04]'
+          } transition-transform duration-500`}
         />
         {/* Category Badge */}
-        <div className="absolute top-4 left-4 z-10">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#04142E]/85 text-[#00D1FF] border border-[#00D1FF]/30 backdrop-blur-md shadow-md">
-            {post.primaryCategory}
-          </span>
-        </div>
+        {post.slug !== 'why-every-business-needs-a-professional-website-2026' && (
+          <div className="absolute top-4 left-4 z-10">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#04142E]/85 text-[#00D1FF] border border-[#00D1FF]/30 backdrop-blur-md shadow-md">
+              {post.primaryCategory}
+            </span>
+          </div>
+        )}
       </Link>
 
       {/* Content Container */}
@@ -57,7 +69,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-display font-bold text-[#071A33] group-hover:text-[#0B1F4B] transition-colors line-clamp-2 mb-3 leading-snug">
+        <h3 className="text-xl font-display font-bold text-[#071A33] group-hover:text-[#00D1FF] transition-colors duration-250 line-clamp-2 mb-3 leading-snug">
           <Link to={`/blog/${post.slug}`}>
             {post.title}
           </Link>

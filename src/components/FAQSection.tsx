@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, MessageCircle, HelpCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FadeIn } from './motion/MotionComponents';
 
 interface FAQItem {
   question: string;
@@ -52,47 +53,50 @@ export const FAQSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
-        <div className="text-center mb-14">
-          <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2 flex items-center justify-center gap-1.5">
-            <HelpCircle className="w-4 h-4 text-[#3BA9FF]" />
-            <span>Frequently Asked Questions</span>
+        <FadeIn direction="up">
+          <div className="text-center mb-14">
+            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2 flex items-center justify-center gap-1.5">
+              <HelpCircle className="w-4 h-4 text-[#3BA9FF]" />
+              <span>Frequently Asked Questions</span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+              Clear Answers Before You Build
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
+              Everything you need to know about our engineering approach, deliverables, and partnership model.
+            </p>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
-            Clear Answers Before You Build
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
-            Everything you need to know about our engineering approach, deliverables, and partnership model.
-          </p>
-        </div>
+        </FadeIn>
 
         {/* FAQ Accordion List */}
         <div className="space-y-4">
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div
-                key={index}
-                className="card-titan-light overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none"
-                  aria-expanded={isOpen}
+              <FadeIn key={index} delay={index * 0.06} direction="up" distance={16}>
+                <div
+                  className="card-titan-light overflow-hidden transition-all"
                 >
-                  <span className="font-display text-base sm:text-lg font-bold text-[#071A33]">
-                    {faq.question}
-                  </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#EAF7FF] text-[#00D1FF]' : 'bg-slate-100 text-[#536477]'}`}>
-                    <ChevronDown className="w-4 h-4" />
-                  </div>
-                </button>
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-display text-base sm:text-lg font-bold text-[#071A33]">
+                      {faq.question}
+                    </span>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-[#EAF7FF] text-[#00D1FF]' : 'bg-slate-100 text-[#536477]'}`}>
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
+                  </button>
 
-                {isOpen && (
-                  <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#536477] leading-relaxed border-t border-slate-100 animate-in fade-in duration-200">
-                    <p>{faq.answer}</p>
-                  </div>
-                )}
-              </div>
+                  {isOpen && (
+                    <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-[#536477] leading-relaxed border-t border-slate-100 animate-in fade-in duration-200">
+                      <p>{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
             );
           })}
         </div>

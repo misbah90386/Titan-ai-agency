@@ -83,6 +83,12 @@
 
   <!-- Insights / Blog Articles -->
   <url>
+    <loc>https://titanaiagency.netlify.app/blog/how-ai-automation-saves-small-businesses-time-and-money</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://titanaiagency.netlify.app/blog/why-every-business-needs-a-professional-website-2026</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>

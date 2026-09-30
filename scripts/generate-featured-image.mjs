@@ -1,4 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+import sharp from 'sharp';
+import fs from 'fs';
+
+const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
   <defs>
     <!-- Background Gradients -->
     <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -322,3 +325,36 @@
     </text>
   </g>
 </svg>
+`;
+
+async function build() {
+  const targetDir = 'public/images/blog';
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
+
+  // 1. Write SVG file
+  fs.writeFileSync(`${targetDir}/why-every-business-needs-a-professional-website-2026.svg`, svgContent.trim());
+  console.log('Saved SVG');
+
+  // 2. Render high-res WebP (1920x1080) for instant loading & crisp quality
+  await sharp(Buffer.from(svgContent), { density: 150 })
+    .resize(1920, 1080)
+    .webp({ quality: 92 })
+    .toFile(`${targetDir}/why-every-business-needs-a-professional-website-2026.webp`);
+  console.log('Generated WebP (1920x1080)');
+
+  // 3. Render high-res PNG (1920x1080) as fallback
+  await sharp(Buffer.from(svgContent), { density: 150 })
+    .resize(1920, 1080)
+    .png({ quality: 90 })
+    .toFile(`${targetDir}/why-every-business-needs-a-professional-website-2026.png`);
+  console.log('Generated PNG (1920x1080)');
+
+  console.log('All featured image assets successfully generated in 16:9 format!');
+}
+
+build().catch(err => {
+  console.error(err);
+  process.exit(1);
+});

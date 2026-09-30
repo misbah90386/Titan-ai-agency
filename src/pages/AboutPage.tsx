@@ -5,6 +5,7 @@ import { FinalCTA } from '../components/FinalCTA';
 import { ProcessSection } from '../components/ProcessSection';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { TitanIcon } from '../components/TitanLogo';
+import { FadeIn, AnimatedNumber } from '../components/motion/MotionComponents';
 
 export const AboutPage: React.FC = () => {
   usePageSEO({
@@ -151,11 +152,15 @@ export const AboutPage: React.FC = () => {
                 </div>
                 <div className="flex justify-between py-2.5 border-b border-slate-100 text-sm">
                   <span className="text-[#536477]">Post-Launch Care</span>
-                  <span className="text-[#071A33] font-bold">30 Days Free Support</span>
+                  <span className="text-[#071A33] font-bold">
+                    <AnimatedNumber value={30} suffix=" Days" /> Free Support
+                  </span>
                 </div>
                 <div className="flex justify-between py-2.5 text-sm">
                   <span className="text-[#536477]">Code Ownership</span>
-                  <span className="text-emerald-600 font-bold">100% Client Owned</span>
+                  <span className="text-emerald-600 font-bold">
+                    <AnimatedNumber value={100} suffix="%" /> Client Owned
+                  </span>
                 </div>
               </div>
 
@@ -187,20 +192,21 @@ export const AboutPage: React.FC = () => {
             {principles.map((p, i) => {
               const Icon = p.icon;
               return (
-                <div
-                  key={i}
-                  className="card-titan-light p-7 space-y-3"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
-                    <Icon className="w-5 h-5 text-[#00D1FF]" />
+                <FadeIn key={i} delay={i * 0.08} direction="up">
+                  <div
+                    className="card-titan-light p-7 space-y-3 h-full"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
+                      <Icon className="w-5 h-5 text-[#00D1FF]" />
+                    </div>
+                    <h3 className="font-display text-lg font-bold text-[#071A33]">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-[#536477] leading-relaxed">
+                      {p.desc}
+                    </p>
                   </div>
-                  <h3 className="font-display text-lg font-bold text-[#071A33]">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-[#536477] leading-relaxed">
-                    {p.desc}
-                  </p>
-                </div>
+                </FadeIn>
               );
             })}
           </div>

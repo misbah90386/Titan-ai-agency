@@ -112,7 +112,24 @@ export const AIAgentsPage: React.FC = () => {
       {/* 1. Hero Section (Dark Premium Navy) */}
       <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
         <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
+        <svg className="absolute inset-0 w-full h-full opacity-15 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="aiNetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#00D1FF" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#3BA9FF" stopOpacity="0.15" />
+            </linearGradient>
+          </defs>
+          <path d="M 80 140 L 260 220 L 420 120 L 640 200 L 860 100 L 1100 180" stroke="url(#aiNetGrad)" strokeWidth="1" strokeDasharray="4 6" fill="none" className="animate-network-flow" />
+          <path d="M 180 340 L 360 260 L 540 330 L 760 230 L 980 310" stroke="url(#aiNetGrad)" strokeWidth="1" strokeDasharray="3 5" fill="none" className="animate-network-flow" />
+          <circle cx="260" cy="220" r="2.5" fill="#00D1FF" className="animate-node-pulse" />
+          <circle cx="420" cy="120" r="2" fill="#3BA9FF" className="animate-node-pulse" />
+          <circle cx="640" cy="200" r="2.5" fill="#00D1FF" className="animate-node-pulse" />
+          <circle cx="860" cy="100" r="2" fill="#3BA9FF" className="animate-node-pulse" />
+          <circle cx="360" cy="260" r="2" fill="#00D1FF" className="animate-node-pulse" />
+          <circle cx="540" cy="330" r="2.5" fill="#3BA9FF" className="animate-node-pulse" />
+          <circle cx="760" cy="230" r="2" fill="#00D1FF" className="animate-node-pulse" />
+        </svg>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none animate-ambient-1" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-xs font-mono text-[#8FA0BA] mb-6" aria-label="Breadcrumb">

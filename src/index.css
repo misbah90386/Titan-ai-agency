@@ -26,8 +26,22 @@
 }
 
 /* Premium Brand Utilities */
+@keyframes hero-gradient-drift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 .bg-titan-hero {
-  background: linear-gradient(135deg, #04142E 0%, #0B1F4B 60%, #073B69 100%);
+  background: linear-gradient(135deg, #020B1A 0%, #04142E 25%, #0B1F4B 50%, #073B69 75%, #04142E 100%);
+  background-size: 250% 250%;
+  animation: hero-gradient-drift 14s ease infinite;
 }
 
 .bg-titan-navy-dark {
@@ -65,17 +79,19 @@
 /* Primary Button Styling */
 .btn-titan-primary {
   background: linear-gradient(135deg, #00D1FF 0%, #3BA9FF 100%);
+  background-size: 150% 150%;
   color: #04142E;
   font-weight: 700;
   border-radius: 12px;
   box-shadow: 0 4px 14px 0 rgba(0, 209, 255, 0.25);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1), background-position 250ms cubic-bezier(0.22, 1, 0.36, 1), filter 250ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .btn-titan-primary:hover {
   transform: translateY(-2px);
-  filter: brightness(1.06);
-  box-shadow: 0 8px 24px 0 rgba(0, 209, 255, 0.35);
+  background-position: 100% 50%;
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px 0 rgba(0, 209, 255, 0.42);
 }
 
 /* Secondary Button Styling */
@@ -85,7 +101,7 @@
   border: 1px solid #3BA9FF;
   border-radius: 12px;
   font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .btn-titan-secondary:hover {
@@ -100,7 +116,7 @@
   border: 1px solid rgba(0, 209, 255, 0.4);
   border-radius: 12px;
   font-weight: 600;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .btn-titan-secondary-dark:hover {
@@ -116,26 +132,26 @@
   border: 1px solid rgba(59, 169, 255, 0.18);
   border-radius: 16px;
   box-shadow: 0 4px 20px -2px rgba(11, 31, 75, 0.04);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-titan-light:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 209, 255, 0.45);
-  box-shadow: 0 14px 32px -4px rgba(0, 209, 255, 0.12);
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(0, 209, 255, 0.65);
+  box-shadow: 0 16px 36px -4px rgba(0, 209, 255, 0.22);
 }
 
 .card-titan-dark {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(0, 209, 255, 0.15);
   border-radius: 16px;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card-titan-dark:hover {
-  transform: translateY(-4px);
-  border-color: rgba(0, 209, 255, 0.4);
-  box-shadow: 0 14px 32px -4px rgba(0, 209, 255, 0.16);
+  transform: translateY(-5px);
+  border-color: rgba(0, 209, 255, 0.45);
+  box-shadow: 0 16px 36px -4px rgba(0, 209, 255, 0.18);
 }
 
 /* Ambient Visual Grids & Subtle Wave Patterns */
@@ -152,3 +168,237 @@
     linear-gradient(to right, rgba(0, 209, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 209, 255, 0.05) 1px, transparent 1px);
 }
+
+/* ========================================================
+   TITAN MOTION SYSTEM KEYFRAMES & UTILITIES
+   ======================================================== */
+
+/* 1. Hero Animated Gradient for Cyan Highlight */
+@keyframes gradient-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-slow {
+  background-size: 200% auto;
+  animation: gradient-pan 9s ease infinite;
+}
+
+/* 2. Shimmer Light Sweep on Highlight */
+@keyframes text-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-text-sweep {
+  background: linear-gradient(
+    90deg,
+    #00D1FF 0%,
+    #3BA9FF 25%,
+    #FFFFFF 50%,
+    #3BA9FF 75%,
+    #00D1FF 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-sweep 8s ease-in-out infinite;
+}
+
+/* 3. Slow Gentle Float for Hero Preview: 0px to -10px over 5s */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+/* 4. Ambient Background Glow Orbs Drift */
+@keyframes ambient-drift-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate(35px, -25px) scale(1.1);
+    opacity: 0.22;
+  }
+}
+
+@keyframes ambient-drift-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.10;
+  }
+  50% {
+    transform: translate(-30px, 20px) scale(1.08);
+    opacity: 0.18;
+  }
+}
+
+.animate-ambient-1 {
+  animation: ambient-drift-1 16s ease-in-out infinite;
+}
+
+.animate-ambient-2 {
+  animation: ambient-drift-2 18s ease-in-out infinite;
+}
+
+/* 5. Network Lines & Nodes Flow */
+@keyframes flow-line {
+  0% {
+    stroke-dashoffset: 40;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse-node {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.35);
+  }
+}
+
+.animate-network-flow {
+  stroke-dasharray: 6 10;
+  animation: flow-line 24s linear infinite;
+}
+
+.animate-node-pulse {
+  animation: pulse-node 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* 6. Live Status Pulsing Dot */
+@keyframes live-indicator-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.45;
+  }
+}
+
+.animate-live-dot {
+  animation: live-indicator-dot 2.5s ease-in-out infinite;
+}
+
+/* 6b. Subtle Internal Chart Bar Fluctuations */
+@keyframes bar-fluctuate-1 {
+  0%, 100% { height: 35%; }
+  50% { height: 85%; }
+}
+@keyframes bar-fluctuate-2 {
+  0%, 100% { height: 75%; }
+  50% { height: 40%; }
+}
+@keyframes bar-fluctuate-3 {
+  0%, 100% { height: 50%; }
+  50% { height: 95%; }
+}
+@keyframes bar-fluctuate-4 {
+  0%, 100% { height: 88%; }
+  50% { height: 32%; }
+}
+@keyframes bar-fluctuate-5 {
+  0%, 100% { height: 45%; }
+  50% { height: 80%; }
+}
+
+.animate-bar-1 { animation: bar-fluctuate-1 3.4s ease-in-out infinite; }
+.animate-bar-2 { animation: bar-fluctuate-2 2.8s ease-in-out infinite; }
+.animate-bar-3 { animation: bar-fluctuate-3 3.8s ease-in-out infinite; }
+.animate-bar-4 { animation: bar-fluctuate-4 3.1s ease-in-out infinite; }
+.animate-bar-5 { animation: bar-fluctuate-5 3.5s ease-in-out infinite; }
+
+/* 7. Nav Link Hover Underline (Left to Right) */
+.nav-link-motion {
+  position: relative;
+  transition: color 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link-motion::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: linear-gradient(90deg, #00D1FF 0%, #3BA9FF 100%);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 8px rgba(0, 209, 255, 0.45);
+}
+
+.nav-link-motion:hover::after {
+  transform: scaleX(1);
+}
+
+/* 8. Footer Link Hover Underline */
+.footer-link-motion {
+  position: relative;
+  display: inline-block;
+  transition: color 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link-motion::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #00D1FF;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link-motion:hover::after {
+  transform: scaleX(1);
+}
+
+/* 9. Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-gradient-slow,
+  .shimmer-text-sweep,
+  .animate-float-slow,
+  .animate-ambient-1,
+  .animate-ambient-2,
+  .animate-network-flow,
+  .animate-node-pulse,
+  .animate-bar-1,
+  .animate-bar-2,
+  .animate-bar-3,
+  .animate-bar-4,
+  .animate-bar-5,
+  .animate-live-dot {
+    animation: none !important;
+  }
+}
+

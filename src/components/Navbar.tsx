@@ -40,20 +40,20 @@ export const Navbar: React.FC = () => {
       id="main-navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#04142E]/95 backdrop-blur-md border-b border-[#00D1FF]/20 shadow-[0_8px_30px_rgba(4,20,46,0.5)]'
-          : 'bg-[#04142E]/85 backdrop-blur-sm border-b border-white/[0.08]'
+          ? 'bg-[#04142E] backdrop-blur-xl border-b border-[#00D1FF]/25 shadow-[0_12px_32px_rgba(2,10,24,0.7)]'
+          : 'bg-[#04142E]/70 backdrop-blur-md border-b border-white/[0.06]'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16' : 'h-20'}`}>
         {/* Brand Logo Lockup - Slightly increased for wordmark legibility */}
         <Link
           to="/"
           id="nav-brand-logo"
-          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform hover:scale-[1.01]"
+          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform duration-300 hover:scale-[1.01]"
         >
           <TitanLogo
             variant="dark"
-            iconClassName="w-12 h-12 sm:w-[50px] sm:h-[50px] drop-shadow-[0_0_16px_rgba(0,209,255,0.4)]"
+            iconClassName={`transition-all duration-300 drop-shadow-[0_0_16px_rgba(0,209,255,0.4)] ${scrolled ? 'w-10 h-10 sm:w-11 sm:h-11' : 'w-12 h-12 sm:w-[50px] sm:h-[50px]'}`}
             titleClassName="text-[22px] sm:text-[24px] md:text-[26px] tracking-[0.16em]"
             subtitleClassName="text-[12px] sm:text-[13px] tracking-[0.28em]"
           />
@@ -71,7 +71,7 @@ export const Navbar: React.FC = () => {
                 className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all relative ${
                   isActive
                     ? 'text-[#00D1FF] bg-[#0B1F4B]/80 border border-[#00D1FF]/30 shadow-[0_0_15px_rgba(0,209,255,0.15)]'
-                    : 'text-[#EAF7FF]/80 hover:text-white hover:bg-white/[0.06]'
+                    : 'text-[#EAF7FF]/80 hover:text-[#00D1FF] hover:bg-white/[0.04] nav-link-motion'
                 }`}
               >
                 {item.name}
@@ -90,20 +90,20 @@ export const Navbar: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             id="nav-whatsapp-btn"
-            className="inline-flex items-center gap-1.5 px-2 py-1 text-slate-400 hover:text-white text-xs font-normal tracking-wide transition-colors group"
+            className="inline-flex items-center gap-1.5 px-2 py-1 text-slate-400 hover:text-white text-xs font-normal tracking-wide transition-colors duration-200 group"
             title="Chat with TITAN on WhatsApp"
           >
-            <MessageCircle className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#00D1FF] transition-colors" />
-            <span className="font-mono text-[11px] text-slate-400 group-hover:text-slate-200 transition-colors">+966 53 418 2945</span>
+            <MessageCircle className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#00D1FF] transition-colors duration-200" />
+            <span className="font-mono text-[11px] text-slate-400 group-hover:text-slate-200 transition-colors duration-200">+966 53 418 2945</span>
           </a>
 
           <Link
             to="/contact"
             id="nav-get-started-btn"
-            className="btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold shadow-[0_4px_16px_rgba(0,209,255,0.3)] hover:shadow-[0_6px_24px_rgba(0,209,255,0.5)] transition-all"
+            className="group btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold shadow-[0_4px_16px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.45)] hover:-translate-y-0.5 hover:brightness-105 transition-all duration-300"
           >
             <span>Start Your Project</span>
-            <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+            <ArrowRight className="w-4 h-4 stroke-[2.5] group-hover:translate-x-[5px] transition-transform duration-250" />
           </Link>
         </div>
 
