@@ -19,11 +19,13 @@ import { MissionVisionPage } from './pages/MissionVisionPage';
 import { ContactPage } from './pages/ContactPage';
 import { BlogPage } from './pages/BlogPage';
 import { BlogArticlePage } from './pages/BlogArticlePage';
-import { PageTransition } from './components/motion/MotionComponents';
+import { PageTransition, InitialPageLoader, DesktopCursorGlow } from './components/motion/MotionComponents';
 
 export default function App() {
   return (
     <Router>
+      <InitialPageLoader />
+      <DesktopCursorGlow />
       <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-[#F8FAFF] text-[#071A33] antialiased selection:bg-[#00D1FF] selection:text-[#04142E]">
         <Navbar />

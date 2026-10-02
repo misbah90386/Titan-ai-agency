@@ -185,6 +185,87 @@ export const WebsiteDesignPage: React.FC = () => {
         </div>
       </section>
 
+      {/* FLOATING WEBSITE MOCKUP ARCHITECTURE (Section 20) */}
+      <section className="py-14 sm:py-20 bg-[#031127] text-white border-y border-[#00D1FF]/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-30 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Responsive Multi-Device Engineering
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight uppercase">
+                DESKTOP, TABLET & MOBILE ARCHITECTURE
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-[#8FA0BA]">
+                Engineered to look flawless on every screen size with seamless lead capture and instant WhatsApp routing.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Floating Device Showcase: Desktop Browser + Mobile Handset Mockup */}
+          <div className="max-w-4xl mx-auto relative flex flex-col md:flex-row items-center justify-center gap-6 animate-float-slow">
+            {/* Desktop Mockup */}
+            <div className="w-full md:w-[70%] rounded-2xl bg-[#04142E] border border-[#00D1FF]/35 shadow-[0_20px_50px_rgba(0,209,255,0.18)] overflow-hidden">
+              <div className="px-4 py-2.5 bg-[#0B1F4B] border-b border-white/[0.08] flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                </div>
+                <div className="px-3 py-0.5 rounded-md bg-black/40 border border-white/5 text-[10px] font-mono text-[#8FA0BA] max-w-[220px] truncate">
+                  https://yourcompany.com
+                </div>
+                <span className="text-[10px] font-mono text-[#00D1FF]">100% Speed</span>
+              </div>
+
+              <div className="p-5 sm:p-7 bg-gradient-to-b from-[#06152B] to-[#041022] space-y-4 relative">
+                <div className="flex items-center justify-between">
+                  <div className="h-4 w-32 bg-[#00D1FF]/40 rounded" />
+                  <div className="flex gap-2 text-[10px] text-[#A0B3CC]">
+                    <span className="h-2 w-12 bg-white/20 rounded" />
+                    <span className="h-2 w-12 bg-white/20 rounded" />
+                    <span className="h-2 w-16 bg-[#00D1FF]/50 rounded" />
+                  </div>
+                </div>
+
+                <div className="py-3 space-y-2">
+                  <div className="h-6 w-3/4 bg-white/95 rounded font-display" />
+                  <div className="h-3 w-5/6 bg-white/40 rounded" />
+                  <div className="h-3 w-1/2 bg-white/25 rounded" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-3 pt-2">
+                  <div className="p-3 rounded-xl bg-white/[0.04] border border-[#00D1FF]/25 flex items-center gap-2">
+                    <Bot className="w-4 h-4 text-[#00D1FF]" />
+                    <span className="text-xs text-white">AI Chat Assistant</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-white/[0.04] border border-[#25D366]/30 flex items-center gap-2">
+                    <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                    <span className="text-xs text-white">WhatsApp Lead Sync</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Device Mockup */}
+            <div className="w-full max-w-[200px] md:w-[30%] rounded-3xl bg-[#020B1A] border-2 border-[#00D1FF]/40 shadow-2xl p-2.5 space-y-3">
+              <div className="w-12 h-1 bg-white/20 rounded-full mx-auto my-1" />
+              <div className="rounded-xl bg-[#06152B] p-3 space-y-2.5 text-center">
+                <div className="w-6 h-6 rounded-full bg-[#00D1FF]/20 text-[#00D1FF] flex items-center justify-center mx-auto text-xs">
+                  <Smartphone className="w-3.5 h-3.5" />
+                </div>
+                <div className="h-3 w-3/4 bg-white/90 rounded mx-auto" />
+                <div className="h-2 w-full bg-white/30 rounded" />
+                <div className="p-2 rounded-lg bg-[#00D1FF]/20 border border-[#00D1FF]/40 text-[9px] font-mono text-[#00D1FF]">
+                  One-Tap WhatsApp
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. Business Problems Solved */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">

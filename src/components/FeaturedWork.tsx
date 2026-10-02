@@ -1,74 +1,66 @@
 import React from 'react';
-import { ExternalLink, ArrowRight, Building, Cake, UtensilsCrossed, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, ArrowRight, Building, Cake, UtensilsCrossed, CheckCircle2, ShieldAlert } from 'lucide-react';
 import { FadeIn } from './motion/MotionComponents';
 
 export interface ProjectItem {
   id: string;
   name: string;
-  label: string;
-  description: string;
+  category: string;
+  problem: string;
+  solution: string;
+  technology: string;
+  outcome: string;
+  isConceptDemo: boolean;
   url: string;
   domain: string;
-  category: string;
   whatsappMessage: string;
-  highlights: string[];
-  screenshot?: string;
   mockupType: 'real-estate' | 'bakery' | 'restaurant';
 }
 
 export const FEATURED_PROJECTS: ProjectItem[] = [
   {
     id: 'real-estate-concept',
-    name: 'Real Estate Website Concept',
-    label: 'Case Study',
-    description:
-      'A luxury property portfolio concept demonstrating how a real estate enterprise presents developments and captures qualified investor enquiries.',
+    name: 'Luxury Real Estate Concept',
+    category: 'Real Estate & Property',
+    problem: 'Property firms struggle to display architectural developments, filter units by buyer preferences, and capture high-intent investor inquiries without slow email delays.',
+    solution: 'TITAN engineered a high-performance luxury property showcase with responsive unit filtering, instant WhatsApp inquiry actions, and mobile-first floor plan presentations.',
+    technology: 'Website / AI Integration / SEO / WhatsApp',
+    outcome: 'Interactive concept prototype validating sub-second navigation and friction-free lead capture.',
+    isConceptDemo: true,
     url: 'https://celebrated-biscuit-a7f671.netlify.app/',
     domain: 'celebrated-biscuit-a7f671.netlify.app',
-    category: 'Website Design & Development',
     whatsappMessage:
-      'Hello TITAN AI AGENCY, I saw your Real Estate Website Concept and would like to discuss a similar project for my business.',
-    highlights: [
-      'Interactive luxury property showcase and filters',
-      'Direct WhatsApp and consultation inquiry workflow',
-      'Engineered for fast loading and fluid mobile responsiveness'
-    ],
+      'Hello TITAN AI AGENCY, I saw your Real Estate Concept Demo and would like to discuss a similar project for my business.',
     mockupType: 'real-estate'
   },
   {
     id: 'custom-cake-bakery',
-    name: 'Custom Cake Bakery Website',
-    label: 'Case Study',
-    description:
-      'An artisanal bakery platform featuring an interactive visual cake customizer, real-time price estimation, and rapid WhatsApp order checkout.',
+    name: 'Artisanal Bakery & Customizer',
+    category: 'Food & Hospitality',
+    problem: 'Custom cake orders create massive back-and-forth messaging for bakeries, quoting tiers, flavors, and delivery dates manually on busy weekends.',
+    solution: 'TITAN built an interactive cake customizer allowing customers to select tiers, flavors, and design complexity with live price estimation and one-tap WhatsApp checkout.',
+    technology: 'Website / Dynamic Customizer / WhatsApp Routing',
+    outcome: 'Eliminates repetitive pricing questions; routes pre-configured orders directly to the baker.',
+    isConceptDemo: true,
     url: 'https://sweet-dream-bakes.netlify.app/',
     domain: 'sweet-dream-bakes.netlify.app',
-    category: 'Bakery & Food Solutions',
     whatsappMessage:
-      'Hello TITAN AI AGENCY, I saw your Custom Cake Bakery Website demo and would like to discuss a similar project in Bakery & Food.',
-    highlights: [
-      'Tier and flavor customization with instant pricing',
-      'Visual gallery optimized for high-conversion browsing',
-      'Direct order routing to WhatsApp business line'
-    ],
+      'Hello TITAN AI AGENCY, I saw your Custom Bakery Concept Demo and would like to discuss an interactive order system.',
     mockupType: 'bakery'
   },
   {
     id: 'chicken-restaurant',
-    name: 'Chicken Restaurant Website',
-    label: 'Case Study',
-    description:
-      'A modern culinary website presenting brand storytelling, structured food menus, opening hours, and direct customer communication channels.',
+    name: 'Fast-Casual Restaurant Platform',
+    category: 'Dining & Hospitality',
+    problem: 'Outdated PDF menus fail on mobile screens, loading slowly and causing diners to drop off before discovering location, allergen info, and operating hours.',
+    solution: 'TITAN engineered a sub-second, mobile-first culinary website with clear menu hierarchy, dietary filters, instant location maps, and direct order links.',
+    technology: 'Website / Mobile Speed Optimization / Local SEO',
+    outcome: 'Zero mobile lag, instant menu access, and verified 100% Core Web Vitals speed score.',
+    isConceptDemo: true,
     url: 'https://cerulean-begonia-2ecb7d.netlify.app/',
     domain: 'cerulean-begonia-2ecb7d.netlify.app',
-    category: 'Restaurant & Hospitality',
     whatsappMessage:
-      'Hello TITAN AI AGENCY, I saw your Chicken Restaurant Website demo and would like to discuss a similar project in Restaurant & Food.',
-    highlights: [
-      'Appetizing visual hierarchy and signature item spotlights',
-      'Clear, accessible menu categorization and pricing',
-      'Built specifically for fast mobile customer discovery'
-    ],
+      'Hello TITAN AI AGENCY, I saw your Restaurant Website Demo and would like to discuss a project in dining & food.',
     mockupType: 'restaurant'
   }
 ];
@@ -84,238 +76,169 @@ export interface FeaturedWorkProps {
 
 export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   id = 'featured-work',
-  badge = 'Featured Case Studies & Concepts',
-  title = 'Selected Digital Work',
-  subtitle = 'Explore interactive case studies demonstrating how TITAN AI AGENCY engineers responsive websites, conversational assistants, and automated workflows built for serious business impact.',
+  badge = 'Interactive Demonstrations & Case Studies',
+  title = 'Case Studies & Concept Demos',
+  subtitle = 'Explore realistic working prototypes demonstrating how TITAN engineers websites, AI workflows, and conversion architecture. Concept demos are clearly identified to maintain 100% honesty.',
 }) => {
   const getWhatsAppUrl = (message: string) => {
     return `${WHATSAPP_BASE}${encodeURIComponent(message)}`;
   };
 
   return (
-    <section id={id} className="relative py-20 sm:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden">
+    <section id={id} className="relative py-20 sm:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]">
       {/* Subtle Digital Grid */}
       <div className="absolute inset-0 bg-digital-grid opacity-60 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading */}
+        {/* Section Header */}
         <FadeIn direction="up">
-          <div className="max-w-3xl mb-14">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-              {badge}
+          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold">
+              <span>{badge}</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight uppercase">
               {title}
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
+
+            <p className="text-base sm:text-lg text-[#536477] leading-relaxed">
               {subtitle}
             </p>
           </div>
         </FadeIn>
 
-        {/* Projects Grid: 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* 3 Project Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {FEATURED_PROJECTS.map((project, idx) => (
-            <FadeIn key={project.id} delay={idx * 0.1} direction="up" distance={35} duration={0.7}>
-              <div
-                className="card-titan-light group flex flex-col p-5 sm:p-6 h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_-4px_rgba(0,209,255,0.22)] transition-all duration-300"
-              >
-                {/* Browser-Style Frame */}
-                <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/40 transition-colors duration-300">
-                  
-                  {/* Browser Chrome Header */}
+            <FadeIn key={project.id} delay={idx * 0.1} direction="up" distance={30} duration={0.7}>
+              <div className="card-titan-light group flex flex-col p-6 sm:p-7 h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_rgba(0,209,255,0.18)] transition-all duration-300">
+                
+                {/* Browser Frame */}
+                <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/40 transition-colors duration-300 mb-5">
                   <div className="flex items-center justify-between px-3 py-2 bg-[#0B1F4B] border-b border-white/[0.08] text-[11px] font-mono text-slate-300">
                     <div className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-rose-500/80" />
                       <span className="w-2 h-2 rounded-full bg-amber-500/80" />
                       <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
                     </div>
-                    <div className="px-2 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px] sm:max-w-[190px]">
+                    <div className="px-2 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px]">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse shrink-0" />
                       <span className="truncate">{project.domain}</span>
                     </div>
                     <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Live Demo</span>
                   </div>
 
-                  {/* Project Mockup Representation with 1.04 zoom on card hover */}
-                  <div className="overflow-hidden transition-transform duration-300 group-hover:scale-[1.04]">
-                {project.mockupType === 'real-estate' ? (
-                  <div className="p-4 space-y-3 bg-gradient-to-b from-[#071A33] to-[#04142E] flex flex-col justify-between min-h-[210px] text-white">
-                    <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                      <div className="flex items-center gap-2">
-                        <Building className="w-4 h-4 text-[#00D1FF]" />
-                        <span className="font-bold text-xs tracking-wide text-white">PRIME PROPERTIES</span>
-                      </div>
-                      <span className="text-[10px] text-[#3BA9FF] font-medium">Verified Portfolio</span>
+                  {/* Visual Representation */}
+                  <div className="p-4 bg-gradient-to-b from-[#071A33] to-[#04142E] min-h-[170px] text-white flex flex-col justify-between overflow-hidden group-hover:scale-[1.03] transition-transform duration-300">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono text-[#00D1FF] uppercase font-bold">
+                        {project.category}
+                      </span>
+                      <span className="px-2 py-0.5 rounded bg-white/10 text-[9px] font-mono text-[#3BA9FF]">
+                        Interactive
+                      </span>
                     </div>
 
-                    <div className="rounded-lg bg-[#0B1F4B]/90 border border-[#00D1FF]/20 p-3 space-y-1.5">
-                      <div className="text-[9px] font-mono text-[#00D1FF] uppercase tracking-wider">
-                        Commercial & Luxury Residential
-                      </div>
-                      <div className="text-xs font-bold text-white leading-tight">
-                        Modern Architectural Spaces Built for Corporate Expansion
-                      </div>
-                      <div className="flex items-center gap-2 pt-1">
-                        <span className="px-2 py-0.5 rounded bg-[#00D1FF] text-[#04142E] text-[9px] font-bold">
-                          View Units
-                        </span>
-                        <span className="px-2 py-0.5 rounded bg-white/10 text-white text-[9px]">
-                          Book Tour
-                        </span>
-                      </div>
+                    <div className="py-2">
+                      <h4 className="font-display font-bold text-base text-white">
+                        {project.name}
+                      </h4>
+                      <p className="text-xs text-[#8FA0BA] line-clamp-2 mt-1">
+                        {project.solution}
+                      </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 text-[10px]">
-                      <div className="p-2 rounded bg-white/[0.04] border border-white/[0.08] space-y-0.5">
-                        <div className="text-[8px] font-mono text-[#00D1FF]">FINANCIAL DISTRICT</div>
-                        <div className="font-semibold text-white truncate text-[10px]">Horizon Tower</div>
-                        <div className="text-slate-300 text-[9px]">Grade-A Commercial</div>
-                      </div>
-                      <div className="p-2 rounded bg-white/[0.04] border border-white/[0.08] space-y-0.5">
-                        <div className="text-[8px] font-mono text-[#3BA9FF]">WATERFRONT</div>
-                        <div className="font-semibold text-white truncate text-[10px]">Marina Suites</div>
-                        <div className="text-slate-300 text-[9px]">Executive Living</div>
-                      </div>
+                    <div className="flex items-center justify-between text-[10px] font-mono text-[#8FA0BA] pt-2 border-t border-white/10">
+                      <span>Live Netlify Host</span>
+                      <span className="text-emerald-400">Online</span>
                     </div>
                   </div>
-                ) : project.mockupType === 'bakery' ? (
-                  <div className="p-4 space-y-3 bg-gradient-to-b from-[#071A33] to-[#04142E] flex flex-col justify-between min-h-[210px] text-white">
-                    <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                      <div className="flex items-center gap-2">
-                        <Cake className="w-4 h-4 text-[#3BA9FF]" />
-                        <span className="font-bold text-xs tracking-wide text-white">SWEET DREAM BAKERY</span>
-                      </div>
-                      <span className="text-[10px] text-[#00D1FF] font-medium">Custom Orders</span>
-                    </div>
+                </div>
 
-                    <div className="rounded-lg bg-[#0B1F4B]/90 border border-[#3BA9FF]/25 p-3 space-y-1.5">
-                      <div className="text-[9px] font-mono text-[#3BA9FF] uppercase tracking-wider">
-                        Artisan Bakes & Customizer
-                      </div>
-                      <div className="text-xs font-bold text-white leading-tight">
-                        Handcrafted Celebration Cakes with Instant Estimate
-                      </div>
-                      <div className="flex items-center gap-2 pt-1">
-                        <span className="px-2 py-0.5 rounded bg-[#3BA9FF] text-[#04142E] text-[9px] font-bold">
-                          Configure Cake
-                        </span>
-                        <span className="px-2 py-0.5 rounded bg-white/10 text-white text-[9px]">
-                          Price Calculator
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2 text-[10px]">
-                      <div className="p-2 rounded bg-white/[0.04] border border-white/[0.08] space-y-0.5">
-                        <div className="text-[8px] font-mono text-[#00D1FF]">INTERACTIVE</div>
-                        <div className="font-semibold text-white truncate text-[10px]">Tier Customizer</div>
-                        <div className="text-slate-300 text-[9px]">Live Calculations</div>
-                      </div>
-                      <div className="p-2 rounded bg-white/[0.04] border border-white/[0.08] space-y-0.5">
-                        <div className="text-[8px] font-mono text-[#3BA9FF]">CHECKOUT</div>
-                        <div className="font-semibold text-white truncate text-[10px]">Direct WhatsApp</div>
-                        <div className="text-slate-300 text-[9px]">1-Click Order Send</div>
-                      </div>
-                    </div>
+                {/* Case Study Structured Format */}
+                <div className="flex-1 flex flex-col space-y-3.5">
+                  
+                  {/* Badge: CONCEPT DEMO clearly labeled */}
+                  <div className="flex items-center justify-between">
+                    <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-700 border border-amber-500/30">
+                      CONCEPT DEMO
+                    </span>
+                    <span className="text-xs font-mono text-[#8FA0BA]">
+                      {project.category}
+                    </span>
                   </div>
-                ) : (
-                  <div className="p-4 space-y-3 bg-gradient-to-b from-[#071A33] to-[#04142E] flex flex-col justify-between min-h-[210px] text-white">
-                    <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                      <div className="flex items-center gap-2">
-                        <UtensilsCrossed className="w-4 h-4 text-[#00D1FF]" />
-                        <span className="font-bold text-xs tracking-wide text-white">CULINARY SPOTLIGHT</span>
-                      </div>
-                      <span className="text-[10px] text-[#00D1FF] font-medium">Menu Experience</span>
-                    </div>
 
-                    <div className="rounded-lg bg-[#0B1F4B]/90 border border-[#00D1FF]/20 p-3 space-y-1.5">
-                      <div className="text-[9px] font-mono text-[#00D1FF] uppercase tracking-wider">
-                        Brand Identity & Discovery
-                      </div>
-                      <div className="text-xs font-bold text-white leading-tight">
-                        Signature Recipe Showcase & Mobile-First Navigation
-                      </div>
-                      <div className="flex items-center gap-2 pt-1">
-                        <span className="px-2 py-0.5 rounded bg-[#00D1FF] text-[#04142E] text-[9px] font-bold">
-                          Explore Menu
-                        </span>
-                        <span className="px-2 py-0.5 rounded bg-white/10 text-white text-[9px]">
-                          Location & Hours
-                        </span>
-                      </div>
-                    </div>
+                  {/* Business / Project Name */}
+                  <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#0B1F4B] transition-colors">
+                    {project.name}
+                  </h3>
 
-                    <div className="grid grid-cols-2 gap-2 text-[10px]">
-                      <div className="p-2 rounded bg-white/[0.04] border border-white/[0.08] space-y-0.5">
-                        <div className="text-[8px] font-mono text-[#00D1FF]">SIGNATURE</div>
-                        <div className="font-semibold text-white truncate text-[10px]">Crispy Combos</div>
-                        <div className="text-slate-300 text-[9px]">Detailed Allergen Info</div>
-                      </div>
-                      <div className="p-2 rounded bg-white/[0.04] border border-white/[0.08] space-y-0.5">
-                        <div className="text-[8px] font-mono text-[#3BA9FF]">MOBILE SPEED</div>
-                        <div className="font-semibold text-white truncate text-[10px]">Sub-Second Load</div>
-                        <div className="text-slate-300 text-[9px]">Zero Customer Friction</div>
-                      </div>
-                    </div>
+                  {/* Problem */}
+                  <div className="text-xs space-y-1">
+                    <span className="font-mono font-bold text-rose-600 uppercase tracking-wider block">
+                      Problem:
+                    </span>
+                    <p className="text-[#536477] leading-relaxed">
+                      {project.problem}
+                    </p>
                   </div>
-                )}
+
+                  {/* Solution */}
+                  <div className="text-xs space-y-1">
+                    <span className="font-mono font-bold text-[#00D1FF] uppercase tracking-wider block">
+                      Solution:
+                    </span>
+                    <p className="text-[#536477] leading-relaxed">
+                      {project.solution}
+                    </p>
                   </div>
+
+                  {/* Technology */}
+                  <div className="text-xs space-y-1">
+                    <span className="font-mono font-bold text-[#071A33] uppercase tracking-wider block">
+                      Technology:
+                    </span>
+                    <span className="inline-block px-2.5 py-1 rounded-md bg-[#F8FAFF] border border-slate-200 text-[#071A33] font-mono text-[11px] hover:border-[#00D1FF]/60 hover:bg-[#EAF7FF] transition-all duration-200 cursor-default">
+                      {project.technology}
+                    </span>
+                  </div>
+
+                  {/* Outcome */}
+                  <div className="text-xs space-y-1 pt-1">
+                    <span className="font-mono font-bold text-emerald-600 uppercase tracking-wider block">
+                      Outcome:
+                    </span>
+                    <p className="text-[#536477] leading-relaxed italic">
+                      {project.outcome}
+                    </p>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="mt-auto pt-5 space-y-2">
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-titan-primary w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider group/btn shadow-[0_4px_14px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+                    >
+                      <span>VIEW PROJECT</span>
+                      <ExternalLink className="w-4 h-4 stroke-[2.5] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    </a>
+
+                    <a
+                      href={getWhatsAppUrl(project.whatsappMessage)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-titan-secondary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold hover:-translate-y-0.5 transition-all duration-300 group/sec"
+                    >
+                      <span>Discuss a Similar Project</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF] group-hover/sec:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+
+                </div>
               </div>
-
-              {/* Project Details */}
-              <div className="flex-1 flex flex-col pt-5 space-y-3">
-                {/* Unboxed Metadata Line (anti-slop rule) */}
-                <div className="flex items-center gap-2 text-xs text-[#536477]">
-                  <span className="font-semibold text-[#0B1F4B]">{project.label}</span>
-                  <span aria-hidden="true">·</span>
-                  <span className="text-[#3BA9FF] font-medium">{project.category}</span>
-                </div>
-
-                <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#00D1FF] group-hover:-translate-y-0.5 transition-all duration-250">
-                  {project.name}
-                </h3>
-
-                <p className="text-[#536477] text-sm leading-relaxed min-h-[4rem]">
-                  {project.description}
-                </p>
-
-                {/* Highlights */}
-                <div className="space-y-2 pt-3 border-t border-slate-100">
-                  {project.highlights.map((highlight, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-[#536477]">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#00D1FF] shrink-0 mt-0.5" />
-                      <span>{highlight}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Action Buttons Pinned to Bottom */}
-                <div className="mt-auto pt-5 space-y-2.5">
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-titan-primary w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-sm group/btn"
-                  >
-                    <span>View Live Demo</span>
-                    <ExternalLink className="w-4 h-4 stroke-[2.5] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-250" />
-                  </a>
-
-                  <a
-                    href={getWhatsAppUrl(project.whatsappMessage)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-titan-secondary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs group/wa"
-                  >
-                    <span>Discuss a Similar Project</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF] group-hover/wa:translate-x-1 transition-transform duration-250" />
-                  </a>
-                </div>
-
-              </div>
-            </div>
             </FadeIn>
           ))}
         </div>

@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Search, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck, CheckCircle2, Sparkles, Network } from 'lucide-react';
-import { HeroShowcaseVisual } from '../components/HeroShowcaseVisual';
+import { ArrowRight, Globe, Search, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck, CheckCircle2, Sparkles, Network, Zap, BarChart, Users } from 'lucide-react';
+import { HeroRobotVisual } from '../components/home/HeroRobotVisual';
 import { FeaturedWork } from '../components/FeaturedWork';
-import { ProcessSection } from '../components/ProcessSection';
+import { TitanInActionSection } from '../components/home/TitanInActionSection';
+import { HowTitanWorksSection } from '../components/home/HowTitanWorksSection';
+import { IndustryUseCasesSection } from '../components/home/IndustryUseCasesSection';
+import { WhyTitanSection } from '../components/home/WhyTitanSection';
+import { SmartNeedsSelector } from '../components/home/SmartNeedsSelector';
+import { PostContactTrustSection } from '../components/home/PostContactTrustSection';
 import { FAQSection } from '../components/FAQSection';
 import { FinalCTA } from '../components/FinalCTA';
 import { ServiceModal } from '../components/ServiceModal';
@@ -11,7 +16,7 @@ import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceItem } from '../types';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { TitanIcon } from '../components/TitanLogo';
-import { FadeIn, AnimatedNumber } from '../components/motion/MotionComponents';
+import { FadeIn, AnimatedNumber, FloatingParticles } from '../components/motion/MotionComponents';
 
 export const HomePage: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
@@ -43,18 +48,50 @@ export const HomePage: React.FC = () => {
     switch (id) {
       case 'ai-websites':
       case 'websites':
-        return <Globe className="w-5 h-5 text-[#00D1FF]" />;
+        return (
+          <div className="relative flex items-center justify-center">
+            <Globe className="w-5 h-5 text-[#00D1FF]" />
+            <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse" />
+          </div>
+        );
       case 'seo-optimization':
       case 'seo':
-        return <Search className="w-5 h-5 text-[#00D1FF]" />;
+        return (
+          <div className="relative flex items-center justify-center">
+            <Search className="w-5 h-5 text-[#00D1FF]" />
+            <div className="absolute -bottom-1 flex items-end gap-0.5 h-1.5">
+              <span className="w-0.5 bg-[#00D1FF] rounded-t-sm animate-bar-1" />
+              <span className="w-0.5 bg-[#3BA9FF] rounded-t-sm animate-bar-2" />
+              <span className="w-0.5 bg-[#00D1FF] rounded-t-sm animate-bar-3" />
+            </div>
+          </div>
+        );
       case 'ai-agents':
-        return <Cpu className="w-5 h-5 text-[#00D1FF]" />;
+        return (
+          <div className="relative flex items-center justify-center">
+            <Cpu className="w-5 h-5 text-[#00D1FF] animate-node-pulse" />
+          </div>
+        );
       case 'ai-call-agents':
       case 'ai-voice-agents':
-        return <PhoneCall className="w-5 h-5 text-[#00D1FF]" />;
+        return (
+          <div className="relative flex items-center justify-center gap-0.5">
+            <PhoneCall className="w-4 h-4 text-[#00D1FF]" />
+            <div className="flex items-center gap-0.5 h-3 ml-0.5">
+              <span className="w-0.5 bg-[#00D1FF] rounded-full animate-wave-1" />
+              <span className="w-0.5 bg-[#3BA9FF] rounded-full animate-wave-2" />
+              <span className="w-0.5 bg-[#00D1FF] rounded-full animate-wave-3" />
+            </div>
+          </div>
+        );
       case 'ai-video-creation':
       case 'ai-video':
-        return <Video className="w-5 h-5 text-[#00D1FF]" />;
+        return (
+          <div className="relative flex items-center justify-center">
+            <Video className="w-5 h-5 text-[#00D1FF]" />
+            <span className="absolute inset-0 rounded-full border border-[#00D1FF]/40 animate-ping opacity-75" />
+          </div>
+        );
       default:
         return <Layers className="w-5 h-5 text-[#00D1FF]" />;
     }
@@ -88,10 +125,12 @@ export const HomePage: React.FC = () => {
   return (
     <div id="home-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33]">
       
-      {/* 1. HERO SECTION (Dark Premium Navy with Subtle Tech Accents) */}
-      <section id="hero-section" className="relative pt-24 pb-10 sm:pt-26 sm:pb-12 lg:pt-24 lg:pb-12 xl:pt-28 xl:pb-14 overflow-hidden bg-titan-hero text-white">
+      {/* 1. HERO SECTION (Dark Premium Navy with Subtle Tech Accents & 3D Robot Visual) */}
+      <section id="hero-section" className="relative min-h-[calc(100vh-4.5rem)] flex items-center pt-20 pb-10 sm:pt-22 sm:pb-12 lg:pt-20 lg:pb-12 xl:pt-22 xl:pb-14 overflow-hidden bg-titan-hero text-white">
         {/* Subtle grid and understated network node details */}
-        <div className="absolute inset-0 bg-digital-grid-dark opacity-15 pointer-events-none" />
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-20 pointer-events-none" />
+        <FloatingParticles count={8} />
+
         <svg className="absolute inset-0 w-full h-full opacity-15 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="netGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -114,22 +153,22 @@ export const HomePage: React.FC = () => {
         <div className="absolute top-1/4 -left-32 w-80 h-80 bg-[#00D1FF]/10 rounded-full blur-[130px] pointer-events-none animate-ambient-1" />
         <div className="absolute bottom-6 right-0 w-80 h-80 bg-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none animate-ambient-2" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        <div className="relative w-full max-w-7xl xl:max-w-[1420px] mx-auto px-4 sm:px-6 lg:px-8 py-2">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-6 xl:gap-8">
             
-            {/* Left Column: Headline & Value Proposition with Staggered Entrance */}
-            <div className="lg:col-span-7 space-y-4 lg:space-y-4.5 xl:space-y-5 text-left">
+            {/* Left Column (Target ~47% on desktop): Headline & Value Proposition */}
+            <div className="w-full lg:w-[47%] xl:w-[46%] space-y-4 lg:space-y-4.5 xl:space-y-5 text-left shrink-0">
               {/* Step 1 (0.1s): Agency Brand Tag */}
               <FadeIn delay={0.1} direction="none" duration={0.5}>
-                <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/[0.06] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest shadow-[0_0_12px_rgba(0,209,255,0.15)]">
+                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest shadow-[0_0_12px_rgba(0,209,255,0.15)]">
                   <TitanIcon className="w-4 h-4" />
-                  <span>TITAN AI AGENCY</span>
+                  <span>AI · AUTOMATION · REAL RESULTS</span>
                 </div>
               </FadeIn>
 
-              {/* Step 2 (0.3s): Headline moves upward from 40px below while fading in */}
-              <FadeIn delay={0.3} direction="up" distance={40} duration={0.7}>
-                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-extrabold text-white tracking-tight leading-[1.02] sm:leading-[1.03]">
+              {/* Step 2 (0.25s): Headline moves upward from 30px below while fading in */}
+              <FadeIn delay={0.25} direction="up" distance={30} duration={0.7}>
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[2.65rem] xl:text-[3.15rem] font-extrabold text-white tracking-tight leading-[1.04]">
                   PROFESSIONAL WEBSITES.{' '}
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#00D1FF] via-[#38BDF8] to-[#3BA9FF] shimmer-text-sweep">
                     SMARTER BUSINESS AUTOMATION.
@@ -137,15 +176,15 @@ export const HomePage: React.FC = () => {
                 </h1>
               </FadeIn>
 
-              {/* Step 3 (0.5s): Description appears after the heading */}
-              <FadeIn delay={0.5} direction="up" distance={30} duration={0.7}>
-                <p className="text-sm sm:text-base lg:text-[1.0625rem] text-[#EAF7FF]/90 font-normal leading-relaxed max-w-2xl">
+              {/* Step 3 (0.4s): Description appears after the heading */}
+              <FadeIn delay={0.4} direction="up" distance={25} duration={0.7}>
+                <p className="text-sm sm:text-base lg:text-[1.05rem] text-[#EAF7FF]/90 font-normal leading-relaxed max-w-xl">
                   TITAN AI AGENCY builds websites, AI assistants, and automated workflows that help businesses capture enquiries, respond faster, and reduce repetitive work.
                 </p>
               </FadeIn>
 
-              {/* Step 4 (0.7s): CTA buttons appear last */}
-              <FadeIn delay={0.7} direction="up" distance={25} duration={0.7}>
+              {/* Step 4 (0.55s): CTA buttons */}
+              <FadeIn delay={0.55} direction="up" distance={20} duration={0.7}>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
                   <a
                     href={heroWhatsappUrl}
@@ -169,33 +208,69 @@ export const HomePage: React.FC = () => {
                 </div>
               </FadeIn>
 
-              {/* Step 5 (0.7s): Value Markers */}
+              {/* Step 5 (0.7s): Proof Metrics Row (From Robot Visual Concept) */}
               <FadeIn delay={0.7} direction="up" distance={16} duration={0.6}>
-                <div className="pt-3 mt-1 border-t border-white/[0.08] grid grid-cols-3 gap-3 text-xs font-mono text-[#8FA0BA]">
-                  <div>
-                    <div className="text-white font-semibold text-xs sm:text-sm">Direct WhatsApp</div>
-                    <div className="text-[#8FA0BA] text-[11px]">Straightforward chat</div>
-                  </div>
-                  <div>
-                    <div className="text-white font-semibold text-xs sm:text-sm">
-                      <AnimatedNumber value={30} suffix="-Day" /> Support
+                <div className="pt-3 mt-1 border-t border-white/[0.08] space-y-3">
+                  {/* Top Proof Triad */}
+                  <div className="grid grid-cols-3 gap-2.5 text-xs">
+                    <div className="flex items-center gap-2 p-2 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                      <div className="w-6 h-6 rounded-md bg-[#00D1FF]/15 flex items-center justify-center text-[#00D1FF] shrink-0">
+                        <Zap className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-[11px] leading-tight">
+                        <span className="font-bold text-white block">Faster</span>
+                        <span className="text-[#8FA0BA]">Response Times</span>
+                      </div>
                     </div>
-                    <div className="text-[#8FA0BA] text-[11px]">Free after launch</div>
-                  </div>
-                  <div>
-                    <div className="text-white font-semibold text-xs sm:text-sm">
-                      <AnimatedNumber value={100} suffix="%" /> Ownership
+
+                    <div className="flex items-center gap-2 p-2 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                      <div className="w-6 h-6 rounded-md bg-[#3BA9FF]/15 flex items-center justify-center text-[#3BA9FF] shrink-0">
+                        <BarChart className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-[11px] leading-tight">
+                        <span className="font-bold text-white block">More</span>
+                        <span className="text-[#8FA0BA]">Qualified Leads</span>
+                      </div>
                     </div>
-                    <div className="text-[#8FA0BA] text-[11px]">Your code & tools</div>
+
+                    <div className="flex items-center gap-2 p-2 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+                      <div className="w-6 h-6 rounded-md bg-emerald-400/15 flex items-center justify-center text-emerald-400 shrink-0">
+                        <Users className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="text-[11px] leading-tight">
+                        <span className="font-bold text-white block">Automate</span>
+                        <span className="text-[#8FA0BA]">Repetitive Work</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Value Markers */}
+                  <div className="grid grid-cols-3 gap-3 text-xs font-mono text-[#8FA0BA] pt-1">
+                    <div>
+                      <div className="text-white font-semibold text-xs">Direct WhatsApp</div>
+                      <div className="text-[#8FA0BA] text-[10.5px]">Straightforward chat</div>
+                    </div>
+                    <div>
+                      <div className="text-white font-semibold text-xs">
+                        <AnimatedNumber value={30} suffix="-Day" /> Support
+                      </div>
+                      <div className="text-[#8FA0BA] text-[10.5px]">Free after launch</div>
+                    </div>
+                    <div>
+                      <div className="text-white font-semibold text-xs">
+                        <AnimatedNumber value={100} suffix="%" /> Ownership
+                      </div>
+                      <div className="text-[#8FA0BA] text-[10.5px]">Your code & tools</div>
+                    </div>
                   </div>
                 </div>
               </FadeIn>
             </div>
 
-            {/* Right Column: Work Preview Visual */}
-            <div className="lg:col-span-5 flex items-center justify-center">
-              <FadeIn delay={0.35} direction="up" distance={25} duration={0.7}>
-                <HeroShowcaseVisual />
+            {/* Right Column (Target ~53% on desktop): 3D Robot AI Assistant & Holographic Panels */}
+            <div className="w-full lg:w-[53%] xl:w-[54%] flex items-center justify-center">
+              <FadeIn delay={0.35} direction="up" distance={25} duration={0.8}>
+                <HeroRobotVisual />
               </FadeIn>
             </div>
 
@@ -249,7 +324,7 @@ export const HomePage: React.FC = () => {
                 <FadeIn key={service.id} delay={idx * 0.08} direction="up" distance={24}>
                   <div
                     id={`home-service-card-${service.id}`}
-                    className="group card-titan-light p-7 sm:p-8 flex flex-col justify-between h-full hover:-translate-y-2 hover:scale-[1.015] hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_rgba(0,209,255,0.18)] transition-all duration-300"
+                    className="group card-titan-light p-7 sm:p-8 flex flex-col justify-between h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_rgba(0,209,255,0.18)] hover:bg-gradient-to-b hover:from-white hover:to-[#F4F9FF] transition-all duration-300"
                   >
                     <div>
                       {/* Service Header: Number + Icon */}
@@ -257,8 +332,8 @@ export const HomePage: React.FC = () => {
                         <div className="w-12 h-12 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center group-hover:border-[#00D1FF] group-hover:-translate-y-0.5 group-hover:shadow-[0_0_14px_rgba(0,209,255,0.35)] transition-all duration-300">
                           {getServiceIcon(service.id)}
                         </div>
-                        <span className="font-mono text-xs font-bold text-[#8FA0BA] tracking-widest uppercase">
-                          0{idx + 1} // CORE
+                        <span className="font-mono text-xs font-semibold text-[#8FA0BA] tracking-wider uppercase">
+                          0{idx + 1} · Core Service
                         </span>
                       </div>
 
@@ -423,10 +498,25 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. PROCESS SECTION (From Blueprint to Production) */}
-      <ProcessSection />
+      {/* 4. SEE TITAN IN ACTION (Interactive Demo Previews) */}
+      <TitanInActionSection />
 
-      {/* 5. ABOUT PREVIEW SECTION (Corporate Clean Deep Navy Section) */}
+      {/* 5. HOW TITAN WORKS (Connected 4-Step Timeline) */}
+      <HowTitanWorksSection />
+
+      {/* 6. INDUSTRY USE CASES (Built Around Your Business) */}
+      <IndustryUseCasesSection />
+
+      {/* 7. WHY TITAN (5 Core Business Principles) */}
+      <WhyTitanSection />
+
+      {/* 8. WHAT ARE YOU TRYING TO IMPROVE (Smart Interactive Selector) */}
+      <SmartNeedsSelector />
+
+      {/* 9. TRUST & POST-CONTACT FLOW */}
+      <PostContactTrustSection />
+
+      {/* 10. ABOUT PREVIEW SECTION (Corporate Clean Deep Navy Section) */}
       <section id="about-preview-section" className="relative py-20 sm:py-28 bg-[#04142E] border-t border-[#00D1FF]/20 text-white overflow-hidden">
         {/* Subtle Ambient Orb */}
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#00D1FF]/5 rounded-full blur-[140px] pointer-events-none animate-ambient-1" />

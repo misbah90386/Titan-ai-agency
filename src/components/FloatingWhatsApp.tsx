@@ -22,7 +22,7 @@ export const FloatingWhatsApp: React.FC = () => {
   return (
     <div
       id="floating-whatsapp-container"
-      className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] right-4 sm:bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] sm:right-6 z-40 flex flex-col items-end pointer-events-none"
+      className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40 flex flex-col items-end pointer-events-none"
     >
       {/* Expanded Quick Message Bubble with TITAN Dark Theme & Official WhatsApp Green */}
       {isOpen && (
@@ -75,14 +75,16 @@ export const FloatingWhatsApp: React.FC = () => {
         </div>
       )}
 
-      {/* Main Trigger Button & Desktop Tag - TITAN theme frame with official WhatsApp green icon */}
-      <div className="pointer-events-auto flex items-center gap-2.5">
+      {/* Main Trigger Button - Sleek round button with hover tooltip to prevent any card overlap */}
+      <div className="pointer-events-auto flex items-center gap-2 group relative">
         {!isOpen && (
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#031127]/95 border border-[#00D1FF]/30 text-xs text-slate-200 shadow-[0_4px_16px_rgba(0,0,0,0.5)] backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-            <span className="text-[11px] font-mono text-[#A5B9D4]">
-              Chat on WhatsApp: <span className="text-emerald-300 font-semibold">{whatsappNumber}</span>
-            </span>
+          <div className="hidden sm:block absolute right-full mr-3 px-3 py-1.5 rounded-full bg-[#031127]/95 border border-[#00D1FF]/40 text-xs text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.7)] backdrop-blur-md whitespace-nowrap opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-200 pointer-events-none">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+              <span className="text-[11px] font-mono text-[#A5B9D4]">
+                Chat on WhatsApp: <span className="text-emerald-300 font-semibold">{whatsappNumber}</span>
+              </span>
+            </div>
           </div>
         )}
 
@@ -91,15 +93,15 @@ export const FloatingWhatsApp: React.FC = () => {
           id="floating-whatsapp-trigger-btn"
           aria-expanded={isOpen}
           aria-label="Contact TITAN on WhatsApp"
-          className="w-13 h-13 p-1.5 rounded-full bg-[#031127] border-2 border-[#00D1FF]/40 hover:border-[#00D1FF] text-white shadow-[0_4px_20px_rgba(2,8,20,0.8),0_0_20px_rgba(0,209,255,0.3)] hover:shadow-[0_6px_25px_rgba(2,8,20,0.9),0_0_28px_rgba(0,209,255,0.55)] hover:scale-105 transition-all duration-200 flex items-center justify-center relative group"
+          className="w-12 h-12 sm:w-13 sm:h-13 p-1.5 rounded-full bg-[#031127] border-2 border-[#00D1FF]/40 hover:border-[#00D1FF] text-white shadow-[0_4px_20px_rgba(2,8,20,0.8),0_0_20px_rgba(0,209,255,0.3)] hover:shadow-[0_6px_25px_rgba(2,8,20,0.9),0_0_28px_rgba(0,209,255,0.55)] hover:scale-105 transition-all duration-200 flex items-center justify-center relative cursor-pointer"
         >
           {/* Inner Official WhatsApp Green Circle */}
-          <div className="w-10 h-10 rounded-full bg-[#25D366] group-hover:bg-[#20ba59] flex items-center justify-center text-white shadow-inner transition-colors">
-            <WhatsAppOfficialIcon className="w-5.5 h-5.5 text-white" />
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#25D366] group-hover:bg-[#20ba59] flex items-center justify-center text-white shadow-inner transition-colors">
+            <WhatsAppOfficialIcon className="w-5 h-5 text-white" />
           </div>
           
           {/* Status Indicator Dot with Cyan Ring */}
-          <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-[#25D366] rounded-full border-2 border-[#031127] shadow-[0_0_6px_#25D366]" />
+          <span className="absolute -top-0.5 -right-0.5 w-3 h-3 bg-[#25D366] rounded-full border-2 border-[#031127] shadow-[0_0_6px_#25D366]" />
         </button>
       </div>
     </div>

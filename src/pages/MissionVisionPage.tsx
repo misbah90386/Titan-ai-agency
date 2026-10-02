@@ -3,6 +3,7 @@ import { Target, Eye, CheckCircle2 } from 'lucide-react';
 import { FinalCTA } from '../components/FinalCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { TitanIcon } from '../components/TitanLogo';
+import { FadeIn } from '../components/motion/MotionComponents';
 
 export const MissionVisionPage: React.FC = () => {
   usePageSEO({
@@ -94,47 +95,48 @@ export const MissionVisionPage: React.FC = () => {
       <section id="our-mission-section" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono text-[#0B1F4B] font-bold uppercase">
-              <Target className="w-4 h-4 text-[#00D1FF]" />
-              <span>Current Purpose</span>
-            </div>
+            <FadeIn direction="up">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono text-[#0B1F4B] font-bold uppercase">
+                <Target className="w-4 h-4 text-[#00D1FF]" />
+                <span>Current Purpose</span>
+              </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
-              Our Mission
-            </h2>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight mt-3">
+                Our Mission
+              </h2>
 
-            <p className="text-base sm:text-lg text-[#071A33] font-medium leading-relaxed">
-              TITAN's mission is to create useful, accessible, modern digital solutions that help businesses use technology more effectively.
-            </p>
+              <p className="text-base sm:text-lg text-[#071A33] font-medium leading-relaxed mt-4">
+                TITAN's mission is to create useful, accessible, modern digital solutions that help businesses use technology more effectively.
+              </p>
 
-            <p className="text-sm sm:text-base text-[#536477] leading-relaxed">
-              We bridge the gap between complex software advances and concrete business applications. Rather than chasing fleeting tech jargon, our engineering practice is dedicated to building robust software systems that reduce friction, automate workflows, and operate reliably every single day.
-            </p>
+              <p className="text-sm sm:text-base text-[#536477] leading-relaxed mt-4">
+                We bridge the gap between complex software advances and concrete business applications. Rather than chasing fleeting tech jargon, our engineering practice is dedicated to building robust software systems that reduce friction, automate workflows, and operate reliably every single day.
+              </p>
 
-            <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs text-[#071A33]">
-              <div className="text-[#0B1F4B] font-bold mb-1">Our Core Commitment:</div>
-              "Practical engineering delivering measurable operational clarity for real businesses."
-            </div>
+              <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs text-[#071A33] mt-5">
+                <div className="text-[#0B1F4B] font-bold mb-1">Our Core Commitment:</div>
+                "Practical engineering delivering measurable operational clarity for real businesses."
+              </div>
+            </FadeIn>
           </div>
 
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {missionTenets.map((tenet, idx) => (
-                <div
-                  key={idx}
-                  className="card-titan-light p-5 space-y-2"
-                >
-                  <div className="flex items-center gap-2 text-[#00D1FF] font-mono text-xs font-bold">
-                    <CheckCircle2 className="w-4 h-4 text-[#00D1FF]" />
-                    <span className="text-[#0B1F4B]">TENET 0{idx + 1}</span>
+                <FadeIn key={idx} delay={idx * 0.07} direction="up" distance={20}>
+                  <div className="card-titan-light p-5 space-y-2 h-full hover:border-[#00D1FF]/60 hover:-translate-y-1 transition-all duration-300">
+                    <div className="flex items-center gap-2 text-[#00D1FF] font-mono text-xs font-bold">
+                      <CheckCircle2 className="w-4 h-4 text-[#00D1FF]" />
+                      <span className="text-[#0B1F4B]">TENET 0{idx + 1}</span>
+                    </div>
+                    <h3 className="font-display text-base font-bold text-[#071A33]">
+                      {tenet.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {tenet.desc}
+                    </p>
                   </div>
-                  <h3 className="font-display text-base font-bold text-[#071A33]">
-                    {tenet.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
-                    {tenet.desc}
-                  </p>
-                </div>
+                </FadeIn>
               ))}
             </div>
           </div>

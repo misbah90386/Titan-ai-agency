@@ -7,6 +7,7 @@ import { getBlogPosts } from '../services/blogService';
 import { NormalizedBlogPost } from '../types/blog';
 import { AlertCircle, RefreshCw, Sparkles, Inbox } from 'lucide-react';
 import { usePageSEO } from '../hooks/usePageSEO';
+import { FadeIn } from '../components/motion/MotionComponents';
 
 export const BlogPage: React.FC = () => {
   const [posts, setPosts] = useState<NormalizedBlogPost[]>([]);
@@ -168,8 +169,10 @@ export const BlogPage: React.FC = () => {
         {/* Articles Grid */}
         {!loading && !error && filteredPosts.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
-              <BlogCard key={post.id} post={post} />
+            {filteredPosts.map((post, idx) => (
+              <FadeIn key={post.id} delay={idx * 0.08} direction="up" distance={25}>
+                <BlogCard post={post} />
+              </FadeIn>
             ))}
           </div>
         )}

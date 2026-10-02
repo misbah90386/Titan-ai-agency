@@ -151,6 +151,95 @@ export const SEOOptimizationPage: React.FC = () => {
         </div>
       </section>
 
+      {/* ANIMATED SEO PIPELINE (Section 21) */}
+      <section className="py-14 sm:py-20 bg-[#031127] text-white border-y border-[#00D1FF]/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-30 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Visibility Discovery Architecture
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight uppercase">
+                THE SEARCH DISCOVERY FUNNEL
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-[#8FA0BA]">
+                How rigorous technical and content foundations turn hidden websites into discoverable organic assets.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* 4-Step Animated Pipeline */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
+            {[
+              {
+                step: '01',
+                title: 'High-Speed Website',
+                status: 'Core Web Vitals',
+                desc: 'Clean HTML, responsive layouts, schema markup, and sub-second load times.',
+                icon: Globe2
+              },
+              {
+                step: '02',
+                title: 'Search Optimization',
+                status: 'Traditional & AI Indexing',
+                desc: 'Structured metadata, Google Search Console indexing, and AI crawler optimization.',
+                icon: Search
+              },
+              {
+                step: '03',
+                title: 'Higher Visibility',
+                status: 'Intent Discovery',
+                desc: 'Businesses appear when buyers search high-intent commercial keywords locally.',
+                icon: TrendingUp
+              },
+              {
+                step: '04',
+                title: 'Organic Inquiries',
+                status: 'Compounded Growth',
+                desc: 'Unpaid qualified visitors convert via integrated booking and WhatsApp tools.',
+                icon: BarChart3
+              }
+            ].map((node, i) => (
+              <FadeIn key={i} delay={i * 0.08} direction="up" distance={20}>
+                <div className="p-5 rounded-2xl bg-[#07193B]/80 border border-[#00D1FF]/30 hover:border-[#00D1FF] transition-all duration-300 h-full flex flex-col justify-between shadow-lg relative group hover:-translate-y-1">
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-mono text-xs font-bold text-[#00D1FF]">Stage {node.step}</span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-white/[0.06] text-[#A0B3CC]">
+                        {node.status}
+                      </span>
+                    </div>
+                    <div className="w-9 h-9 rounded-lg bg-[#00D1FF]/15 border border-[#00D1FF]/30 flex items-center justify-center text-[#00D1FF] mb-3">
+                      <node.icon className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-display font-bold text-base text-white mb-1.5">{node.title}</h3>
+                    <p className="text-xs text-[#8FA0BA] leading-relaxed">{node.desc}</p>
+                  </div>
+
+                  {/* Micro indicator animation */}
+                  {i === 2 && (
+                    <div className="mt-4 pt-2 border-t border-white/[0.08] flex items-end gap-1 h-5">
+                      <span className="w-1.5 bg-[#00D1FF] rounded-t-sm animate-bar-1" />
+                      <span className="w-1.5 bg-[#3BA9FF] rounded-t-sm animate-bar-2" />
+                      <span className="w-1.5 bg-[#00D1FF] rounded-t-sm animate-bar-3" />
+                      <span className="w-1.5 bg-emerald-400 rounded-t-sm animate-bar-4" />
+                    </div>
+                  )}
+
+                  {i < 3 && (
+                    <div className="mt-4 pt-2 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-[#00D1FF]">
+                      <span>Next Phase</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 2. BUSINESS PROBLEMS SOLVED */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">

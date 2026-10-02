@@ -182,6 +182,67 @@ export const AIVoiceAgentsPage: React.FC = () => {
         </div>
       </section>
 
+      {/* ANIMATED CALL AGENT VISUAL FLOW (Section 18) */}
+      <section className="py-14 sm:py-20 bg-[#031127] text-white border-y border-[#00D1FF]/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-30 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Real-Time Voice Architecture
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight uppercase">
+                HOW AN AI VOICE AGENT HANDLES CALLS
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-[#8FA0BA]">
+                A disciplined, sub-second conversational loop that qualifies opportunities and preserves your team's focus.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* 6-Step Visual Flow */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3.5 relative">
+            {[
+              { step: '01', title: 'Incoming Call', status: 'Ring / Forward', desc: 'Customer calls your line; routed in <800ms.', icon: PhoneCall },
+              { step: '02', title: 'AI Voice Agent', status: 'AI Speaking', desc: 'Sub-second neural voice speaks your custom script.', icon: Mic },
+              { step: '03', title: 'Understands Intent', status: 'Natural Dialogue', desc: 'Understands customer questions and requests.', icon: Volume2 },
+              { step: '04', title: 'Captures Information', status: 'Active Extraction', desc: 'Records caller details, requirements and budget.', icon: UserCheck },
+              { step: '05', title: 'Lead Saved', status: 'Calendar & WhatsApp', desc: 'Appointment booked; lead summary sent instantly.', icon: Calendar },
+              { step: '06', title: 'Human Follow-Up', status: 'Handshake Ready', desc: 'Complex calls seamlessly transferred to team.', icon: PhoneForwarded }
+            ].map((node, i) => (
+              <FadeIn key={i} delay={i * 0.08} direction="up" distance={20}>
+                <div className="p-4 rounded-2xl bg-[#07193B]/80 border border-[#00D1FF]/30 hover:border-[#00D1FF] transition-all duration-300 h-full flex flex-col justify-between shadow-lg relative group hover:-translate-y-1">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-xs font-bold text-[#00D1FF]">Step {node.step}</span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-white/[0.06] text-[#A0B3CC]">
+                        {node.status}
+                      </span>
+                    </div>
+                    <div className="w-8 h-8 rounded-lg bg-[#00D1FF]/15 border border-[#00D1FF]/30 flex items-center justify-center text-[#00D1FF] mb-2.5">
+                      <node.icon className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-display font-bold text-sm text-white mb-1.5">{node.title}</h3>
+                    <p className="text-[11.5px] text-[#8FA0BA] leading-relaxed">{node.desc}</p>
+                  </div>
+
+                  {/* Micro audio waveform on step 2/3 */}
+                  {(i === 1 || i === 2) && (
+                    <div className="mt-3 pt-2 border-t border-white/[0.08] flex items-center gap-1 h-4">
+                      <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-1" />
+                      <span className="w-1 bg-[#3BA9FF] rounded-full animate-wave-2" />
+                      <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-3" />
+                      <span className="w-1 bg-[#3BA9FF] rounded-full animate-wave-4" />
+                      <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-5" />
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 2. BUSINESS PROBLEMS SOLVED */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">

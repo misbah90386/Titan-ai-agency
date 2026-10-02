@@ -376,6 +376,125 @@
   transform: scaleX(1);
 }
 
+/* 8b. Holographic UI Panels Float Timings (Varied & Gentle, No Bouncing) */
+@keyframes float-hologram-1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(0.4deg); }
+}
+@keyframes float-hologram-2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(-0.5deg); }
+}
+@keyframes float-hologram-3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.3deg); }
+}
+@keyframes float-hologram-4 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-0.4deg); }
+}
+@keyframes float-hologram-5 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(0.5deg); }
+}
+
+.animate-hologram-1 { animation: float-hologram-1 4.6s ease-in-out infinite; }
+.animate-hologram-2 { animation: float-hologram-2 5.2s ease-in-out infinite; }
+.animate-hologram-3 { animation: float-hologram-3 4.2s ease-in-out infinite; }
+.animate-hologram-4 { animation: float-hologram-4 5.8s ease-in-out infinite; }
+.animate-hologram-5 { animation: float-hologram-5 4.9s ease-in-out infinite; }
+
+/* 8c. Robot Motion Keyframes */
+@keyframes robot-float-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes robot-breathe-gentle {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(0, 209, 255, 0.25)); }
+  50% { transform: scale(1.01); filter: drop-shadow(0 0 32px rgba(0, 209, 255, 0.45)); }
+}
+@keyframes pedestal-ring-glow {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 25px rgba(0, 209, 255, 0.35), inset 0 0 15px rgba(0, 209, 255, 0.2); }
+  50% { opacity: 1; box-shadow: 0 0 45px rgba(0, 209, 255, 0.65), inset 0 0 25px rgba(0, 209, 255, 0.4); }
+}
+
+.animate-robot-float { animation: robot-float-gentle 6s ease-in-out infinite; }
+.animate-robot-breathe { animation: robot-breathe-gentle 5s ease-in-out infinite; }
+.animate-pedestal-glow { animation: pedestal-ring-glow 3.6s ease-in-out infinite; }
+
+/* 8c-2. Slow Rotating Platform HUD Rings */
+@keyframes hud-rotate-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes hud-rotate-counter {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+.animate-hud-cw { animation: hud-rotate-clockwise 28s linear infinite; }
+.animate-hud-ccw { animation: hud-rotate-counter 40s linear infinite; }
+
+/* 8d. Audio Waveform Fluctuation */
+@keyframes wave-bar-1 { 0%, 100% { height: 25%; } 50% { height: 95%; } }
+@keyframes wave-bar-2 { 0%, 100% { height: 80%; } 50% { height: 30%; } }
+@keyframes wave-bar-3 { 0%, 100% { height: 45%; } 50% { height: 100%; } }
+@keyframes wave-bar-4 { 0%, 100% { height: 90%; } 50% { height: 40%; } }
+@keyframes wave-bar-5 { 0%, 100% { height: 35%; } 50% { height: 85%; } }
+@keyframes wave-bar-6 { 0%, 100% { height: 70%; } 50% { height: 25%; } }
+
+.animate-wave-1 { animation: wave-bar-1 1.2s ease-in-out infinite; }
+.animate-wave-2 { animation: wave-bar-2 1.4s ease-in-out infinite; }
+.animate-wave-3 { animation: wave-bar-3 1.1s ease-in-out infinite; }
+.animate-wave-4 { animation: wave-bar-4 1.5s ease-in-out infinite; }
+.animate-wave-5 { animation: wave-bar-5 1.3s ease-in-out infinite; }
+.animate-wave-6 { animation: wave-bar-6 1.6s ease-in-out infinite; }
+
+/* 8e. Browser Mockup Scanning Light Beam */
+@keyframes scan-beam-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.5; }
+  100% { transform: translateY(220%); opacity: 0; }
+}
+.animate-scan-beam {
+  animation: scan-beam-sweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* 8f. Workflow Connection Pulse */
+@keyframes workflow-travel {
+  0% { transform: translateX(0); opacity: 0.2; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0.2; }
+}
+.animate-workflow-travel {
+  animation: workflow-travel 2.6s linear infinite;
+}
+
+/* 8g. Global Service Card Interactive Glow Utility */
+.card-titan-interactive {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              background 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-titan-interactive:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 209, 255, 0.55);
+  box-shadow: 0 16px 40px -4px rgba(0, 209, 255, 0.2);
+}
+
+/* 8h. Initial Load Loading Line Sweep */
+@keyframes loader-line-sweep {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-loader-line {
+  animation: loader-line-sweep 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 /* 9. Accessibility: Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -397,7 +516,24 @@
   .animate-bar-3,
   .animate-bar-4,
   .animate-bar-5,
-  .animate-live-dot {
+  .animate-live-dot,
+  .animate-hologram-1,
+  .animate-hologram-2,
+  .animate-hologram-3,
+  .animate-hologram-4,
+  .animate-hologram-5,
+  .animate-robot-float,
+  .animate-robot-breathe,
+  .animate-pedestal-glow,
+  .animate-wave-1,
+  .animate-wave-2,
+  .animate-wave-3,
+  .animate-wave-4,
+  .animate-wave-5,
+  .animate-wave-6,
+  .animate-scan-beam,
+  .animate-workflow-travel,
+  .animate-loader-line {
     animation: none !important;
   }
 }

@@ -332,7 +332,25 @@ export const BlogArticlePage: React.FC = () => {
         </div>
 
         {/* Call To Action */}
-        <BlogCTA />
+        {post.slug === 'ai-call-agents-for-business' ? (
+          <BlogCTA
+            badge="AI CALL AGENT DEMONSTRATION"
+            heading={
+              <>
+                See TITAN AI Call Agent in <span className="text-[#00D1FF]">Action</span>
+              </>
+            }
+            text="Want to see how an AI Call Agent could work for your business? Contact TITAN AI Agency on WhatsApp and request a private demonstration."
+            primaryButtonText="Request AI Call Agent Demo"
+            primaryWhatsappUrl={`https://wa.me/966534182945?text=${encodeURIComponent(
+              'Hi TITAN AI Agency, I saw your AI Call Agent article and would like to see a demo for my business.'
+            )}`}
+            secondaryButtonText="Explore Our AI Services"
+            secondaryButtonLink="/services"
+          />
+        ) : (
+          <BlogCTA />
+        )}
 
         {/* Related Articles */}
         <RelatedArticles currentPost={post} allPosts={allPosts} />

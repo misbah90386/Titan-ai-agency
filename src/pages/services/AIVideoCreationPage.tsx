@@ -169,6 +169,81 @@ export const AIVideoCreationPage: React.FC = () => {
         </div>
       </section>
 
+      {/* MOTION GRAPHICS TIMELINE & PREVIEW (Section 22) */}
+      <section className="py-14 sm:py-20 bg-[#031127] text-white border-y border-[#00D1FF]/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-30 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Production Suite & Motion Design
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight uppercase">
+                THE AI VIDEO TIMELINE & MOTION GRAPHICS
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-[#8FA0BA]">
+                Concept outlines, high-definition neural scenes, subtitles, and localized sound design in one unified pipeline.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Interactive Video Studio Console */}
+          <div className="max-w-4xl mx-auto rounded-3xl bg-[#04142E] border border-[#00D1FF]/35 shadow-[0_20px_60px_rgba(0,209,255,0.2)] p-6 sm:p-8 space-y-6">
+            {/* Viewport Frame */}
+            <div className="relative aspect-video rounded-2xl bg-[#020B18] border border-white/10 overflow-hidden flex items-center justify-center group shadow-inner">
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#00D1FF]/10 to-[#3BA9FF]/10 pointer-events-none" />
+              <div className="text-center space-y-3 z-10">
+                <div className="w-16 h-16 rounded-full bg-[#00D1FF]/20 border border-[#00D1FF]/60 flex items-center justify-center mx-auto text-[#00D1FF] shadow-[0_0_25px_rgba(0,209,255,0.4)] group-hover:scale-110 transition-transform duration-300">
+                  <PlayCircle className="w-8 h-8" />
+                </div>
+                <div className="text-xs font-mono tracking-widest text-slate-300 uppercase">
+                  Commercial Product Demonstration · 4K 60FPS
+                </div>
+              </div>
+              <div className="absolute bottom-3 left-4 flex items-center gap-2 text-[10px] font-mono text-[#00D1FF]">
+                <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+                <span>REC · SCENE 03</span>
+              </div>
+            </div>
+
+            {/* Video Multi-Track Timeline */}
+            <div className="p-4 rounded-xl bg-[#020B1A] border border-white/10 space-y-2.5 font-mono text-[11px]">
+              <div className="flex items-center justify-between text-[#8FA0BA] text-[10px] pb-1 border-b border-white/[0.08]">
+                <span>TIMELINE TRACKS</span>
+                <span>00:15 / 00:30</span>
+              </div>
+
+              {/* Video Track */}
+              <div className="flex items-center gap-3">
+                <span className="w-16 text-[#00D1FF] text-[10px]">VIDEO</span>
+                <div className="flex-1 grid grid-cols-4 gap-1.5 h-6">
+                  <div className="rounded bg-[#07193B] border border-[#00D1FF]/40 text-center text-[9px] flex items-center justify-center text-slate-300">Hook</div>
+                  <div className="rounded bg-[#0B2556] border border-[#00D1FF]/50 text-center text-[9px] flex items-center justify-center text-white">Features</div>
+                  <div className="rounded bg-[#07193B] border border-[#00D1FF]/40 text-center text-[9px] flex items-center justify-center text-slate-300">Proof</div>
+                  <div className="rounded bg-[#0B2556] border border-[#00D1FF]/50 text-center text-[9px] flex items-center justify-center text-[#00D1FF]">CTA</div>
+                </div>
+              </div>
+
+              {/* Audio & Voiceover Track */}
+              <div className="flex items-center gap-3">
+                <span className="w-16 text-[#3BA9FF] text-[10px]">AUDIO</span>
+                <div className="flex-1 h-5 rounded bg-[#031127] border border-white/10 flex items-center px-2">
+                  <div className="flex items-center gap-1 w-full">
+                    <span className="w-1 bg-[#3BA9FF] rounded-full animate-wave-1 h-3" />
+                    <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-2 h-4" />
+                    <span className="w-1 bg-[#3BA9FF] rounded-full animate-wave-3 h-2" />
+                    <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-4 h-4" />
+                    <span className="w-1 bg-[#3BA9FF] rounded-full animate-wave-5 h-3" />
+                    <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-6 h-2" />
+                    <span className="text-[9px] text-[#A0B3CC] ml-2">Neural Voiceover (English & Arabic)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 2. BUSINESS PROBLEMS SOLVED */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">

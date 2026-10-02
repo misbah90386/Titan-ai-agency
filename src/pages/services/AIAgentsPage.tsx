@@ -186,6 +186,61 @@ export const AIAgentsPage: React.FC = () => {
         </div>
       </section>
 
+      {/* ANIMATED AI AGENT WORKFLOW (Section 19) */}
+      <section className="py-14 sm:py-20 bg-[#031127] text-white border-y border-[#00D1FF]/20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-digital-grid-dark opacity-30 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Autonomous Execution Pipeline
+              </span>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight uppercase">
+                HOW A CUSTOM AI AGENT WORKS
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-[#8FA0BA]">
+                A closed-loop, verifiable architecture that moves from customer request to completed business action in seconds.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* 5-Step Futuristic Connected Workflow */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 relative">
+            {[
+              { step: '01', title: 'Customer', desc: 'Sends inquiry via website, WhatsApp or app.', icon: UserCheck, pulse: false },
+              { step: '02', title: 'AI Agent', desc: 'Processes intent, context, and permissions.', icon: Bot, pulse: true },
+              { step: '03', title: 'Business Knowledge', desc: 'Queries approved company docs, pricing & FAQs.', icon: Database, pulse: true },
+              { step: '04', title: 'Connected Tools', desc: 'Syncs with CRM, booking calendar, or sheets.', icon: Layers, pulse: true },
+              { step: '05', title: 'Action Completed', desc: 'Lead qualified, slot booked, staff alerted.', icon: CheckCircle2, pulse: false }
+            ].map((node, i) => (
+              <FadeIn key={i} delay={i * 0.08} direction="up" distance={20}>
+                <div className="p-4 rounded-2xl bg-[#07193B]/80 border border-[#00D1FF]/30 hover:border-[#00D1FF] transition-all duration-300 h-full flex flex-col justify-between shadow-lg relative group hover:-translate-y-1">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-xs font-bold text-[#00D1FF]">Node 0{i + 1}</span>
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    </div>
+                    <div className="w-8 h-8 rounded-lg bg-[#00D1FF]/15 border border-[#00D1FF]/30 flex items-center justify-center text-[#00D1FF] mb-2.5">
+                      <node.icon className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-display font-bold text-sm text-white mb-1.5">{node.title}</h3>
+                    <p className="text-[11.5px] text-[#8FA0BA] leading-relaxed">{node.desc}</p>
+                  </div>
+
+                  {/* Flow connector line on bottom */}
+                  {i < 4 && (
+                    <div className="mt-3 pt-2 border-t border-white/[0.08] flex items-center justify-between text-[9px] font-mono text-[#00D1FF]">
+                      <span>Trigger Event</span>
+                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 2. BUSINESS PROBLEMS SOLVED */}
       <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn direction="up">
