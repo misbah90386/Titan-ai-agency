@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Globe, Search, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck, CheckCircle2, Sparkles, Network } from 'lucide-react';
 import { HeroShowcaseVisual } from '../components/HeroShowcaseVisual';
 import { FeaturedWork } from '../components/FeaturedWork';
 import { ProcessSection } from '../components/ProcessSection';
@@ -19,7 +19,7 @@ export const HomePage: React.FC = () => {
   usePageSEO({
     title: 'Titan AI Agency | AI Automation & AI Solutions for Businesses',
     description:
-      'TITAN AI AGENCY builds websites, AI assistants, and automated workflows that help businesses capture enquiries, respond faster, and reduce repetitive work.',
+      'TITAN AI AGENCY builds AI-powered websites, search optimization, AI agents, AI call agents, and AI video content that help businesses scale enquiries, respond faster, and reduce repetitive work.',
     canonicalPath: '/',
     structuredData: {
       '@context': 'https://schema.org',
@@ -28,7 +28,7 @@ export const HomePage: React.FC = () => {
       url: 'https://titanaiagency.netlify.app/',
       logo: 'https://titanaiagency.netlify.app/titan-logo.png',
       description:
-        'Titan AI Agency provides AI automation, AI agents, voice AI and digital solutions for businesses.',
+        'Titan AI Agency provides AI-powered websites, SEO, custom AI agents, AI call agents, and AI video creation for businesses.',
       sameAs: ['https://www.instagram.com/titanaiagency.sa?stkn=MWZsZHR5d2Q1Zzdk'],
       contactPoint: {
         '@type': 'ContactPoint',
@@ -41,19 +41,20 @@ export const HomePage: React.FC = () => {
 
   const getServiceIcon = (id: string) => {
     switch (id) {
+      case 'ai-websites':
       case 'websites':
         return <Globe className="w-5 h-5 text-[#00D1FF]" />;
+      case 'seo-optimization':
+      case 'seo':
+        return <Search className="w-5 h-5 text-[#00D1FF]" />;
       case 'ai-agents':
         return <Cpu className="w-5 h-5 text-[#00D1FF]" />;
+      case 'ai-call-agents':
       case 'ai-voice-agents':
         return <PhoneCall className="w-5 h-5 text-[#00D1FF]" />;
-      case 'ai-chatbots':
-        return <MessageSquare className="w-5 h-5 text-[#00D1FF]" />;
-      case 'business-automation':
-        return <Workflow className="w-5 h-5 text-[#00D1FF]" />;
       case 'ai-video-creation':
+      case 'ai-video':
         return <Video className="w-5 h-5 text-[#00D1FF]" />;
-      case 'custom-ai-solutions':
       default:
         return <Layers className="w-5 h-5 text-[#00D1FF]" />;
     }
@@ -65,17 +66,19 @@ export const HomePage: React.FC = () => {
 
   const getServiceRoute = (id: string): string => {
     switch (id) {
+      case 'ai-websites':
       case 'websites':
         return '/services/website-design';
+      case 'seo-optimization':
+      case 'seo':
+        return '/services/seo';
       case 'ai-agents':
         return '/services/ai-agents';
-      case 'ai-chatbots':
-        return '/services/ai-chatbots';
+      case 'ai-call-agents':
       case 'ai-voice-agents':
-        return '/services/ai-voice-agents';
-      case 'business-automation':
-        return '/services/business-automation';
+        return '/services/ai-call-agents';
       case 'ai-video-creation':
+      case 'ai-video':
         return '/services/ai-video-creation';
       default:
         return `/services#${id}`;
@@ -209,80 +212,136 @@ export const HomePage: React.FC = () => {
           
           <FadeIn direction="up">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
-              <div className="max-w-2xl">
-                <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-                  What We Build & Deliver
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold mb-3">
+                  <TitanIcon className="w-3.5 h-3.5 text-[#00D1FF]" />
+                  <span>5 Core Technology Capabilities</span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
-                  Our Core Services
+                  High-Impact AI Solutions Built for Business Growth
                 </h2>
                 <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
-                  Practical websites, conversational tools, automated workflows, and AI video content designed to solve genuine business bottlenecks.
+                  Five interconnected technology pillars engineered to eliminate operational bottlenecks, capture every customer opportunity, and scale your brand authority.
                 </p>
               </div>
               
               <Link
                 to="/services"
                 id="view-all-services-header-btn"
-                className="mt-4 md:mt-0 inline-flex items-center gap-2 text-sm font-bold text-[#0B1F4B] hover:text-[#00D1FF] group transition-colors duration-200"
+                className="mt-6 md:mt-0 inline-flex items-center gap-2 text-sm font-bold text-[#0B1F4B] hover:text-[#00D1FF] group transition-colors duration-200 shrink-0"
               >
-                <span>View Full Services Page</span>
+                <span>Full Services Specification</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
               </Link>
             </div>
           </FadeIn>
 
-          {/* Seven Service Cards with Staggered Scroll Reveal */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* 5 Core Service Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             {SERVICES_DATA.map((service, idx) => {
               const whatsappServiceUrl =
                 'https://wa.me/966534182945?text=' +
                 encodeURIComponent(
-                  service.id === 'ai-video-creation'
-                    ? 'Hello TITAN AI AGENCY, I am interested in AI video creation for my business.'
-                    : `Hello TITAN AI AGENCY, I am interested in ${service.title} for my business.`
+                  `Hello TITAN AI AGENCY, I am interested in ${service.title} (${service.ctaText}) for my business.`
                 );
 
               return (
                 <FadeIn key={service.id} delay={idx * 0.08} direction="up" distance={24}>
                   <div
                     id={`home-service-card-${service.id}`}
-                    className="group card-titan-light p-7 flex flex-col justify-between h-full"
+                    className="group card-titan-light p-7 sm:p-8 flex flex-col justify-between h-full hover:-translate-y-2 hover:scale-[1.015] hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_rgba(0,209,255,0.18)] transition-all duration-300"
                   >
                     <div>
-                      {/* Small blue icon above each service title with subtle hover rotation/glow */}
-                      <div className="w-12 h-12 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center mb-5 group-hover:border-[#00D1FF] group-hover:-translate-y-1 group-hover:rotate-2 group-hover:shadow-[0_0_12px_rgba(0,209,255,0.3)] transition-all duration-300">
-                        {getServiceIcon(service.id)}
+                      {/* Service Header: Number + Icon */}
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="w-12 h-12 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center group-hover:border-[#00D1FF] group-hover:-translate-y-0.5 group-hover:shadow-[0_0_14px_rgba(0,209,255,0.35)] transition-all duration-300">
+                          {getServiceIcon(service.id)}
+                        </div>
+                        <span className="font-mono text-xs font-bold text-[#8FA0BA] tracking-widest uppercase">
+                          0{idx + 1} // CORE
+                        </span>
                       </div>
 
-                      <h3 className="font-display text-xl font-bold text-[#071A33] mb-2.5 group-hover:text-[#0B1F4B] transition-colors duration-200">
+                      {/* Title & Positioning Headline */}
+                      <h3 className="font-display text-xl sm:text-2xl font-bold text-[#071A33] mb-2 group-hover:text-[#0B1F4B] transition-colors duration-200">
                         {service.title}
                       </h3>
 
-                      <p className="text-sm text-[#536477] leading-relaxed mb-6">
+                      {service.positioning && (
+                        <p className="text-xs sm:text-[13px] font-semibold text-[#00D1FF] mb-3 leading-snug">
+                          {service.positioning}
+                        </p>
+                      )}
+
+                      <p className="text-sm text-[#536477] leading-relaxed mb-5">
                         {service.shortDescription}
                       </p>
+
+                      {/* Capabilities Highlights */}
+                      <div className="mb-5 pt-3 border-t border-slate-100">
+                        <div className="text-[11px] font-mono uppercase tracking-wider text-[#8FA0BA] font-bold mb-2">
+                          Capabilities Include:
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {service.subcategories.slice(0, 4).map((sub, sIdx) => (
+                            <span
+                              key={sIdx}
+                              className="px-2.5 py-1 rounded-md bg-[#F8FAFF] border border-slate-200/90 text-[11px] font-medium text-[#071A33]"
+                            >
+                              {sub}
+                            </span>
+                          ))}
+                          {service.subcategories.length > 4 && (
+                            <span className="px-2 py-1 rounded-md bg-[#EAF7FF] text-[#0B1F4B] text-[11px] font-mono font-semibold">
+                              +{service.subcategories.length - 4} more
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Problems Solved Tagline */}
+                      {service.problemsSolved && service.problemsSolved.length > 0 && (
+                        <div className="mb-6 p-3 rounded-xl bg-[#F8FAFF] border border-slate-200/70">
+                          <div className="text-[10px] font-mono uppercase tracking-wider text-rose-600 font-bold mb-1">
+                            Solves Common Bottlenecks:
+                          </div>
+                          <p className="text-xs text-[#536477] line-clamp-2">
+                            {service.problemsSolved.slice(0, 2).join(' · ')}
+                          </p>
+                        </div>
+                      )}
                     </div>
 
-                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                    {/* Action Zone: Primary Specific CTA + WhatsApp Direct */}
+                    <div className="pt-4 border-t border-slate-100 space-y-2.5">
                       <Link
                         to={getServiceRoute(service.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B1F4B] hover:text-[#00D1FF] transition-colors duration-200 group/link"
+                        id={`home-cta-${service.id}`}
+                        className="btn-titan-primary w-full py-3 px-4 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 group/btn shadow-[0_3px_12px_rgba(0,209,255,0.22)] hover:shadow-[0_0_20px_rgba(0,209,255,0.45)] hover:-translate-y-0.5 transition-all duration-250"
                       >
-                        <span>Learn Details</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF] group-hover/link:translate-x-1 transition-transform duration-200" />
+                        <span>{service.ctaText || 'LEARN DETAILS'}</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-[5px] transition-transform duration-250" />
                       </Link>
 
-                      <a
-                        href={whatsappServiceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 hover:text-emerald-500 transition-colors duration-200 hover:-translate-y-0.5"
-                        title={`Enquire on WhatsApp about ${service.title}`}
-                      >
-                        <MessageCircle className="w-3.5 h-3.5" />
-                        <span>Enquire</span>
-                      </a>
+                      <div className="flex items-center justify-between text-xs px-1">
+                        <Link
+                          to={getServiceRoute(service.id)}
+                          className="text-[#0B1F4B] hover:text-[#00D1FF] font-semibold transition-colors duration-200"
+                        >
+                          Explore Scope & Specs
+                        </Link>
+
+                        <a
+                          href={whatsappServiceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 font-bold text-emerald-600 hover:text-emerald-500 transition-colors duration-200 hover:-translate-y-0.5"
+                          title={`WhatsApp consultation for ${service.title}`}
+                        >
+                          <MessageCircle className="w-3.5 h-3.5" />
+                          <span>WhatsApp</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </FadeIn>
@@ -290,16 +349,75 @@ export const HomePage: React.FC = () => {
             })}
           </div>
 
+          {/* Connected AI Ecosystem: Making the 5 services feel unified and powerful */}
           <FadeIn delay={0.2} direction="up">
-            <div className="mt-12 text-center">
-              <Link
-                to="/services"
-                id="view-all-services-cta-btn"
-                className="group btn-titan-secondary inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold hover:-translate-y-0.5 transition-all duration-300"
-              >
-                <span>Explore Full Service Specifications</span>
-                <ArrowRight className="w-4 h-4 text-[#00D1FF] group-hover:translate-x-1 transition-transform duration-200" />
-              </Link>
+            <div className="mt-16 p-8 sm:p-10 rounded-3xl bg-[#04142E] text-white border border-[#00D1FF]/20 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#00D1FF]/10 rounded-full blur-[140px] pointer-events-none" />
+              
+              <div className="relative max-w-4xl mx-auto text-center space-y-4 mb-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+                  <Network className="w-3.5 h-3.5" />
+                  <span>The TITAN Connected Ecosystem</span>
+                </div>
+                <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-white">
+                  How TITAN’s 5 Core Services Connect to Power Your Business
+                </h3>
+                <p className="text-sm sm:text-base text-[#8FA0BA] leading-relaxed">
+                  These five technologies are not isolated tools. Together, they create an automated growth engine from first discovery to closed client.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                <div className="p-5 rounded-2xl bg-[#0B1F4B]/60 border border-white/10 space-y-2.5 text-left">
+                  <div className="text-xs font-mono text-[#00D1FF] font-bold uppercase tracking-wider flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#00D1FF]" />
+                    <span>01. Attract & Discover</span>
+                  </div>
+                  <h4 className="font-display font-bold text-white text-base">
+                    AI Websites + Search Optimization
+                  </h4>
+                  <p className="text-xs text-[#8FA0BA] leading-relaxed">
+                    High-ranking SEO visibility brings qualified visitors to your AI-powered website designed for instant conversion and brand authority.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-[#0B1F4B]/60 border border-white/10 space-y-2.5 text-left">
+                  <div className="text-xs font-mono text-[#3BA9FF] font-bold uppercase tracking-wider flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#3BA9FF]" />
+                    <span>02. Engage & Capture</span>
+                  </div>
+                  <h4 className="font-display font-bold text-white text-base">
+                    Custom AI Agents + AI Call Agents
+                  </h4>
+                  <p className="text-xs text-[#8FA0BA] leading-relaxed">
+                    24/7 autonomous agents answer questions, qualify leads on web and phone, book appointments, and smoothly transfer to human staff.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-[#0B1F4B]/60 border border-white/10 space-y-2.5 text-left">
+                  <div className="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span>03. Convert & Scale</span>
+                  </div>
+                  <h4 className="font-display font-bold text-white text-base">
+                    AI Video Creation + Automation
+                  </h4>
+                  <p className="text-xs text-[#8FA0BA] leading-relaxed">
+                    High-impact marketing videos showcase products and explain services across social channels, compounding organic customer acquisition.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/[0.08] text-center">
+                <Link
+                  to="/services"
+                  id="view-all-services-cta-btn"
+                  className="group btn-titan-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold shadow-[0_4px_16px_rgba(0,209,255,0.3)] hover:shadow-[0_0_24px_rgba(0,209,255,0.5)]"
+                >
+                  <span>Explore All 5 Service Specifications</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
+                </Link>
+              </div>
             </div>
           </FadeIn>
         </div>

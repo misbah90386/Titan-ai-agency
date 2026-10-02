@@ -5,111 +5,117 @@ import {
   CheckCircle2,
   ArrowRight,
   MessageCircle,
-  MapPin,
   Mic,
   Shield,
   PhoneForwarded,
-  UserCheck
+  UserCheck,
+  Calendar,
+  Clock,
+  Volume2,
+  AlertCircle
 } from 'lucide-react';
 import { usePageSEO } from '../../hooks/usePageSEO';
 import { ServiceProcessSteps } from '../../components/services/ServiceProcessSteps';
 import { ServiceFAQList } from '../../components/services/ServiceFAQList';
 import { ServiceCTASection } from '../../components/services/ServiceCTASection';
 import { TitanIcon } from '../../components/TitanLogo';
+import { FadeIn } from '../../components/motion/MotionComponents';
 
 const WHATSAPP_MSG =
-  'Hello TITAN AI AGENCY, I am interested in discussing AI Voice Agents for my business.';
+  'Hello TITAN AI AGENCY, I would like to discuss building AI Call Agents for my business.';
 const WHATSAPP_URL = `https://wa.me/966534182945?text=${encodeURIComponent(WHATSAPP_MSG)}`;
 
-const USE_CASES = [
+const CAPABILITIES = [
+  { title: 'Answer Common Customer Questions', desc: 'Answers questions about opening hours, location, pricing parameters, and core service offerings.' },
+  { title: 'Collect Lead Information', desc: 'Captures caller name, phone number, company, specific requirements, and urgency.' },
+  { title: 'Qualify Inquiries', desc: 'Screens inbound calls according to your qualification criteria before forwarding to sales.' },
+  { title: 'Book Appointments', desc: 'Schedules consultations directly into your calendar during the live phone call.' },
+  { title: 'Confirm Appointments', desc: 'Sends automated SMS or WhatsApp confirmation and handles rescheduling requests.' },
+  { title: 'Route Calls', desc: 'Directs callers smoothly to the appropriate team member, department, or office branch.' },
+  { title: 'Provide Service Information', desc: 'Explains complex service packages clearly based strictly on verified documentation.' },
+  { title: 'Escalate to a Human Team Member', desc: 'Seamlessly transfers complex, sensitive, or high-priority calls to human staff.' }
+];
+
+const PROBLEMS_SOLVED = [
   {
-    title: 'After-Hours Telephone Reception',
-    description:
-      'Provides a professional spoken response when your office is closed, capturing caller details, answering basic operating questions, and logging callback tickets for morning review.',
-    features: ['Natural spoken dialogue', 'Time-based automated routing', 'Instant SMS or WhatsApp staff alert']
+    problem: 'Missed calls',
+    solution: 'Picks up every incoming ring within seconds, ensuring zero potential customer opportunities are lost.'
   },
   {
-    title: 'Appointment Booking & Rescheduling',
-    description:
-      'Guides callers through scheduling appointments or consultations against real-time calendar availability without requiring manual receptionist phone time.',
-    features: ['Calendar sync via API', 'Confirmation SMS dispatch', 'Cancellation policy handling']
+    problem: 'Slow phone responses',
+    solution: 'Eliminates hold times and busy signals during peak operational hours with simultaneous call capacity.'
   },
   {
-    title: 'Inbound Service Inquiry Triage',
-    description:
-      'Greets callers, identifies the nature of their request, and routes urgent client matters directly to on-call specialists while gathering context beforehand.',
-    features: ['Caller intent recognition', 'Warm transfer capability', 'Caller transcript recording']
+    problem: 'Employees repeating the same information',
+    solution: 'Handles repetitive FAQs over the phone so staff can dedicate their voices to closing high-value deals.'
   },
   {
-    title: 'Multilingual Inbound Routing (Arabic & English)',
-    description:
-      'Voice agent that detects caller language preference and conducts the inquiry smoothly in localized Arabic or professional English.',
-    features: ['Localized Arabic pronunciation', 'English voice synthesis', 'Bilingual prompt switching']
+    problem: 'Lost leads outside working hours',
+    solution: 'Operates 24/7/365 to capture caller intent, answer basic questions, and schedule meetings while you sleep.'
+  },
+  {
+    problem: 'Too much time spent on basic calls',
+    solution: 'Pre-screens and qualifies inquiries before they reach your calendar or front desk.'
   }
 ];
 
 const DELIVERABLES = [
-  'Voice telephony architecture and agreed caller dialogue flow design',
-  'Integration with supported VoIP / SIP telephony providers',
-  'Approved business knowledge base for answering common phone inquiries',
-  'Live call escalation triggers and warm transfer routing to human staff',
-  'Call transcript generation and summary logging to email or CRM',
-  'Testing across mobile phone networks, landlines, and noisy environments',
-  'Admin control panel for updating business hours and transfer numbers',
-  '30 days of post-launch telephony support and speech model tuning'
+  'Virtual business telephony setup with supported SIP / VoIP providers',
+  'Custom conversational scripts, natural speech persona, and decision tree architecture',
+  'Real-time calendar booking and SMS/WhatsApp confirmation workflows',
+  'Instant human transfer protocols for designated team members or departments',
+  'Call transcript generation, recording archive, and summary alerts sent to email/CRM',
+  'Comprehensive testing across diverse phone lines, accents, and noisy environments',
+  '30 days of post-deployment telephony support and speech model tuning'
 ];
 
 const FAQS = [
   {
-    question: 'How natural does the AI voice sound over the phone?',
+    question: 'How do callers transfer to a real human team member?',
     answer:
-      'We use modern neural voice models optimized for conversational telephony with low latency (under 800ms). The pacing, pronunciation, and tone sound human and polished.'
+      'We build clear human escalation pathways into every voice flow. Whenever a caller requests to speak with a person, has a complex or unsupported inquiry, or demonstrates frustration, the call is transferred immediately to your designated staff phone number or department queue.'
   },
   {
-    question: 'What happens if a caller has a complex problem or an emergency?',
+    question: 'How natural does the AI call agent sound?',
     answer:
-      'The voice agent is engineered with immediate transfer fallbacks. If caller intent indicates an urgent concern, dispute, or unsupported request, the call is instantly routed to a live staff member.'
+      'We use modern neural voice models engineered for telephony with sub-second response latency (under 800ms). The rhythm, tone, and pacing sound natural, professional, and conversational.'
   },
   {
-    question: 'Do we need a new phone number to use an AI Voice Agent?',
+    question: 'Do we need a new phone number to use an AI call agent?',
     answer:
-      'No. You can either configure conditional call forwarding from your existing business phone number (e.g. forward when busy or after hours) or connect via dedicated virtual numbers.'
+      'No. You can easily set up conditional call forwarding from your existing business line (e.g., forward when busy, after hours, or when unanswered after 3 rings), or choose to use a new dedicated virtual number.'
   },
   {
-    question: 'Are call recordings and transcripts secure and private?',
+    question: 'Can the call agent handle both inbound and outbound calls?',
     answer:
-      'Yes. Telephony data and generated audio transcripts are stored securely within your designated environment and subject to strict data governance.'
+      'Yes. Our systems handle incoming caller inquiries as well as outbound automated workflows such as appointment reminders, follow-up surveys, and confirmation calls.'
   }
 ];
 
 export const AIVoiceAgentsPage: React.FC = () => {
   usePageSEO({
-    title: 'AI Voice Agents for Telephony | TITAN AI Agency',
+    title: 'AI Call Agents | AI Voice Agents for Businesses | TITAN AI Agency',
     description:
-      'Custom AI voice agents for automated phone reception in Riyadh and remotely. Natural spoken dialogue, appointment booking, and seamless human staff transfer.',
+      'Build AI-powered voice systems that assist businesses with incoming or outgoing customer interactions. Answer common questions, book appointments, and escalate to humans.',
     canonicalPath: '/services/ai-voice-agents',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'AI Voice Agents for Businesses',
+      name: 'AI Call Agents',
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png'
+        url: 'https://titanaiagency.netlify.app/'
       },
       description:
-        'Voice assistants for supported enquiry, appointment, and communication workflows in Riyadh and remotely.',
-      areaServed: [
-        { '@type': 'City', name: 'Riyadh' },
-        { '@type': 'Country', name: 'Saudi Arabia' }
-      ]
+        'AI Voice Agents that help your business answer every opportunity. Inbound call answering, lead collection, appointment booking, and seamless human escalation.'
     }
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
-      {/* 1. Hero Section (Dark Premium Navy) */}
+    <div id="ai-call-agents-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      
+      {/* 1. HERO SECTION */}
       <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
         <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
@@ -120,208 +126,188 @@ export const AIVoiceAgentsPage: React.FC = () => {
             <span>/</span>
             <Link to="/services" className="hover:text-[#00D1FF] transition-colors">Services</Link>
             <span>/</span>
-            <span className="text-white font-medium">AI Voice Agents</span>
+            <span className="text-white font-medium">AI Call Agents</span>
           </nav>
 
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
-              <MapPin className="w-3.5 h-3.5 text-[#00D1FF]" />
-              <span>Available in Riyadh & Remotely</span>
-            </div>
+          <div className="max-w-4xl space-y-6">
+            <FadeIn delay={0.1} direction="none">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+                <TitanIcon className="w-4 h-4" />
+                <span>CORE SERVICE 04 · VOICE AI & TELEPHONY</span>
+              </div>
+            </FadeIn>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
-              AI Voice Agents for Automated Phone Inquiries
-            </h1>
+            <FadeIn delay={0.2} direction="up" distance={30}>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+                AI Voice Agents That Help Your Business Answer Every Opportunity.
+              </h1>
+            </FadeIn>
 
-            <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal">
-              Handle common phone inquiries, collect appointment details, and route caller requests with natural spoken dialogue—configured with agreed scripts and staff escalation.
-            </p>
+            <FadeIn delay={0.3} direction="up" distance={20}>
+              <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal max-w-3xl">
+                Build AI-powered voice systems that can assist businesses with incoming or outgoing customer interactions where appropriate. Answer questions, book meetings, and transfer complex calls to humans.
+              </p>
+            </FadeIn>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-titan-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold"
-              >
-                <MessageCircle className="w-4 h-4 stroke-[2.5]" />
-                <span>Discuss Your Project on WhatsApp</span>
-              </a>
+            <FadeIn delay={0.4} direction="up" distance={15}>
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="call-agents-cta-primary"
+                  className="btn-titan-primary inline-flex items-center gap-2.5 px-8 py-4 text-base font-bold shadow-[0_4px_18px_rgba(0,209,255,0.3)] hover:shadow-[0_0_24px_rgba(0,209,255,0.5)]"
+                >
+                  <span>BUILD MY AI CALL AGENT</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </a>
 
-              <a
-                href="#voice-workflow-concept"
-                className="btn-titan-secondary-dark inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
-              >
-                <span>View Telephony Concept</span>
-                <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
-              </a>
-            </div>
+                <a
+                  href="#capabilities"
+                  className="btn-titan-secondary-dark inline-flex items-center gap-2 px-6 py-4 text-sm font-semibold"
+                >
+                  <span>Explore Capabilities</span>
+                </a>
+              </div>
+            </FadeIn>
+
+            {/* Human Transfer Assurance */}
+            <FadeIn delay={0.5} direction="none">
+              <div className="pt-4 flex items-center gap-2 text-xs font-mono text-[#8FA0BA]">
+                <Shield className="w-4 h-4 text-[#00D1FF] shrink-0" />
+                <span>Always in control: Important or complex conversations are transferred directly to your human staff.</span>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* 2. Practical Business Use Cases (Clean White) */}
-      <section className="relative py-16 sm:py-24 bg-[#FFFFFF] border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
+      {/* 2. BUSINESS PROBLEMS SOLVED */}
+      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
               Telephony Efficiency
-            </div>
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
-              Practical Voice Automation for Your Phone Line
+              Business Problems We Solve
             </h2>
-            <p className="mt-3 text-[#536477] text-base leading-relaxed">
-              Ensure callers receive immediate, polite attention even during peak incoming hours or when your staff is engaged.
+            <p className="mt-3 text-[#536477] text-base">
+              Every unanswered phone call is potential lost revenue. Keep your lines open and responsive 24/7.
             </p>
           </div>
+        </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {USE_CASES.map((uc, idx) => (
-              <div
-                key={idx}
-                className="card-titan-light p-7 space-y-4"
-              >
-                <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
-                  <PhoneCall className="w-5 h-5 text-[#00D1FF]" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-[#071A33]">
-                  {uc.title}
-                </h3>
-                <p className="text-sm text-[#536477] leading-relaxed font-normal">
-                  {uc.description}
-                </p>
-                <div className="pt-2 border-t border-slate-100 space-y-2">
-                  {uc.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-[#536477] font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shrink-0" />
-                      <span>{feat}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROBLEMS_SOLVED.map((item, idx) => (
+            <FadeIn key={idx} delay={idx * 0.08} direction="up" distance={20}>
+              <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-2 text-rose-600 font-bold text-sm mb-2 font-mono">
+                    <span className="w-2 h-2 rounded-full bg-rose-500" />
+                    <span>Phone Bottleneck</span>
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-[#071A33] mb-3">
+                    {item.problem}
+                  </h3>
+                  <div className="pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-2 text-[#00D1FF] font-bold text-xs mb-1.5 font-mono uppercase tracking-wider">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>TITAN Solution</span>
                     </div>
-                  ))}
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {item.solution}
+                    </p>
+                  </div>
                 </div>
               </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. CAPABILITIES */}
+      <section id="capabilities" className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Voice Features & Protocol
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
+                Complete Call Agent Capabilities
+              </h2>
+              <p className="mt-3 text-[#536477] text-base">
+                Engineered for natural conversational pacing, accurate appointment booking, and instant human transfer.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CAPABILITIES.map((cap, idx) => (
+              <FadeIn key={idx} delay={idx * 0.05} direction="up" distance={20}>
+                <div className="p-6 rounded-2xl bg-[#F8FAFF] border border-slate-200/80 hover:border-[#00D1FF]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center mb-3 text-[#00D1FF]">
+                      <PhoneCall className="w-5 h-5 text-[#00D1FF]" />
+                    </div>
+                    <h3 className="font-display font-bold text-base text-[#071A33] mb-1.5">
+                      {cap.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {cap.desc}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. Clearly Labelled Voice Telephony Flow (Deep Navy) */}
-      <section id="voice-workflow-concept" className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#00D1FF]/15 text-[#00D1FF] border border-[#00D1FF]/30 mb-3">
-              <TitanIcon className="w-4 h-4" />
-              <span>Demonstration Concept</span>
+      {/* 4. HUMAN TRANSFER HIGHLIGHT */}
+      <section className="py-16 bg-[#EAF7FF]/40 border-b border-slate-200/80">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#00D1FF]/30 shadow-md flex flex-col md:flex-row items-center gap-6">
+            <div className="w-16 h-16 rounded-2xl bg-[#04142E] flex items-center justify-center shrink-0 text-[#00D1FF]">
+              <PhoneForwarded className="w-8 h-8 text-[#00D1FF]" />
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Illustrative Call Handling Architecture
-            </h2>
-            <p className="mt-3 text-[#8FA0BA] text-base leading-relaxed">
-              Step-by-step caller path demonstrating natural spoken voice synthesis, calendar verification, and seamless staff escalation.
-            </p>
-          </div>
-
-          <div className="card-titan-dark p-6 sm:p-10 bg-[#0B1F4B]/80 border border-[#00D1FF]/20">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {/* Step 1 */}
-              <div className="rounded-xl bg-[#04142E] border border-white/[0.08] p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STEP 01</span>
-                  <PhoneCall className="w-4 h-4 text-[#00D1FF]" />
-                </div>
-                <h4 className="font-display text-base font-bold text-white">Call Arrival</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  Inbound call received via SIP trunking. Agent answers with personalized greeting in &lt;1 second.
-                </p>
-                <div className="text-[11px] font-mono text-[#00D1FF] bg-[#00D1FF]/10 p-2 rounded-lg border border-[#00D1FF]/20">
-                  Latency: Sub-Second
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="rounded-xl bg-[#04142E] border border-white/[0.08] p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STEP 02</span>
-                  <Mic className="w-4 h-4 text-[#3BA9FF]" />
-                </div>
-                <h4 className="font-display text-base font-bold text-white">Intent Classification</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  Real-time speech-to-text processes caller audio and identifies whether caller needs info or booking.
-                </p>
-                <div className="text-[11px] font-mono text-[#3BA9FF] bg-[#3BA9FF]/10 p-2 rounded-lg border border-[#3BA9FF]/20">
-                  Processing: Neural Audio
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="rounded-xl bg-[#04142E] border border-white/[0.08] p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STEP 03</span>
-                  <UserCheck className="w-4 h-4 text-[#00D1FF]" />
-                </div>
-                <h4 className="font-display text-base font-bold text-white">Action or Booking</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  Voice agent reads back confirmed appointment slot or resolves question using approved facts.
-                </p>
-                <div className="text-[11px] font-mono text-[#00D1FF] bg-[#00D1FF]/10 p-2 rounded-lg border border-[#00D1FF]/20">
-                  API: Calendar Synced
-                </div>
-              </div>
-
-              {/* Step 4 */}
-              <div className="rounded-xl bg-[#04142E] border border-emerald-500/30 p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STEP 04</span>
-                  <PhoneForwarded className="w-4 h-4 text-emerald-400" />
-                </div>
-                <h4 className="font-display text-base font-bold text-white">Warm Escalation</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  If caller requests personal advisor or has custom requirements, call is transferred live to staff.
-                </p>
-                <div className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 p-2 rounded-lg border border-emerald-500/20">
-                  Fallback: Live Transfer
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-white/[0.08] flex items-center justify-between flex-wrap gap-4 text-xs font-mono text-[#8FA0BA]">
-              <span>* Illustrative telephony model. Voice flows are customized around your business requirements.</span>
-              <span className="text-[#00D1FF]">Compliant Call Data Handling</span>
+            <div className="space-y-2 text-left">
+              <h3 className="font-display text-xl sm:text-2xl font-extrabold text-[#071A33]">
+                Human Team Handshake Protocol
+              </h3>
+              <p className="text-sm text-[#536477] leading-relaxed">
+                We believe AI should empower human relationships, not replace them. When a conversation requires discretion, emotional nuance, pricing negotiations, or high-value consultation, the AI Call Agent transfers the caller smoothly to your designated team member with context.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Deliverables & Scope (Light Section) */}
-      <section className="relative py-16 sm:py-24 bg-[#F8FAFF] border-t border-slate-200/80">
+      {/* 5. DELIVERABLES & SCOPE */}
+      <section className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
               <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold">
                 Transparent Boundaries
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
-                Deliverables & Telephony Standards
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Included Deliverables & Technical Scope
               </h2>
-              <p className="text-[#536477] text-base leading-relaxed">
-                We establish explicit telephony bounds, call durations, and escalation rules prior to deployment.
+              <p className="text-[#8FA0BA] text-base leading-relaxed">
+                Every voice agent deployment includes thorough audio testing, conversational script reviews, calendar synchronization, and full documentation.
               </p>
-              <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs text-[#536477] leading-relaxed">
-                <strong className="text-[#071A33] block font-bold mb-1 flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-[#3BA9FF]" />
-                  <span>Escalation & Safety Notice</span>
-                </strong>
-                Voice agents are configured strictly for pre-agreed conversational scenarios. Unhandled requests immediately trigger live staff transfer or structured callback logging.
-              </div>
             </div>
 
             <div className="lg:col-span-7">
-              <div className="card-titan-light p-7 space-y-4">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-[#071A33] font-bold mb-2">
-                  What You Receive
+              <div className="card-titan-dark p-7 space-y-4 bg-[#0B1F4B]/60 border border-[#00D1FF]/20">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#00D1FF] font-bold mb-2">
+                  Scope Checklist
                 </h3>
                 <ul className="space-y-3.5">
                   {DELIVERABLES.map((deliv, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-[#536477]">
+                    <li key={i} className="flex items-start gap-3 text-sm text-[#EAF7FF]">
                       <CheckCircle2 className="w-4 h-4 text-[#00D1FF] shrink-0 mt-0.5" />
                       <span>{deliv}</span>
                     </li>
@@ -333,17 +319,17 @@ export const AIVoiceAgentsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Simple 5-Step Process */}
+      {/* 6. PROCESS STEPS */}
       <ServiceProcessSteps />
 
-      {/* 6. FAQs */}
-      <ServiceFAQList serviceTitle="AI Voice Agents" faqs={FAQS} />
+      {/* 7. FAQS */}
+      <ServiceFAQList serviceTitle="AI Call Agents" faqs={FAQS} />
 
-      {/* 7. Final CTA Section */}
+      {/* 8. FINAL CTA */}
       <ServiceCTASection
-        serviceTitle="AI Voice Agents"
+        serviceTitle="AI Call Agent"
         whatsappMessage={WHATSAPP_MSG}
-        subtitle="Discuss your daily call volume, preferred telephone carrier, and appointment booking requirements directly on WhatsApp."
+        subtitle="Discuss your call volume, common inquiries, and appointment booking requirements with our engineering team on WhatsApp."
       />
     </div>
   );

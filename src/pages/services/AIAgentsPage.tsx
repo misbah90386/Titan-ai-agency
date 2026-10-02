@@ -6,130 +6,131 @@ import {
   CheckCircle2,
   ArrowRight,
   MessageCircle,
-  MapPin,
   Bot,
   UserCheck,
-  Database
+  Database,
+  Search,
+  Calendar,
+  Layers,
+  HelpCircle,
+  Briefcase
 } from 'lucide-react';
 import { usePageSEO } from '../../hooks/usePageSEO';
 import { ServiceProcessSteps } from '../../components/services/ServiceProcessSteps';
 import { ServiceFAQList } from '../../components/services/ServiceFAQList';
 import { ServiceCTASection } from '../../components/services/ServiceCTASection';
 import { TitanIcon } from '../../components/TitanLogo';
+import { FadeIn } from '../../components/motion/MotionComponents';
 
 const WHATSAPP_MSG =
-  'Hello TITAN AI AGENCY, I am interested in discussing AI Agents for my business.';
+  'Hello TITAN AI AGENCY, I would like to discuss building Custom AI Agents for my business.';
 const WHATSAPP_URL = `https://wa.me/966534182945?text=${encodeURIComponent(WHATSAPP_MSG)}`;
 
-const USE_CASES = [
+const AGENT_EXAMPLES = [
+  { title: 'Customer Support Agent', desc: 'Answers questions, troubleshoots common issues, and assists clients 24/7.' },
+  { title: 'Lead Qualification Agent', desc: 'Evaluates prospect requirements, budgets, and timelines before passing to sales.' },
+  { title: 'Sales Assistant', desc: 'Guides prospects through service offerings, pricing ranges, and proposals.' },
+  { title: 'Website AI Assistant', desc: 'Engages site visitors interactively to provide instant guidance and capture contact details.' },
+  { title: 'Internal Business Assistant', desc: 'Helps employees find internal company policies, pricing guidelines, and SOPs in seconds.' },
+  { title: 'Research Assistant', desc: 'Pulls data summaries, competitor benchmarks, and reports from internal documents.' },
+  { title: 'FAQ Agent', desc: 'Resolves repetitive high-volume questions across websites and messaging channels.' },
+  { title: 'Appointment Assistant', desc: 'Coordinates scheduling, checks calendar availability, and confirms bookings.' }
+];
+
+const CAPABILITIES = [
+  { title: 'Understand Business Information', desc: 'Ingests your product manuals, pricing structures, and company rules with high precision.' },
+  { title: 'Answer Customer Questions', desc: 'Delivers clear, instant, and factually grounded responses without hallucinations.' },
+  { title: 'Capture Leads', desc: 'Collects verified prospect contact info, business name, and detailed project needs.' },
+  { title: 'Categorize Inquiries', desc: 'Classifies requests by urgency and department to streamline internal workflows.' },
+  { title: 'Assist Employees', desc: 'Empowers staff with instant knowledge search, drafting tools, and summary generation.' },
+  { title: 'Connect With Supported Business Tools', desc: 'Syncs data with your CRM, Google Workspace, WhatsApp, or databases via webhooks.' },
+  { title: 'Hand Conversations to Humans', desc: 'Recognizes sensitive or complex requests and gracefully escalates to team members.' }
+];
+
+const PROBLEMS_SOLVED = [
   {
-    title: 'Customer Inquiry & Lead Qualification',
-    description:
-      'Agents that review inbound prospect messages, evaluate requirements against your qualification rubric, extract essential contact data, and route high-value leads directly to your team.',
-    features: ['Instant structured intake', 'Configurable qualification rules', 'CRM & WhatsApp data sync']
+    problem: 'Repetitive customer questions',
+    solution: 'Automates immediate, accurate responses to common inquiries 24 hours a day, 7 days a week.'
   },
   {
-    title: 'Internal Knowledge Assistants',
-    description:
-      'Secure internal assistants that index company standard operating procedures, documentation, price schedules, and vendor guidelines so employees can retrieve verified answers in seconds.',
-    features: ['Strict source-grounded answers', 'Zero speculative hallucinations', 'Role-based access boundaries']
+    problem: 'Slow response times',
+    solution: 'Eliminates waiting time by engaging inbound prospects instantaneously across web and messaging channels.'
   },
   {
-    title: 'Operational Workflow Assistance',
-    description:
-      'Agents that assist team members with repeatable administrative tasks: summarizing meeting notes, drafting follow-up emails, creating invoice briefs, and logging status updates in tracking boards.',
-    features: ['Pre-configured task templates', 'Mandatory human approval before send', 'Audit log of agent activities']
+    problem: 'Employees wasting time on simple tasks',
+    solution: 'Offloads routine lookups, draft compositions, and lead data entry so staff can focus on high-value client work.'
   },
   {
-    title: 'Data Extraction & Document Summarization',
-    description:
-      'Assistants that parse incoming reports, PDF contracts, or unstructured text to pull out key milestones, pricing figures, and action items into standardized formats.',
-    features: ['Standardized schema output', 'Fast batch document processing', 'Data validation checks']
+    problem: 'Leads not being organized',
+    solution: 'Automatically parses, scores, and categorizes inbound leads directly into your pipeline without manual data entry.'
+  },
+  {
+    problem: 'Business information scattered across systems',
+    solution: 'Centralizes company documentation, pricing sheets, and policies into a single verified knowledge engine.'
   }
 ];
 
 const DELIVERABLES = [
-  'Detailed task boundary specification and security architecture plan',
-  'AI agent software engineered for your specific business workflow',
-  'Approved data source indexing with strict source-grounding rules',
-  'Human-in-the-loop review interface for high-impact action approvals',
-  'Integration into your existing communication or CRM channels',
-  'Full source code handover, deployment configuration, and admin documentation',
-  'Live team walkthrough and operational training session',
-  '30 days of post-deployment support and prompt refinement'
+  'Detailed task boundary scoping and AI persona definition document',
+  'Custom AI agent architecture engineered for your company’s specific workflows',
+  'Approved data source ingestion with strict source-grounding rules and guardrails',
+  'Seamless human-in-the-loop escalation interface for complex requests',
+  'Integration into your website widget, WhatsApp, CRM, or internal portal',
+  'Full source code handover and deployment configuration with zero vendor lock-in',
+  'Staff training session and administrator operational manual',
+  '30 days of post-deployment monitoring and prompt refinement'
 ];
 
 const FAQS = [
   {
-    question: 'How do you prevent AI agents from making mistakes or hallucinating?',
+    question: 'How do you prevent the AI agent from making things up or hallucinating?',
     answer:
-      'We use retrieval-augmented architecture that restricts the agent to verified company documents and approved system data. If the answer is not present in approved records, the agent is configured to state that clearly and escalate to human staff rather than guess.'
+      'We use retrieval-augmented architecture (RAG) that restricts the agent strictly to your verified company documents, pricing guidelines, and approved FAQs. If an answer cannot be verified from approved records, the agent clearly states so and offers to transfer the user to your human team.'
   },
   {
-    question: 'Does the AI agent make decisions autonomously without human oversight?',
+    question: 'Can the AI agent integrate with our existing software and CRM?',
     answer:
-      'We advocate human-in-the-loop architecture for operations involving finances, binding commitments, or customer disputes. The agent prepares structured drafts, recommendations, and summaries, but final execution requires confirmation from authorized personnel.'
+      'Yes. Our custom AI agents connect via REST APIs and webhooks into your existing tools, including WhatsApp Business API, HubSpot, Google Workspace, Notion, Slack, or proprietary internal databases.'
   },
   {
-    question: 'Where is our company data processed and stored?',
+    question: 'Does the AI agent replace our employees?',
     answer:
-      'Data isolation and privacy are priorities. We configure secure API integrations with enterprise data boundaries, ensuring your proprietary documents and customer information are never used to train public language models.'
+      'No. The goal is to eliminate repetitive operational grind so your employees can focus on high-touch client relationships, strategy, and complex problem-solving. Routine questions are resolved in seconds, while complex matters are escalated smoothly to humans.'
   },
   {
-    question: 'Can AI agents integrate with our current tools and CRM?',
+    question: 'Is our company data kept private and secure?',
     answer:
-      'Yes. During scoping, we evaluate your existing software stack—including Google Workspace, WhatsApp Business API, HubSpot, Notion, or custom databases—to establish reliable webhook connections.'
+      'Absolutely. We configure enterprise-grade data isolation. Your proprietary documents, operational procedures, and customer communications are never used to train public language models.'
   }
 ];
 
 export const AIAgentsPage: React.FC = () => {
   usePageSEO({
-    title: 'AI Agents for Businesses | TITAN AI Agency',
+    title: 'Custom AI Agents | Built Around Your Business | TITAN AI Agency',
     description:
-      'Deploy autonomous and semi-autonomous AI agents engineered for business operations in Riyadh and remotely. Strict guardrails, verified data grounding, and human review.',
+      'We build specialized AI agents designed to help businesses handle customer interactions and repetitive digital workflows. Customer support, lead qualification, sales, and internal assistants.',
     canonicalPath: '/services/ai-agents',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'AI Agents for Businesses',
+      name: 'Custom AI Agents',
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png'
+        url: 'https://titanaiagency.netlify.app/'
       },
       description:
-        'AI assistants designed to help with specific business tasks and workflows in Riyadh and remotely.',
-      areaServed: [
-        { '@type': 'City', name: 'Riyadh' },
-        { '@type': 'Country', name: 'Saudi Arabia' }
-      ]
+        'AI agents built around your business. Specialized AI assistants handling customer interactions and repetitive digital workflows with strict guardrails and human handoff.'
     }
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
-      {/* 1. Hero Section (Dark Premium Navy) */}
+    <div id="ai-agents-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      
+      {/* 1. HERO SECTION */}
       <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
         <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
-        <svg className="absolute inset-0 w-full h-full opacity-15 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="aiNetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00D1FF" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#3BA9FF" stopOpacity="0.15" />
-            </linearGradient>
-          </defs>
-          <path d="M 80 140 L 260 220 L 420 120 L 640 200 L 860 100 L 1100 180" stroke="url(#aiNetGrad)" strokeWidth="1" strokeDasharray="4 6" fill="none" className="animate-network-flow" />
-          <path d="M 180 340 L 360 260 L 540 330 L 760 230 L 980 310" stroke="url(#aiNetGrad)" strokeWidth="1" strokeDasharray="3 5" fill="none" className="animate-network-flow" />
-          <circle cx="260" cy="220" r="2.5" fill="#00D1FF" className="animate-node-pulse" />
-          <circle cx="420" cy="120" r="2" fill="#3BA9FF" className="animate-node-pulse" />
-          <circle cx="640" cy="200" r="2.5" fill="#00D1FF" className="animate-node-pulse" />
-          <circle cx="860" cy="100" r="2" fill="#3BA9FF" className="animate-node-pulse" />
-          <circle cx="360" cy="260" r="2" fill="#00D1FF" className="animate-node-pulse" />
-          <circle cx="540" cy="330" r="2.5" fill="#3BA9FF" className="animate-node-pulse" />
-          <circle cx="760" cy="230" r="2" fill="#00D1FF" className="animate-node-pulse" />
-        </svg>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none animate-ambient-1" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-xs font-mono text-[#8FA0BA] mb-6" aria-label="Breadcrumb">
@@ -137,208 +138,200 @@ export const AIAgentsPage: React.FC = () => {
             <span>/</span>
             <Link to="/services" className="hover:text-[#00D1FF] transition-colors">Services</Link>
             <span>/</span>
-            <span className="text-white font-medium">AI Agents</span>
+            <span className="text-white font-medium">Custom AI Agents</span>
           </nav>
 
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
-              <MapPin className="w-3.5 h-3.5 text-[#00D1FF]" />
-              <span>Available in Riyadh & Remotely</span>
-            </div>
+          <div className="max-w-4xl space-y-6">
+            <FadeIn delay={0.1} direction="none">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+                <TitanIcon className="w-4 h-4" />
+                <span>CORE SERVICE 03 · AUTONOMOUS AI ASSISTANTS</span>
+              </div>
+            </FadeIn>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
-              AI Agents for Business Operations
-            </h1>
+            <FadeIn delay={0.2} direction="up" distance={30}>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+                AI Agents Built Around Your Business.
+              </h1>
+            </FadeIn>
 
-            <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal">
-              We engineer purposeful AI agents that perform defined business tasks using your approved data and systems—designed to assist your team with strict guardrails and human review.
-            </p>
+            <FadeIn delay={0.3} direction="up" distance={20}>
+              <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal max-w-3xl">
+                We build specialized AI agents designed to help businesses handle customer interactions and repetitive digital workflows. Factually grounded, strictly guarded, and engineered to escalate to humans when needed.
+              </p>
+            </FadeIn>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-titan-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold"
-              >
-                <MessageCircle className="w-4 h-4 stroke-[2.5]" />
-                <span>Discuss Your Project on WhatsApp</span>
-              </a>
+            <FadeIn delay={0.4} direction="up" distance={15}>
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="ai-agents-cta-primary"
+                  className="btn-titan-primary inline-flex items-center gap-2.5 px-8 py-4 text-base font-bold shadow-[0_4px_18px_rgba(0,209,255,0.3)] hover:shadow-[0_0_24px_rgba(0,209,255,0.5)]"
+                >
+                  <span>BUILD MY AI AGENT</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </a>
 
-              <a
-                href="#agent-workflow-concept"
-                className="btn-titan-secondary-dark inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
-              >
-                <span>View Example Workflow</span>
-                <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
-              </a>
-            </div>
+                <a
+                  href="#examples"
+                  className="btn-titan-secondary-dark inline-flex items-center gap-2 px-6 py-4 text-sm font-semibold"
+                >
+                  <span>Explore Agent Types</span>
+                </a>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* 2. Practical Business Use Cases (Clean White) */}
-      <section className="relative py-16 sm:py-24 bg-[#FFFFFF] border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-              Operational Impact
-            </div>
+      {/* 2. BUSINESS PROBLEMS SOLVED */}
+      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+              Operational Efficiency
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
-              Practical Use Cases for Your Team
+              Business Problems We Solve
             </h2>
-            <p className="mt-3 text-[#536477] text-base leading-relaxed">
-              Target high-frequency repetitive tasks where manual data handling slows down your operational momentum.
+            <p className="mt-3 text-[#536477] text-base">
+              Free your human team from repetitive digital bottlenecks so they can focus on closing deals and serving clients.
             </p>
           </div>
+        </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {USE_CASES.map((uc, idx) => (
-              <div
-                key={idx}
-                className="card-titan-light p-7 space-y-4"
-              >
-                <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
-                  <Cpu className="w-5 h-5 text-[#00D1FF]" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-[#071A33]">
-                  {uc.title}
-                </h3>
-                <p className="text-sm text-[#536477] leading-relaxed font-normal">
-                  {uc.description}
-                </p>
-                <div className="pt-2 border-t border-slate-100 space-y-2">
-                  {uc.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-[#536477] font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shrink-0" />
-                      <span>{feat}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROBLEMS_SOLVED.map((item, idx) => (
+            <FadeIn key={idx} delay={idx * 0.08} direction="up" distance={20}>
+              <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-2 text-rose-600 font-bold text-sm mb-2 font-mono">
+                    <span className="w-2 h-2 rounded-full bg-rose-500" />
+                    <span>Operational Bottleneck</span>
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-[#071A33] mb-3">
+                    {item.problem}
+                  </h3>
+                  <div className="pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-2 text-[#00D1FF] font-bold text-xs mb-1.5 font-mono uppercase tracking-wider">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>TITAN Solution</span>
                     </div>
-                  ))}
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {item.solution}
+                    </p>
+                  </div>
                 </div>
               </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. AGENT EXAMPLES */}
+      <section id="examples" className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Specialized Configurations
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
+                AI Agents Built for Your Exact Workflows
+              </h2>
+              <p className="mt-3 text-[#536477] text-base">
+                Each agent is purpose-built with tailored business logic, memory boundaries, and verification checkpoints.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {AGENT_EXAMPLES.map((ex, idx) => (
+              <FadeIn key={idx} delay={idx * 0.05} direction="up" distance={20}>
+                <div className="card-titan-light p-6 space-y-3 flex flex-col justify-between h-full">
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center mb-3 text-[#00D1FF]">
+                      <Cpu className="w-5 h-5 text-[#00D1FF]" />
+                    </div>
+                    <h3 className="font-display font-bold text-base text-[#071A33] mb-1.5">
+                      {ex.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {ex.desc}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. Clearly Labelled Workflow Demonstration Concept (Deep Navy) */}
-      <section id="agent-workflow-concept" className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
+      {/* 4. CORE CAPABILITIES */}
+      <section className="py-16 sm:py-24 bg-[#F8FAFF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#00D1FF]/15 text-[#00D1FF] border border-[#00D1FF]/30 mb-3">
-              <TitanIcon className="w-4 h-4" />
-              <span>Demonstration Concept</span>
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Technical Guardrails
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
+                Built With Production Capabilities
+              </h2>
+              <p className="mt-3 text-[#536477] text-base">
+                Enterprise-grade security, data isolation, and human escalation protocols.
+              </p>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Example Operational Workflow: Inbound Enquiry Triage
-            </h2>
-            <p className="mt-3 text-[#8FA0BA] text-base leading-relaxed">
-              Illustrative flow diagram showing how an AI agent safely parses an incoming customer message, references verified company documentation, drafts a response, and prompts staff approval.
-            </p>
-          </div>
+          </FadeIn>
 
-          <div className="card-titan-dark p-6 sm:p-10 bg-[#0B1F4B]/80 border border-[#00D1FF]/20">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-              {/* Step 1 */}
-              <div className="rounded-xl bg-[#04142E] border border-white/[0.08] p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STAGE 01</span>
-                  <MessageCircle className="w-4 h-4 text-[#00D1FF]" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CAPABILITIES.map((cap, idx) => (
+              <FadeIn key={idx} delay={idx * 0.05} direction="up" distance={20}>
+                <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:border-[#00D1FF]/40 hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-4 h-4 text-[#00D1FF]" />
+                    </div>
+                    <h3 className="font-display font-bold text-base text-[#071A33]">
+                      {cap.title}
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                    {cap.desc}
+                  </p>
                 </div>
-                <h4 className="font-display text-base font-bold text-white">Enquiry Ingestion</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  Customer submits project details via website form or messaging channel with initial requirements.
-                </p>
-                <div className="text-[11px] font-mono text-[#00D1FF] bg-[#00D1FF]/10 p-2 rounded-lg border border-[#00D1FF]/20">
-                  Trigger: New Request
-                </div>
-              </div>
-
-              {/* Step 2 */}
-              <div className="rounded-xl bg-[#04142E] border border-white/[0.08] p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STAGE 02</span>
-                  <Database className="w-4 h-4 text-[#3BA9FF]" />
-                </div>
-                <h4 className="font-display text-base font-bold text-white">Knowledge Grounding</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  Agent queries approved company service list, pricing parameters, and calendar availability.
-                </p>
-                <div className="text-[11px] font-mono text-[#3BA9FF] bg-[#3BA9FF]/10 p-2 rounded-lg border border-[#3BA9FF]/20">
-                  Context: Verified Data Only
-                </div>
-              </div>
-
-              {/* Step 3 */}
-              <div className="rounded-xl bg-[#04142E] border border-white/[0.08] p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STAGE 03</span>
-                  <Bot className="w-4 h-4 text-[#00D1FF]" />
-                </div>
-                <h4 className="font-display text-base font-bold text-white">Draft Generation</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  Agent structures a personalized proposal outline and prepares response draft for team review.
-                </p>
-                <div className="text-[11px] font-mono text-[#00D1FF] bg-[#00D1FF]/10 p-2 rounded-lg border border-[#00D1FF]/20">
-                  Action: Formatted Draft
-                </div>
-              </div>
-
-              {/* Step 4 */}
-              <div className="rounded-xl bg-[#04142E] border border-emerald-500/30 p-5 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-[#8FA0BA]">
-                  <span>STAGE 04</span>
-                  <UserCheck className="w-4 h-4 text-emerald-400" />
-                </div>
-                <h4 className="font-display text-base font-bold text-white">Staff Verification</h4>
-                <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  Team member inspects draft, confirms details, and approves message before dispatch.
-                </p>
-                <div className="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 p-2 rounded-lg border border-emerald-500/20">
-                  Control: Human Approval
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-white/[0.08] flex items-center justify-between flex-wrap gap-4 text-xs font-mono text-[#8FA0BA]">
-              <span>* Illustrative operational model. Systems are configured according to approved customer requirements.</span>
-              <span className="text-[#00D1FF]">Strict Data Privacy & Isolation</span>
-            </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Deliverables & Scope (Light Section) */}
-      <section className="relative py-16 sm:py-24 bg-[#F8FAFF] border-t border-slate-200/80">
+      {/* 5. DELIVERABLES & SCOPE */}
+      <section className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
               <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold">
                 Transparent Boundaries
               </div>
-              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
-                Deliverables & Engineering Scope
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                Included Deliverables & Technical Scope
               </h2>
-              <p className="text-[#536477] text-base leading-relaxed">
-                We engineer agents to operate within strict boundary conditions. We agree on tools, access permissions, and success criteria prior to development.
+              <p className="text-[#8FA0BA] text-base leading-relaxed">
+                Every AI agent deployment includes full testing, knowledge base validation, and complete client code ownership with zero proprietary lock-in.
               </p>
-              <div className="p-4 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs text-[#536477] leading-relaxed">
-                <strong className="text-[#071A33] block font-bold mb-1 flex items-center gap-1.5">
-                  <Shield className="w-3.5 h-3.5 text-[#3BA9FF]" />
-                  <span>Operational Governance Policy</span>
-                </strong>
-                Our AI agents are configured with approved tools, verified data access, and mandatory review steps for high-risk operations. We do not provide unmonitored systems.
-              </div>
             </div>
 
             <div className="lg:col-span-7">
-              <div className="card-titan-light p-7 space-y-4">
-                <h3 className="text-xs font-mono uppercase tracking-wider text-[#071A33] font-bold mb-2">
-                  What You Receive
+              <div className="card-titan-dark p-7 space-y-4 bg-[#0B1F4B]/60 border border-[#00D1FF]/20">
+                <h3 className="text-xs font-mono uppercase tracking-wider text-[#00D1FF] font-bold mb-2">
+                  Scope Checklist
                 </h3>
                 <ul className="space-y-3.5">
                   {DELIVERABLES.map((deliv, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-[#536477]">
+                    <li key={i} className="flex items-start gap-3 text-sm text-[#EAF7FF]">
                       <CheckCircle2 className="w-4 h-4 text-[#00D1FF] shrink-0 mt-0.5" />
                       <span>{deliv}</span>
                     </li>
@@ -350,17 +343,17 @@ export const AIAgentsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Simple 5-Step Process */}
+      {/* 6. PROCESS STEPS */}
       <ServiceProcessSteps />
 
-      {/* 6. FAQs */}
-      <ServiceFAQList serviceTitle="AI Agents" faqs={FAQS} />
+      {/* 7. FAQS */}
+      <ServiceFAQList serviceTitle="Custom AI Agents" faqs={FAQS} />
 
-      {/* 7. Final CTA Section */}
+      {/* 8. FINAL CTA */}
       <ServiceCTASection
-        serviceTitle="AI Agents"
+        serviceTitle="Custom AI Agent"
         whatsappMessage={WHATSAPP_MSG}
-        subtitle="Discuss which operational bottleneck you would like to streamline and explore a scoped AI agent implementation on WhatsApp."
+        subtitle="Discuss which workflows consume your team’s time, and let’s engineer an AI agent tailored to your company’s exact needs."
       />
     </div>
   );

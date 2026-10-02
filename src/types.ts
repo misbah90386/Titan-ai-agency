@@ -2,6 +2,7 @@ export interface ServiceItem {
   id: string;
   title: string;
   heading?: string;
+  positioning?: string;
   shortDescription: string;
   iconName: string;
   category: string;
@@ -11,6 +12,9 @@ export interface ServiceItem {
   deliverables: string[];
   technologies: string[];
   typicalTimeline: string;
+  ctaText?: string;
+  problemsSolved?: string[];
+  examples?: string[];
   processNote?: string;
   termsNote?: string;
   disclaimerNote?: string;

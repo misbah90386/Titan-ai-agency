@@ -2,256 +2,269 @@ import { ServiceItem } from '../types';
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
-    id: 'websites',
-    title: 'Website Design & Development',
-    category: 'Web Development',
+    id: 'ai-websites',
+    title: 'AI-Powered Websites',
+    heading: 'AI-Powered Websites Built to Attract, Convert and Grow',
+    positioning: 'AI-Powered Websites Built to Attract, Convert and Grow.',
+    category: 'Web Engineering & Conversion',
     iconName: 'Globe',
     shortDescription:
-      'Professional, responsive websites that present your business clearly and make it easy for customers to contact you.',
+      'We create modern, fast, conversion-focused websites that combine professional design with AI and business tools.',
     overview:
-      'We design and build clean, fast, and responsive websites tailored to your business goals. From modern corporate sites to conversion-focused landing pages, every website is engineered for excellent mobile performance, clean design, and effortless customer contact.',
+      'We engineer modern, fast, conversion-focused websites that combine custom aesthetics with built-in AI tools, lead qualification, and business automations. From instant WhatsApp inquiry flows to appointment scheduling and 24/7 AI assistants, your website transforms into an active sales engine.',
     subcategories: [
-      'Business websites',
-      'Landing pages',
-      'Service showcase sites',
-      'Responsive design for all screens',
-      'Contact & lead capture flows',
-      'SEO & accessibility foundations'
+      'Premium custom website design',
+      'Mobile responsive development',
+      'AI chatbot integration',
+      'Lead capture systems',
+      'WhatsApp integration',
+      'Appointment booking',
+      'Contact and quotation forms',
+      'Analytics & tracking',
+      'SEO foundations',
+      'Business automation integrations',
+      'Fast performance & Core Web Vitals',
+      'Conversion-focused layouts'
+    ],
+    problemsSolved: [
+      'No professional online presence',
+      'Outdated website losing visitor trust',
+      'Visitors not becoming paying customers',
+      'Difficult or slow customer contact',
+      'Poor mobile experience on smartphones',
+      'Weak brand credibility against competitors'
     ],
     features: [
-      'Modern, responsive layouts engineered for phones, tablets, and desktops',
-      'Clear, high-converting calls to action and direct WhatsApp/enquiry routing',
-      'Fast loading times optimized for real-world business visitors',
-      'Clean typography, branded color palettes, and intuitive navigation',
-      'Semantic structure prepared for search engines and Google Search Console',
-      'Full source code ownership with easy ongoing maintenance'
+      'Tailored custom design engineered with React, TypeScript, and modern clean aesthetics',
+      'Built-in AI chatbot trained on your business knowledge to answer questions 24/7',
+      'Direct WhatsApp and high-conversion inquiry routing to keep leads moving',
+      'Automated appointment booking and quotation capture forms',
+      'Mobile-first responsive architecture tested across smartphones, tablets, and desktops',
+      'Complete client ownership of all code, assets, and hosting accounts with zero lock-in'
     ],
     deliverables: [
-      'Custom responsive website design and development',
-      'Direct WhatsApp and enquiry integration',
-      'Cross-device testing and performance check',
+      'Custom responsive website design and production development',
+      'Embedded AI chatbot & lead qualification widget',
+      'Direct WhatsApp and quotation request workflows',
       'Google Search Console and XML sitemap setup',
-      'Deployment to reliable cloud hosting',
-      '30 days of post-launch support'
+      'Deployment to high-performance cloud hosting with SSL',
+      '30 days of post-launch technical support'
     ],
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'HTML5/Semantic Web'],
-    typicalTimeline: 'Agreed upon project scoping'
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'AI Chatbot APIs', 'Google Analytics'],
+    typicalTimeline: '2 to 4 weeks',
+    ctaText: 'BUILD MY WEBSITE'
+  },
+  {
+    id: 'seo-optimization',
+    title: 'SEO & AI Search Optimization',
+    heading: 'Get Discovered Where Customers Are Searching',
+    positioning: 'Get Discovered Where Customers Are Searching.',
+    category: 'Search & AI Discovery',
+    iconName: 'Search',
+    shortDescription:
+      'Help businesses improve their visibility across traditional search engines and modern AI-powered discovery platforms.',
+    overview:
+      'Help high-value clients discover your business across traditional search engines (Google) and modern AI-powered discovery engines (ChatGPT, Perplexity, Gemini, Claude). We structure your technical architecture, Schema.org entities, keyword strategy, and authority content to ensure your brand stands out when customers look for solutions.',
+    subcategories: [
+      'Technical SEO',
+      'On-page SEO',
+      'Local SEO',
+      'Google Business optimization',
+      'Keyword strategy',
+      'SEO articles',
+      'Internal linking',
+      'Structured data (JSON-LD)',
+      'Sitemap optimization',
+      'Search Console setup',
+      'Website performance improvements',
+      'AI search visibility optimization'
+    ],
+    problemsSolved: [
+      'Business is difficult to find online',
+      'Website gets little organic traffic',
+      'Competitors appear above them in search',
+      'Weak local visibility for nearby clients',
+      'Website content is not optimized for modern search'
+    ],
+    features: [
+      'Deep technical and semantic audit identifying crawl errors, schema gaps, and speed bottlenecks',
+      'On-page metadata, semantic headings, and search entity optimization across all key pages',
+      'Local SEO alignment with Google Business profile and verified geographic citations',
+      'Strategic keyword mapping targeting high-intent commercial queries',
+      'Structured Schema.org JSON-LD markup designed for both search engines and generative AI models',
+      'Continuous Core Web Vitals optimization for swift mobile loading speeds'
+    ],
+    deliverables: [
+      'Comprehensive Technical SEO and AI Discovery Audit report',
+      'Full on-page metadata, canonicals, and open-graph optimization',
+      'Schema.org structured data markup integration across site',
+      'Google Search Console configuration and sitemap indexing',
+      'Google Business profile optimization recommendations',
+      'Actionable keyword roadmap and content strategy'
+    ],
+    technologies: ['Schema.org JSON-LD', 'Google Search Console', 'Lighthouse Performance', 'Semantic HTML5', 'AI Citation Indexing'],
+    typicalTimeline: '2 to 3 weeks foundation sprint',
+    ctaText: 'IMPROVE MY VISIBILITY',
+    disclaimerNote:
+      'We use proven, ethical technical and semantic optimization methodologies. We do not guarantee arbitrary #1 rankings or make false promises, focusing instead on measurable, long-term search authority and qualified customer inquiries.'
   },
   {
     id: 'ai-agents',
-    title: 'AI Agents',
-    category: 'AI Assistants',
+    title: 'Custom AI Agents',
+    heading: 'AI Agents Built Around Your Business',
+    positioning: 'AI Agents Built Around Your Business.',
+    category: 'Autonomous AI Assistants',
     iconName: 'Cpu',
     shortDescription:
-      'AI assistants designed to help with specific business tasks and workflows.',
+      'We build specialized AI agents designed to help businesses handle customer interactions and repetitive digital workflows.',
     overview:
-      'We build purposeful AI assistants configured to handle repetitive operational tasks, retrieve verified business information, and assist your team in day-to-day operations with controlled guardrails.',
+      'We build specialized AI agents configured specifically around your company’s real data, services, pricing, and operating rules. Built with rigorous business guardrails, our agents handle customer inquiries, qualify leads, organize requests, and assist your team, while knowing exactly when to hand off to a human.',
+    examples: [
+      'Customer support agent',
+      'Lead qualification agent',
+      'Sales assistant',
+      'Website AI assistant',
+      'Internal business assistant',
+      'Research assistant',
+      'FAQ agent',
+      'Appointment assistant'
+    ],
     subcategories: [
-      'Task-specific assistants',
-      'Document & knowledge lookup',
-      'Operational support tools',
-      'Internal workflow helpers',
-      'Data extraction & summarization',
-      'System integrations'
+      'Customer support agent',
+      'Lead qualification agent',
+      'Sales assistant',
+      'Website AI assistant',
+      'Internal business assistant',
+      'Research assistant',
+      'FAQ agent',
+      'Appointment assistant'
+    ],
+    problemsSolved: [
+      'Repetitive customer questions draining team energy',
+      'Slow response times leading to lost clients',
+      'Employees wasting time on routine manual tasks',
+      'Leads not being organized or categorized quickly',
+      'Business information scattered across multiple systems'
     ],
     features: [
-      'Configured with strict business guardrails to prevent unverified answers',
-      'Connected to your business documents, FAQs, and product knowledge',
-      'Helps staff draft responses, search guidelines, and parse complex information',
-      'Respects data security and operational privacy requirements',
-      'Audit logs for oversight and ongoing system improvement',
-      'Step-by-step human review options for sensitive tasks'
+      'Deep ingestion of verified business data, product specs, and company guidelines',
+      'Strict operational guardrails preventing unverified answers or hallucinations',
+      'Autonomous lead qualification capturing customer intent, budget, and timeline',
+      'Automated inquiry categorization and instant notification to the right department',
+      'Internal knowledge retrieval helping employees draft answers and find policies in seconds',
+      'Seamless human handoff protocols whenever human judgment is required'
     ],
     deliverables: [
-      'Configured AI assistant tailored to your specific task',
-      'Knowledge base ingestion and structured prompt setup',
-      'User-friendly interface or tool integration',
-      'Staff operating guide and best practice guidelines',
-      '30 days of post-launch support'
+      'Custom-engineered AI agent configured for your target business workflow',
+      'Verified knowledge base integration with approved source documentation',
+      'Integration into web widget, WhatsApp, or internal business interface',
+      'Notification triggers (WhatsApp / Email / Webhook) for qualified leads',
+      'Team operational manual and guardrail guidelines',
+      '30 days of post-launch monitoring and accuracy refinement'
     ],
-    technologies: ['TypeScript', 'Python', 'FastAPI', 'Retrieval Systems', 'REST APIs'],
-    typicalTimeline: 'Agreed upon project scoping'
+    technologies: ['Vector Databases', 'FastAPI', 'Node.js', 'REST APIs', 'Webhooks', 'TypeScript'],
+    typicalTimeline: '2 to 3 weeks',
+    ctaText: 'BUILD MY AI AGENT'
   },
   {
-    id: 'ai-voice-agents',
-    title: 'AI Voice Agents',
-    category: 'Voice Technology',
+    id: 'ai-call-agents',
+    title: 'AI Call Agents',
+    heading: 'AI Voice Agents That Help Your Business Answer Every Opportunity',
+    positioning: 'AI Voice Agents That Help Your Business Answer Every Opportunity.',
+    category: 'Voice AI & Telephony',
     iconName: 'PhoneCall',
     shortDescription:
-      'Voice assistants for supported enquiry, appointment, and communication workflows.',
+      'Build AI-powered voice systems that can assist businesses with incoming or outgoing customer interactions where appropriate.',
     overview:
-      'We build low-latency voice assistants designed to handle structured customer calls, answer common questions, collect caller details, and route appointment requests efficiently.',
+      'Ensure every customer call is answered promptly, professionally, and accurately. We build natural-sounding AI voice agents that handle incoming or outgoing phone interactions, provide clear service details, collect caller information, book appointments, and smoothly transfer priority conversations to your team.',
     subcategories: [
-      'Inbound enquiry handling',
-      'Appointment scheduling assistance',
-      'Frequently asked questions on calls',
-      'Caller details capture',
-      'Call summary & notification routing',
-      'Human handoff protocols'
+      'Answer common customer questions',
+      'Collect lead information',
+      'Qualify inquiries',
+      'Book appointments',
+      'Confirm appointments',
+      'Route calls',
+      'Provide service information',
+      'Escalate to a human team member'
+    ],
+    problemsSolved: [
+      'Missed calls turning into lost customer revenue',
+      'Slow phone responses during busy peak hours',
+      'Employees repeating the same basic information all day',
+      'Lost leads outside working hours and during holidays',
+      'Too much time spent answering routine screening calls'
     ],
     features: [
-      'Natural, low-latency conversational speech interface',
-      'Structured conversational flows designed for business clarity',
-      'Automated caller details capture sent directly to your email or WhatsApp',
-      'Clear fallback routing to your team for complex requests',
-      'Call recording summaries and transcript generation',
-      'Configured for your business operating hours and policies'
+      'Natural, low-latency conversational speech engineered for professional business clarity',
+      'Answers common caller questions accurately based on your verified policies',
+      'Captures caller name, phone, needs, and preferred scheduling times',
+      'Real-time calendar booking integration with automated confirmation messages',
+      'Direct intelligent call routing to designated human staff or branch numbers',
+      'Automated call summary, audio recording, and transcript sent to your team'
     ],
     deliverables: [
-      'Telephony or web-voice configuration',
-      'Custom dialogue flow and conversational scripts',
-      'Notification triggers for team follow-up',
-      'Testing across common caller scenarios',
-      '30 days of post-launch support'
+      'Telephony configuration and virtual business phone number integration',
+      'Custom dialogue scripts, voice persona, and conversational decision trees',
+      'Appointment calendar and notification integration (WhatsApp / SMS / Email)',
+      'Human fallback transfer protocol for complex customer inquiries',
+      'Testing across realistic caller scenarios and ambient noise environments',
+      '30 days of post-launch conversational tuning and support'
     ],
-    technologies: ['Speech Processing', 'WebRTC', 'FastAPI', 'Telephony Gateways', 'Node.js'],
-    typicalTimeline: 'Agreed upon project scoping'
-  },
-  {
-    id: 'ai-chatbots',
-    title: 'AI Chatbots',
-    category: 'Conversational AI',
-    iconName: 'MessageSquare',
-    shortDescription:
-      'Conversational assistants that answer common questions and collect enquiries.',
-    overview:
-      'Engage website visitors 24/7 with a conversational assistant grounded in your business knowledge. Answer common questions instantly, qualify customer interest, and capture verified contact enquiries directly.',
-    subcategories: [
-      'Website customer assistants',
-      'FAQ resolution',
-      'Lead and enquiry capture',
-      'Service guides and recommendations',
-      'Business hours and location info',
-      'Direct WhatsApp redirection'
-    ],
-    features: [
-      'Answers common questions based strictly on your official business data',
-      'Interactive enquiry capture collecting customer needs and contact details',
-      'Clean branded widget matching your website design',
-      'Direct one-tap WhatsApp escalation when visitors prefer chatting with you',
-      'Works seamlessly on mobile phones and desktop computers',
-      'Weekly summaries of frequent visitor questions to help refine your copy'
-    ],
-    deliverables: [
-      'Embeddable chat widget customized for your brand',
-      'Knowledge base ingestion and approved response sets',
-      'Instant notification setup (WhatsApp/Email) when a lead arrives',
-      'Testing across mobile and desktop environments',
-      '30 days of post-launch support'
-    ],
-    technologies: ['React Widget', 'Semantic Search', 'REST APIs', 'Webhooks'],
-    typicalTimeline: 'Agreed upon project scoping'
-  },
-  {
-    id: 'business-automation',
-    title: 'Business Automation',
-    category: 'Process Workflows',
-    iconName: 'Workflow',
-    shortDescription:
-      'Connected workflows that reduce repetitive tasks and keep information moving between tools.',
-    overview:
-      'Eliminate manual data copying and slow follow-ups. We connect your website, CRM, messaging tools, and internal software so enquiries are routed instantly and notifications reach the right team member immediately.',
-    subcategories: [
-      'Enquiry & lead routing',
-      'Cross-tool data sync',
-      'Instant WhatsApp/Email notifications',
-      'Customer intake automation',
-      'Document & invoice generation triggers',
-      'Repetitive task reduction'
-    ],
-    features: [
-      'Enquiries from your website flow automatically to your phone or CRM',
-      'Instant notifications sent when an urgent client request arrives',
-      'Eliminates duplicate manual data entry across multiple applications',
-      'Robust error-checking so no customer request gets silently dropped',
-      'Clear logs so you can see every action taken by the workflow',
-      'Scales cleanly as your enquiry volume grows'
-    ],
-    deliverables: [
-      'Workflow architecture blueprint and process map',
-      'Configured integrations between your business tools',
-      'End-to-end testing with sample customer workflows',
-      'Alert channels for any system exceptions',
-      '30 days of post-launch support'
-    ],
-    technologies: ['Serverless Functions', 'Webhooks', 'REST APIs', 'Node.js', 'Zapier/Make/Custom'],
-    typicalTimeline: 'Agreed upon project scoping'
-  },
-  {
-    id: 'custom-ai-solutions',
-    title: 'Custom AI Solutions',
-    category: 'Custom Engineering',
-    iconName: 'Layers',
-    shortDescription:
-      'Tailored systems developed around your business requirements.',
-    overview:
-      'When standard off-the-shelf software doesn’t fit your workflow, we engineer custom digital solutions and AI tools built around your exact operational needs, data formats, and team structure.',
-    subcategories: [
-      'Custom web applications',
-      'Bespoke operational dashboards',
-      'Proprietary data parsing tools',
-      'Specialized client portals',
-      'Internal team tools',
-      'Bespoke software architecture'
-    ],
-    features: [
-      'Built specifically around your real business workflows and operational constraints',
-      'Modern, intuitive user interfaces that require minimal training for your team',
-      'Secure architecture respecting your business privacy and proprietary data',
-      'Clean, maintainable source code owned entirely by your business',
-      'Designed to adapt and evolve as your company expands',
-      'Direct collaboration with our engineering team throughout development'
-    ],
-    deliverables: [
-      'Full architectural scoping and requirement specification',
-      'Custom developed application or software module',
-      'Cross-device responsive interface and secure backend',
-      'Full source code and deployment handover',
-      '30 days of post-launch support'
-    ],
-    technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Cloud APIs'],
-    typicalTimeline: 'Agreed upon project scoping'
+    technologies: ['Speech-to-Text (STT)', 'Text-to-Speech (TTS)', 'SIP / Telephony Trunks', 'WebRTC', 'Calendar APIs'],
+    typicalTimeline: '3 to 4 weeks',
+    ctaText: 'BUILD MY AI CALL AGENT',
+    disclaimerNote:
+      'Our AI call agents are engineered with clear human escalation: whenever a caller requires personalized consultation, complex problem-solving, or urgent assistance, the system transfers the call directly to your designated staff.'
   },
   {
     id: 'ai-video-creation',
     title: 'AI Video Creation',
-    heading: 'AI Videos for Your Business',
-    category: 'Visual Content & AI Video',
+    heading: 'Professional AI Video Content Built for Business Growth',
+    positioning: 'Professional AI Video Content Built for Business Growth.',
+    category: 'Visual Content & Video Production',
     iconName: 'Video',
     shortDescription:
-      'Custom AI-generated videos for product showcases, business promotions, property concepts, and social media content.',
+      'Professional AI video content built for business marketing and brand growth—not random clips, but focused business assets.',
     overview:
-      'Turn your ideas into visual content for your business. We create AI-generated video concepts tailored to your message, brand style, and intended audience.',
+      'We produce studio-quality marketing videos using cutting-edge generative video models, realistic synthetic voiceovers, and polished post-production. Built specifically for business promotion, product showcases, and social media campaigns, our video workflows deliver high-impact visual assets at a fraction of traditional film production costs.',
     subcategories: [
-      'Business promotional videos',
+      'Promotional videos',
       'Product showcase videos',
-      'Real estate concept videos',
-      'Restaurant and bakery promotional content',
-      'Social media reels and short advertisements',
-      'Educational and explainer videos'
+      'Service explanations',
+      'Social media video content',
+      'Brand announcement videos',
+      'Explainer videos',
+      'Multilingual video content'
+    ],
+    problemsSolved: [
+      'Video production is too expensive for regular campaigns',
+      'Producing videos takes too much time and coordination',
+      'Lack of consistent video content for ongoing marketing',
+      'Difficult to produce videos in multiple languages or formats',
+      'Competitors capturing attention with engaging video reels'
     ],
     features: [
-      'Visual storytelling aligned with your core business message and branding',
-      'Structured concept, script, and format agreed before production begins',
-      'Custom aspect ratios tailored for vertical reels (9:16) or landscape media (16:9)',
-      'Voiceover integration and synchronized captions adapted to your audience',
-      'Structured collaborative review and agreed revision checkpoints',
-      'High-definition video delivery ready for publishing across your digital channels'
+      'Focused marketing scripts tailored to your target audience and value proposition',
+      'High-resolution cinematic scenes generated to match your brand style guide',
+      'Natural neural voiceovers with synchronized dynamic captions',
+      'Multi-aspect ratio formatting: 9:16 vertical reels and 16:9 widescreen landscape',
+      'Structured collaborative review with clear revision checkpoints',
+      'Full commercial rights and high-definition video master file handover'
     ],
     deliverables: [
-      'Agreed visual concept and structured script outline',
-      'AI-generated video composition in agreed resolution & format',
-      'Voiceover & caption integration (where requested)',
-      'Review cycle and agreed project revisions',
-      'Final video file delivery'
+      'Agreed visual concept, storyboard, and structured script outline',
+      'High-resolution AI-generated video master with brand graphics',
+      'Professional voiceover narration & synchronized caption overlays',
+      'Multi-format renders for Instagram, TikTok, LinkedIn, and Website',
+      'Structured review cycle with agreed revisions',
+      'Final MP4 video files ready for immediate distribution'
     ],
-    technologies: ['Generative Video Models', 'Audio Synthesis', 'Scripting & Prompting', 'Post-Production', 'MP4/H.264'],
-    typicalTimeline: 'Agreed upon project scoping',
+    technologies: ['Generative Video Models', 'Neural Voice Synthesis', 'Motion Graphics', 'Post-Production', 'MP4 / 4K Export'],
+    typicalTimeline: '1 to 2 weeks per campaign',
+    ctaText: 'BUILD MY AI VIDEO',
     processNote:
-      'Share your idea and any available brand assets. We agree on the concept, script, format, scope, and price before production, then create the video and review it with you.',
-    termsNote:
-      'Duration, aspect ratio, voiceover, captions, revisions, and delivery time are agreed for each project based on your requirements.',
+      'Share your idea and any available brand assets. We agree on the concept, script, format, scope, and price before production, then create the video and review it with you through agreed revision checkpoints.',
     disclaimerNote:
-      'For property and product videos, AI-generated scenes are illustrative concepts unless based on verified reference material. Generated scenes are not presented as actual footage of a real property or product.'
+      'For property and product videos, AI-generated scenes are illustrative concepts unless based on verified reference material. Generated scenes are designed to represent marketing concepts cleanly and professionally.'
   }
 ];

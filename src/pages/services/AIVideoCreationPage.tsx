@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Film,
+  Video,
   CheckCircle2,
   ArrowRight,
   MessageCircle,
-  MapPin,
+  PlayCircle,
+  Sparkles,
+  Layers,
+  Globe2,
+  Film,
   ShieldAlert
 } from 'lucide-react';
 import { usePageSEO } from '../../hooks/usePageSEO';
@@ -14,100 +18,99 @@ import { ServiceProcessSteps } from '../../components/services/ServiceProcessSte
 import { ServiceFAQList } from '../../components/services/ServiceFAQList';
 import { ServiceCTASection } from '../../components/services/ServiceCTASection';
 import { TitanIcon } from '../../components/TitanLogo';
+import { FadeIn } from '../../components/motion/MotionComponents';
 
 const WHATSAPP_MSG =
-  'Hello TITAN AI AGENCY, I am interested in AI video creation for my business.';
+  'Hello TITAN AI AGENCY, I would like to create Professional AI Video Content for my business.';
 const WHATSAPP_URL = `https://wa.me/966534182945?text=${encodeURIComponent(WHATSAPP_MSG)}`;
 
-const USE_CASES = [
+const VIDEO_FORMATS = [
+  { title: 'Promotional Videos', desc: 'High-impact brand videos communicating your value proposition and business strengths in 30-60 seconds.' },
+  { title: 'Product Showcase Videos', desc: 'Sleek visual demonstrations highlighting product features, craftsmanship, and benefits.' },
+  { title: 'Service Explanations', desc: 'Clear, engaging walkthroughs that deconstruct complex service offerings for prospective buyers.' },
+  { title: 'Social Media Video Content', desc: 'Dynamic 9:16 vertical reels and shorts optimized for Instagram, TikTok, and paid video ads.' },
+  { title: 'Brand Announcement Videos', desc: 'Cinematic reveals for new service launches, company milestones, and event promotions.' },
+  { title: 'Explainer Videos', desc: 'Educational and onboarding videos that guide customers through how your solution works.' },
+  { title: 'Multilingual Video Content', desc: 'Same core creative localized with native Arabic, English, and other regional voiceovers.' }
+];
+
+const PROBLEMS_SOLVED = [
   {
-    title: 'Business Promotional Videos',
-    description:
-      'Polished video introductions for websites and digital campaigns that communicate your core business value, service breadth, and brand positioning in under 60 seconds.',
-    features: ['Structured visual script', 'Brand styling alignment', '16:9 landscape or 9:16 vertical']
+    problem: 'Video production is too expensive',
+    solution: 'Eliminates costly film crews, physical studios, and lengthy production overhead, delivering agency-quality video at a fraction of standard rates.'
   },
   {
-    title: 'Product Showcase Concepts',
-    description:
-      'Dynamic visual highlights demonstrating product concepts, feature benefits, and modern aesthetics designed to capture customer interest across social channels.',
-    features: ['High-definition rendering', 'Feature callouts & typography', 'Clean background music']
+    problem: 'Producing videos takes too much time',
+    solution: 'Cuts production turnarounds from months to days through accelerated AI synthesis, scriptwriting, and editing workflows.'
   },
   {
-    title: 'Real Estate Concept Teasers',
-    description:
-      'Atmospheric property concept videos combining architecture imagery, clean typography overlays, and agency branding for property marketing presentations.',
-    features: ['Illustrative concept visuals', 'Property feature highlights', 'Brand watermark integration']
+    problem: 'Lack of consistent video content for marketing',
+    solution: 'Empowers your brand to publish continuous, high-polish video campaigns across social platforms and websites without burning out your team.'
   },
   {
-    title: 'Social Media Reels & Short Advertisements',
-    description:
-      'Attention-grabbing short-form vertical videos (9:16) tailored for Instagram Reels, TikTok, and digital ad campaigns designed for mobile viewers.',
-    features: ['Hook-driven pacing', 'Synchronized captions & subtitles', 'Mobile-first 9:16 framing']
+    problem: 'Difficult to produce videos in multiple languages or formats',
+    solution: 'Rapidly re-render the same video in 9:16 vertical or 16:9 landscape with localized voiceovers in Arabic, English, and more.'
   }
 ];
 
 const DELIVERABLES = [
-  'Concept definition, script outline, and agreed visual format before production starts',
-  'AI-generated video composition tailored to your brand style and target audience',
-  'Resolution format delivered in full high-definition (1080p, in 16:9 landscape or 9:16 vertical)',
-  'Voiceover synthesis and synchronized caption styling (where agreed in project scope)',
-  'Background music integration licensed for digital business publishing',
+  'Concept definition, script outline, and agreed visual storyboard before production starts',
+  'High-resolution AI-generated video master tailored to your business brand style',
+  'Multi-aspect ratio formatting: 16:9 widescreen for websites and 9:16 vertical for reels',
+  'Professional neural voiceover synthesis and synchronized on-screen caption styling',
+  'Commercial background audio track licensing included for digital publishing',
   'Structured collaborative review cycle with agreed revision checkpoints',
   'Final MP4 video file delivery ready for publishing on your website or social media',
-  'Transparent production terms with no hidden fees or automated subscriptions'
+  'Full commercial publishing rights with zero recurring fees'
 ];
 
 const FAQS = [
   {
-    question: 'How do you determine video duration, aspect ratio, and revisions?',
+    question: 'How do you ensure AI video looks professional rather than artificial?',
     answer:
-      'Every video project begins with an agreed scope. We discuss your target platform (for instance, 16:9 landscape for websites or 9:16 vertical for Instagram Reels), desired length (typically 15 to 60 seconds), voiceover requirements, and agreed revision rounds before production begins.'
+      'We do not produce random, generic AI clips. Every video is built as a serious business asset: we start with an agreed marketing script, brand style guides, consistent visual composition, professional typography, neural voiceovers, and human post-production editing.'
   },
   {
-    question: 'Are AI-generated property or product scenes footage of real locations?',
+    question: 'Can you produce videos in both Arabic and English?',
     answer:
-      'No. For property and product videos, AI-generated scenes are illustrative visual concepts unless they are built directly upon verified reference material supplied by you. We always clearly clarify that generated scenes represent illustrative creative concepts rather than footage of an actual filmed property tour.'
+      'Yes. We specialize in bilingual video campaigns tailored for Saudi Arabia and the Gulf, with authentic Arabic pronunciation, localized script nuances, and English counterparts.'
   },
   {
-    question: 'Do you create AI videos for businesses in Riyadh and Saudi Arabia?',
+    question: 'What is the typical production timeline for a business video?',
     answer:
-      'Yes. We collaborate with companies in Riyadh, throughout Saudi Arabia, and remotely. We can produce visual content with localized Arabic or English captions, voiceovers, and cultural aesthetics tailored to Saudi and regional audiences.'
+      'Once the script and creative brief are approved, standard production takes 1 to 2 weeks including review and revision cycles.'
   },
   {
-    question: 'What assets do I need to supply to get started?',
+    question: 'Are AI-generated scenes real property or product footage?',
     answer:
-      'You only need to share your core idea, preferred message, and any brand assets you currently have (such as high-resolution logos, brand color codes, or product photos). If you do not have a script, we collaborate with you to outline the script during initial scoping.'
+      'For property and product videos, AI-generated scenes represent illustrative visual concepts unless built directly upon verified assets provided by you. We always present visual concepts transparently and professionally.'
   }
 ];
 
 export const AIVideoCreationPage: React.FC = () => {
   usePageSEO({
-    title: 'AI Video Creation for Businesses | TITAN AI Agency',
+    title: 'AI Video Creation | Professional Business Marketing Videos | TITAN AI Agency',
     description:
-      'Custom AI video creation for businesses in Riyadh and remotely. High-impact promotional videos, product showcases, and social media reels tailored to your brand.',
+      'Professional AI video content built for business growth. Promotional videos, product showcases, service explanations, and social reels tailored for marketing results.',
     canonicalPath: '/services/ai-video-creation',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'AI Video Creation for Businesses',
+      name: 'AI Video Creation',
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png'
+        url: 'https://titanaiagency.netlify.app/'
       },
       description:
-        'Custom AI-generated video concepts for business promotions, product showcases, property concepts, and social media content.',
-      areaServed: [
-        { '@type': 'City', name: 'Riyadh' },
-        { '@type': 'Country', name: 'Saudi Arabia' }
-      ]
+        'Professional AI Video Content Built for Business Growth. Promotional videos, product showcases, explainer videos, and social media reels.'
     }
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
-      {/* 1. Hero Section (Dark Premium Navy) */}
+    <div id="ai-video-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      
+      {/* 1. HERO SECTION */}
       <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
         <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
@@ -121,92 +124,139 @@ export const AIVideoCreationPage: React.FC = () => {
             <span className="text-white font-medium">AI Video Creation</span>
           </nav>
 
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
-              <MapPin className="w-3.5 h-3.5 text-[#00D1FF]" />
-              <span>Available in Riyadh & Remotely</span>
-            </div>
+          <div className="max-w-4xl space-y-6">
+            <FadeIn delay={0.1} direction="none">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+                <TitanIcon className="w-4 h-4" />
+                <span>CORE SERVICE 05 · VISUAL CONTENT & VIDEO MARKETING</span>
+              </div>
+            </FadeIn>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
-              AI Video Creation for Businesses
-            </h1>
+            <FadeIn delay={0.2} direction="up" distance={30}>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+                Professional AI Video Content Built for Business Growth.
+              </h1>
+            </FadeIn>
 
-            <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal">
-              Turn your business message into compelling visual content. We create AI-generated video concepts tailored to your brand style, promotional campaigns, and target audience.
-            </p>
+            <FadeIn delay={0.3} direction="up" distance={20}>
+              <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal max-w-3xl">
+                Not random AI clips—focused marketing assets built to attract customers, demonstrate services, and scale brand credibility across websites and social media.
+              </p>
+            </FadeIn>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-titan-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold"
-              >
-                <MessageCircle className="w-4 h-4 stroke-[2.5]" />
-                <span>Discuss Your Project on WhatsApp</span>
-              </a>
+            <FadeIn delay={0.4} direction="up" distance={15}>
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="ai-video-cta-primary"
+                  className="btn-titan-primary inline-flex items-center gap-2.5 px-8 py-4 text-base font-bold shadow-[0_4px_18px_rgba(0,209,255,0.3)] hover:shadow-[0_0_24px_rgba(0,209,255,0.5)]"
+                >
+                  <span>BUILD MY AI VIDEO</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </a>
 
-              <a
-                href="#use-cases"
-                className="btn-titan-secondary-dark inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
-              >
-                <span>Explore Video Use Cases</span>
-                <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
-              </a>
-            </div>
+                <a
+                  href="#formats"
+                  className="btn-titan-secondary-dark inline-flex items-center gap-2 px-6 py-4 text-sm font-semibold"
+                >
+                  <span>Explore Video Formats</span>
+                </a>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* 2. Practical Business Use Cases (Clean White / Light Ice Blue) */}
-      <section id="use-cases" className="relative py-16 sm:py-24 bg-[#FFFFFF] border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-              Visual Formats
-            </div>
+      {/* 2. BUSINESS PROBLEMS SOLVED */}
+      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+              Marketing ROI
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
-              Practical Video Concepts for Your Business
+              Business Problems We Solve
             </h2>
-            <p className="mt-3 text-[#536477] text-base leading-relaxed">
-              From horizontal website hero teasers to vertical social media ads, we tailor video formats to your marketing distribution channels.
+            <p className="mt-3 text-[#536477] text-base">
+              Eliminate production friction so your business can publish polished video content consistently.
             </p>
           </div>
+        </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {USE_CASES.map((uc, idx) => (
-              <div
-                key={idx}
-                className="card-titan-light p-7 space-y-4"
-              >
-                <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
-                  <Film className="w-5 h-5 text-[#00D1FF]" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-[#071A33]">
-                  {uc.title}
-                </h3>
-                <p className="text-sm text-[#536477] leading-relaxed font-normal">
-                  {uc.description}
-                </p>
-                <div className="pt-2 border-t border-slate-100 space-y-2">
-                  {uc.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-[#536477] font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shrink-0" />
-                      <span>{feat}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {PROBLEMS_SOLVED.map((item, idx) => (
+            <FadeIn key={idx} delay={idx * 0.08} direction="up" distance={20}>
+              <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-2 text-rose-600 font-bold text-sm mb-2 font-mono">
+                    <span className="w-2 h-2 rounded-full bg-rose-500" />
+                    <span>Production Hurdle</span>
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-[#071A33] mb-3">
+                    {item.problem}
+                  </h3>
+                  <div className="pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-2 text-[#00D1FF] font-bold text-xs mb-1.5 font-mono uppercase tracking-wider">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>TITAN Solution</span>
                     </div>
-                  ))}
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {item.solution}
+                    </p>
+                  </div>
                 </div>
               </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. BUSINESS VIDEO FORMATS */}
+      <section id="formats" className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Focused Marketing Assets
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
+                Business Video Formats We Produce
+              </h2>
+              <p className="mt-3 text-[#536477] text-base">
+                Engineered specifically for business promotions, product showcases, and client conversion.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {VIDEO_FORMATS.map((fmt, idx) => (
+              <FadeIn key={idx} delay={idx * 0.05} direction="up" distance={20}>
+                <div className="p-6 rounded-2xl bg-[#F8FAFF] border border-slate-200/80 hover:border-[#00D1FF]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between h-full">
+                  <div>
+                    <div className="w-10 h-10 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center mb-3 text-[#00D1FF]">
+                      <Video className="w-5 h-5 text-[#00D1FF]" />
+                    </div>
+                    <h3 className="font-display font-bold text-base text-[#071A33] mb-1.5">
+                      {fmt.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {fmt.desc}
+                    </p>
+                  </div>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 3. Portfolio Evidence: Video Showcase Container */}
+      {/* 4. SHOWCASE SECTION */}
       <VideoShowcase />
 
-      {/* 4. Deliverables & Scope Policy (Deep Navy) */}
-      <section id="deliverables" className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
+      {/* 5. DELIVERABLES & SCOPE */}
+      <section className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-5">
@@ -214,26 +264,21 @@ export const AIVideoCreationPage: React.FC = () => {
                 Transparent Boundaries
               </div>
               <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Production Deliverables & Creative Scope
+                Included Deliverables & Technical Scope
               </h2>
               <p className="text-[#8FA0BA] text-base leading-relaxed">
-                We agree on duration, aspect ratio, script outline, voiceover language, and revisions before production begins.
+                Before production begins, we agree on the concept, script outline, format, and revision milestones. You receive final master MP4 files ready for publication.
               </p>
-              <div className="p-4 rounded-xl bg-[#0B1F4B]/80 border border-[#00D1FF]/30 text-xs text-[#EAF7FF] leading-relaxed space-y-1.5">
-                <strong className="text-[#00D1FF] block font-bold flex items-center gap-1.5">
-                  <ShieldAlert className="w-4 h-4 text-[#00D1FF]" />
-                  <span>Illustrative Visuals Notice</span>
-                </strong>
-                <p>
-                  For property and product videos, AI-generated scenes are illustrative concepts unless based on verified reference material provided by the client. We do not present generated scenes as footage of an actual property or product tour.
-                </p>
+              <div className="p-4 rounded-xl bg-[#0B1F4B]/80 border border-[#00D1FF]/30 text-xs text-[#EAF7FF] leading-relaxed">
+                <strong className="text-[#00D1FF] block font-bold mb-1">Illustrative Concepts Notice</strong>
+                For property and product videos, AI-generated scenes represent illustrative visual concepts unless built from your verified reference photography.
               </div>
             </div>
 
             <div className="lg:col-span-7">
               <div className="card-titan-dark p-7 space-y-4 bg-[#0B1F4B]/60 border border-[#00D1FF]/20">
                 <h3 className="text-xs font-mono uppercase tracking-wider text-[#00D1FF] font-bold mb-2">
-                  What You Receive
+                  Scope Checklist
                 </h3>
                 <ul className="space-y-3.5">
                   {DELIVERABLES.map((deliv, i) => (
@@ -249,17 +294,17 @@ export const AIVideoCreationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Simple 5-Step Process */}
+      {/* 6. PROCESS STEPS */}
       <ServiceProcessSteps />
 
-      {/* 6. FAQs */}
+      {/* 7. FAQS */}
       <ServiceFAQList serviceTitle="AI Video Creation" faqs={FAQS} />
 
-      {/* 7. Final CTA Section */}
+      {/* 8. FINAL CTA */}
       <ServiceCTASection
         serviceTitle="AI Video Creation"
         whatsappMessage={WHATSAPP_MSG}
-        subtitle="Share your video concept, preferred aspect ratio, and target audience with our production team on WhatsApp."
+        subtitle="Share your campaign goal, product link, or video concept, and our production team will outline an initial script and format plan."
       />
     </div>
   );

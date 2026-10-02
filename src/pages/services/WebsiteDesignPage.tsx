@@ -7,7 +7,12 @@ import {
   MessageCircle,
   ArrowRight,
   CheckCircle2,
-  MapPin
+  Bot,
+  Calendar,
+  Zap,
+  BarChart,
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react';
 import { usePageSEO } from '../../hooks/usePageSEO';
 import { FeaturedWork } from '../../components/FeaturedWork';
@@ -15,82 +20,98 @@ import { ServiceProcessSteps } from '../../components/services/ServiceProcessSte
 import { ServiceFAQList } from '../../components/services/ServiceFAQList';
 import { ServiceCTASection } from '../../components/services/ServiceCTASection';
 import { TitanIcon } from '../../components/TitanLogo';
+import { FadeIn } from '../../components/motion/MotionComponents';
 
 const WHATSAPP_MSG =
-  'Hello TITAN AI AGENCY, I am interested in discussing a website design project for my business.';
+  'Hello TITAN AI AGENCY, I would like to discuss building an AI-Powered Website for my business.';
 const WHATSAPP_URL = `https://wa.me/966534182945?text=${encodeURIComponent(WHATSAPP_MSG)}`;
 
-const USE_CASES = [
+const CAPABILITIES = [
+  { title: 'Premium Custom Design', desc: 'Distinctive, brand-aligned visual design crafted for credibility and authority.' },
+  { title: 'Mobile Responsive Development', desc: 'Flawless performance and typography tailored for phone, tablet, and desktop screens.' },
+  { title: 'AI Chatbot Integration', desc: 'Built-in conversational assistant answering customer questions and capturing leads 24/7.' },
+  { title: 'Lead Capture Systems', desc: 'High-intent enquiry flows designed to collect verified customer requirements.' },
+  { title: 'WhatsApp Integration', desc: 'Direct one-tap WhatsApp routing pre-filled with project context for instant closing.' },
+  { title: 'Appointment Booking', desc: 'Automated scheduling workflows synchronized with your team’s calendars.' },
+  { title: 'Contact & Quotation Forms', desc: 'Frictionless forms tailored to qualify client budget, timeline, and project needs.' },
+  { title: 'Analytics & Tracking', desc: 'Clear visibility into visitor journeys, conversions, and high-performing pages.' },
+  { title: 'SEO Foundations', desc: 'Semantic HTML5 structure, OpenGraph cards, and Google Search Console indexing ready.' },
+  { title: 'Business Automation Integrations', desc: 'Form-to-CRM, instant email dispatch, and team notifications connected automatically.' },
+  { title: 'Fast Performance', desc: 'Sub-second page speeds passing Core Web Vitals to maximize Google rank and conversions.' },
+  { title: 'Conversion-Focused Layouts', desc: 'Clear visual hierarchy and strategic calls to action that turn visitors into paying customers.' }
+];
+
+const PROBLEMS_SOLVED = [
   {
-    title: 'Corporate & Service Firm Websites',
-    description:
-      'Clear, authoritative websites for consultancies, B2B companies, and corporate offices that present service capabilities clearly, establish credibility, and guide visitors toward consultations.',
-    features: ['Structured service breakdowns', 'Direct WhatsApp & consultation routing', 'Fast loading times on all connections']
+    problem: 'No professional online presence',
+    solution: 'Establish an authoritative, modern digital storefront that immediately builds trust with high-value clients.'
   },
   {
-    title: 'Property & Real Estate Concepts',
-    description:
-      'Visual property showcases displaying development portfolios, floor plans, and project specifications with clean mobile navigation and fast enquiry capture.',
-    features: ['Visual portfolio galleries', 'Interactive enquiry triggers', 'Mobile-first layout for property buyers']
+    problem: 'Outdated website losing visitor trust',
+    solution: 'Complete overhaul with clean typography, responsive layouts, and modern technology that outshines competitors.'
   },
   {
-    title: 'Food, Dining & Bakery Showcase Sites',
-    description:
-      'Vibrant culinary websites showcasing menus, specialties, operating hours, and location maps, with direct messaging links for customer questions.',
-    features: ['Menu and dish presentations', 'Direct WhatsApp ordering flows', 'Instant mobile contact actions']
+    problem: 'Visitors not becoming customers',
+    solution: 'Conversion-focused architecture and strategic value propositions that guide prospects toward action.'
   },
   {
-    title: 'High-Converting Landing Pages',
-    description:
-      'Targeted campaign pages designed around a single business offer—focusing visitor attention on key benefits, proof points, and an effortless contact action.',
-    features: ['Zero-distraction conversion focus', 'Speed-optimized assets', 'Integrated enquiry forms']
+    problem: 'Difficult customer contact',
+    solution: 'Direct WhatsApp integration, automated quotation forms, and 24/7 AI chat making reaching out effortless.'
+  },
+  {
+    problem: 'Poor mobile experience',
+    solution: 'Engineered mobile-first for fluid browsing, instant tap-to-chat actions, and zero layout shifting.'
+  },
+  {
+    problem: 'Weak brand credibility',
+    solution: 'Enterprise-grade aesthetic, fast loading speeds, and cohesive brand storytelling.'
   }
 ];
 
 const DELIVERABLES = [
-  'Custom responsive website design engineered for phones, tablets, and desktops',
-  'Intuitive navigation structure designed for effortless visitor journeys',
-  'Direct WhatsApp messaging buttons and structured contact enquiry forms',
-  'Portfolio, service catalog, or product showcase sections matching your branding',
-  'On-page SEO fundamentals, semantic HTML5 structure, and Google Search Console sitemap',
+  'Custom responsive website design engineered in React, TypeScript & Tailwind CSS',
+  'Integrated AI chatbot widget trained on your business offerings and FAQs',
+  'Direct WhatsApp messaging triggers and structured quotation intake forms',
+  'Automated appointment booking or contact routing flows',
+  'On-page SEO fundamentals, semantic schema, and Google Search Console sitemap setup',
   'Full source code and hosting configuration handover with zero proprietary lock-in',
-  'Cross-browser and cross-device verification testing before deployment',
-  '30 days of post-launch technical support and minor content adjustments'
+  'Cross-browser and mobile verification testing before deployment',
+  '30 days of post-launch technical support and minor adjustments'
 ];
 
 const FAQS = [
   {
-    question: 'How long does a typical website design project take?',
+    question: 'How are TITAN websites different from traditional web design agencies?',
     answer:
-      'Project timelines depend on the total scope, number of unique pages, and whether custom features (such as booking forms or interactive estimators) are requested. A standard business website is typically scoped, built, tested, and delivered within 2 to 4 weeks. Specific milestones and delivery schedules are agreed during initial scoping before work begins.'
+      'We do not simply build static digital brochures. We build AI-Powered Websites engineered to attract, convert, and grow: combining custom aesthetic design with built-in AI chatbots, instant WhatsApp conversion flows, appointment scheduling, and automated backend routing.'
   },
   {
-    question: 'Can you add booking, online ordering, or payment integrations?',
+    question: 'How long does an AI-Powered Website project take?',
     answer:
-      'Yes. Booking forms, ordering workflows, third-party payment gateways, and CRM routing are available as features agreed according to your project requirements. During the scoping discussion, we evaluate your preferred tools and technical needs to agree on the exact integration path.'
-  },
-  {
-    question: 'Do you work with businesses in Riyadh and across Saudi Arabia?',
-    answer:
-      'Yes. TITAN AI AGENCY works with businesses located in Riyadh, throughout Saudi Arabia, and remotely across international markets. Consultations, scope reviews, design revisions, and handovers are conducted smoothly via WhatsApp, video meetings, and direct digital collaboration.'
+      'A standard business website with integrated AI tools is typically scoped, built, tested, and delivered within 2 to 4 weeks. Specific milestones and delivery schedules are agreed during initial scoping before work begins.'
   },
   {
     question: 'Who owns the website and source code after launch?',
     answer:
-      'Your business owns 100% of the website, custom source code, domain connections, and deployment accounts. We do not hold your digital assets hostage or use restrictive proprietary website builders. You receive complete handover documentation upon launch.'
+      'Your business owns 100% of the website, custom source code, domain connections, and deployment accounts. We do not use locked proprietary website builders. You receive complete handover documentation upon launch.'
+  },
+  {
+    question: 'Can you integrate our existing CRM or booking systems?',
+    answer:
+      'Yes. We connect with your existing tools, whether Google Calendar, HubSpot, WhatsApp Business, Notion, or custom databases, ensuring captured leads flow directly where your team works.'
   }
 ];
 
 export const WebsiteDesignPage: React.FC = () => {
   usePageSEO({
-    title: 'Website Design in Riyadh | TITAN AI Agency',
+    title: 'AI-Powered Websites | Built to Attract, Convert and Grow | TITAN AI Agency',
     description:
-      'Professional website design and development for businesses in Riyadh and remotely. Fast, responsive websites with clear navigation and WhatsApp lead capture.',
+      'We create modern, fast, conversion-focused websites that combine professional design with AI and business tools. Built for Riyadh and global businesses.',
     canonicalPath: '/services/website-design',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'Website Design & Development',
+      name: 'AI-Powered Websites',
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
@@ -98,177 +119,164 @@ export const WebsiteDesignPage: React.FC = () => {
         logo: 'https://titanaiagency.netlify.app/titan-logo.png'
       },
       description:
-        'Professional, responsive websites that present your business clearly, optimize mobile experience, and make it easy for customers in Riyadh and beyond to contact you.',
-      areaServed: [
-        { '@type': 'City', name: 'Riyadh' },
-        { '@type': 'Country', name: 'Saudi Arabia' }
-      ]
+        'AI-Powered Websites built to attract, convert and grow. Combining professional design with AI chatbot integration, lead capture, and WhatsApp routing.'
     }
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
-      {/* 1. Hero Section (Dark Premium Navy) */}
+    <div id="ai-websites-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-20">
+      
+      {/* 1. Hero Section */}
       <section className="relative py-20 sm:py-28 bg-titan-hero text-white overflow-hidden">
         <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[320px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs font-mono text-[#8FA0BA] mb-6" aria-label="Breadcrumb">
             <Link to="/" className="hover:text-[#00D1FF] transition-colors">Home</Link>
             <span>/</span>
             <Link to="/services" className="hover:text-[#00D1FF] transition-colors">Services</Link>
             <span>/</span>
-            <span className="text-white font-medium">Website Design</span>
+            <span className="text-white font-medium">AI-Powered Websites</span>
           </nav>
 
-          <div className="max-w-3xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
-              <MapPin className="w-3.5 h-3.5 text-[#00D1FF]" />
-              <span>Available in Riyadh & Remotely</span>
-            </div>
+          <div className="max-w-4xl space-y-6">
+            <FadeIn delay={0.1} direction="none">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
+                <TitanIcon className="w-4 h-4" />
+                <span>CORE SERVICE 01 · WEB ENGINEERING & CONVERSION</span>
+              </div>
+            </FadeIn>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
-              Website Design for Growing Businesses
-            </h1>
+            <FadeIn delay={0.2} direction="up" distance={30}>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08]">
+                AI-Powered Websites Built to Attract, Convert and Grow.
+              </h1>
+            </FadeIn>
 
-            <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal">
-              We design and build clean, fast, and responsive websites that present your business clearly, guide visitors intuitively, and convert interest into direct enquiries.
-            </p>
+            <FadeIn delay={0.3} direction="up" distance={20}>
+              <p className="text-base sm:text-xl text-[#EAF7FF]/90 leading-relaxed font-normal max-w-3xl">
+                We create modern, fast, conversion-focused websites that combine professional design with AI and business tools. Turn passive web visitors into qualified paying clients.
+              </p>
+            </FadeIn>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-titan-primary inline-flex items-center gap-2 px-7 py-3.5 text-sm font-bold"
-              >
-                <MessageCircle className="w-4 h-4 stroke-[2.5]" />
-                <span>Discuss Your Project on WhatsApp</span>
-              </a>
+            <FadeIn delay={0.4} direction="up" distance={15}>
+              <div className="pt-2 flex flex-wrap items-center gap-4">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  id="website-cta-primary"
+                  className="btn-titan-primary inline-flex items-center gap-2.5 px-8 py-4 text-base font-bold shadow-[0_4px_18px_rgba(0,209,255,0.3)] hover:shadow-[0_0_24px_rgba(0,209,255,0.5)]"
+                >
+                  <span>BUILD MY WEBSITE</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </a>
 
-              <a
-                href="#scope-deliverables"
-                className="btn-titan-secondary-dark inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold"
-              >
-                <span>View Deliverables & Scope</span>
-                <ArrowRight className="w-4 h-4 text-[#00D1FF]" />
-              </a>
-            </div>
+                <a
+                  href="#capabilities"
+                  className="btn-titan-secondary-dark inline-flex items-center gap-2 px-6 py-4 text-sm font-semibold"
+                >
+                  <span>Explore Capabilities</span>
+                </a>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* 2. Core Foundations (Light Section) */}
-      <section className="relative py-16 sm:py-24 bg-[#FFFFFF] border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-              Engineering Principles
-            </div>
+      {/* 2. Business Problems Solved */}
+      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn direction="up">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+              Business Transformation
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
-              Websites Engineered for Real Business Results
+              Business Problems We Solve
             </h2>
-            <p className="mt-3 text-[#536477] text-base leading-relaxed">
-              Every website we build is crafted around four fundamental pillars that ensure smooth visitor experiences and direct communication.
+            <p className="mt-3 text-[#536477] text-base">
+              A website should be an active revenue-generating asset, not a digital placeholder.
             </p>
           </div>
+        </FadeIn>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="card-titan-light p-6 space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
-                <Smartphone className="w-5 h-5 text-[#00D1FF]" />
-              </div>
-              <h3 className="font-display text-lg font-bold text-[#071A33]">Fluid Responsiveness</h3>
-              <p className="text-sm text-[#536477] leading-relaxed">
-                Flawless layout adaptation across phones, tablets, laptops, and desktop screens with zero visual clipping or horizontal scrolling.
-              </p>
-            </div>
-
-            <div className="card-titan-light p-6 space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#3BA9FF]">
-                <Navigation className="w-5 h-5 text-[#3BA9FF]" />
-              </div>
-              <h3 className="font-display text-lg font-bold text-[#071A33]">Clear Navigation</h3>
-              <p className="text-sm text-[#536477] leading-relaxed">
-                Simple, logical page structure that helps visitors find services, portfolios, operating information, and pricing indicators quickly.
-              </p>
-            </div>
-
-            <div className="card-titan-light p-6 space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#00D1FF]">
-                <Globe className="w-5 h-5 text-[#00D1FF]" />
-              </div>
-              <h3 className="font-display text-lg font-bold text-[#071A33]">Sub-Second Speed</h3>
-              <p className="text-sm text-[#536477] leading-relaxed">
-                Modern React architectures delivering instant page transitions and passing Google Core Web Vitals performance benchmarks.
-              </p>
-            </div>
-
-            <div className="card-titan-light p-6 space-y-3">
-              <div className="w-11 h-11 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-emerald-600">
-                <MessageCircle className="w-5 h-5 text-emerald-600" />
-              </div>
-              <h3 className="font-display text-lg font-bold text-[#071A33]">Direct WhatsApp Action</h3>
-              <p className="text-sm text-[#536477] leading-relaxed">
-                One-tap enquiry triggers connecting prospects directly to your WhatsApp number with prefilled context for instant follow-up.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Practical Business Use Cases (Clean Ice Blue Section) */}
-      <section className="relative py-16 sm:py-24 bg-[#EAF7FF]/50 border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-              Tailored Configurations
-            </div>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
-              Practical Use Cases Across Industries
-            </h2>
-            <p className="mt-3 text-[#536477] text-base leading-relaxed">
-              We engineer websites tailored to how your customers actually browse, evaluate options, and reach out to make purchases.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {USE_CASES.map((uc, idx) => (
-              <div
-                key={idx}
-                className="card-titan-light p-7 space-y-4"
-              >
-                <h3 className="font-display text-xl font-bold text-[#071A33]">
-                  {uc.title}
-                </h3>
-                <p className="text-sm text-[#536477] leading-relaxed font-normal">
-                  {uc.description}
-                </p>
-                <div className="pt-2 border-t border-slate-100 space-y-2">
-                  {uc.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs text-[#536477] font-mono">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shrink-0" />
-                      <span>{feat}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROBLEMS_SOLVED.map((item, idx) => (
+            <FadeIn key={idx} delay={idx * 0.08} direction="up" distance={20}>
+              <div className="p-6 rounded-2xl bg-white border border-slate-200/80 shadow-sm hover:shadow-md transition-all flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-2 text-rose-600 font-bold text-sm mb-2 font-mono">
+                    <span className="w-2 h-2 rounded-full bg-rose-500" />
+                    <span>Business Problem</span>
+                  </div>
+                  <h3 className="font-display font-bold text-lg text-[#071A33] mb-3">
+                    {item.problem}
+                  </h3>
+                  <div className="pt-3 border-t border-slate-100">
+                    <div className="flex items-center gap-2 text-[#00D1FF] font-bold text-xs mb-1.5 font-mono uppercase tracking-wider">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>TITAN Solution</span>
                     </div>
-                  ))}
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {item.solution}
+                    </p>
+                  </div>
                 </div>
               </div>
+            </FadeIn>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Capabilities Section */}
+      <section id="capabilities" className="py-16 sm:py-24 bg-white border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold block mb-2">
+                Engineering & Features
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#071A33] tracking-tight">
+                Capabilities Included In Every Build
+              </h2>
+              <p className="mt-3 text-[#536477] text-base">
+                Everything required to launch, convert, and scale your digital presence.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CAPABILITIES.map((cap, idx) => (
+              <FadeIn key={idx} delay={idx * 0.05} direction="up" distance={20}>
+                <div className="p-6 rounded-2xl bg-[#F8FAFF] border border-slate-200/80 hover:border-[#00D1FF]/40 hover:-translate-y-1 transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center shrink-0">
+                      <Globe className="w-4 h-4 text-[#00D1FF]" />
+                    </div>
+                    <h3 className="font-display font-bold text-base text-[#071A33]">
+                      {cap.title}
+                    </h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                    {cap.desc}
+                  </p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Portfolio Evidence (Live Case Studies) */}
+      {/* 4. Live Portfolio Case Studies */}
       <FeaturedWork
         id="website-portfolio-demos"
         badge="Live Portfolio Demonstrations"
-        title="Explore Website Concepts We Build"
+        title="Explore Concepts We Build"
         subtitle="Review three responsive demo projects demonstrating our design approach, navigation standards, and enquiry conversion flows. All three links are live interactive demos."
       />
 
-      {/* 5. Deliverables & Scope (Deep Navy Section) */}
+      {/* 5. Deliverables & Scope */}
       <section id="scope-deliverables" className="relative py-16 sm:py-24 bg-[#04142E] text-white border-t border-[#00D1FF]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -280,12 +288,8 @@ export const WebsiteDesignPage: React.FC = () => {
                 Included Deliverables & Technical Scope
               </h2>
               <p className="text-[#8FA0BA] text-base leading-relaxed">
-                We believe in complete transparency before code is written. Every project has a written scope specification and defined milestones.
+                We believe in complete transparency before code is written. Every project has a written scope specification, milestones, and 100% client code ownership.
               </p>
-              <div className="p-4 rounded-xl bg-[#0B1F4B]/80 border border-[#00D1FF]/30 text-xs text-[#EAF7FF] leading-relaxed">
-                <strong className="text-[#00D1FF] block font-bold mb-1">Custom Integrations Notice</strong>
-                Booking engines, e-commerce checkout, table reservations, and CRM routing are available as structured features agreed according to your specific project requirements.
-              </div>
             </div>
 
             <div className="lg:col-span-7">
@@ -307,17 +311,17 @@ export const WebsiteDesignPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. Simple 5-Step Process */}
+      {/* 6. Process Steps */}
       <ServiceProcessSteps />
 
       {/* 7. FAQs */}
-      <ServiceFAQList serviceTitle="Website Design & Development" faqs={FAQS} />
+      <ServiceFAQList serviceTitle="AI-Powered Websites" faqs={FAQS} />
 
-      {/* 8. Final CTA Section */}
+      {/* 8. Final CTA */}
       <ServiceCTASection
-        serviceTitle="Website Design"
+        serviceTitle="AI-Powered Website"
         whatsappMessage={WHATSAPP_MSG}
-        subtitle="Discuss your website concept, required pages, and conversion goals directly with our engineering team on WhatsApp."
+        subtitle="Discuss your website vision, required features, and conversion goals directly with our engineering team on WhatsApp."
       />
     </div>
   );

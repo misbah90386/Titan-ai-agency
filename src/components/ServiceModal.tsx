@@ -1,6 +1,6 @@
 import React from 'react';
 import { ServiceItem } from '../types';
-import { X, CheckCircle2, Layers, Clock, Cpu, Globe, PhoneCall, MessageSquare, Workflow, Video, MessageCircle } from 'lucide-react';
+import { X, CheckCircle2, Layers, Clock, Cpu, Globe, PhoneCall, Search, MessageSquare, Workflow, Video, MessageCircle } from 'lucide-react';
 
 interface ServiceModalProps {
   service: ServiceItem | null;
@@ -13,24 +13,25 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) 
   const whatsappServiceUrl =
     'https://wa.me/966534182945?text=' +
     encodeURIComponent(
-      `Hello TITAN AI AGENCY, I would like to enquire about ${service.title} for my business.`
+      `Hello TITAN AI AGENCY, I would like to enquire about ${service.title} (${service.ctaText || 'consultation'}) for my business.`
     );
 
   const renderIcon = () => {
     switch (service.id) {
+      case 'ai-websites':
       case 'websites':
         return <Globe className="w-6 h-6 text-[#00D1FF]" />;
+      case 'seo-optimization':
+      case 'seo':
+        return <Search className="w-6 h-6 text-[#00D1FF]" />;
       case 'ai-agents':
         return <Cpu className="w-6 h-6 text-[#00D1FF]" />;
+      case 'ai-call-agents':
       case 'ai-voice-agents':
         return <PhoneCall className="w-6 h-6 text-[#00D1FF]" />;
-      case 'ai-chatbots':
-        return <MessageSquare className="w-6 h-6 text-[#00D1FF]" />;
-      case 'business-automation':
-        return <Workflow className="w-6 h-6 text-[#00D1FF]" />;
       case 'ai-video-creation':
+      case 'ai-video':
         return <Video className="w-6 h-6 text-[#00D1FF]" />;
-      case 'custom-ai-solutions':
       default:
         return <Layers className="w-6 h-6 text-[#00D1FF]" />;
     }
@@ -72,9 +73,32 @@ export const ServiceModal: React.FC<ServiceModalProps> = ({ service, onClose }) 
           </div>
         </div>
 
+        {service.positioning && (
+          <div className="mb-4 p-3 rounded-xl bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-xs sm:text-sm font-semibold text-[#00D1FF]">
+            “{service.positioning}”
+          </div>
+        )}
+
         <p className="text-[#8FA0BA] text-base leading-relaxed mb-6">
           {service.overview}
         </p>
+
+        {/* Business Problems Solved */}
+        {service.problemsSolved && service.problemsSolved.length > 0 && (
+          <div className="mb-6 p-4 rounded-xl bg-white/[0.04] border border-white/10">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-rose-400 font-bold mb-2">
+              Business Problems Solved
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {service.problemsSolved.map((prob, i) => (
+                <div key={i} className="text-xs text-[#EAF7FF] flex items-start gap-2">
+                  <span className="text-rose-400 font-mono mt-0.5">•</span>
+                  <span>{prob}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Subcategories Breakdown */}
         <div className="mb-6 p-4 rounded-xl bg-[#0B1F4B]/60 border border-white/[0.08]">

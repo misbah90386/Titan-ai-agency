@@ -8,6 +8,7 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
 import { WebsiteDesignPage } from './pages/services/WebsiteDesignPage';
+import { SEOOptimizationPage } from './pages/services/SEOOptimizationPage';
 import { AIAgentsPage } from './pages/services/AIAgentsPage';
 import { AIChatbotsPage } from './pages/services/AIChatbotsPage';
 import { AIVoiceAgentsPage } from './pages/services/AIVoiceAgentsPage';
@@ -33,11 +34,17 @@ export default function App() {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/website-design" element={<WebsiteDesignPage />} />
               <Route path="/services/websites" element={<Navigate to="/services/website-design" replace />} />
+              <Route path="/services/ai-websites" element={<Navigate to="/services/website-design" replace />} />
+              <Route path="/services/seo" element={<SEOOptimizationPage />} />
+              <Route path="/services/seo-optimization" element={<Navigate to="/services/seo" replace />} />
               <Route path="/services/ai-agents" element={<AIAgentsPage />} />
-              <Route path="/services/ai-chatbots" element={<AIChatbotsPage />} />
+              <Route path="/services/custom-ai-agents" element={<Navigate to="/services/ai-agents" replace />} />
+              <Route path="/services/ai-call-agents" element={<AIVoiceAgentsPage />} />
               <Route path="/services/ai-voice-agents" element={<AIVoiceAgentsPage />} />
-              <Route path="/services/business-automation" element={<BusinessAutomationPage />} />
               <Route path="/services/ai-video-creation" element={<AIVideoCreationPage />} />
+              <Route path="/services/ai-video" element={<Navigate to="/services/ai-video-creation" replace />} />
+              <Route path="/services/ai-chatbots" element={<AIChatbotsPage />} />
+              <Route path="/services/business-automation" element={<BusinessAutomationPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/mission-vision" element={<MissionVisionPage />} />
               <Route path="/blog" element={<BlogPage />} />

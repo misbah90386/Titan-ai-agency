@@ -44,32 +44,27 @@ export const Footer: React.FC = () => {
           {/* Column 2: Solutions / Services */}
           <div className="space-y-3">
             <h4 className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold">
-              Services
+              Core Services
             </h4>
             <ul className="space-y-2 text-sm text-[#8FA0BA]">
               <li>
                 <Link to="/services/website-design" className="hover:text-[#00D1FF] transition-colors footer-link-motion">
-                  Website Design & Dev
+                  AI-Powered Websites
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/seo" className="hover:text-[#00D1FF] transition-colors footer-link-motion">
+                  SEO & AI Search
                 </Link>
               </li>
               <li>
                 <Link to="/services/ai-agents" className="hover:text-[#00D1FF] transition-colors footer-link-motion">
-                  AI Agents
+                  Custom AI Agents
                 </Link>
               </li>
               <li>
-                <Link to="/services/ai-chatbots" className="hover:text-[#00D1FF] transition-colors footer-link-motion">
-                  AI Chatbots
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/ai-voice-agents" className="hover:text-[#00D1FF] transition-colors footer-link-motion">
-                  AI Voice Agents
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/business-automation" className="hover:text-[#00D1FF] transition-colors footer-link-motion">
-                  Business Automation
+                <Link to="/services/ai-call-agents" className="hover:text-[#00D1FF] transition-colors footer-link-motion">
+                  AI Call Agents
                 </Link>
               </li>
               <li>
