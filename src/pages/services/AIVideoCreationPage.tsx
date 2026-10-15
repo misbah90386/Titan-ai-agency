@@ -100,7 +100,7 @@ export const AIVideoCreationPage: React.FC = () => {
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/'
+        url: 'https://titan-ai-agency.vercel.app/'
       },
       description:
         'Professional AI Video Content Built for Business Growth. Promotional videos, product showcases, explainer videos, and social media reels.'

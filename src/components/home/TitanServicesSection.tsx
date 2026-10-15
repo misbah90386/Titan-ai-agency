@@ -10,64 +10,57 @@ import {
   Sparkles
 } from 'lucide-react';
 import { FadeIn } from '../motion/MotionComponents';
-
-interface ServiceCardData {
-  id: string;
-  title: string;
-  description: string;
-  featureTags: string[];
-  icon: React.ReactNode;
-  route: string;
-  isPopular?: boolean;
-}
-
-const SERVICES_LIST: ServiceCardData[] = [
-  {
-    id: 'ai-websites',
-    title: 'AI Websites',
-    description: 'Fast, modern and intelligent websites designed to turn visitors into customers.',
-    featureTags: ['Responsive Design', 'AI Integration', 'Fast Performance'],
-    icon: <Globe className="w-5 h-5 text-[#0284C7]" />,
-    route: '/services/website-design'
-  },
-  {
-    id: 'seo',
-    title: 'SEO',
-    description: 'Improve your visibility on search engines and help more customers discover your business.',
-    featureTags: ['Search Optimization', 'Local SEO', 'Performance'],
-    icon: <Search className="w-5 h-5 text-[#0284C7]" />,
-    route: '/services/seo'
-  },
-  {
-    id: 'ai-agents',
-    title: 'AI Agents',
-    description: 'Smart AI agents that can support customers, automate tasks and help manage business workflows.',
-    featureTags: ['Customer Support', 'Lead Handling', 'Automation'],
-    icon: <Bot className="w-5 h-5 text-[#0284C7]" />,
-    route: '/services/ai-agents',
-    isPopular: true
-  },
-  {
-    id: 'ai-call-agents',
-    title: 'AI Call Agents',
-    description: 'AI voice agents designed to answer calls, communicate with customers and handle common inquiries.',
-    featureTags: ['AI Voice', 'Call Handling', '24/7 Assistance'],
-    icon: <PhoneCall className="w-5 h-5 text-[#0284C7]" />,
-    route: '/services/ai-call-agents'
-  },
-  {
-    id: 'ai-video',
-    title: 'AI Video',
-    description: 'Professional AI-generated video content for advertising, social media and business marketing.',
-    featureTags: ['Marketing Videos', 'Social Content', 'AI Production'],
-    icon: <Video className="w-5 h-5 text-[#0284C7]" />,
-    route: '/services/ai-video-creation'
-  }
-];
+import { useLanguage } from '../../context/LanguageContext';
 
 export const TitanServicesSection: React.FC = () => {
-  const row1Services = SERVICES_LIST.slice(0, 3);
-  const row2Services = SERVICES_LIST.slice(3, 5);
+  const { language, isRtl, t } = useLanguage();
+
+  const servicesList = [
+    {
+      id: 'ai-websites',
+      title: t.servicesSection.cards.websites.title,
+      description: t.servicesSection.cards.websites.desc,
+      featureTags: t.servicesSection.cards.websites.tags,
+      icon: <Globe className="w-5 h-5 text-[#0284C7]" />,
+      route: '/services/website-design'
+    },
+    {
+      id: 'seo',
+      title: t.servicesSection.cards.seo.title,
+      description: t.servicesSection.cards.seo.desc,
+      featureTags: t.servicesSection.cards.seo.tags,
+      icon: <Search className="w-5 h-5 text-[#0284C7]" />,
+      route: '/services/seo'
+    },
+    {
+      id: 'ai-agents',
+      title: t.servicesSection.cards.agents.title,
+      description: t.servicesSection.cards.agents.desc,
+      featureTags: t.servicesSection.cards.agents.tags,
+      icon: <Bot className="w-5 h-5 text-[#0284C7]" />,
+      route: '/services/ai-agents',
+      isPopular: true
+    },
+    {
+      id: 'ai-call-agents',
+      title: t.servicesSection.cards.calls.title,
+      description: t.servicesSection.cards.calls.desc,
+      featureTags: t.servicesSection.cards.calls.tags,
+      icon: <PhoneCall className="w-5 h-5 text-[#0284C7]" />,
+      route: '/services/ai-call-agents'
+    },
+    {
+      id: 'ai-video',
+      title: t.servicesSection.cards.video.title,
+      description: t.servicesSection.cards.video.desc,
+      featureTags: t.servicesSection.cards.video.tags,
+      icon: <Video className="w-5 h-5 text-[#0284C7]" />,
+      route: '/services/ai-video-creation'
+    }
+  ];
+
+  const row1Services = servicesList.slice(0, 3);
+  const row2Services = servicesList.slice(3, 5);
 
   return (
     <section
@@ -115,15 +108,15 @@ export const TitanServicesSection: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-18">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200/90 text-xs font-mono font-bold uppercase tracking-widest text-[#0284C7] shadow-sm mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] shadow-[0_0_6px_#00D1FF] animate-pulse" />
-              <span>OUR SERVICES</span>
+              <span>{t.servicesSection.label}</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
-              AI Solutions Built to Grow Your Business
+              {t.servicesSection.heading}
             </h2>
 
             <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-              From intelligent websites to AI-powered automation, Titan AI Agency builds modern digital solutions designed for real business growth.
+              {t.servicesSection.supportingText}
             </p>
           </div>
         </FadeIn>
@@ -137,7 +130,7 @@ export const TitanServicesSection: React.FC = () => {
               <FadeIn key={service.id} delay={idx * 0.08} direction="up" distance={20}>
                 <div
                   id={`service-card-${service.id}`}
-                  className={`group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(2,132,199,0.18)] hover:border-sky-300 ${
+                  className={`group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(2,132,199,0.18)] hover:border-sky-300 text-start ${
                     service.isPopular
                       ? 'border-2 border-sky-300/90 shadow-[0_8px_30px_rgba(2,132,199,0.08)] ring-1 ring-sky-100 bg-gradient-to-b from-white via-white to-sky-50/25'
                       : 'border border-slate-200/80 shadow-sm'
@@ -145,10 +138,10 @@ export const TitanServicesSection: React.FC = () => {
                 >
                   {/* Popular Badge for AI Agents */}
                   {service.isPopular && (
-                    <div className="absolute -top-3 right-6">
+                    <div className={`absolute -top-3 ${isRtl ? 'left-6' : 'right-6'}`}>
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#0284C7] to-[#00D1FF] text-white text-[10px] font-mono font-bold tracking-wider shadow-sm">
                         <Sparkles className="w-3 h-3" />
-                        POPULAR
+                        {t.servicesSection.popularBadge}
                       </span>
                     </div>
                   )}
@@ -189,8 +182,8 @@ export const TitanServicesSection: React.FC = () => {
                       id={`learn-more-${service.id}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0284C7] group-hover:text-[#0369A1] transition-colors"
                     >
-                      <span>Learn More</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
+                      <span>{t.servicesSection.exploreDetails}</span>
+                      <ArrowRight className={`w-4 h-4 ${isRtl ? 'rotate-180 group-hover:-translate-x-1.5' : 'group-hover:translate-x-1.5'} transition-transform duration-200`} />
                     </Link>
                   </div>
                 </div>
@@ -204,7 +197,7 @@ export const TitanServicesSection: React.FC = () => {
               <FadeIn key={service.id} delay={(idx + 3) * 0.08} direction="up" distance={20}>
                 <div
                   id={`service-card-${service.id}`}
-                  className="group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full border border-slate-200/80 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(2,132,199,0.18)] hover:border-sky-300"
+                  className="group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full border border-slate-200/80 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(2,132,199,0.18)] hover:border-sky-300 text-start"
                 >
                   <div>
                     {/* Minimal Icon Container */}
@@ -242,8 +235,8 @@ export const TitanServicesSection: React.FC = () => {
                       id={`learn-more-${service.id}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0284C7] group-hover:text-[#0369A1] transition-colors"
                     >
-                      <span>Learn More</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
+                      <span>{t.servicesSection.exploreDetails}</span>
+                      <ArrowRight className={`w-4 h-4 ${isRtl ? 'rotate-180 group-hover:-translate-x-1.5' : 'group-hover:translate-x-1.5'} transition-transform duration-200`} />
                     </Link>
                   </div>
                 </div>

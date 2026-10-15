@@ -12,21 +12,24 @@ import {
   ArrowUpRight
 } from 'lucide-react';
 import { TitanIcon } from '../TitanLogo';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const TitanHeroDashboard: React.FC = () => {
+  const { language, isRtl, t } = useLanguage();
+
   return (
-    <div className="relative w-full max-w-[620px] mx-auto select-none">
+    <div className="relative w-full max-w-[620px] mx-auto select-none" dir={isRtl ? 'rtl' : 'ltr'}>
       {/* Soft Blurred Light Blue Ambient Glow behind dashboard */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 sm:w-96 h-80 sm:h-96 bg-[#00D1FF]/15 sm:bg-[#3BA9FF]/15 rounded-full blur-[90px] pointer-events-none" />
       <div className="absolute top-1/4 right-0 w-64 h-64 bg-sky-100/60 rounded-full blur-[70px] pointer-events-none" />
 
       {/* Main Glass Dashboard Card with gentle floating animation */}
-      <div className="relative bg-white/90 backdrop-blur-xl border border-sky-100/90 shadow-[0_20px_50px_rgba(2,132,199,0.12),0_1px_3px_rgba(0,0,0,0.04)] rounded-2xl sm:rounded-3xl p-5 sm:p-6 transition-all duration-300 animate-float-slow">
+      <div className="relative bg-white/90 backdrop-blur-xl border border-sky-100/90 shadow-[0_20px_50px_rgba(2,132,199,0.12),0_1px_3px_rgba(0,0,0,0.04)] rounded-2xl sm:rounded-3xl p-5 sm:p-6 transition-all duration-300 animate-float-slow text-start">
         
         {/* 1. Top OS Window Bar */}
         <div className="flex items-center justify-between pb-4 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5" dir="ltr">
               <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
               <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
               <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
@@ -40,9 +43,9 @@ export const TitanHeroDashboard: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[11px] font-mono font-medium text-emerald-700">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              LIVE SYSTEM
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-50 border border-sky-200/90 text-[11px] font-mono font-medium text-[#0284C7]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse" />
+              {t.dashboard.illustrativeDemo}
             </span>
           </div>
         </div>
@@ -51,87 +54,87 @@ export const TitanHeroDashboard: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 py-4">
           
           {/* Module 1: AI Agent -> ● Active */}
-          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200">
+          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200 text-start">
             <div className="flex items-center justify-between mb-1.5">
               <div className="w-7 h-7 rounded-lg bg-[#00D1FF]/15 border border-[#00D1FF]/30 flex items-center justify-center text-[#0284C7]">
                 <Bot className="w-4 h-4" />
               </div>
               <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Active
+                {t.dashboard.aiAgentStatus}
               </span>
             </div>
-            <div className="text-xs font-bold text-[#071A33]">AI Agent</div>
-            <div className="text-[10.5px] text-slate-500 truncate">Smart triage & qualify</div>
+            <div className="text-xs font-bold text-[#071A33]">{t.dashboard.aiAgent}</div>
+            <div className="text-[10.5px] text-slate-500 truncate">{t.dashboard.aiAgentDesc}</div>
           </div>
 
           {/* Module 2: AI Voice Agent -> ● Ready */}
-          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200">
+          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200 text-start">
             <div className="flex items-center justify-between mb-1.5">
               <div className="w-7 h-7 rounded-lg bg-sky-100/70 border border-sky-200 flex items-center justify-center text-[#0284C7]">
                 <PhoneCall className="w-3.5 h-3.5" />
               </div>
               <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-sky-600 bg-sky-50 px-1.5 py-0.5 rounded-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-                Ready
+                {t.dashboard.aiVoiceStatus}
               </span>
             </div>
-            <div className="text-xs font-bold text-[#071A33]">AI Voice Agent</div>
+            <div className="text-xs font-bold text-[#071A33]">{t.dashboard.aiVoiceAgent}</div>
             {/* Animated mini audio waveform */}
             <div className="flex items-center gap-1 h-3 mt-1">
               <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-1 h-2" />
               <span className="w-1 bg-[#3BA9FF] rounded-full animate-wave-2 h-3" />
               <span className="w-1 bg-[#0284C7] rounded-full animate-wave-3 h-2" />
               <span className="w-1 bg-[#00D1FF] rounded-full animate-wave-4 h-2.5" />
-              <span className="text-[9.5px] font-mono text-slate-400 pl-1">24/7 Voice</span>
+              <span className="text-[9.5px] font-mono text-slate-400 px-1">{language === 'ar' ? 'مكالمات 24/7' : '24/7 Calls'}</span>
             </div>
           </div>
 
           {/* Module 3: Website -> ● Online */}
-          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200">
+          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200 text-start">
             <div className="flex items-center justify-between mb-1.5">
               <div className="w-7 h-7 rounded-lg bg-emerald-100/60 border border-emerald-200/70 flex items-center justify-center text-emerald-700">
                 <Globe className="w-3.5 h-3.5" />
               </div>
               <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Online
+                {t.dashboard.websiteStatus}
               </span>
             </div>
-            <div className="text-xs font-bold text-[#071A33]">Website</div>
-            <div className="text-[10.5px] text-slate-500 truncate">99.9% Uptime • Global CDN</div>
+            <div className="text-xs font-bold text-[#071A33]">{t.dashboard.website}</div>
+            <div className="text-[10.5px] text-slate-500 truncate">{language === 'ar' ? 'سريع ومتجاوب ومهيأ للسيو' : 'Modern, mobile-responsive'}</div>
           </div>
 
           {/* Module 4: Leads -> ● Captured */}
-          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200">
+          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200 text-start">
             <div className="flex items-center justify-between mb-1.5">
               <div className="w-7 h-7 rounded-lg bg-[#00D1FF]/15 border border-[#00D1FF]/30 flex items-center justify-center text-[#0284C7]">
                 <Users className="w-3.5 h-3.5" />
               </div>
               <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-[#0284C7] bg-sky-50 px-1.5 py-0.5 rounded-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse" />
-                Captured
+                {t.dashboard.leadsStatus}
               </span>
             </div>
-            <div className="text-xs font-bold text-[#071A33]">Leads</div>
-            <div className="text-[10.5px] font-mono font-semibold text-emerald-600 truncate">+148 Inquiries Qualified</div>
+            <div className="text-xs font-bold text-[#071A33]">{t.dashboard.leads}</div>
+            <div className="text-[10.5px] text-slate-500 truncate">{language === 'ar' ? 'تنبيه مباشر للجوال' : 'Direct notification to phone'}</div>
           </div>
 
           {/* Module 5: Automation -> ● Running */}
-          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200 col-span-2 sm:col-span-2">
+          <div className="p-3 rounded-xl bg-slate-50/70 hover:bg-sky-50/60 border border-slate-100 hover:border-sky-200/80 transition-all duration-200 col-span-2 sm:col-span-2 text-start">
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded-lg bg-sky-100/70 border border-sky-200 flex items-center justify-center text-[#0284C7]">
                   <Workflow className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-[#071A33]">Automation</div>
-                  <div className="text-[10.5px] text-slate-500">Auto-routes to WhatsApp & CRM</div>
+                  <div className="text-xs font-bold text-[#071A33]">{t.dashboard.automation}</div>
+                  <div className="text-[10.5px] text-slate-500">{language === 'ar' ? 'توجيه الاستفسارات لواتساب والبريد' : 'Routes enquiries to WhatsApp & email'}</div>
                 </div>
               </div>
               <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold text-[#0284C7] bg-sky-50 px-2 py-0.5 rounded-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse" />
-                Running
+                {t.dashboard.automationStatus}
               </span>
             </div>
           </div>
@@ -139,22 +142,22 @@ export const TitanHeroDashboard: React.FC = () => {
         </div>
 
         {/* 3. Small Analytics Graph & Connected AI Nodes */}
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-2 text-start">
           
           {/* Analytics Graph (7 cols on desktop) */}
           <div className="sm:col-span-7 p-3 rounded-xl bg-slate-50/60 border border-slate-100">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#071A33]">
                 <Activity className="w-3.5 h-3.5 text-[#0284C7]" />
-                <span>Conversion Velocity</span>
+                <span>{language === 'ar' ? 'تدفق نشاط الاستفسارات' : 'Enquiry Activity Flow'}</span>
               </div>
-              <span className="text-[10.5px] font-mono font-bold text-emerald-600 flex items-center">
-                +312% <ArrowUpRight className="w-3 h-3" />
+              <span className="text-[10px] font-mono font-semibold text-[#0284C7] bg-sky-50 px-1.5 py-0.5 rounded">
+                {language === 'ar' ? 'مسار محاكاة' : 'Simulated Flow'}
               </span>
             </div>
             
             {/* SVG Minimalist Analytics Chart */}
-            <div className="relative h-18 w-full">
+            <div className="relative h-18 w-full" dir="ltr">
               <svg className="w-full h-full overflow-visible" viewBox="0 0 240 70" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="chartGradLight" x1="0" y1="0" x2="0" y2="1">
@@ -188,21 +191,21 @@ export const TitanHeroDashboard: React.FC = () => {
             </div>
             
             <div className="flex items-center justify-between text-[9.5px] font-mono text-slate-400 pt-1">
-              <span>Day 1</span>
-              <span>Automated Pipeline Active</span>
-              <span className="text-[#0284C7] font-semibold">Scale</span>
+              <span>{language === 'ar' ? 'استقبال الزائر' : 'Visitor Intake'}</span>
+              <span>{language === 'ar' ? 'المساعد الذكي' : 'AI Assistance'}</span>
+              <span className="text-[#0284C7] font-semibold">{language === 'ar' ? 'إرسال التنبيه' : 'Notification Sent'}</span>
             </div>
           </div>
 
           {/* Connected AI Architecture Nodes (5 cols on desktop) */}
           <div className="sm:col-span-5 p-3 rounded-xl bg-slate-50/60 border border-slate-100 flex flex-col justify-between">
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[11px] font-semibold text-[#071A33]">Connected AI Nodes</span>
+              <span className="text-[11px] font-semibold text-[#071A33]">{language === 'ar' ? 'الأنظمة المترابطة' : 'Connected Systems'}</span>
               <span className="w-2 h-2 rounded-full bg-[#00D1FF] animate-ping" />
             </div>
 
             {/* Architecture Node Map with Moving Connection Lines */}
-            <div className="relative py-1">
+            <div className="relative py-1" dir="ltr">
               {/* SVG connection lines with light beam animation */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 160 50" fill="none">
                 <path d="M 24 25 L 75 25 L 135 25" stroke="#CBD5E1" strokeWidth="1.5" strokeDasharray="3 3" />
@@ -215,7 +218,7 @@ export const TitanHeroDashboard: React.FC = () => {
                   <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-700">
                     <Globe className="w-4 h-4 text-[#0284C7]" />
                   </div>
-                  <span className="text-[9px] font-mono text-slate-500 pt-1">Web</span>
+                  <span className="text-[9px] font-mono text-slate-500 pt-1">{language === 'ar' ? 'الموقع' : 'Web'}</span>
                 </div>
 
                 {/* Node 2: Titan Core */}
@@ -223,7 +226,7 @@ export const TitanHeroDashboard: React.FC = () => {
                   <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#0284C7] to-[#00D1FF] shadow-sm flex items-center justify-center text-white ring-2 ring-sky-100">
                     <Zap className="w-4 h-4" />
                   </div>
-                  <span className="text-[9px] font-mono font-bold text-[#0284C7] pt-1">AI Core</span>
+                  <span className="text-[9px] font-mono font-bold text-[#0284C7] pt-1">{language === 'ar' ? 'نواة AI' : 'AI Core'}</span>
                 </div>
 
                 {/* Node 3: CRM / WhatsApp */}
@@ -238,8 +241,8 @@ export const TitanHeroDashboard: React.FC = () => {
 
             {/* Minimal Status Indicators */}
             <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] font-mono text-slate-500">
-              <span>Latency: <strong className="text-[#071A33]">24ms</strong></span>
-              <span className="text-emerald-600 font-semibold">100% Synced</span>
+              <span>{language === 'ar' ? 'الحالة:' : 'Status:'} <strong className="text-[#071A33]">{language === 'ar' ? 'نشط' : 'Active'}</strong></span>
+              <span className="text-emerald-600 font-semibold">{language === 'ar' ? 'توجيه آلي' : 'Automatic Routing'}</span>
             </div>
           </div>
 
@@ -249,11 +252,11 @@ export const TitanHeroDashboard: React.FC = () => {
         <div className="mt-3.5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="w-3.5 h-3.5 text-[#0284C7]" />
-            <span>Enterprise Security • SOC2 Compliant</span>
+            <span>{language === 'ar' ? 'إعداد تقني موثوق وآمن للأعمال' : 'Secure, reliable business setup'}</span>
           </div>
           <div className="hidden sm:flex items-center gap-1.5 text-slate-400">
             <span className="w-1.5 h-1.5 rounded-full bg-slate-300" />
-            <span>Riyadh GCC Edge</span>
+            <span>{language === 'ar' ? 'واجهة عرض توضيحية' : 'Simulated interface'}</span>
           </div>
         </div>
 

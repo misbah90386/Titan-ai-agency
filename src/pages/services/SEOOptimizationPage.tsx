@@ -84,7 +84,7 @@ export const SEOOptimizationPage: React.FC = () => {
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/'
+        url: 'https://titan-ai-agency.vercel.app/'
       },
       description:
         'Help businesses improve their visibility across traditional search engines and modern AI-powered discovery platforms.'

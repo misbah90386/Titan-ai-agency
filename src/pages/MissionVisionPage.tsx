@@ -15,14 +15,14 @@ export const MissionVisionPage: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
       name: 'Our Mission & Vision | Titan AI Agency',
-      url: 'https://titanaiagency.netlify.app/mission-vision',
+      url: 'https://titan-ai-agency.vercel.app/mission-vision',
       description:
         'Discover the mission and vision of Titan AI Agency: building purposeful, reliable AI systems, simplifying business operations, and advancing practical enterprise AI.',
       publisher: {
         '@type': 'Organization',
         name: 'Titan AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+        url: 'https://titan-ai-agency.vercel.app/',
+        logo: 'https://titan-ai-agency.vercel.app/titan-logo.png',
       },
     },
   });

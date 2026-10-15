@@ -1,6 +1,7 @@
 import React from 'react';
 import { ExternalLink, ArrowRight, Building, Cake, UtensilsCrossed, CheckCircle2, ShieldAlert } from 'lucide-react';
 import { FadeIn } from './motion/MotionComponents';
+import { useLanguage } from '../context/LanguageContext';
 
 export interface ProjectItem {
   id: string;
@@ -55,7 +56,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     problem: 'Outdated PDF menus fail on mobile screens, loading slowly and causing diners to drop off before discovering location, allergen info, and operating hours.',
     solution: 'TITAN engineered a sub-second, mobile-first culinary website with clear menu hierarchy, dietary filters, instant location maps, and direct order links.',
     technology: 'Website / Mobile Speed Optimization / Local SEO',
-    outcome: 'Zero mobile lag, instant menu access, and verified 100% Core Web Vitals speed score.',
+    outcome: 'Fast mobile loading, instant menu access, and smooth local navigation.',
     isConceptDemo: true,
     url: 'https://cerulean-begonia-2ecb7d.netlify.app/',
     domain: 'cerulean-begonia-2ecb7d.netlify.app',
@@ -75,17 +76,68 @@ export interface FeaturedWorkProps {
 }
 
 export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
-  id = 'featured-work',
-  badge = 'Interactive Demonstrations & Case Studies',
-  title = 'Case Studies & Concept Demos',
-  subtitle = 'Explore realistic working prototypes demonstrating how TITAN engineers websites, AI workflows, and conversion architecture. Concept demos are clearly identified to maintain 100% honesty.',
+  id = 'portfolio',
+  badge,
+  title,
+  subtitle,
 }) => {
+  const { language, isRtl, t } = useLanguage();
+
+  const sectionBadge = badge || t.featuredWork.badge;
+  const sectionTitle = title || t.featuredWork.heading;
+  const sectionSubtitle = subtitle || t.featuredWork.subtitle;
+
+  const getLocalizedProject = (p: ProjectItem) => {
+    if (language === 'ar') {
+      if (p.id === 'real-estate-concept') {
+        const ar = t.featuredWork.projects.realEstate;
+        return {
+          ...p,
+          name: ar.name,
+          category: ar.category,
+          problem: ar.problem,
+          solution: ar.solution,
+          outcome: ar.outcome,
+          technology: 'موقع إلكتروني / تكامل ذكاء اصطناعي / تهيئة سيو / واتساب',
+          whatsappMessage: 'مرحباً وكالة تيتان، اطلعت على نموذج المنصة العقارية وأود مناقشة مشروع مماثل.'
+        };
+      }
+      if (p.id === 'custom-cake-bakery') {
+        const ar = t.featuredWork.projects.bakery;
+        return {
+          ...p,
+          name: ar.name,
+          category: ar.category,
+          problem: ar.problem,
+          solution: ar.solution,
+          outcome: ar.outcome,
+          technology: 'موقع إلكتروني / مخصص طلبات تفاعلي / توجيه واتساب',
+          whatsappMessage: 'مرحباً وكالة تيتان، اطلعت على نموذج مخبز الكيك وأود مناقشة نظام طلبات تفاعلي.'
+        };
+      }
+      if (p.id === 'chicken-restaurant') {
+        const ar = t.featuredWork.projects.restaurant;
+        return {
+          ...p,
+          name: ar.name,
+          category: ar.category,
+          problem: ar.problem,
+          solution: ar.solution,
+          outcome: ar.outcome,
+          technology: 'موقع إلكتروني / سرعة فائقة للهواتف / سيو محلي',
+          whatsappMessage: 'مرحباً وكالة تيتان، اطلعت على نموذج منصة المطاعم وأود مناقشة موقع لمطعمنا.'
+        };
+      }
+    }
+    return p;
+  };
+
   const getWhatsAppUrl = (message: string) => {
     return `${WHATSAPP_BASE}${encodeURIComponent(message)}`;
   };
 
   return (
-    <section id={id} className="relative py-20 sm:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]">
+    <section id={id} data-section="featured-work" className="relative py-20 sm:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]">
       {/* Subtle Digital Grid */}
       <div className="absolute inset-0 bg-digital-grid opacity-60 pointer-events-none" />
 
@@ -95,152 +147,155 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
         <FadeIn direction="up">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold">
-              <span>{badge}</span>
+              <span>{sectionBadge}</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight uppercase">
-              {title}
+              {sectionTitle}
             </h2>
 
             <p className="text-base sm:text-lg text-[#536477] leading-relaxed">
-              {subtitle}
+              {sectionSubtitle}
             </p>
           </div>
         </FadeIn>
 
         {/* 3 Project Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {FEATURED_PROJECTS.map((project, idx) => (
-            <FadeIn key={project.id} delay={idx * 0.1} direction="up" distance={30} duration={0.7}>
-              <div className="card-titan-light group flex flex-col p-6 sm:p-7 h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_rgba(0,209,255,0.18)] transition-all duration-300">
-                
-                {/* Browser Frame */}
-                <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/40 transition-colors duration-300 mb-5">
-                  <div className="flex items-center justify-between px-3 py-2 bg-[#0B1F4B] border-b border-white/[0.08] text-[11px] font-mono text-slate-300">
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-rose-500/80" />
-                      <span className="w-2 h-2 rounded-full bg-amber-500/80" />
-                      <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+          {FEATURED_PROJECTS.map((rawProject, idx) => {
+            const project = getLocalizedProject(rawProject);
+            return (
+              <FadeIn key={project.id} delay={idx * 0.1} direction="up" distance={30} duration={0.7}>
+                <div className="card-titan-light group flex flex-col p-6 sm:p-7 h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_rgba(0,209,255,0.18)] transition-all duration-300 text-start">
+                  
+                  {/* Browser Frame */}
+                  <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/40 transition-colors duration-300 mb-5">
+                    <div className="flex items-center justify-between px-3 py-2 bg-[#0B1F4B] border-b border-white/[0.08] text-[11px] font-mono text-slate-300" dir="ltr">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-rose-500/80" />
+                        <span className="w-2 h-2 rounded-full bg-amber-500/80" />
+                        <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                      </div>
+                      <div className="px-2 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse shrink-0" />
+                        <span className="truncate">{project.domain}</span>
+                      </div>
+                      <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Live Demo</span>
                     </div>
-                    <div className="px-2 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse shrink-0" />
-                      <span className="truncate">{project.domain}</span>
+
+                    {/* Visual Representation */}
+                    <div className="p-4 bg-gradient-to-b from-[#071A33] to-[#04142E] min-h-[170px] text-white flex flex-col justify-between overflow-hidden group-hover:scale-[1.03] transition-transform duration-300">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono text-[#00D1FF] uppercase font-bold">
+                          {project.category}
+                        </span>
+                        <span className="px-2 py-0.5 rounded bg-white/10 text-[9px] font-mono text-[#3BA9FF]">
+                          {language === 'ar' ? 'تفاعلي' : 'Interactive'}
+                        </span>
+                      </div>
+
+                      <div className="py-2">
+                        <h4 className="font-display font-bold text-base text-white">
+                          {project.name}
+                        </h4>
+                        <p className="text-xs text-[#8FA0BA] line-clamp-2 mt-1">
+                          {project.solution}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between text-[10px] font-mono text-[#8FA0BA] pt-2 border-t border-white/10">
+                        <span>{language === 'ar' ? 'استضافة سريعة' : 'Live Host'}</span>
+                        <span className="text-emerald-400">{language === 'ar' ? 'متصل' : 'Online'}</span>
+                      </div>
                     </div>
-                    <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Live Demo</span>
                   </div>
 
-                  {/* Visual Representation */}
-                  <div className="p-4 bg-gradient-to-b from-[#071A33] to-[#04142E] min-h-[170px] text-white flex flex-col justify-between overflow-hidden group-hover:scale-[1.03] transition-transform duration-300">
+                  {/* Case Study Structured Format */}
+                  <div className="flex-1 flex flex-col space-y-3.5">
+                    
+                    {/* Badge: CONCEPT DEMO clearly labeled */}
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono text-[#00D1FF] uppercase font-bold">
-                        {project.category}
+                      <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-700 border border-amber-500/30">
+                        {t.featuredWork.illustrativeConcept}
                       </span>
-                      <span className="px-2 py-0.5 rounded bg-white/10 text-[9px] font-mono text-[#3BA9FF]">
-                        Interactive
+                      <span className="text-xs font-mono text-[#8FA0BA]">
+                        {project.category}
                       </span>
                     </div>
 
-                    <div className="py-2">
-                      <h4 className="font-display font-bold text-base text-white">
-                        {project.name}
-                      </h4>
-                      <p className="text-xs text-[#8FA0BA] line-clamp-2 mt-1">
+                    {/* Business / Project Name */}
+                    <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#0B1F4B] transition-colors">
+                      {project.name}
+                    </h3>
+
+                    {/* Problem */}
+                    <div className="text-xs space-y-1">
+                      <span className="font-mono font-bold text-rose-600 uppercase tracking-wider block">
+                        {t.featuredWork.problemLabel}
+                      </span>
+                      <p className="text-[#536477] leading-relaxed">
+                        {project.problem}
+                      </p>
+                    </div>
+
+                    {/* Solution */}
+                    <div className="text-xs space-y-1">
+                      <span className="font-mono font-bold text-[#00D1FF] uppercase tracking-wider block">
+                        {t.featuredWork.solutionLabel}
+                      </span>
+                      <p className="text-[#536477] leading-relaxed">
                         {project.solution}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between text-[10px] font-mono text-[#8FA0BA] pt-2 border-t border-white/10">
-                      <span>Live Netlify Host</span>
-                      <span className="text-emerald-400">Online</span>
+                    {/* Technology */}
+                    <div className="text-xs space-y-1">
+                      <span className="font-mono font-bold text-[#071A33] uppercase tracking-wider block">
+                        {language === 'ar' ? 'التقنيات المستخدمة:' : 'Technology:'}
+                      </span>
+                      <span className="inline-block px-2.5 py-1 rounded-md bg-[#F8FAFF] border border-slate-200 text-[#071A33] font-mono text-[11px] hover:border-[#00D1FF]/60 hover:bg-[#EAF7FF] transition-all duration-200 cursor-default">
+                        {project.technology}
+                      </span>
                     </div>
+
+                    {/* Outcome */}
+                    <div className="text-xs space-y-1 pt-1">
+                      <span className="font-mono font-bold text-emerald-600 uppercase tracking-wider block">
+                        {t.featuredWork.outcomeLabel}
+                      </span>
+                      <p className="text-[#536477] leading-relaxed italic">
+                        {project.outcome}
+                      </p>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="mt-auto pt-5 space-y-2">
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-titan-primary w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider group/btn shadow-[0_4px_14px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+                      >
+                        <span>{t.featuredWork.openDemo}</span>
+                        <ExternalLink className="w-4 h-4 stroke-[2.5] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                      </a>
+
+                      <a
+                        href={getWhatsAppUrl(project.whatsappMessage)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-titan-secondary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold hover:-translate-y-0.5 transition-all duration-300 group/sec"
+                      >
+                        <span>{t.featuredWork.discussSimilar}</span>
+                        <ArrowRight className={`w-3.5 h-3.5 text-[#00D1FF] ${isRtl ? 'rotate-180 group-hover/sec:-translate-x-1' : 'group-hover/sec:translate-x-1'} transition-transform`} />
+                      </a>
+                    </div>
+
                   </div>
                 </div>
-
-                {/* Case Study Structured Format */}
-                <div className="flex-1 flex flex-col space-y-3.5">
-                  
-                  {/* Badge: CONCEPT DEMO clearly labeled */}
-                  <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-700 border border-amber-500/30">
-                      CONCEPT DEMO
-                    </span>
-                    <span className="text-xs font-mono text-[#8FA0BA]">
-                      {project.category}
-                    </span>
-                  </div>
-
-                  {/* Business / Project Name */}
-                  <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#0B1F4B] transition-colors">
-                    {project.name}
-                  </h3>
-
-                  {/* Problem */}
-                  <div className="text-xs space-y-1">
-                    <span className="font-mono font-bold text-rose-600 uppercase tracking-wider block">
-                      Problem:
-                    </span>
-                    <p className="text-[#536477] leading-relaxed">
-                      {project.problem}
-                    </p>
-                  </div>
-
-                  {/* Solution */}
-                  <div className="text-xs space-y-1">
-                    <span className="font-mono font-bold text-[#00D1FF] uppercase tracking-wider block">
-                      Solution:
-                    </span>
-                    <p className="text-[#536477] leading-relaxed">
-                      {project.solution}
-                    </p>
-                  </div>
-
-                  {/* Technology */}
-                  <div className="text-xs space-y-1">
-                    <span className="font-mono font-bold text-[#071A33] uppercase tracking-wider block">
-                      Technology:
-                    </span>
-                    <span className="inline-block px-2.5 py-1 rounded-md bg-[#F8FAFF] border border-slate-200 text-[#071A33] font-mono text-[11px] hover:border-[#00D1FF]/60 hover:bg-[#EAF7FF] transition-all duration-200 cursor-default">
-                      {project.technology}
-                    </span>
-                  </div>
-
-                  {/* Outcome */}
-                  <div className="text-xs space-y-1 pt-1">
-                    <span className="font-mono font-bold text-emerald-600 uppercase tracking-wider block">
-                      Outcome:
-                    </span>
-                    <p className="text-[#536477] leading-relaxed italic">
-                      {project.outcome}
-                    </p>
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="mt-auto pt-5 space-y-2">
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-titan-primary w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider group/btn shadow-[0_4px_14px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.5)] hover:-translate-y-0.5 transition-all duration-300"
-                    >
-                      <span>VIEW PROJECT</span>
-                      <ExternalLink className="w-4 h-4 stroke-[2.5] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                    </a>
-
-                    <a
-                      href={getWhatsAppUrl(project.whatsappMessage)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-titan-secondary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold hover:-translate-y-0.5 transition-all duration-300 group/sec"
-                    >
-                      <span>Discuss a Similar Project</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF] group-hover/sec:translate-x-1 transition-transform" />
-                    </a>
-                  </div>
-
-                </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            );
+          })}
         </div>
 
       </div>

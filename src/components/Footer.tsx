@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
               </Link>
 
               <p className="text-sm text-[#8FA0BA] max-w-sm leading-relaxed mt-2">
-                Founded by Saad Naeem. We engineer high-performance websites, AI agents, and intelligent workflows that help businesses scale inquiries, accelerate response times, and eliminate repetitive operational bottlenecks.
+                Founded by Saad Naeem. We build websites, AI assistants, call agents, and automation that help businesses showcase their work, answer enquiries faster, and reduce repetitive tasks that take up your time.
               </p>
 
               <div className="pt-2 flex items-center gap-3">

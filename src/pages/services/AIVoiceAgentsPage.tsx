@@ -105,7 +105,7 @@ export const AIVoiceAgentsPage: React.FC = () => {
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/'
+        url: 'https://titan-ai-agency.vercel.app/'
       },
       description:
         'AI Voice Agents that help your business answer every opportunity. Inbound call answering, lead collection, appointment booking, and seamless human escalation.'

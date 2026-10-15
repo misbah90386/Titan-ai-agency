@@ -17,14 +17,14 @@ export const ContactPage: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'ContactPage',
       name: 'Contact TITAN AI Agency',
-      url: 'https://titanaiagency.netlify.app/contact',
+      url: 'https://titan-ai-agency.vercel.app/contact',
       description:
         'Start your project with TITAN AI Agency. Tell us what you want to improve—AI-powered websites, SEO, AI agents, AI call agents, or AI video creation.',
       mainEntity: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+        url: 'https://titan-ai-agency.vercel.app/',
+        logo: 'https://titan-ai-agency.vercel.app/titan-logo.png',
         contactPoint: {
           '@type': 'ContactPoint',
           telephone: '+966534182945',

@@ -55,7 +55,7 @@ export const FloatingWhatsApp: React.FC = () => {
           </div>
 
           <div className="py-3 text-xs text-[#C2D4EC] leading-relaxed">
-            Have a project in mind? Connect directly with TITAN for immediate consultation, scoping, and enterprise quotes.
+            Have a project in mind? Connect directly with TITAN on WhatsApp to discuss your project and get a clear quote.
             <div className="mt-2.5 font-mono text-emerald-300 font-semibold text-[11px] bg-[#25D366]/10 px-3 py-2 rounded-lg border border-[#25D366]/30 flex items-center justify-between">
               <span>{whatsappNumber}</span>
               <span className="text-[9px] text-[#00D1FF] uppercase font-bold tracking-wider">Fast Reply</span>

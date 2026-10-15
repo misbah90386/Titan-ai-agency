@@ -9,7 +9,7 @@ export interface PageSEOProps {
   structuredData?: Record<string, any> | Array<Record<string, any>>;
 }
 
-const BASE_URL = 'https://titanaiagency.netlify.app';
+const BASE_URL = 'https://titan-ai-agency.vercel.app';
 const DEFAULT_IMAGE = `${BASE_URL}/titan-logo.png`;
 const SITE_NAME = 'Titan AI Agency';
 

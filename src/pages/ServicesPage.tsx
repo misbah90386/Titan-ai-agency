@@ -38,7 +38,7 @@ export const ServicesPage: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       name: 'Titan AI Agency Core Services',
-      url: 'https://titanaiagency.netlify.app/services',
+      url: 'https://titan-ai-agency.vercel.app/services',
       numberOfItems: 5,
       itemListElement: [
         {

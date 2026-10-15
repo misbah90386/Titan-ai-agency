@@ -10,7 +10,7 @@ export const WhyTitanSection: React.FC = () => {
       num: '01',
       title: 'BUSINESS-FIRST',
       desc: 'We start with the problem, not the technology.',
-      detail: 'Technology without business purpose is wasted capital. We examine your operational bottlenecks first and only build what delivers measurable ROI.',
+      detail: 'Technology without business purpose is wasted capital. We examine repetitive tasks that take up your time first and only build what delivers real value for your business.',
       icon: Target
     },
     {
@@ -63,7 +63,7 @@ export const WhyTitanSection: React.FC = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-[#8FA0BA] leading-relaxed">
-              Transparent engineering, direct founder collaboration, and purposeful digital systems built for long-term reliability.
+              Work directly with Saad to build clean websites, practical AI tools, and reliable automation for your business.
             </p>
           </div>
         </FadeIn>
@@ -110,10 +110,10 @@ export const WhyTitanSection: React.FC = () => {
                   06 — DIRECT FOUNDER COLLABORATION
                 </span>
                 <h3 className="font-display font-bold text-xl text-white mb-2">
-                  Direct Engineering Oversight
+                  Work Directly With Saad
                 </h3>
                 <p className="text-xs text-[#8FA0BA] leading-relaxed">
-                  You work directly with founder Saad Naeem on architecture and milestones, eliminating agency bureaucracy and communication lag.
+                  Work directly with Saad on your project from start to finish, with fast communication and no agency bureaucracy.
                 </p>
               </div>
 

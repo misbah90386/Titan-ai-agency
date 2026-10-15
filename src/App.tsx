@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -23,43 +24,45 @@ import { PageTransition, InitialPageLoader, DesktopCursorGlow } from './componen
 
 export default function App() {
   return (
-    <Router>
-      <InitialPageLoader />
-      <DesktopCursorGlow />
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-[#F8FAFF] text-[#071A33] antialiased selection:bg-[#00D1FF] selection:text-[#04142E]">
-        <Navbar />
-        <main className="flex-grow">
-          <PageTransition>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/services/website-design" element={<WebsiteDesignPage />} />
-              <Route path="/services/websites" element={<Navigate to="/services/website-design" replace />} />
-              <Route path="/services/ai-websites" element={<Navigate to="/services/website-design" replace />} />
-              <Route path="/services/seo" element={<SEOOptimizationPage />} />
-              <Route path="/services/seo-optimization" element={<Navigate to="/services/seo" replace />} />
-              <Route path="/services/ai-agents" element={<AIAgentsPage />} />
-              <Route path="/services/custom-ai-agents" element={<Navigate to="/services/ai-agents" replace />} />
-              <Route path="/services/ai-call-agents" element={<AIVoiceAgentsPage />} />
-              <Route path="/services/ai-voice-agents" element={<AIVoiceAgentsPage />} />
-              <Route path="/services/ai-video-creation" element={<AIVideoCreationPage />} />
-              <Route path="/services/ai-video" element={<Navigate to="/services/ai-video-creation" replace />} />
-              <Route path="/services/ai-chatbots" element={<AIChatbotsPage />} />
-              <Route path="/services/business-automation" element={<BusinessAutomationPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/mission-vision" element={<MissionVisionPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogArticlePage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              {/* Fallback to Home */}
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </PageTransition>
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-      </div>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <InitialPageLoader />
+        <DesktopCursorGlow />
+        <ScrollToTop />
+        <div className="flex flex-col min-h-screen bg-[#F8FAFF] text-[#071A33] antialiased selection:bg-[#00D1FF] selection:text-[#04142E]">
+          <Navbar />
+          <main className="flex-grow">
+            <PageTransition>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/services" element={<ServicesPage />} />
+                <Route path="/services/website-design" element={<WebsiteDesignPage />} />
+                <Route path="/services/websites" element={<Navigate to="/services/website-design" replace />} />
+                <Route path="/services/ai-websites" element={<Navigate to="/services/website-design" replace />} />
+                <Route path="/services/seo" element={<SEOOptimizationPage />} />
+                <Route path="/services/seo-optimization" element={<Navigate to="/services/seo" replace />} />
+                <Route path="/services/ai-agents" element={<AIAgentsPage />} />
+                <Route path="/services/custom-ai-agents" element={<Navigate to="/services/ai-agents" replace />} />
+                <Route path="/services/ai-call-agents" element={<AIVoiceAgentsPage />} />
+                <Route path="/services/ai-voice-agents" element={<AIVoiceAgentsPage />} />
+                <Route path="/services/ai-video-creation" element={<AIVideoCreationPage />} />
+                <Route path="/services/ai-video" element={<Navigate to="/services/ai-video-creation" replace />} />
+                <Route path="/services/ai-chatbots" element={<AIChatbotsPage />} />
+                <Route path="/services/business-automation" element={<BusinessAutomationPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/mission-vision" element={<MissionVisionPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:slug" element={<BlogArticlePage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                {/* Fallback to Home */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </PageTransition>
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+        </div>
+      </Router>
+    </LanguageProvider>
   );
 }

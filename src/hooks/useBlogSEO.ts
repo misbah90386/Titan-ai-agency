@@ -30,7 +30,7 @@ export function useBlogSEO(post: NormalizedBlogPost | null) {
     if (!post) return;
 
     const previousTitle = document.title;
-    const origin = 'https://titanaiagency.netlify.app';
+    const origin = 'https://titan-ai-agency.vercel.app';
     const currentUrl = `${origin}/blog/${post.slug}`;
     const defaultImage = `${origin}/titan-logo.png`;
 
@@ -120,7 +120,7 @@ export function useBlogSEO(post: NormalizedBlogPost | null) {
         publisher: {
           '@type': 'Organization',
           name: 'Titan AI Agency',
-          url: 'https://titanaiagency.netlify.app/',
+          url: 'https://titan-ai-agency.vercel.app/',
           logo: {
             '@type': 'ImageObject',
             url: defaultImage,

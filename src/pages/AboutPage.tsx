@@ -17,14 +17,14 @@ export const AboutPage: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'AboutPage',
       name: 'About Titan AI Agency',
-      url: 'https://titanaiagency.netlify.app/about',
+      url: 'https://titan-ai-agency.vercel.app/about',
       description:
         'TITAN AI AGENCY was founded by Saad Naeem to help businesses improve their online presence and everyday operations through websites, AI tools, and automation.',
       publisher: {
         '@type': 'Organization',
         name: 'Titan AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+        url: 'https://titan-ai-agency.vercel.app/',
+        logo: 'https://titan-ai-agency.vercel.app/titan-logo.png',
       },
     },
   });
@@ -97,7 +97,7 @@ export const AboutPage: React.FC = () => {
             </p>
 
             <p className="text-base text-[#536477] leading-relaxed">
-              In an industry frequently clouded by confusing jargon and exaggerated promises, TITAN was created to offer an honest, engineering-grounded alternative. We take the time to understand your day-to-day business operations, identify where customer enquiries slow down or repetitive work piles up, and build software solutions designed specifically to address those bottlenecks.
+              In an industry frequently clouded by confusing jargon and exaggerated promises, TITAN was created to offer an honest, engineering-grounded alternative. We take the time to understand your day-to-day business operations, identify where customer enquiries slow down or repetitive work piles up, and build software solutions designed specifically to solve those challenges.
             </p>
 
             <p className="text-base text-[#536477] leading-relaxed">

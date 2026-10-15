@@ -94,8 +94,8 @@ export const AIChatbotsPage: React.FC = () => {
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png'
+        url: 'https://titan-ai-agency.vercel.app/',
+        logo: 'https://titan-ai-agency.vercel.app/titan-logo.png'
       },
       description:
         'Conversational assistants that answer common questions and collect enquiries in Riyadh and remotely.',

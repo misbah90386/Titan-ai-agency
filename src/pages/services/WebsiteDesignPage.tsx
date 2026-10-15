@@ -115,8 +115,8 @@ export const WebsiteDesignPage: React.FC = () => {
       provider: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png'
+        url: 'https://titan-ai-agency.vercel.app/',
+        logo: 'https://titan-ai-agency.vercel.app/titan-logo.png'
       },
       description:
         'AI-Powered Websites built to attract, convert and grow. Combining professional design with AI chatbot integration, lead capture, and WhatsApp routing.'

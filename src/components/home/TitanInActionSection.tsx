@@ -23,16 +23,13 @@ import {
 } from 'lucide-react';
 import { TitanIcon } from '../TitanLogo';
 import { FadeIn } from '../motion/MotionComponents';
+import { useLanguage } from '../../context/LanguageContext';
 
 export const TitanInActionSection: React.FC = () => {
+  const { language, isRtl, t } = useLanguage();
   // Card 2 Interactive AI Agent State
   const [activeChatMessage, setActiveChatMessage] = useState<number>(0);
-  const chatDialogue = [
-    { sender: 'customer', text: 'Do you provide website design for real estate companies?' },
-    { sender: 'ai', text: 'Yes. TITAN can create a professional real estate website with property listings, lead capture, WhatsApp integration and AI-powered customer assistance.' },
-    { sender: 'customer', text: 'Can I request a consultation?' },
-    { sender: 'ai', text: 'Absolutely. I can help you start your project or connect you with the TITAN team.' }
-  ];
+  const chatDialogue = t.inAction.chatDialogue;
 
   // Card 4 SEO active tab
   const [activeSeoTab, setActiveSeoTab] = useState<'tech' | 'visibility' | 'schema'>('visibility');
@@ -51,15 +48,15 @@ export const TitanInActionSection: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
               <TitanIcon className="w-4 h-4" />
-              <span>Interactive Technology Showcases</span>
+              <span>{t.inAction.badge}</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight uppercase">
-              SEE TITAN IN ACTION
+              {t.inAction.heading}
             </h2>
 
             <p className="text-base sm:text-lg text-[#8FA0BA] leading-relaxed font-normal">
-              Explore how TITAN uses websites, AI, search technology, voice systems and video to solve real business problems.
+              {t.inAction.subtitle}
             </p>
           </div>
         </FadeIn>
@@ -79,7 +76,7 @@ export const TitanInActionSection: React.FC = () => {
                       <Globe className="w-3.5 h-3.5" />
                       <span>DEMO 01 · AI-POWERED WEBSITE</span>
                     </div>
-                    <span className="text-[11px] font-mono text-[#8FA0BA]">Interactive Preview</span>
+                    <span className="text-[11px] font-mono text-[#8FA0BA]">Illustrative Demo</span>
                   </div>
 
                   <h3 className="font-display text-2xl font-bold text-white mb-2 group-hover:text-[#00D1FF] transition-colors">
@@ -261,8 +258,8 @@ export const TitanInActionSection: React.FC = () => {
                       <PhoneCall className="w-3.5 h-3.5" />
                       <span>DEMO 03 · AI CALL AGENT</span>
                     </div>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                      Visual Showcase
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-sky-500/20 text-[#00D1FF] border border-[#00D1FF]/30">
+                      Illustrative Demo
                     </span>
                   </div>
 
@@ -280,7 +277,7 @@ export const TitanInActionSection: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
-                        <span className="text-xs font-mono font-bold text-white">Incoming Call · Connected</span>
+                        <span className="text-xs font-mono font-bold text-white">Call Interface Simulation</span>
                       </div>
                       <span className="text-xs font-mono text-[#00D1FF]">00:42</span>
                     </div>
@@ -351,7 +348,7 @@ export const TitanInActionSection: React.FC = () => {
                       <Search className="w-3.5 h-3.5" />
                       <span>DEMO 04 · SEO & AI SEARCH</span>
                     </div>
-                    <span className="text-[11px] font-mono text-emerald-400">Audit Dashboard</span>
+                    <span className="text-[11px] font-mono text-[#00D1FF]">Illustrative Demo</span>
                   </div>
 
                   <h3 className="font-display text-2xl font-bold text-white mb-2 group-hover:text-[#00D1FF] transition-colors">
@@ -367,9 +364,9 @@ export const TitanInActionSection: React.FC = () => {
                     <div className="flex items-center justify-between pb-3 border-b border-white/10">
                       <div className="flex items-center gap-2">
                         <BarChart3 className="w-4 h-4 text-[#00D1FF]" />
-                        <span className="text-xs font-mono font-bold text-white">Search Health & Readiness</span>
+                        <span className="text-xs font-mono font-bold text-white">Search Foundations</span>
                       </div>
-                      <span className="text-xs font-mono text-emerald-400">Score: 98/100</span>
+                      <span className="text-xs font-mono text-[#8FA0BA]">Technical Audit Model</span>
                     </div>
 
                     {/* Progress indicators */}
@@ -377,7 +374,7 @@ export const TitanInActionSection: React.FC = () => {
                       <div>
                         <div className="flex justify-between text-[11px] font-mono mb-1">
                           <span className="text-[#8FA0BA]">Technical & Core Web Vitals</span>
-                          <span className="text-white font-bold">100%</span>
+                          <span className="text-[#00D1FF] font-semibold">Speed Optimized</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                           <div className="h-full bg-[#00D1FF] rounded-full w-full" />
@@ -387,7 +384,7 @@ export const TitanInActionSection: React.FC = () => {
                       <div>
                         <div className="flex justify-between text-[11px] font-mono mb-1">
                           <span className="text-[#8FA0BA]">Structured Data & Schema.org</span>
-                          <span className="text-white font-bold">Verified</span>
+                          <span className="text-emerald-400 font-semibold">Schema Tagged</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                           <div className="h-full bg-emerald-400 rounded-full w-[96%]" />
@@ -397,7 +394,7 @@ export const TitanInActionSection: React.FC = () => {
                       <div>
                         <div className="flex justify-between text-[11px] font-mono mb-1">
                           <span className="text-[#8FA0BA]">AI Search Optimization (GEO)</span>
-                          <span className="text-white font-bold">Active</span>
+                          <span className="text-[#3BA9FF] font-semibold">Ready</span>
                         </div>
                         <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                           <div className="h-full bg-[#3BA9FF] rounded-full w-[92%]" />
@@ -440,7 +437,7 @@ export const TitanInActionSection: React.FC = () => {
                       <Video className="w-3.5 h-3.5" />
                       <span>DEMO 05 · AI VIDEO CREATION</span>
                     </div>
-                    <span className="text-[11px] font-mono text-[#8FA0BA]">Marketing Assets</span>
+                    <span className="text-[11px] font-mono text-[#8FA0BA]">Illustrative Demo</span>
                   </div>
 
                   <h3 className="font-display text-2xl font-bold text-white mb-2 group-hover:text-[#00D1FF] transition-colors">

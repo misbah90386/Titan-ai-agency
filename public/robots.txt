@@ -7,4 +7,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://titanaiagency.netlify.app/sitemap.xml
+Sitemap: https://titan-ai-agency.vercel.app/sitemap.xml

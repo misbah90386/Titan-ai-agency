@@ -44,7 +44,7 @@ export const HowTitanWorksSection: React.FC = () => {
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold">
               <TitanIcon className="w-3.5 h-3.5 text-[#00D1FF]" />
-              <span>Disciplined Execution Process</span>
+              <span>Clear 4-Step Process</span>
             </div>
 
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight uppercase">
@@ -52,7 +52,7 @@ export const HowTitanWorksSection: React.FC = () => {
             </h2>
 
             <p className="text-base sm:text-lg text-[#536477] leading-relaxed">
-              A transparent, four-stage engineering methodology designed to deliver measurable business outcomes without guesswork.
+              A clear, step-by-step process designed to build practical solutions for your business without unnecessary complexity.
             </p>
           </div>
         </FadeIn>

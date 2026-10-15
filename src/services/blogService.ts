@@ -136,7 +136,7 @@ export function normalizeBlogPost(raw: any, index = 0): NormalizedBlogPost {
     raw.author?.name ||
     raw.meta?.articleAuthor ||
     'Misbah Naeem';
-  const authorUrl = raw.authorUrl || raw.author?.url || 'https://titanaiagency.netlify.app/';
+  const authorUrl = raw.authorUrl || raw.author?.url || 'https://titan-ai-agency.vercel.app/';
   const authorAvatar = raw.authorAvatar || raw.author?.avatar || '';
 
   // Publication date

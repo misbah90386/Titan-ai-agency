@@ -26,14 +26,14 @@ export const BlogPage: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'Blog',
       name: 'Titan AI Agency Insights',
-      url: 'https://titanaiagency.netlify.app/blog',
+      url: 'https://titan-ai-agency.vercel.app/blog',
       description:
         'Explore practical insights on artificial intelligence, business automation, AI agents, voice AI, modern web development, and digital scaling strategies.',
       publisher: {
         '@type': 'Organization',
         name: 'Titan AI Agency',
-        url: 'https://titanaiagency.netlify.app/',
-        logo: 'https://titanaiagency.netlify.app/titan-logo.png',
+        url: 'https://titan-ai-agency.vercel.app/',
+        logo: 'https://titan-ai-agency.vercel.app/titan-logo.png',
       },
     },
   });

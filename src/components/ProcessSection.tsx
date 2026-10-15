@@ -9,7 +9,7 @@ export const ProcessSection: React.FC = () => {
       title: 'Strategic Discovery',
       icon: MessageSquareText,
       description: 'We diagnose your operational friction, goals, and business constraints.',
-      detail: 'Through a direct initial consultation with founder Saad Naeem, we examine your current digital setup, the bottlenecks holding your team back, and define clear business outcomes.'
+      detail: 'Through a direct initial consultation with founder Saad Naeem, we examine your current digital setup, the repetitive tasks that take up your time, and define clear business outcomes.'
     },
     {
       number: '02',
@@ -48,7 +48,7 @@ export const ProcessSection: React.FC = () => {
               From Blueprint to Production
             </h2>
             <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed">
-              A transparent four-phase engineering methodology focused on solving genuine business bottlenecks without complexity or speculative trends.
+              A clear four-phase process focused on solving repetitive tasks and helping your business grow without unnecessary complexity.
             </p>
           </div>
         </FadeIn>
