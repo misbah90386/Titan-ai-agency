@@ -1,12 +1,16 @@
-import React from 'react';
-import { ExternalLink, ArrowRight, Building, Cake, UtensilsCrossed, CheckCircle2, ShieldAlert } from 'lucide-react';
+import React, { useState } from 'react';
+import { ExternalLink, ArrowRight, ChevronDown } from 'lucide-react';
 import { FadeIn } from './motion/MotionComponents';
 import { useLanguage } from '../context/LanguageContext';
+import realEstateImage from '../assets/images/Clean navy-and-gold real estate showcase.png';
+import bakeryImage from '../assets/images/l_etoile_bakery_showcase_1792370771731.jpg';
+import restaurantImage from '../assets/images/chicken_restaurant_showcase_1792371422052.jpg';
 
 export interface ProjectItem {
   id: string;
   name: string;
   category: string;
+  description: string;
   problem: string;
   solution: string;
   technology: string;
@@ -15,7 +19,7 @@ export interface ProjectItem {
   url: string;
   domain: string;
   whatsappMessage: string;
-  mockupType: 'real-estate' | 'bakery' | 'restaurant';
+  screenshotUrl: string;
 }
 
 export const FEATURED_PROJECTS: ProjectItem[] = [
@@ -23,21 +27,22 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     id: 'real-estate-concept',
     name: 'Luxury Real Estate Concept',
     category: 'Real Estate & Property',
+    description: 'High-performance property showcase with responsive unit filtering, instant WhatsApp inquiry actions, and mobile-first floor plan presentations.',
     problem: 'Property firms struggle to display architectural developments, filter units by buyer preferences, and capture high-intent investor inquiries without slow email delays.',
     solution: 'TITAN engineered a high-performance luxury property showcase with responsive unit filtering, instant WhatsApp inquiry actions, and mobile-first floor plan presentations.',
     technology: 'Website / AI Integration / SEO / WhatsApp',
-    outcome: 'Interactive concept prototype validating sub-second navigation and friction-free lead capture.',
+    outcome: 'Interactive concept prototype validating responsive navigation and friction-free lead capture.',
     isConceptDemo: true,
     url: 'https://celebrated-biscuit-a7f671.netlify.app/',
     domain: 'celebrated-biscuit-a7f671.netlify.app',
-    whatsappMessage:
-      'Hello TITAN AI AGENCY, I saw your Real Estate Concept Demo and would like to discuss a similar project for my business.',
-    mockupType: 'real-estate'
+    whatsappMessage: 'Hello TITAN AI AGENCY, I saw your Real Estate Concept Demo and would like to discuss a similar project for my business.',
+    screenshotUrl: realEstateImage
   },
   {
     id: 'custom-cake-bakery',
     name: 'Artisanal Bakery & Customizer',
     category: 'Food & Hospitality',
+    description: 'Interactive cake customizer allowing customers to select tiers, flavors, and design complexity with live price estimation and one-tap WhatsApp checkout.',
     problem: 'Custom cake orders create massive back-and-forth messaging for bakeries, quoting tiers, flavors, and delivery dates manually on busy weekends.',
     solution: 'TITAN built an interactive cake customizer allowing customers to select tiers, flavors, and design complexity with live price estimation and one-tap WhatsApp checkout.',
     technology: 'Website / Dynamic Customizer / WhatsApp Routing',
@@ -45,24 +50,23 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     isConceptDemo: true,
     url: 'https://sweet-dream-bakes.netlify.app/',
     domain: 'sweet-dream-bakes.netlify.app',
-    whatsappMessage:
-      'Hello TITAN AI AGENCY, I saw your Custom Bakery Concept Demo and would like to discuss an interactive order system.',
-    mockupType: 'bakery'
+    whatsappMessage: 'Hello TITAN AI AGENCY, I saw your Custom Bakery Concept Demo and would like to discuss an interactive order system.',
+    screenshotUrl: bakeryImage
   },
   {
     id: 'chicken-restaurant',
     name: 'Fast-Casual Restaurant Platform',
     category: 'Dining & Hospitality',
+    description: 'Mobile-first culinary website with clear menu hierarchy, dietary filters, instant location maps, and direct order links.',
     problem: 'Outdated PDF menus fail on mobile screens, loading slowly and causing diners to drop off before discovering location, allergen info, and operating hours.',
-    solution: 'TITAN engineered a sub-second, mobile-first culinary website with clear menu hierarchy, dietary filters, instant location maps, and direct order links.',
+    solution: 'TITAN engineered a mobile-first culinary website with clear menu hierarchy, dietary filters, instant location maps, and direct order links.',
     technology: 'Website / Mobile Speed Optimization / Local SEO',
     outcome: 'Fast mobile loading, instant menu access, and smooth local navigation.',
     isConceptDemo: true,
     url: 'https://cerulean-begonia-2ecb7d.netlify.app/',
     domain: 'cerulean-begonia-2ecb7d.netlify.app',
-    whatsappMessage:
-      'Hello TITAN AI AGENCY, I saw your Restaurant Website Demo and would like to discuss a project in dining & food.',
-    mockupType: 'restaurant'
+    whatsappMessage: 'Hello TITAN AI AGENCY, I saw your Restaurant Website Demo and would like to discuss a project in dining & food.',
+    screenshotUrl: restaurantImage
   }
 ];
 
@@ -82,6 +86,11 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   subtitle,
 }) => {
   const { language, isRtl, t } = useLanguage();
+  const [expandedDetails, setExpandedDetails] = useState<Record<string, boolean>>({});
+
+  const toggleDetails = (projectId: string) => {
+    setExpandedDetails((prev) => ({ ...prev, [projectId]: !prev[projectId] }));
+  };
 
   const sectionBadge = badge || t.featuredWork.badge;
   const sectionTitle = title || t.featuredWork.heading;
@@ -95,6 +104,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
           ...p,
           name: ar.name,
           category: ar.category,
+          description: ar.solution,
           problem: ar.problem,
           solution: ar.solution,
           outcome: ar.outcome,
@@ -108,6 +118,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
           ...p,
           name: ar.name,
           category: ar.category,
+          description: ar.solution,
           problem: ar.problem,
           solution: ar.solution,
           outcome: ar.outcome,
@@ -121,6 +132,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
           ...p,
           name: ar.name,
           category: ar.category,
+          description: ar.solution,
           problem: ar.problem,
           solution: ar.solution,
           outcome: ar.outcome,
@@ -164,12 +176,17 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {FEATURED_PROJECTS.map((rawProject, idx) => {
             const project = getLocalizedProject(rawProject);
+            const isExpanded = !!expandedDetails[project.id];
+            const isRealEstate = project.id === 'real-estate-concept';
+            const isBakery = project.id === 'custom-cake-bakery';
+            const isRestaurant = project.id === 'chicken-restaurant';
+
             return (
               <FadeIn key={project.id} delay={idx * 0.08} direction="up" distance={16} duration={0.48}>
                 <div className="card-titan-light group flex flex-col p-6 sm:p-7 h-full hover:-translate-y-1.5 hover:border-sky-300 hover:shadow-[0_12px_28px_rgba(2,132,199,0.14)] transition-all duration-220 text-start">
                   
-                  {/* Browser Frame */}
-                  <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/40 transition-colors duration-300 mb-5">
+                  {/* Browser Frame with Genuine Screenshot & scale reveal */}
+                  <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/60 group-hover:shadow-[0_8px_24px_rgba(0,209,255,0.2)] transition-all duration-300 mb-5">
                     <div className="flex items-center justify-between px-3 py-2 bg-[#0B1F4B] border-b border-white/[0.08] text-[11px] font-mono text-slate-300" dir="ltr">
                       <div className="flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-rose-500/80" />
@@ -183,92 +200,103 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
                       <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Live Demo</span>
                     </div>
 
-                    {/* Visual Representation */}
-                    <div className="p-4 bg-gradient-to-b from-[#071A33] to-[#04142E] min-h-[170px] text-white flex flex-col justify-between overflow-hidden group-hover:scale-[1.03] transition-transform duration-300">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono text-[#00D1FF] uppercase font-bold">
+                    {/* Screenshot Container with scale animation */}
+                    <div className={`relative w-full overflow-hidden bg-slate-950 ${isRealEstate ? 'aspect-[2.14/1]' : isBakery || isRestaurant ? 'aspect-[1.83/1]' : 'h-44'}`}>
+                      <img
+                        src={project.screenshotUrl}
+                        alt={isRealEstate ? 'Luxury real estate demo website with navy and gold design.' : isBakery ? 'L’Étoile bakery website demo with navy and gold design and a floral wedding cake.' : isRestaurant ? 'Restaurant demo website featuring fried chicken, burgers, and family deals.' : project.name}
+                        className={`absolute inset-0 w-full h-full ${isRealEstate || isBakery || isRestaurant ? 'object-contain' : 'object-cover'} object-center scale-[1.04] group-hover:scale-100 transition-transform duration-500 ease-out opacity-95 group-hover:opacity-100`}
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#04142E]/70 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-white/90">
+                        <span className="px-2 py-0.5 rounded bg-black/50 backdrop-blur-xs border border-white/20">
                           {project.category}
                         </span>
-                        <span className="px-2 py-0.5 rounded bg-white/10 text-[9px] font-mono text-[#3BA9FF]">
-                          {language === 'ar' ? 'تفاعلي' : 'Interactive'}
+                        <span className="px-2 py-0.5 rounded bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/40 font-semibold">
+                          {language === 'ar' ? 'معاينة حية' : 'Live Preview'}
                         </span>
-                      </div>
-
-                      <div className="py-2">
-                        <h4 className="font-display font-bold text-base text-white">
-                          {project.name}
-                        </h4>
-                        <p className="text-xs text-[#8FA0BA] line-clamp-2 mt-1">
-                          {project.solution}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between text-[10px] font-mono text-[#8FA0BA] pt-2 border-t border-white/10">
-                        <span>{language === 'ar' ? 'استضافة سريعة' : 'Live Host'}</span>
-                        <span className="text-emerald-400">{language === 'ar' ? 'متصل' : 'Online'}</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Case Study Structured Format */}
+                  {/* Concise Card Content */}
                   <div className="flex-1 flex flex-col space-y-3.5">
                     
-                    {/* Badge: CONCEPT DEMO clearly labeled */}
+                    {/* Badge: Concept Demo & Category */}
                     <div className="flex items-center justify-between">
                       <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-700 border border-amber-500/30">
                         {t.featuredWork.illustrativeConcept}
                       </span>
-                      <span className="text-xs font-mono text-[#8FA0BA]">
+                      <span className="text-xs font-mono text-[#536477]">
                         {project.category}
                       </span>
                     </div>
 
-                    {/* Business / Project Name */}
+                    {/* Project Name (shown once) */}
                     <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#0B1F4B] transition-colors">
                       {project.name}
                     </h3>
 
-                    {/* Problem */}
-                    <div className="text-xs space-y-1">
-                      <span className="font-mono font-bold text-rose-600 uppercase tracking-wider block">
-                        {t.featuredWork.problemLabel}
-                      </span>
-                      <p className="text-[#536477] leading-relaxed">
-                        {project.problem}
-                      </p>
+                    {/* Concise Description */}
+                    <p className="text-sm text-[#536477] leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Expandable Project Details (Problem / Solution / Technology / Outcome) */}
+                    <div className="pt-1">
+                      <button
+                        type="button"
+                        onClick={() => toggleDetails(project.id)}
+                        className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#0284C7] hover:text-[#0369A1] transition-colors focus:outline-none py-1"
+                        aria-expanded={isExpanded}
+                      >
+                        <span>{language === 'ar' ? 'تفاصيل المشروع' : 'Project details'}</span>
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      {isExpanded && (
+                        <div className="mt-3 p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs animate-in fade-in duration-250">
+                          <div>
+                            <span className="font-mono font-bold text-rose-600 uppercase tracking-wider block mb-1">
+                              {t.featuredWork.problemLabel}
+                            </span>
+                            <p className="text-[#536477] leading-relaxed">
+                              {project.problem}
+                            </p>
+                          </div>
+
+                          <div>
+                            <span className="font-mono font-bold text-[#0284C7] uppercase tracking-wider block mb-1">
+                              {t.featuredWork.solutionLabel}
+                            </span>
+                            <p className="text-[#536477] leading-relaxed">
+                              {project.solution}
+                            </p>
+                          </div>
+
+                          <div>
+                            <span className="font-mono font-bold text-[#071A33] uppercase tracking-wider block mb-1">
+                              {language === 'ar' ? 'التقنيات المستخدمة:' : 'Technology:'}
+                            </span>
+                            <span className="inline-block px-2 py-0.5 rounded bg-white border border-slate-200 text-[#071A33] font-mono text-[10px]">
+                              {project.technology}
+                            </span>
+                          </div>
+
+                          <div>
+                            <span className="font-mono font-bold text-emerald-600 uppercase tracking-wider block mb-1">
+                              {t.featuredWork.outcomeLabel}
+                            </span>
+                            <p className="text-[#536477] leading-relaxed italic">
+                              {project.outcome}
+                            </p>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
-                    {/* Solution */}
-                    <div className="text-xs space-y-1">
-                      <span className="font-mono font-bold text-[#00D1FF] uppercase tracking-wider block">
-                        {t.featuredWork.solutionLabel}
-                      </span>
-                      <p className="text-[#536477] leading-relaxed">
-                        {project.solution}
-                      </p>
-                    </div>
-
-                    {/* Technology */}
-                    <div className="text-xs space-y-1">
-                      <span className="font-mono font-bold text-[#071A33] uppercase tracking-wider block">
-                        {language === 'ar' ? 'التقنيات المستخدمة:' : 'Technology:'}
-                      </span>
-                      <span className="inline-block px-2.5 py-1 rounded-md bg-[#F8FAFF] border border-slate-200 text-[#071A33] font-mono text-[11px] hover:border-[#00D1FF]/60 hover:bg-[#EAF7FF] transition-all duration-200 cursor-default">
-                        {project.technology}
-                      </span>
-                    </div>
-
-                    {/* Outcome */}
-                    <div className="text-xs space-y-1 pt-1">
-                      <span className="font-mono font-bold text-emerald-600 uppercase tracking-wider block">
-                        {t.featuredWork.outcomeLabel}
-                      </span>
-                      <p className="text-[#536477] leading-relaxed italic">
-                        {project.outcome}
-                      </p>
-                    </div>
-
-                    {/* Action Buttons */}
+                    {/* Action Links */}
                     <div className="mt-auto pt-5 space-y-2">
                       <a
                         href={project.url}
