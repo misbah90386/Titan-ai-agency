@@ -165,8 +165,8 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
           {FEATURED_PROJECTS.map((rawProject, idx) => {
             const project = getLocalizedProject(rawProject);
             return (
-              <FadeIn key={project.id} delay={idx * 0.1} direction="up" distance={30} duration={0.7}>
-                <div className="card-titan-light group flex flex-col p-6 sm:p-7 h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_16px_36px_rgba(0,209,255,0.18)] transition-all duration-300 text-start">
+              <FadeIn key={project.id} delay={idx * 0.08} direction="up" distance={16} duration={0.48}>
+                <div className="card-titan-light group flex flex-col p-6 sm:p-7 h-full hover:-translate-y-1.5 hover:border-sky-300 hover:shadow-[0_12px_28px_rgba(2,132,199,0.14)] transition-all duration-220 text-start">
                   
                   {/* Browser Frame */}
                   <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/40 transition-colors duration-300 mb-5">

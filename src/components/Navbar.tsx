@@ -178,12 +178,17 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-nav-drawer"
-          className="lg:hidden bg-[#04142E] border-b border-[#00D1FF]/20 px-4 pt-3 pb-6 space-y-2 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-200"
-        >
+      {/* Mobile Drawer Menu with smooth opening and closing animations */}
+      <div
+        id="mobile-nav-drawer"
+        aria-hidden={!mobileMenuOpen}
+        className={`lg:hidden bg-[#04142E] border-b border-[#00D1FF]/20 shadow-2xl overflow-hidden transition-all duration-250 ease-out ${
+          mobileMenuOpen
+            ? 'max-h-[560px] opacity-100 py-3 px-4 translate-y-0 pointer-events-auto'
+            : 'max-h-0 opacity-0 py-0 px-4 -translate-y-2 pointer-events-none'
+        }`}
+      >
+        <div className="space-y-2">
           {/* Mobile In-Drawer Language Switch */}
           <div className="pb-2 border-b border-white/[0.08] flex items-center justify-between">
             <span className="text-xs font-mono uppercase text-[#8FA0BA] flex items-center gap-1.5">
@@ -253,7 +258,7 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };

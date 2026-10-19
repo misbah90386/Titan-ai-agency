@@ -66,8 +66,8 @@ export const PostContactTrustSection: React.FC = () => {
           {steps.map((st, idx) => {
             const IconComp = st.icon;
             return (
-              <FadeIn key={st.num} delay={idx * 0.08} direction="up" distance={15}>
-                <div className="p-5 rounded-2xl bg-[#0B1F4B]/50 border border-white/10 hover:border-[#00D1FF]/40 flex flex-col justify-between h-full transition-all">
+              <FadeIn key={st.num} delay={idx * 0.07} direction="up" distance={16}>
+                <div className="p-5 rounded-2xl bg-[#0B1F4B]/50 border border-white/10 hover:border-[#00D1FF]/40 hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,209,255,0.12)] flex flex-col justify-between h-full transition-all duration-220">
                   <div>
                     <div className="flex items-center justify-between mb-3">
                       <span className="font-mono text-xs font-bold text-[#00D1FF]">

@@ -68,8 +68,8 @@ export const TitanInActionSection: React.FC = () => {
           {/* CARD 1: AI-Powered Website (Col 7 on Desktop) */}
           {/* ========================================================= */}
           <div className="lg:col-span-7">
-            <FadeIn delay={0.1} direction="up" distance={25}>
-              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_40px_rgba(0,209,255,0.18)] hover:-translate-y-1.5 transition-all duration-300">
+            <FadeIn delay={0.08} direction="up" distance={16}>
+              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_36px_rgba(0,209,255,0.16)] hover:-translate-y-1.5 transition-all duration-220">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] font-semibold">
@@ -170,8 +170,8 @@ export const TitanInActionSection: React.FC = () => {
           {/* CARD 2: Custom AI Agent (Col 5 on Desktop) */}
           {/* ========================================================= */}
           <div className="lg:col-span-5">
-            <FadeIn delay={0.2} direction="up" distance={25}>
-              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_40px_rgba(0,209,255,0.18)] hover:-translate-y-1.5 transition-all duration-300">
+            <FadeIn delay={0.16} direction="up" distance={16}>
+              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_36px_rgba(0,209,255,0.16)] hover:-translate-y-1.5 transition-all duration-220">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] font-semibold">
@@ -250,8 +250,8 @@ export const TitanInActionSection: React.FC = () => {
           {/* CARD 3: AI Call Agent (Col 4 on Desktop) */}
           {/* ========================================================= */}
           <div className="lg:col-span-4">
-            <FadeIn delay={0.1} direction="up" distance={25}>
-              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_40px_rgba(0,209,255,0.18)] hover:-translate-y-1.5 transition-all duration-300">
+            <FadeIn delay={0.08} direction="up" distance={16}>
+              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_36px_rgba(0,209,255,0.16)] hover:-translate-y-1.5 transition-all duration-220">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] font-semibold">
@@ -340,8 +340,8 @@ export const TitanInActionSection: React.FC = () => {
           {/* CARD 4: SEO & AI Search (Col 4 on Desktop) */}
           {/* ========================================================= */}
           <div className="lg:col-span-4">
-            <FadeIn delay={0.2} direction="up" distance={25}>
-              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_40px_rgba(0,209,255,0.18)] hover:-translate-y-1.5 transition-all duration-300">
+            <FadeIn delay={0.16} direction="up" distance={16}>
+              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_36px_rgba(0,209,255,0.16)] hover:-translate-y-1.5 transition-all duration-220">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] font-semibold">
@@ -429,8 +429,8 @@ export const TitanInActionSection: React.FC = () => {
           {/* CARD 5: AI Video Creation (Col 4 on Desktop) */}
           {/* ========================================================= */}
           <div className="lg:col-span-4">
-            <FadeIn delay={0.3} direction="up" distance={25}>
-              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_40px_rgba(0,209,255,0.18)] hover:-translate-y-1.5 transition-all duration-300">
+            <FadeIn delay={0.24} direction="up" distance={16}>
+              <div className="group h-full rounded-3xl bg-gradient-to-b from-[#0B1F4B]/80 to-[#04142E]/90 border border-white/10 hover:border-[#00D1FF]/50 p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-[0_16px_36px_rgba(0,209,255,0.16)] hover:-translate-y-1.5 transition-all duration-220">
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] font-semibold">

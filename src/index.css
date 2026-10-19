@@ -18,6 +18,15 @@
     color: var(--titan-text-primary);
     background-color: var(--titan-clean-white);
   }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
   
   h1, h2, h3, .font-display {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -126,75 +135,125 @@
   color: #04142E;
   font-weight: 700;
   border-radius: 12px;
-  box-shadow: 0 4px 14px 0 rgba(0, 209, 255, 0.25);
-  transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms cubic-bezier(0.22, 1, 0.36, 1), background-position 250ms cubic-bezier(0.22, 1, 0.36, 1), filter 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 14px 0 rgba(0, 209, 255, 0.22);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              filter 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .btn-titan-primary:hover {
   transform: translateY(-2px);
-  background-position: 100% 50%;
-  filter: brightness(1.08);
-  box-shadow: 0 8px 24px 0 rgba(0, 209, 255, 0.42);
+  filter: brightness(1.06);
+  box-shadow: 0 8px 22px 0 rgba(0, 209, 255, 0.38);
+}
+
+.btn-titan-primary:active {
+  transform: translateY(0px) scale(0.985);
+  box-shadow: 0 2px 8px 0 rgba(0, 209, 255, 0.25);
+  filter: brightness(0.98);
+}
+
+.btn-titan-primary:focus-visible {
+  outline: 2px solid #00D1FF;
+  outline-offset: 3px;
 }
 
 /* Secondary Button Styling */
 .btn-titan-secondary {
   background: transparent;
   color: #0B1F4B;
-  border: 1px solid #3BA9FF;
+  border: 1.5px solid #3BA9FF;
   border-radius: 12px;
   font-weight: 600;
-  transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-titan-secondary:hover {
   background-color: #EAF7FF;
   border-color: #00D1FF;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.15);
+}
+
+.btn-titan-secondary:active {
+  transform: translateY(0px) scale(0.985);
+  box-shadow: none;
+}
+
+.btn-titan-secondary:focus-visible {
+  outline: 2px solid #0284C7;
+  outline-offset: 3px;
 }
 
 .btn-titan-secondary-dark {
   background: rgba(255, 255, 255, 0.05);
   color: #F8FAFF;
-  border: 1px solid rgba(0, 209, 255, 0.4);
+  border: 1.5px solid rgba(0, 209, 255, 0.4);
   border-radius: 12px;
   font-weight: 600;
-  transition: all 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-titan-secondary-dark:hover {
-  background: rgba(0, 209, 255, 0.12);
+  background-color: rgba(0, 209, 255, 0.12);
   border-color: #00D1FF;
   color: #FFFFFF;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px 0 rgba(0, 209, 255, 0.25);
+}
+
+.btn-titan-secondary-dark:active {
+  transform: translateY(0px) scale(0.985);
+}
+
+.btn-titan-secondary-dark:focus-visible {
+  outline: 2px solid #00D1FF;
+  outline-offset: 3px;
 }
 
 /* Card Styles */
 .card-titan-light {
   background: #FFFFFF;
-  border: 1px solid rgba(59, 169, 255, 0.18);
+  border: 1px solid rgba(59, 169, 255, 0.2);
   border-radius: 16px;
-  box-shadow: 0 4px 20px -2px rgba(11, 31, 75, 0.04);
-  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 16px -2px rgba(11, 31, 75, 0.05);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-titan-light:hover {
-  transform: translateY(-8px) scale(1.015);
-  border-color: rgba(0, 209, 255, 0.65);
-  box-shadow: 0 16px 36px -4px rgba(0, 209, 255, 0.22);
+  transform: translateY(-4px);
+  border-color: rgba(0, 209, 255, 0.55);
+  box-shadow: 0 12px 28px -4px rgba(2, 132, 199, 0.15);
 }
 
 .card-titan-dark {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 209, 255, 0.15);
+  border: 1px solid rgba(0, 209, 255, 0.16);
   border-radius: 16px;
-  transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-titan-dark:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: rgba(0, 209, 255, 0.45);
-  box-shadow: 0 16px 36px -4px rgba(0, 209, 255, 0.18);
+  box-shadow: 0 12px 28px -4px rgba(0, 209, 255, 0.2);
+}
+
+/* Universal Keyboard Focus Outline */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid #00D1FF !important;
+  outline-offset: 2px !important;
 }
 
 /* Ambient Visual Grids & Subtle Wave Patterns */
@@ -264,14 +323,76 @@
   animation: float-gentle 5s ease-in-out infinite;
 }
 
-/* 4. Ambient Background Glow Orbs Drift */
+/* 3b. Hero Content Entrance Sequence (Subtle 14px upward, short sequence, non-blocking) */
+@keyframes hero-fade-up-sequence {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal-badge {
+  animation: hero-fade-up-sequence 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.hero-reveal-headline {
+  animation: hero-fade-up-sequence 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+}
+
+.hero-reveal-desc {
+  animation: hero-fade-up-sequence 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both;
+}
+
+.hero-reveal-buttons {
+  animation: hero-fade-up-sequence 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+}
+
+.hero-reveal-services {
+  animation: hero-fade-up-sequence 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both;
+}
+
+@media (max-width: 640px) {
+  .hero-reveal-badge,
+  .hero-reveal-headline,
+  .hero-reveal-desc,
+  .hero-reveal-buttons,
+  .hero-reveal-services {
+    animation-duration: 0.25s;
+    animation-delay: 0s !important;
+  }
+}
+
+/* 4. Soft Animated Light-Blue Hero Gradient */
+@keyframes hero-light-gradient {
+  0% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  100% {
+    background-position: 0% 40%;
+  }
+}
+
+.animate-hero-gradient {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 25%, #E0F2FE 50%, #F0F9FF 75%, #FFFFFF 100%);
+  background-size: 200% 200%;
+  animation: hero-light-gradient 18s ease-in-out infinite;
+}
+
+/* 4b. Ambient Background Glow Orbs Drift */
 @keyframes ambient-drift-1 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.12;
+    opacity: 0.14;
   }
   50% {
-    transform: translate(35px, -25px) scale(1.1);
+    transform: translate(24px, -18px) scale(1.08);
     opacity: 0.22;
   }
 }
@@ -279,12 +400,52 @@
 @keyframes ambient-drift-2 {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.10;
+    opacity: 0.12;
   }
   50% {
-    transform: translate(-30px, 20px) scale(1.08);
-    opacity: 0.18;
+    transform: translate(-22px, 16px) scale(1.06);
+    opacity: 0.20;
   }
+}
+
+/* 4c. Subtle Floating Geometric / HUD Shapes with slow, restrained movement */
+@keyframes float-shape-slow-1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(10px, -12px) rotate(3deg);
+  }
+}
+
+@keyframes float-shape-slow-2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-12px, 10px) rotate(-4deg);
+  }
+}
+
+@keyframes float-shape-slow-3 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(8px, 8px) rotate(2deg);
+  }
+}
+
+.animate-shape-1 {
+  animation: float-shape-slow-1 16s ease-in-out infinite;
+}
+
+.animate-shape-2 {
+  animation: float-shape-slow-2 18s ease-in-out infinite;
+}
+
+.animate-shape-3 {
+  animation: float-shape-slow-3 14s ease-in-out infinite;
 }
 
 .animate-ambient-1 {
@@ -547,6 +708,15 @@
     scroll-behavior: auto !important;
   }
 
+  .hero-reveal-badge,
+  .hero-reveal-headline,
+  .hero-reveal-desc,
+  .hero-reveal-buttons,
+  .hero-reveal-services,
+  .animate-hero-gradient,
+  .animate-shape-1,
+  .animate-shape-2,
+  .animate-shape-3,
   .animate-gradient-slow,
   .shimmer-text-sweep,
   .animate-float-slow,
@@ -578,6 +748,8 @@
   .animate-workflow-travel,
   .animate-loader-line {
     animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

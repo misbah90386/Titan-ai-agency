@@ -153,7 +153,7 @@ export const ServicesPage: React.FC = () => {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2} direction="up" distance={30}>
+          <FadeIn delay={0.2} direction="up" distance={16}>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6">
               AI Services Built for Modern Businesses
             </h1>

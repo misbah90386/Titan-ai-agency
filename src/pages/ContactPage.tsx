@@ -124,7 +124,7 @@ export const ContactPage: React.FC = () => {
         </FadeIn>
 
         {/* Project Form Container */}
-        <FadeIn delay={0.1} direction="up" distance={25}>
+        <FadeIn delay={0.1} direction="up" distance={16}>
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 sm:p-12 mb-16">
             
             {submitted ? (

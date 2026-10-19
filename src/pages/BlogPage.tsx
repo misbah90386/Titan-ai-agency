@@ -170,7 +170,7 @@ export const BlogPage: React.FC = () => {
         {!loading && !error && filteredPosts.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post, idx) => (
-              <FadeIn key={post.id} delay={idx * 0.08} direction="up" distance={25}>
+              <FadeIn key={post.id} delay={idx * 0.08} direction="up" distance={16}>
                 <BlogCard post={post} />
               </FadeIn>
             ))}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Globe, Search, Cpu, PhoneCall, MessageSquare, Workflow, Layers, Video, MessageCircle, ExternalLink, ShieldCheck, CheckCircle2, Sparkles, Network, Zap, BarChart, Users } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import { TitanHeroDashboard } from '../components/home/TitanHeroDashboard';
+import { CinematicVideoHero } from '../components/home/CinematicVideoHero';
 import { TitanServicesSection } from '../components/home/TitanServicesSection';
 import { FeaturedWork } from '../components/FeaturedWork';
 import { TitanInActionSection } from '../components/home/TitanInActionSection';
@@ -48,179 +48,11 @@ export const HomePage: React.FC = () => {
     },
   });
 
-  const getServiceIcon = (id: string) => {
-    switch (id) {
-      case 'ai-websites':
-      case 'websites':
-        return (
-          <div className="relative flex items-center justify-center">
-            <Globe className="w-5 h-5 text-[#00D1FF]" />
-            <span className="absolute -top-1 -right-1 w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse" />
-          </div>
-        );
-      case 'seo-optimization':
-      case 'seo':
-        return (
-          <div className="relative flex items-center justify-center">
-            <Search className="w-5 h-5 text-[#00D1FF]" />
-            <div className="absolute -bottom-1 flex items-end gap-0.5 h-1.5">
-              <span className="w-0.5 bg-[#00D1FF] rounded-t-sm animate-bar-1" />
-              <span className="w-0.5 bg-[#3BA9FF] rounded-t-sm animate-bar-2" />
-              <span className="w-0.5 bg-[#00D1FF] rounded-t-sm animate-bar-3" />
-            </div>
-          </div>
-        );
-      case 'ai-agents':
-        return (
-          <div className="relative flex items-center justify-center">
-            <Cpu className="w-5 h-5 text-[#00D1FF] animate-node-pulse" />
-          </div>
-        );
-      case 'ai-call-agents':
-      case 'ai-voice-agents':
-        return (
-          <div className="relative flex items-center justify-center gap-0.5">
-            <PhoneCall className="w-4 h-4 text-[#00D1FF]" />
-            <div className="flex items-center gap-0.5 h-3 ml-0.5">
-              <span className="w-0.5 bg-[#00D1FF] rounded-full animate-wave-1" />
-              <span className="w-0.5 bg-[#3BA9FF] rounded-full animate-wave-2" />
-              <span className="w-0.5 bg-[#00D1FF] rounded-full animate-wave-3" />
-            </div>
-          </div>
-        );
-      case 'ai-video-creation':
-      case 'ai-video':
-        return (
-          <div className="relative flex items-center justify-center">
-            <Video className="w-5 h-5 text-[#00D1FF]" />
-            <span className="absolute inset-0 rounded-full border border-[#00D1FF]/40 animate-ping opacity-75" />
-          </div>
-        );
-      default:
-        return <Layers className="w-5 h-5 text-[#00D1FF]" />;
-    }
-  };
-
-  const whatsappMessage = language === 'ar'
-    ? 'مرحباً وكالة تيتان، أود مناقشة مشروع لأعمالي.'
-    : 'Hello TITAN AI AGENCY, I would like to discuss a project for my business.';
-
-  const heroWhatsappUrl =
-    'https://wa.me/966534182945?text=' +
-    encodeURIComponent(whatsappMessage);
-
-  const getServiceRoute = (id: string): string => {
-    switch (id) {
-      case 'ai-websites':
-      case 'websites':
-        return '/services/website-design';
-      case 'seo-optimization':
-      case 'seo':
-        return '/services/seo';
-      case 'ai-agents':
-        return '/services/ai-agents';
-      case 'ai-call-agents':
-      case 'ai-voice-agents':
-        return '/services/ai-call-agents';
-      case 'ai-video-creation':
-      case 'ai-video':
-        return '/services/ai-video-creation';
-      default:
-        return `/services#${id}`;
-    }
-  };
-
   return (
     <div id="home-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33]">
       
-      {/* 1. HERO SECTION (Pure White Base with Soft Light-Blue Gradients & Titan AI Command Dashboard) */}
-      <section id="hero-section" className="relative pt-24 pb-14 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 overflow-hidden bg-white text-[#071A33]">
-        {/* Minimal Light Digital Grid Pattern */}
-        <div className="absolute inset-0 bg-digital-grid opacity-60 pointer-events-none" />
-        
-        {/* Very soft light-blue gradients & subtle ambient glow orbs */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-sky-50/30 to-white pointer-events-none" />
-        <div className="absolute top-1/4 -left-20 w-80 sm:w-96 h-80 sm:h-96 bg-[#00D1FF]/10 rounded-full blur-[100px] pointer-events-none animate-ambient-1" />
-        <div className="absolute bottom-10 right-0 w-80 sm:w-96 h-80 sm:h-96 bg-[#3BA9FF]/10 rounded-full blur-[110px] pointer-events-none animate-ambient-2" />
-
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 xl:gap-12 items-center">
-            
-            {/* Left Column (6 cols): Headline, Copy, Buttons, Service Line */}
-            <div className="lg:col-span-6 space-y-5 sm:space-y-6 text-start">
-              {/* Badge: "AI Solutions for Modern Businesses" */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200/90 text-xs sm:text-[13px] font-semibold text-[#0284C7] shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#00D1FF] shadow-[0_0_8px_#00D1FF] animate-pulse" />
-                <span>{t.hero.badge}</span>
-              </div>
-
-              {/* Main Headline: Professional Websites. Practical AI for Your Business. */}
-              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[3.4rem] xl:text-[4rem] font-black text-[#071A33] tracking-tight leading-[1.12]">
-                {t.hero.headlineLine1}
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#00D1FF]">
-                  {t.hero.headlineLine2}
-                </span>
-              </h1>
-
-              {/* Supporting Text */}
-              <p className="text-base sm:text-lg lg:text-[1.125rem] text-slate-600 font-normal leading-relaxed max-w-xl">
-                {t.hero.supportingText}
-              </p>
-
-              {/* Buttons: Primary "Discuss Your Project" & Secondary "Explore Our Work" */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
-                <a
-                  href={heroWhatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="hero-start-project-btn"
-                  className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-[#0284C7] via-[#0EA5E9] to-[#00D1FF] hover:from-[#0369A1] hover:to-[#0284C7] text-white text-base font-bold shadow-[0_4px_18px_rgba(2,132,199,0.28)] hover:shadow-[0_8px_24px_rgba(2,132,199,0.4)] hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <span>{t.hero.primaryButton}</span>
-                  <ArrowRight className={`w-4.5 h-4.5 ${isRtl ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform duration-200`} />
-                </a>
-
-                <a
-                  href="#portfolio"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const el = document.getElementById('portfolio') || document.getElementById('featured-work');
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  id="hero-explore-work-btn"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 sm:py-4 rounded-xl bg-white hover:bg-sky-50/60 border-2 border-sky-200 hover:border-[#0284C7] text-[#071A33] hover:text-[#0284C7] text-base font-semibold shadow-sm hover:shadow hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
-                >
-                  <span>{t.hero.secondaryButton}</span>
-                </a>
-              </div>
-
-              {/* Simple Service Line below the buttons */}
-              <div className="pt-2 text-xs sm:text-sm font-medium text-slate-500 tracking-wide flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                <span>{t.hero.serviceLine.websites}</span>
-                <span className="text-[#00D1FF] font-bold">·</span>
-                <span>{t.hero.serviceLine.seo}</span>
-                <span className="text-[#00D1FF] font-bold">·</span>
-                <span>{t.hero.serviceLine.aiAgents}</span>
-                <span className="text-[#00D1FF] font-bold">·</span>
-                <span>{t.hero.serviceLine.callAgents}</span>
-                <span className="text-[#00D1FF] font-bold">·</span>
-                <span>{t.hero.serviceLine.aiVideo}</span>
-              </div>
-            </div>
-
-            {/* Right Column (6 cols): Titan AI Command / Dashboard Visualization */}
-            <div className="lg:col-span-6 flex items-center justify-center">
-              <FadeIn delay={0.3} direction="up" distance={25} duration={0.8}>
-                <TitanHeroDashboard />
-              </FadeIn>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* 1. CINEMATIC VIDEO HERO SECTION */}
+      <CinematicVideoHero />
 
       {/* 2. FEATURED WORK SECTION (Light Case Studies Portfolio) */}
       <FeaturedWork />
@@ -295,7 +127,7 @@ export const HomePage: React.FC = () => {
 
             {/* Right Column: Practical Tenets */}
             <div className="lg:col-span-5">
-              <FadeIn delay={0.25} direction={isRtl ? 'right' : 'left'} distance={25}>
+              <FadeIn delay={0.25} direction={isRtl ? 'right' : 'left'} distance={16}>
                 <div className="card-titan-dark p-6 sm:p-8 space-y-5 bg-[#0B1F4B]/90 border border-[#00D1FF]/20 shadow-[0_20px_50px_rgba(2,10,24,0.6)] text-start">
                   <div className="text-xs font-mono uppercase tracking-wider text-[#00D1FF] font-bold">
                     {t.aboutPreview.cardTitle}

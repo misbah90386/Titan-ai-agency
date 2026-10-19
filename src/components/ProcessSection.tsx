@@ -58,7 +58,7 @@ export const ProcessSection: React.FC = () => {
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <FadeIn key={step.number} delay={idx * 0.1} direction="up" distance={20}>
+              <FadeIn key={step.number} delay={idx * 0.075} direction="up" distance={16}>
                 <div
                   className="card-titan-light p-6 sm:p-7 flex flex-col justify-between h-full"
                 >

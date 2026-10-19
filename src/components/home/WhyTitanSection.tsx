@@ -73,8 +73,8 @@ export const WhyTitanSection: React.FC = () => {
           {points.map((pt, idx) => {
             const IconComp = pt.icon;
             return (
-              <FadeIn key={pt.num} delay={idx * 0.08} direction="up" distance={20}>
-                <div className="group card-titan-dark p-7 rounded-2xl flex flex-col justify-between h-full bg-[#0B1F4B]/50 border border-white/10 hover:border-[#00D1FF]/50 hover:-translate-y-1 transition-all duration-300">
+              <FadeIn key={pt.num} delay={idx * 0.075} direction="up" distance={16}>
+                <div className="group card-titan-dark p-7 rounded-2xl flex flex-col justify-between h-full bg-[#0B1F4B]/50 border border-white/10 hover:border-[#00D1FF]/50 hover:-translate-y-1 transition-all duration-220">
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <span className="font-mono text-xs font-bold text-[#00D1FF]">
@@ -103,7 +103,7 @@ export const WhyTitanSection: React.FC = () => {
           })}
 
           {/* 6th Card: Direct Founder Scoping Callout */}
-          <FadeIn delay={0.4} direction="up" distance={20}>
+          <FadeIn delay={5 * 0.075} direction="up" distance={16}>
             <div className="card-titan-dark p-7 rounded-2xl flex flex-col justify-between h-full bg-gradient-to-br from-[#0B1F4B] to-[#04142E] border border-[#00D1FF]/30">
               <div>
                 <span className="font-mono text-xs font-bold text-emerald-400 block mb-4">

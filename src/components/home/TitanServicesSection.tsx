@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { FadeIn } from '../motion/MotionComponents';
 import { useLanguage } from '../../context/LanguageContext';
+import { ServiceVisualDemo } from './ServiceVisualDemo';
 
 export const TitanServicesSection: React.FC = () => {
   const { language, isRtl, t } = useLanguage();
@@ -127,13 +128,13 @@ export const TitanServicesSection: React.FC = () => {
           {/* Row 1: 3 Cards (AI Websites, SEO, AI Agents [Popular]) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {row1Services.map((service, idx) => (
-              <FadeIn key={service.id} delay={idx * 0.08} direction="up" distance={20}>
+              <FadeIn key={service.id} delay={idx * 0.075} direction="up" distance={16}>
                 <div
                   id={`service-card-${service.id}`}
-                  className={`group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(2,132,199,0.18)] hover:border-sky-300 text-start ${
+                  className={`group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full transition-all duration-220 hover:-translate-y-1.5 hover:shadow-[0_12px_28px_-4px_rgba(2,132,199,0.14)] hover:border-sky-300 text-start ${
                     service.isPopular
-                      ? 'border-2 border-sky-300/90 shadow-[0_8px_30px_rgba(2,132,199,0.08)] ring-1 ring-sky-100 bg-gradient-to-b from-white via-white to-sky-50/25'
-                      : 'border border-slate-200/80 shadow-sm'
+                      ? 'border-2 border-sky-300/90 shadow-[0_4px_20px_rgba(2,132,199,0.06)] ring-1 ring-sky-100 bg-gradient-to-b from-white via-white to-sky-50/25'
+                      : 'border border-slate-200/80 shadow-xs'
                   }`}
                 >
                   {/* Popular Badge for AI Agents */}
@@ -148,7 +149,7 @@ export const TitanServicesSection: React.FC = () => {
 
                   <div>
                     {/* Minimal Icon Container */}
-                    <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6 group-hover:scale-105 group-hover:bg-sky-100/80 group-hover:border-sky-300 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6 group-hover:scale-105 group-hover:bg-sky-100/80 group-hover:border-sky-300 transition-all duration-220">
                       {service.icon}
                     </div>
 
@@ -158,9 +159,12 @@ export const TitanServicesSection: React.FC = () => {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 font-normal">
                       {service.description}
                     </p>
+
+                    {/* Animated Service Demonstration Graphic */}
+                    <ServiceVisualDemo serviceId={service.id} />
 
                     {/* Feature Tags */}
                     <div className="flex flex-wrap gap-1.5 pt-1 mb-6">
@@ -194,14 +198,14 @@ export const TitanServicesSection: React.FC = () => {
           {/* Row 2: 2 Slightly Wider Centered Cards (AI Call Agents, AI Video) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl lg:max-w-5xl mx-auto">
             {row2Services.map((service, idx) => (
-              <FadeIn key={service.id} delay={(idx + 3) * 0.08} direction="up" distance={20}>
+              <FadeIn key={service.id} delay={(idx + 3) * 0.075} direction="up" distance={16}>
                 <div
                   id={`service-card-${service.id}`}
-                  className="group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full border border-slate-200/80 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-12px_rgba(2,132,199,0.18)] hover:border-sky-300 text-start"
+                  className="group relative bg-white rounded-2xl p-7 sm:p-8 flex flex-col justify-between h-full border border-slate-200/80 shadow-xs transition-all duration-220 hover:-translate-y-1.5 hover:shadow-[0_12px_28px_-4px_rgba(2,132,199,0.14)] hover:border-sky-300 text-start"
                 >
                   <div>
                     {/* Minimal Icon Container */}
-                    <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6 group-hover:scale-105 group-hover:bg-sky-100/80 group-hover:border-sky-300 transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center mb-6 group-hover:scale-105 group-hover:bg-sky-100/80 group-hover:border-sky-300 transition-all duration-220">
                       {service.icon}
                     </div>
 
@@ -211,9 +215,12 @@ export const TitanServicesSection: React.FC = () => {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                    <p className="text-sm text-slate-600 leading-relaxed mb-4 font-normal">
                       {service.description}
                     </p>
+
+                    {/* Animated Service Demonstration Graphic */}
+                    <ServiceVisualDemo serviceId={service.id} />
 
                     {/* Feature Tags */}
                     <div className="flex flex-wrap gap-1.5 pt-1 mb-6">

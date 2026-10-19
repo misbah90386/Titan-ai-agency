@@ -123,8 +123,8 @@ export const MissionVisionPage: React.FC = () => {
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {missionTenets.map((tenet, idx) => (
-                <FadeIn key={idx} delay={idx * 0.07} direction="up" distance={20}>
-                  <div className="card-titan-light p-5 space-y-2 h-full hover:border-[#00D1FF]/60 hover:-translate-y-1 transition-all duration-300">
+                <FadeIn key={idx} delay={idx * 0.07} direction="up" distance={16}>
+                  <div className="card-titan-light p-5 space-y-2 h-full hover:border-[#00D1FF]/60 hover:-translate-y-1 transition-all duration-220">
                     <div className="flex items-center gap-2 text-[#00D1FF] font-mono text-xs font-bold">
                       <CheckCircle2 className="w-4 h-4 text-[#00D1FF]" />
                       <span className="text-[#0B1F4B]">TENET 0{idx + 1}</span>

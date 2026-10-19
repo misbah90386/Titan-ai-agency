@@ -66,15 +66,15 @@ export const HowTitanWorksSection: React.FC = () => {
             {steps.map((st, idx) => {
               const IconComp = st.icon;
               return (
-                <FadeIn key={st.num} delay={idx * 0.1} direction="up" distance={20}>
-                  <div className="group card-titan-light p-6 rounded-2xl flex flex-col justify-between h-full hover:-translate-y-2 hover:border-[#00D1FF]/60 hover:shadow-[0_12px_32px_rgba(0,209,255,0.15)] transition-all duration-300">
+                <FadeIn key={st.num} delay={idx * 0.075} direction="up" distance={16}>
+                  <div className="group card-titan-light p-6 rounded-2xl flex flex-col justify-between h-full hover:-translate-y-1.5 hover:border-[#00D1FF]/60 hover:shadow-[0_12px_28px_rgba(0,209,255,0.14)] transition-all duration-220">
                     <div>
                       {/* Top Node */}
                       <div className="flex items-center justify-between mb-4">
                         <span className="font-mono text-sm font-bold text-[#00D1FF]">
                           {st.num} —
                         </span>
-                        <div className="w-12 h-12 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#0B1F4B] group-hover:border-[#00D1FF] group-hover:shadow-[0_0_12px_rgba(0,209,255,0.3)] transition-all">
+                        <div className="w-12 h-12 rounded-xl bg-[#EAF7FF] border border-[#3BA9FF]/30 flex items-center justify-center text-[#0B1F4B] group-hover:border-[#00D1FF] group-hover:shadow-[0_0_12px_rgba(0,209,255,0.3)] transition-all duration-220">
                           <IconComp className="w-5 h-5 text-[#00D1FF]" />
                         </div>
                       </div>
@@ -90,7 +90,7 @@ export const HowTitanWorksSection: React.FC = () => {
 
                     <div className="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-[#8FA0BA]">
                       <span>{st.badge}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF] group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-3.5 h-3.5 text-[#00D1FF] group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
                   </div>
                 </FadeIn>
@@ -106,7 +106,7 @@ export const HowTitanWorksSection: React.FC = () => {
           {steps.map((st, idx) => {
             const IconComp = st.icon;
             return (
-              <FadeIn key={st.num} delay={idx * 0.08} direction="up" distance={15}>
+              <FadeIn key={st.num} delay={idx * 0.06} direction="up" distance={14}>
                 <div className="relative pl-14">
                   <div className="absolute left-3.5 top-5 -translate-x-1/2 w-7 h-7 rounded-full bg-white border-2 border-[#00D1FF] flex items-center justify-center shadow-md">
                     <span className="w-2 h-2 rounded-full bg-[#00D1FF]" />

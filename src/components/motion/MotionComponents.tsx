@@ -48,10 +48,10 @@ export function useIsDesktop(): boolean {
 
 interface FadeInProps {
   children: React.ReactNode;
-  delay?: number; // In seconds, e.g. 0.1, 0.25
+  delay?: number; // In seconds, e.g. 0.08, 0.16
   direction?: 'up' | 'down' | 'left' | 'right' | 'none';
-  distance?: number; // In pixels
-  duration?: number; // In seconds
+  distance?: number; // In pixels (refined to subtle 12-20px)
+  duration?: number; // In seconds (kept around 0.4-0.5s)
   className?: string;
   threshold?: number;
 }
@@ -59,30 +59,39 @@ interface FadeInProps {
 /**
  * Scroll Reveal Component using IntersectionObserver
  * Clean, lightweight, 60fps CSS transitions, respects prefers-reduced-motion
+ * Runs entrance animations strictly once with subtle 12-20px upward movement.
+ * Fails safely by ensuring content is visible if IntersectionObserver is unavailable.
  */
 export const FadeIn: React.FC<FadeInProps> = ({
   children,
   delay = 0,
   direction = 'up',
-  distance = 35,
-  duration = 0.7,
+  distance = 16,
+  duration = 0.48,
   className = '',
-  threshold = 0.1,
+  threshold = 0.05,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (reducedMotion) {
+    // If reduced motion is requested or IntersectionObserver is not supported, reveal immediately
+    if (reducedMotion || typeof IntersectionObserver === 'undefined') {
       setIsVisible(true);
       return;
     }
+
+    // Safety fallback: if for any reason intersection never triggers within 2.5s, force visible
+    const safetyTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 2500);
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          clearTimeout(safetyTimer);
           if (elementRef.current) {
             observer.unobserve(elementRef.current);
           }
@@ -90,7 +99,7 @@ export const FadeIn: React.FC<FadeInProps> = ({
       },
       {
         threshold,
-        rootMargin: '0px 0px -40px 0px',
+        rootMargin: '0px 0px -20px 0px',
       }
     );
 
@@ -100,6 +109,7 @@ export const FadeIn: React.FC<FadeInProps> = ({
     }
 
     return () => {
+      clearTimeout(safetyTimer);
       if (currentEl) {
         observer.unobserve(currentEl);
       }
@@ -110,18 +120,20 @@ export const FadeIn: React.FC<FadeInProps> = ({
     return <div className={className}>{children}</div>;
   }
 
-  // Calculate transform offset
+  // Calculate subtle transform offset strictly clamped to 12-20px per motion design requirements
+  const clampedDistance = Math.min(Math.max(distance, 12), 20);
+
   let initialTransform = 'none';
-  if (direction === 'up') initialTransform = `translateY(${distance}px)`;
-  if (direction === 'down') initialTransform = `translateY(-${distance}px)`;
-  if (direction === 'left') initialTransform = `translateX(${distance}px)`;
-  if (direction === 'right') initialTransform = `translateX(-${distance}px)`;
+  if (direction === 'up') initialTransform = `translateY(${clampedDistance}px)`;
+  if (direction === 'down') initialTransform = `translateY(-${clampedDistance}px)`;
+  if (direction === 'left') initialTransform = `translateX(${clampedDistance}px)`;
+  if (direction === 'right') initialTransform = `translateX(-${clampedDistance}px)`;
 
   const style: React.CSSProperties = {
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translateY(0) translateX(0)' : initialTransform,
-    transition: `opacity ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s, transform ${duration}s cubic-bezier(0.22, 1, 0.36, 1) ${delay}s`,
-    willChange: 'opacity, transform',
+    transform: isVisible ? 'translate3d(0, 0, 0)' : initialTransform,
+    transition: `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s, transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s`,
+    willChange: isVisible ? 'auto' : 'opacity, transform',
   };
 
   return (
@@ -384,48 +396,10 @@ export const InitialPageLoader: React.FC = () => {
 };
 
 /**
- * Desktop-only subtle ambient cursor glow follower
+ * DesktopCursorGlow disabled to strictly adhere to 'Do not add custom cursors'
  */
 export const DesktopCursorGlow: React.FC = () => {
-  const isDesktop = useIsDesktop();
-  const reducedMotion = usePrefersReducedMotion();
-  const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    if (!isDesktop || reducedMotion) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      if (!visible) setVisible(true);
-    };
-
-    const handleMouseLeave = () => {
-      setVisible(false);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, [isDesktop, reducedMotion, visible]);
-
-  if (!isDesktop || reducedMotion || !visible) return null;
-
-  return (
-    <div
-      style={{
-        left: `${pos.x}px`,
-        top: `${pos.y}px`,
-        transform: 'translate(-50%, -50%)',
-        transition: 'opacity 0.25s ease-out',
-      }}
-      className="fixed pointer-events-none z-40 w-72 h-72 rounded-full bg-[#00D1FF]/[0.055] blur-[80px]"
-    />
-  );
+  return null;
 };
 
 /**

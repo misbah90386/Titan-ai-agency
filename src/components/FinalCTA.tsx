@@ -18,7 +18,7 @@ export const FinalCTA: React.FC = () => {
       <div className="absolute top-1/3 right-10 w-[600px] h-[340px] bg-gradient-to-r from-[#3BA9FF]/15 via-[#00D1FF]/15 to-[#3BA9FF]/15 rounded-full blur-[130px] pointer-events-none animate-ambient-2" />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn direction="up" distance={30} duration={0.7}>
+        <FadeIn direction="up" distance={16} duration={0.48}>
           <div className="relative rounded-3xl bg-gradient-to-b from-[#0B1F4B]/90 to-[#04142E]/95 border border-[#00D1FF]/30 p-8 sm:p-14 text-center shadow-[0_20px_60px_rgba(4,20,46,0.85)] backdrop-blur-xl hover:border-[#00D1FF]/50 transition-colors duration-300">
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00D1FF]/10 border border-[#00D1FF]/30 text-xs font-mono text-[#00D1FF] mb-6 uppercase tracking-wider shadow-[0_0_12px_rgba(0,209,255,0.15)]">
