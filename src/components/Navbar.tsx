@@ -13,9 +13,9 @@ export const Navbar: React.FC = () => {
   const navItems = [
     { name: t.nav.home, path: '/' },
     { name: t.nav.services, path: '/services' },
+    { name: t.nav.pricing, path: '/pricing' },
+    { name: t.nav.portfolio, path: '/portfolio' },
     { name: t.nav.about, path: '/about' },
-    { name: t.nav.missionVision, path: '/mission-vision' },
-    { name: t.nav.blog, path: '/blog' },
     { name: t.nav.contact, path: '/contact' }
   ];
 
@@ -46,7 +46,7 @@ export const Navbar: React.FC = () => {
         <Link
           to="/"
           id="nav-brand-logo"
-          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform duration-300 hover:scale-[1.01]"
+          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform duration-300 hover:scale-[1.01] whitespace-nowrap"
         >
           <TitanLogo
             variant="dark"
@@ -132,7 +132,7 @@ export const Navbar: React.FC = () => {
             id="nav-get-started-btn"
             className="group btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold shadow-[0_4px_16px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.45)] hover:-translate-y-0.5 hover:brightness-105 transition-all duration-300"
           >
-            <span>{t.nav.startProject}</span>
+            <span>Get a Quote</span>
             <ArrowRight className={`w-4 h-4 stroke-[2.5] ${isRtl ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform duration-200`} />
           </Link>
         </div>

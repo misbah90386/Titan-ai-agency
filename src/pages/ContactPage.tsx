@@ -1,17 +1,25 @@
-import React, { useState } from 'react';
-import { ArrowRight, MessageCircle, CheckCircle2, ShieldCheck, FileCheck, Code2, Rocket, MessageSquare } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { ArrowRight, MessageCircle, CheckCircle2, ShieldCheck, FileCheck, Code2, Rocket, MessageSquare, Sparkles } from 'lucide-react';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { TitanIcon } from '../components/TitanLogo';
 import { FadeIn } from '../components/motion/MotionComponents';
+import { useLanguage } from '../context/LanguageContext';
 
 export const YOUR_WHATSAPP_NUMBER = '+966 53 418 2945';
 const WHATSAPP_API_NUMBER = YOUR_WHATSAPP_NUMBER.replace(/[^0-9]/g, '');
 
 export const ContactPage: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const { language, isRtl, t } = useLanguage();
+
   usePageSEO({
-    title: 'Start Your Project & Contact | TITAN AI Agency',
-    description:
-      'Start your project with TITAN AI Agency. Tell us what you want to improve—AI-powered websites, SEO, AI agents, AI call agents, or AI video creation.',
+    title: language === 'ar'
+      ? 'ابدأ مشروعك واطلب عرض سعر | وكالة تيتان للذكاء الاصطناعي'
+      : 'Start Your Project & Request a Quote | TITAN AI Agency',
+    description: language === 'ar'
+      ? 'ابدأ مشروعك مع وكالة تيتان. باقات مواقع تبدأ من 500 ريال، وحلول ذكاء اصطناعي وأتمتة وصيانة شهرية للشركات في السعودية.'
+      : 'Start your project with TITAN AI Agency. Professional websites from SAR 500, custom AI agents, call agents, and monthly maintenance for Saudi businesses.',
     canonicalPath: '/contact',
     structuredData: {
       '@context': 'https://schema.org',
@@ -19,7 +27,7 @@ export const ContactPage: React.FC = () => {
       name: 'Contact TITAN AI Agency',
       url: 'https://titan-ai-agency.vercel.app/contact',
       description:
-        'Start your project with TITAN AI Agency. Tell us what you want to improve—AI-powered websites, SEO, AI agents, AI call agents, or AI video creation.',
+        'Start your project with TITAN AI Agency. Tell us what you want to improve—websites, SEO, AI agents, call agents, or video creation.',
       mainEntity: {
         '@type': 'Organization',
         name: 'TITAN AI Agency',
@@ -43,52 +51,100 @@ export const ContactPage: React.FC = () => {
     phone: '',
     businessType: '',
     websiteUrl: '',
-    neededService: 'AI-Powered Website',
+    selectedPackage: '',
+    neededService: 'Website Development',
     mainChallenge: '',
-    budget: '$1,000 - $3,000',
-    preferredContactMethod: 'WhatsApp'
+    budget: 'SAR 1,200 (Professional Website)',
+    preferredContactMethod: 'WhatsApp',
+    additionalNotes: ''
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // Prefill from URL query params
+  useEffect(() => {
+    const pkgParam = searchParams.get('package');
+    const srvParam = searchParams.get('service');
+
+    if (pkgParam) {
+      setFormData((prev) => ({
+        ...prev,
+        selectedPackage: pkgParam,
+        budget: pkgParam.includes('500') || pkgParam.toLowerCase().includes('starter')
+          ? 'SAR 500 (Starter Website)'
+          : pkgParam.includes('1200') || pkgParam.includes('1,200') || pkgParam.toLowerCase().includes('professional')
+          ? 'SAR 1,200 (Professional Website)'
+          : pkgParam.includes('2000') || pkgParam.includes('2,000') || pkgParam.toLowerCase().includes('advanced')
+          ? 'SAR 2,000+ (Advanced Business Website)'
+          : pkgParam.includes('100') || pkgParam.toLowerCase().includes('maintenance')
+          ? 'SAR 100 / Month (Website Maintenance)'
+          : 'Custom AI Solution Quote'
+      }));
+    }
+
+    if (srvParam) {
+      setFormData((prev) => ({
+        ...prev,
+        neededService: srvParam
+      }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.name.trim() || !formData.businessName.trim() || !formData.phone.trim() || !formData.mainChallenge.trim()) {
+      setErrorMessage(
+        language === 'ar'
+          ? 'يرجى تعبئة الحقول المطلوبة (الاسم، المنشأة، الهاتف، ومتطلبات المشروع).'
+          : 'Please complete all required fields (Name, Business Name, Phone/WhatsApp, Project Requirements).'
+      );
+      return;
+    }
+
     setSubmitted(true);
+    setErrorMessage('');
 
     const message = `*TITAN AI Project Inquiry*\n` +
-      `*Name:* ${formData.name}\n` +
-      `*Business:* ${formData.businessName} (${formData.businessType || 'N/A'})\n` +
-      `*Email:* ${formData.email}\n` +
+      `--------------------------------\n` +
+      `*Client Name:* ${formData.name}\n` +
+      `*Business Name:* ${formData.businessName} (${formData.businessType || 'N/A'})\n` +
+      `*Email:* ${formData.email || 'N/A'}\n` +
       `*Phone/WhatsApp:* ${formData.phone}\n` +
-      `*Website:* ${formData.websiteUrl || 'None'}\n` +
-      `*Needed Solution:* ${formData.neededService}\n` +
+      `*Selected Package:* ${formData.selectedPackage || 'Custom Scope'}\n` +
+      `*Service Required:* ${formData.neededService}\n` +
       `*Budget Range:* ${formData.budget}\n` +
-      `*Contact Channel:* WhatsApp\n` +
-      `*Challenge/Problem:* ${formData.mainChallenge}`;
+      `*Current Website:* ${formData.websiteUrl || 'None'}\n` +
+      `*Challenge / Requirements:* ${formData.mainChallenge}\n` +
+      (formData.additionalNotes ? `*Additional Notes:* ${formData.additionalNotes}\n` : '') +
+      `--------------------------------\n` +
+      `Please review this inquiry and provide a custom proposal.`;
 
     const targetUrl = `https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURIComponent(message)}`;
     
-    // Open WhatsApp after a brief delay or let user click directly
+    // Open WhatsApp after a brief delay
     setTimeout(() => {
       window.open(targetUrl, '_blank');
     }, 400);
   };
 
   const serviceOptions = [
-    'AI-Powered Website',
-    'SEO',
-    'AI Agent',
-    'AI Call Agent',
-    'AI Video',
-    'Not Sure'
+    'Website Development',
+    'SEO Optimization',
+    'AI Support Agents',
+    'AI Call Agents',
+    'AI Video Creation',
+    'Website Maintenance'
   ];
 
   const budgetRanges = [
-    'Under $1,000',
-    '$1,000 - $3,000',
-    '$3,000 - $7,000',
-    '$7,000+',
-    'Let’s Discuss'
+    'SAR 500 (Starter Website)',
+    'SAR 1,200 (Professional Website)',
+    'SAR 2,000+ (Advanced Business Website)',
+    'SAR 100 / Month (Website Maintenance)',
+    'Custom AI Solution Quote',
+    'To Be Discussed'
   ];
 
   const trustSteps = [
@@ -133,27 +189,53 @@ export const ContactPage: React.FC = () => {
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-[#071A33]">
-                  Project Request Generated!
+                  {language === 'ar' ? 'تم تجهيز تفاصيل طلبك بنجاح!' : 'Project Inquiry Formulated!'}
                 </h3>
                 <p className="text-sm text-[#536477] max-w-md mx-auto leading-relaxed">
-                  Your inquiry is ready. If WhatsApp didn’t open automatically, click the button below to send your project details directly to founder Saad Naeem.
+                  {language === 'ar'
+                    ? 'طلبك جاهز للإرسال. اضغط على الزر أدناه لإرسال تفاصيل مشروعك مباشرة إلى المؤسس سعد نعيم عبر واتساب لمراجعتها.'
+                    : 'Your inquiry details are ready. Click the button below to send directly to founder Saad Naeem on WhatsApp for fast review.'}
                 </p>
                 <div className="pt-2">
                   <a
                     href={`https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURIComponent(
-                      `Hello TITAN AI AGENCY, my name is ${formData.name} from ${formData.businessName}. I would like to discuss ${formData.neededService}.`
+                      `Hello TITAN AI AGENCY, my name is ${formData.name} from ${formData.businessName}. Selected package: ${formData.selectedPackage || formData.neededService}.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-titan-primary inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold uppercase tracking-wider"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Send on WhatsApp</span>
+                    <span>{language === 'ar' ? 'إرسال عبر واتساب الآن' : 'Send on WhatsApp Now'}</span>
                   </a>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-8">
+                {errorMessage && (
+                  <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-700 font-medium">
+                    {errorMessage}
+                  </div>
+                )}
+
+                {/* Selected Package Notice */}
+                {formData.selectedPackage && (
+                  <div className="p-4 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <Sparkles className="w-4 h-4 text-[#0284C7]" />
+                      <span className="text-xs font-mono font-bold text-[#071A33]">
+                        {language === 'ar' ? 'الباقة المحددة:' : 'Selected Package:'} <span className="text-[#0284C7]">{formData.selectedPackage}</span>
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, selectedPackage: '' })}
+                      className="text-[11px] font-mono text-slate-500 hover:text-slate-800 underline"
+                    >
+                      {language === 'ar' ? 'تغيير' : 'Change'}
+                    </button>
+                  </div>
+                )}
                 
                 {/* 1. Contact & Business Details */}
                 <div>

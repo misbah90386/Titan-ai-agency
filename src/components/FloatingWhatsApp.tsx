@@ -13,20 +13,27 @@ const WhatsAppOfficialIcon: React.FC<{ className?: string }> = ({ className = 'w
   </svg>
 );
 
+import { useLanguage } from '../context/LanguageContext';
+
 export const FloatingWhatsApp: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, isRtl, t } = useLanguage();
 
   const whatsappNumber = '+966 53 418 2945';
-  const whatsappLink = 'https://wa.me/966534182945?text=Hello%20TITAN%20AI%20AGENCY,%20I%20would%20like%20to%20inquire%20about%20your%20digital%20solutions.';
+  const whatsappMessage = language === 'ar'
+    ? 'مرحباً وكالة تيتان، أود الاستفسار حول خدماتكم وحلولكم الرقمية.'
+    : 'Hello TITAN AI AGENCY, I would like to inquire about your digital solutions.';
+
+  const whatsappLink = `https://wa.me/966534182945?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div
       id="floating-whatsapp-container"
-      className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40 flex flex-col items-end pointer-events-none"
+      className={`fixed bottom-4 ${isRtl ? 'left-4 sm:left-5 items-start' : 'right-4 sm:right-5 items-end'} sm:bottom-5 z-40 flex flex-col pointer-events-none`}
     >
       {/* Expanded Quick Message Bubble with TITAN Dark Theme & Official WhatsApp Green */}
       {isOpen && (
-        <div className="pointer-events-auto mb-3 w-[calc(100vw-2rem)] max-w-xs sm:w-80 max-h-[calc(100vh-12rem)] overflow-y-auto rounded-2xl bg-[#031127]/98 border border-[#00D1FF]/30 p-4 shadow-[0_12px_40px_rgba(2,8,20,0.85),0_0_20px_rgba(0,209,255,0.2)] animate-in fade-in slide-in-from-bottom-3 duration-200 backdrop-blur-md">
+        <div className="pointer-events-auto mb-3 w-[calc(100vw-2rem)] max-w-xs sm:w-80 max-h-[calc(100vh-12rem)] overflow-y-auto rounded-2xl bg-[#031127]/98 border border-[#00D1FF]/30 p-4 shadow-[0_12px_40px_rgba(2,8,20,0.85),0_0_20px_rgba(0,209,255,0.2)] animate-in fade-in slide-in-from-bottom-3 duration-200 backdrop-blur-md text-start">
           <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
             <div className="flex items-center gap-2.5">
               <div className="relative">
@@ -38,16 +45,16 @@ export const FloatingWhatsApp: React.FC = () => {
                 </div>
               </div>
               <div>
-                <div className="text-xs font-bold text-white tracking-wide">TITAN AI AGENCY</div>
+                <div className="text-xs font-bold text-white tracking-wide">{t.floatingWhatsapp.title}</div>
                 <div className="text-[10px] font-mono text-[#00D1FF] flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
-                  Official WhatsApp Direct
+                  {t.floatingWhatsapp.directStatus}
                 </div>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors"
+              className="p-1 rounded-md text-slate-400 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
               aria-label="Close WhatsApp prompt"
             >
               <X className="w-4 h-4" />
@@ -55,10 +62,10 @@ export const FloatingWhatsApp: React.FC = () => {
           </div>
 
           <div className="py-3 text-xs text-[#C2D4EC] leading-relaxed">
-            Have a project in mind? Connect directly with TITAN on WhatsApp to discuss your project and get a clear quote.
+            {t.floatingWhatsapp.desc}
             <div className="mt-2.5 font-mono text-emerald-300 font-semibold text-[11px] bg-[#25D366]/10 px-3 py-2 rounded-lg border border-[#25D366]/30 flex items-center justify-between">
-              <span>{whatsappNumber}</span>
-              <span className="text-[9px] text-[#00D1FF] uppercase font-bold tracking-wider">Fast Reply</span>
+              <span dir="ltr">{whatsappNumber}</span>
+              <span className="text-[9px] text-[#00D1FF] uppercase font-bold tracking-wider">{t.floatingWhatsapp.fastReply}</span>
             </div>
           </div>
 
@@ -70,7 +77,7 @@ export const FloatingWhatsApp: React.FC = () => {
             className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold shadow-[0_0_20px_rgba(37,211,102,0.4)] hover:shadow-[0_0_25px_rgba(37,211,102,0.6)] transition-all"
           >
             <WhatsAppOfficialIcon className="w-4 h-4 text-white" />
-            <span>Open Direct WhatsApp Chat</span>
+            <span>{t.floatingWhatsapp.openChat}</span>
           </a>
         </div>
       )}
@@ -78,11 +85,11 @@ export const FloatingWhatsApp: React.FC = () => {
       {/* Main Trigger Button - Sleek round button with hover tooltip to prevent any card overlap */}
       <div className="pointer-events-auto flex items-center gap-2 group relative">
         {!isOpen && (
-          <div className="hidden sm:block absolute right-full mr-3 px-3 py-1.5 rounded-full bg-[#031127]/95 border border-[#00D1FF]/40 text-xs text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.7)] backdrop-blur-md whitespace-nowrap opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-200 pointer-events-none">
+          <div className={`hidden sm:block absolute ${isRtl ? 'left-full ml-3' : 'right-full mr-3'} px-3 py-1.5 rounded-full bg-[#031127]/95 border border-[#00D1FF]/40 text-xs text-slate-200 shadow-[0_4px_20px_rgba(0,0,0,0.7)] backdrop-blur-md whitespace-nowrap opacity-0 group-hover:opacity-100 ${isRtl ? '-translate-x-2 group-hover:translate-x-0' : 'translate-x-2 group-hover:translate-x-0'} transition-all duration-200 pointer-events-none`}>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
               <span className="text-[11px] font-mono text-[#A5B9D4]">
-                Chat on WhatsApp: <span className="text-emerald-300 font-semibold">{whatsappNumber}</span>
+                {t.floatingWhatsapp.tooltip}: <span className="text-emerald-300 font-semibold" dir="ltr">{whatsappNumber}</span>
               </span>
             </div>
           </div>
@@ -92,7 +99,7 @@ export const FloatingWhatsApp: React.FC = () => {
           onClick={() => setIsOpen(!isOpen)}
           id="floating-whatsapp-trigger-btn"
           aria-expanded={isOpen}
-          aria-label="Contact TITAN on WhatsApp"
+          aria-label={t.floatingWhatsapp.ariaLabel}
           className="w-12 h-12 sm:w-13 sm:h-13 p-1.5 rounded-full bg-[#031127] border-2 border-[#00D1FF]/40 hover:border-[#00D1FF] text-white shadow-[0_4px_20px_rgba(2,8,20,0.8),0_0_20px_rgba(0,209,255,0.3)] hover:shadow-[0_6px_25px_rgba(2,8,20,0.9),0_0_28px_rgba(0,209,255,0.55)] hover:scale-105 transition-all duration-200 flex items-center justify-center relative cursor-pointer"
         >
           {/* Inner Official WhatsApp Green Circle */}

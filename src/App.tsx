@@ -8,6 +8,7 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
+import { PricingPage } from './pages/PricingPage';
 import { WebsiteDesignPage } from './pages/services/WebsiteDesignPage';
 import { SEOOptimizationPage } from './pages/services/SEOOptimizationPage';
 import { AIAgentsPage } from './pages/services/AIAgentsPage';
@@ -18,6 +19,8 @@ import { AIVideoCreationPage } from './pages/services/AIVideoCreationPage';
 import { AboutPage } from './pages/AboutPage';
 import { MissionVisionPage } from './pages/MissionVisionPage';
 import { ContactPage } from './pages/ContactPage';
+import { PortfolioPage } from './pages/PortfolioPage';
+import { AiDemoPage } from './pages/AiDemoPage';
 import { BlogPage } from './pages/BlogPage';
 import { BlogArticlePage } from './pages/BlogArticlePage';
 import { PageTransition, InitialPageLoader, DesktopCursorGlow } from './components/motion/MotionComponents';
@@ -36,6 +39,7 @@ export default function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/services" element={<ServicesPage />} />
+                <Route path="/pricing" element={<PricingPage />} />
                 <Route path="/services/website-design" element={<WebsiteDesignPage />} />
                 <Route path="/services/websites" element={<Navigate to="/services/website-design" replace />} />
                 <Route path="/services/ai-websites" element={<Navigate to="/services/website-design" replace />} />
@@ -55,6 +59,8 @@ export default function App() {
                 <Route path="/blog/:slug" element={<BlogArticlePage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 {/* Fallback to Home */}
+                <Route path="/portfolio" element={<PortfolioPage />} />
+                <Route path="/ai-demo" element={<Navigate to="/services" replace />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </PageTransition>

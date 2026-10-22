@@ -6,12 +6,108 @@ export interface Translations {
     services: string;
     about: string;
     missionVision: string;
+    portfolio: string;
+    aiDemo: string;
     blog: string;
     contact: string;
     startProject: string;
     whatsapp: string;
     switchLang: string;
     currentLangName: string;
+    pricing: string;
+  };
+  pricing: {
+    badge: string;
+    heading: string;
+    subtitle: string;
+    currency: string;
+    startingFrom: string;
+    recommendedBadge: string;
+    termsTitle: string;
+    terms: string[];
+    websitePackages: {
+      starter: {
+        id: string;
+        name: string;
+        price: string;
+        priceNumeric: number;
+        desc: string;
+        cta: string;
+        features: string[];
+      };
+      professional: {
+        id: string;
+        name: string;
+        price: string;
+        priceNumeric: number;
+        desc: string;
+        cta: string;
+        isRecommended: boolean;
+        features: string[];
+      };
+      advanced: {
+        id: string;
+        name: string;
+        price: string;
+        priceNumeric: number;
+        desc: string;
+        cta: string;
+        features: string[];
+      };
+    };
+    aiSolutions: {
+      badge: string;
+      heading: string;
+      subtitle: string;
+      notice: string;
+      customQuote: string;
+      cards: {
+        id: string;
+        title: string;
+        desc: string;
+        pricing: string;
+        status: string;
+        isWorkingService?: boolean;
+      }[];
+    };
+    maintenance: {
+      badge: string;
+      heading: string;
+      subtitle: string;
+      planTitle: string;
+      price: string;
+      period: string;
+      desc: string;
+      cta: string;
+      notice: string;
+      features: string[];
+    };
+    quoteModal: {
+      title: string;
+      subtitle: string;
+      selectedPackageLabel: string;
+      nameLabel: string;
+      businessLabel: string;
+      phoneLabel: string;
+      serviceLabel: string;
+      requirementsLabel: string;
+      messageLabel: string;
+      submitBtn: string;
+      whatsappBtn: string;
+      successTitle: string;
+      successMessage: string;
+      openWhatsappNow: string;
+      closeBtn: string;
+    };
+    trustApproach: {
+      badge: string;
+      heading: string;
+      subtitle: string;
+      principles: {
+        title: string;
+        desc: string;
+      }[];
+    };
   };
   hero: {
     badge: string;
@@ -158,6 +254,8 @@ export interface Translations {
       headline: string;
       desc: string;
       items: string[];
+      isFeatured?: boolean;
+      highlightBadge?: string;
     }[];
   };
   whyTitan: {
@@ -263,6 +361,69 @@ export interface Translations {
     openChat: string;
     ariaLabel: string;
   };
+  simplifiedServices: {
+    badge: string;
+    heading: string;
+    subtitle: string;
+    learnMore: string;
+    viewAllServices: string;
+    categories: {
+      websites: {
+        title: string;
+        desc: string;
+        items: string[];
+        route: string;
+      };
+      ai: {
+        title: string;
+        desc: string;
+        items: string[];
+        route: string;
+      };
+      marketing: {
+        title: string;
+        desc: string;
+        items: string[];
+        route: string;
+      };
+    };
+  };
+  simplifiedPricing: {
+    viewAllFeatures: string;
+    hideFeatures: string;
+    topFeaturesNotice: string;
+    aiCardTitle: string;
+    aiCardSubtitle: string;
+    aiCardPrice: string;
+    aiCardBadge: string;
+    aiCardFeatures: string[];
+    aiCardCta: string;
+    maintenanceCardTitle: string;
+    maintenanceCardSubtitle: string;
+    maintenanceCardPrice: string;
+    maintenanceCardFeatures: string[];
+    maintenanceCardCta: string;
+  };
+  homepageContact: {
+    badge: string;
+    heading: string;
+    subtitle: string;
+    cardTitle: string;
+    cardSubtitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    phoneLabel: string;
+    phonePlaceholder: string;
+    serviceLabel: string;
+    servicePlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    submitBtn: string;
+    whatsappDirect: string;
+    whatsappDirectDesc: string;
+    chatWhatsappBtn: string;
+    trustNote: string;
+  };
 }
 
 export const TRANSLATIONS: Record<Language, Translations> = {
@@ -270,8 +431,11 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     nav: {
       home: 'Home',
       services: 'Services',
+      pricing: 'Pricing',
       about: 'About',
       missionVision: 'Mission & Vision',
+      portfolio: 'Our Work',
+      aiDemo: 'AI Demo',
       blog: 'Blog',
       contact: 'Contact',
       startProject: 'Start Your Project',
@@ -279,19 +443,222 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       switchLang: 'العربية',
       currentLangName: 'EN'
     },
+    pricing: {
+      badge: 'Transparent Pricing & Packages',
+      heading: 'Professional Packages for Saudi Businesses',
+      subtitle: 'Clear starting estimates, tailored scopes, and dependable engineering. We build professional websites, AI solutions, and maintenance care without hidden fees.',
+      currency: 'SAR',
+      startingFrom: 'Starting From',
+      recommendedBadge: "Titan's Recommended Option",
+      termsTitle: 'Important Pricing & Scoping Terms',
+      terms: [
+        'All prices are in Saudi Riyals (SAR).',
+        'Prices are starting estimates, not guaranteed final quotations.',
+        'The final price depends on project scope and requirements.',
+        'Domain registration and paid hosting are quoted separately.',
+        'Third-party subscriptions and AI API costs are not automatically included.',
+        'Custom integrations may require additional charges based on technical complexity.',
+        'Revision rounds are structured per package scope (no unlimited revisions).',
+        'Existing client agreements and ongoing contracts remain unchanged.'
+      ],
+      websitePackages: {
+        starter: {
+          id: 'starter-website',
+          name: 'Starter Website',
+          price: 'SAR 500',
+          priceNumeric: 500,
+          desc: 'Designed for small businesses that need a professional online presence.',
+          cta: 'Get Started',
+          features: [
+            'Professional business website',
+            'Responsive mobile-friendly design',
+            'Up to 3 pages or equivalent sections',
+            'WhatsApp contact button',
+            'Basic SEO setup',
+            'Business information and services',
+            'Google Maps integration if required',
+            'Social media links',
+            'Deployment assistance',
+            'One round of revisions'
+          ]
+        },
+        professional: {
+          id: 'professional-website',
+          name: 'Professional Website',
+          price: 'SAR 1,200',
+          priceNumeric: 1200,
+          desc: 'Designed for growing businesses that need more advanced website features.',
+          cta: 'Choose Professional',
+          isRecommended: true,
+          features: [
+            'Everything in Starter',
+            'Up to 7 pages',
+            'Custom website design',
+            'Arabic and English support where scoped',
+            'Advanced contact forms',
+            'Search engine optimization setup',
+            'Business portfolio or product listings',
+            'Enhanced mobile experience',
+            'Performance optimization',
+            'Up to 2 rounds of revisions'
+          ]
+        },
+        advanced: {
+          id: 'advanced-business-website',
+          name: 'Advanced Business Website',
+          price: 'SAR 2,000',
+          priceNumeric: 2000,
+          desc: 'Designed for companies that need dynamic features and more sophisticated websites.',
+          cta: 'Request Custom Proposal',
+          features: [
+            'Everything in Professional',
+            'Custom business functionality',
+            'Dynamic listings',
+            'Search and filtering systems',
+            'Admin dashboard where scoped',
+            'Content management capabilities',
+            'Customer inquiry management',
+            'Advanced integrations subject to quotation',
+            'Enhanced technical SEO',
+            'Testing and deployment',
+            'Project-specific revisions'
+          ]
+        }
+      },
+      aiSolutions: {
+        badge: 'AI Solutions & Automation',
+        heading: 'Tailored AI & Voice Systems for Business',
+        subtitle: 'Practical conversational assistants, telephone automation, and promotional video generation designed for Saudi enterprises.',
+        notice: 'Engineering Transparency: Titan AI Agency clearly distinguishes existing working solutions from demos and services still under custom development. We never present untested AI systems as production-ready.',
+        customQuote: 'Custom Quote',
+        cards: [
+          {
+            id: 'ai-customer-support-agents',
+            title: 'AI Customer Support Agents',
+            desc: 'AI assistants designed to help businesses answer routine inquiries, collect customer information, and improve response workflows.',
+            pricing: 'Custom Quote',
+            status: 'Available for Custom Scoping',
+            isWorkingService: true
+          },
+          {
+            id: 'ai-call-agents',
+            title: 'AI Call Agents',
+            desc: 'Voice-based AI systems designed for handling routine business phone inquiries and supporting customer service operations.',
+            pricing: 'Custom Quote',
+            status: 'Prototype & Demo Tested',
+            isWorkingService: false
+          },
+          {
+            id: 'ai-business-automation',
+            title: 'AI Business Automation',
+            desc: 'Automation solutions for repetitive business tasks, customer inquiries, lead management, and connected workflows.',
+            pricing: 'Custom Quote',
+            status: 'Available for Custom Scoping',
+            isWorkingService: true
+          },
+          {
+            id: 'ai-video-creation',
+            title: 'AI Video Creation',
+            desc: 'AI-generated promotional videos, marketing content, and social media advertisements.',
+            pricing: 'Custom Quote',
+            status: 'Production Ready Workflow',
+            isWorkingService: true
+          },
+          {
+            id: 'seo-optimization-service',
+            title: 'Search Engine Optimization',
+            desc: 'SEO services focused on technical improvements, website performance, metadata, indexing support, and search visibility.',
+            pricing: 'Custom Quote',
+            status: 'Active Production Service',
+            isWorkingService: true
+          }
+        ]
+      },
+      maintenance: {
+        badge: 'Website Maintenance & Care',
+        heading: 'Optional Care Plans to Protect Your Investment',
+        subtitle: 'Keep your digital platform secure, updated, and operating smoothly with routine care.',
+        planTitle: 'Website Care Plan',
+        price: 'SAR 100',
+        period: '/ Month',
+        desc: 'Potential included services, subject to the agreed contract:',
+        cta: 'Request Maintenance',
+        notice: 'Maintenance services are optional. The exact support scope, update limits, response times, and any external expenses will be confirmed before subscription.',
+        features: [
+          'Small website content updates',
+          'Text and image replacements',
+          'Routine website functionality checks',
+          'Basic technical support',
+          'Minor bug fixes within the agreed scope',
+          'Assistance with existing website configuration'
+        ]
+      },
+      quoteModal: {
+        title: 'Request a Quote / Project Proposal',
+        subtitle: 'Tell us what you want to build. We provide a transparent scope and fixed quote directly from founder Saad Naeem.',
+        selectedPackageLabel: 'Selected Package / Service',
+        nameLabel: 'Your Name *',
+        businessLabel: 'Business Name *',
+        phoneLabel: 'Phone / WhatsApp *',
+        serviceLabel: 'Service Required *',
+        requirementsLabel: 'Project Requirements & Challenge *',
+        messageLabel: 'Additional Details (Optional)',
+        submitBtn: 'Send Project Inquiry',
+        whatsappBtn: 'Chat Directly on WhatsApp',
+        successTitle: 'Inquiry Prepared Successfully!',
+        successMessage: 'Your inquiry details are ready. Click below to send directly to founder Saad Naeem on WhatsApp for fast scoping.',
+        openWhatsappNow: 'Open WhatsApp Chat',
+        closeBtn: 'Close'
+      },
+      trustApproach: {
+        badge: 'Titan Engineering Standards',
+        heading: "Titan's Disciplined Engineering Approach",
+        subtitle: 'We build dependable digital systems that deliver real operational value for businesses in Saudi Arabia.',
+        principles: [
+          {
+            title: 'Clearly Defined Project Scope',
+            desc: 'We define every feature, timeline, and deliverable in writing before starting development so expectations are 100% aligned.'
+          },
+          {
+            title: 'Custom Development',
+            desc: 'Clean code built specifically for your business constraints without rigid bloat or cookie-cutter templates.'
+          },
+          {
+            title: 'Responsive Website Design',
+            desc: 'Pixel-perfect, mobile-optimized user experience that loads fast across smartphones, tablets, and desktops.'
+          },
+          {
+            title: 'Transparent Pricing Process',
+            desc: 'Itemized starting quotes and clear milestone schedules. Zero hidden charges or surprise retainers.'
+          },
+          {
+            title: 'Testing Before Delivery',
+            desc: 'Rigorous cross-browser and cross-device testing, link verification, and performance audits prior to launch.'
+          },
+          {
+            title: 'Optional Ongoing Support',
+            desc: '30 days of complimentary post-launch support included, plus optional flexible monthly care plans.'
+          },
+          {
+            title: 'Practical Business-Focused Solutions',
+            desc: 'We choose technology to solve real business bottlenecks and generate qualified customer leads, never to chase hype.'
+          }
+        ]
+      }
+    },
     hero: {
-      badge: 'AI Solutions for Modern Businesses',
-      headlineLine1: 'Professional Websites.',
-      headlineLine2: 'Practical AI for Your Business.',
-      supportingText: 'We build websites, AI assistants, call agents, and automation to help you showcase your business, answer enquiries, and reduce repetitive work.',
-      primaryButton: 'Discuss Your Project',
-      secondaryButton: 'Explore Our Work',
+      badge: 'Websites & AI Solutions for Saudi Businesses',
+      headlineLine1: 'We Build Websites &',
+      headlineLine2: 'AI Solutions for Your Business',
+      supportingText: 'Professional websites, AI assistants, and digital solutions to help your business connect with more customers.',
+      primaryButton: 'Get a Free Quote',
+      secondaryButton: 'View Our Work',
       serviceLine: {
-        websites: 'Websites',
-        seo: 'SEO',
-        aiAgents: 'AI Agents',
+        websites: 'Website Development',
+        seo: 'SEO & Search Visibility',
+        aiAgents: 'AI Assistants',
         callAgents: 'AI Call Agents',
-        aiVideo: 'AI Video'
+        aiVideo: 'Promotional Video'
       }
     },
     dashboard: {
@@ -319,36 +686,36 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       step3: 'Direct Routing to Team WhatsApp'
     },
     servicesSection: {
-      label: 'OUR SERVICES',
-      heading: 'AI Solutions Built to Grow Your Business',
-      supportingText: 'From intelligent websites to AI-powered automation, Titan AI Agency builds modern digital solutions designed for real business growth.',
+      label: 'CORE SERVICES',
+      heading: 'Practical Websites & AI Solutions',
+      supportingText: 'Engineered specifically for businesses in Saudi Arabia to capture leads, handle routine inquiries, and automate workflows.',
       exploreDetails: 'Explore Service',
       popularBadge: 'Popular',
       cards: {
         websites: {
-          title: 'AI Websites',
-          desc: 'Fast, modern and intelligent websites designed to turn visitors into customers.',
-          tags: ['Responsive Design', 'AI Integration', 'Fast Performance']
+          title: 'AI Website Development',
+          desc: 'Professional bilingual-capable business websites, real estate platforms, online portfolios, booking systems, and customer inquiry forms.',
+          tags: ['Bilingual Arabic/English', 'Real Estate Platforms', 'Fast Performance']
         },
         seo: {
-          title: 'SEO',
-          desc: 'Improve your visibility on search engines and help more customers discover your business.',
-          tags: ['Search Optimization', 'Local SEO', 'Performance']
+          title: 'Search Engine Optimization',
+          desc: 'Technical SEO, metadata, mobile performance improvements, search engine visibility, and Google Search Console setup.',
+          tags: ['Technical SEO', 'Google Search Console', 'Mobile Speed']
         },
         agents: {
           title: 'AI Agents',
-          desc: 'Smart AI agents that can support customers, automate tasks and help manage business workflows.',
-          tags: ['Customer Support', 'Lead Handling', 'Automation']
+          desc: 'AI assistants that can answer routine customer questions, collect leads, and help automate business processes where implemented and tested.',
+          tags: ['Customer Inquiries', 'Lead Capture', 'Process Automation']
         },
         calls: {
           title: 'AI Call Agents',
-          desc: 'AI voice agents designed to answer calls, communicate with customers and handle common inquiries.',
-          tags: ['AI Voice', 'Call Handling', '24/7 Assistance']
+          desc: 'Voice automation solutions for handling routine business inquiries. Clearly structured for demonstration and custom business integration.',
+          tags: ['Voice Automation', 'Routine Inquiries', 'Demo / Development']
         },
         video: {
-          title: 'AI Video',
-          desc: 'Professional AI-generated video content for advertising, social media and business marketing.',
-          tags: ['Marketing Videos', 'Social Content', 'AI Production']
+          title: 'AI Video Creation',
+          desc: 'AI-generated promotional content, product advertisements, and marketing videos designed for social channels and business campaigns.',
+          tags: ['Promotional Content', 'Product Ads', 'Marketing Video']
         }
       }
     },
@@ -410,132 +777,137 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     },
     howItWorks: {
       badge: 'Clear 4-Step Process',
-      heading: 'FROM BUSINESS PROBLEM TO WORKING SOLUTION',
-      subtitle: 'A clear, step-by-step process designed to build practical solutions for your business without unnecessary complexity.',
+      heading: 'HOW TITAN WORKS',
+      subtitle: 'An elegant, straightforward four-step process designed to build practical solutions for your business without unnecessary complexity.',
       steps: [
         {
           num: '01',
-          title: 'DISCOVER',
-          desc: 'We learn about your business, customers, challenges and goals.',
-          badge: 'Discovery Sprint'
+          title: 'Tell Us About Your Business',
+          desc: 'We learn about your operations, your customers, and the specific goals or bottlenecks you want to resolve.',
+          badge: '01 · Discovery'
         },
         {
           num: '02',
-          title: 'PLAN',
-          desc: 'We identify the right AI, website, search or content solution.',
-          badge: 'Architecture'
+          title: 'Review Your Custom Proposal',
+          desc: 'We present a clear, transparent scope of work with milestone timelines, architecture plan, and fixed pricing.',
+          badge: '02 · Proposal & Scope'
         },
         {
           num: '03',
-          title: 'BUILD',
-          desc: 'TITAN designs, develops and integrates the solution.',
-          badge: 'Engineering'
+          title: 'Design and Development',
+          desc: 'We design and engineer your responsive website or AI solution with modern aesthetics and robust code.',
+          badge: '03 · Engineering'
         },
         {
           num: '04',
-          title: 'LAUNCH & SUPPORT',
-          desc: 'We test the system, launch it and provide support after delivery.',
-          badge: 'Go-Live & 30-Day Support'
+          title: 'Testing, Launch and Support',
+          desc: 'We thoroughly test across devices, launch to production, and provide 30 days of complimentary post-launch support.',
+          badge: '04 · Launch & 30-Day Support'
         }
       ]
     },
     useCases: {
-      badge: 'Industry Solutions',
-      heading: 'BUILT AROUND YOUR BUSINESS TYPE',
-      subtitle: 'Whether you run a service business, hospitality venue, clinic, or consultancy, TITAN tailors technology to your daily operating realities.',
+      badge: 'Industries We Serve',
+      heading: 'TAILORED SOLUTIONS FOR KEY SECTORS',
+      subtitle: 'We build digital solutions tailored to the daily operational realities of businesses in Saudi Arabia.',
       industries: [
         {
           id: 'real-estate',
-          name: 'Real Estate',
-          headline: 'Automated Property Marketing & High-Intent Lead Capture',
-          desc: 'Capture and qualify property buyers and tenants 24/7 without manual telephone bottlenecks.',
+          name: 'Real Estate Companies',
+          headline: 'High-Performance Property Showcases & Instant Inquiry Capture',
+          desc: 'Titan has proven website development experience creating property platforms that showcase developments and capture high-intent inquiries.',
+          isFeatured: true,
+          highlightBadge: 'Specialized Experience',
           items: [
-            'Property website with interactive listings and virtual previews',
-            'Property inquiry AI agent answering questions on price, location, and specs',
-            'Automated lead qualification capturing buyer budget and timeline',
-            'AI call handling for after-hours telephone inquiries',
-            'Property promotional videos for social media reels & web showcases',
-            'Local and technical SEO ensuring local property search discovery'
-          ]
-        },
-        {
-          id: 'salons',
-          name: 'Salons & Clinics',
-          headline: 'Effortless Appointment Scheduling & Routine Call Reduction',
-          desc: 'Allow clients to book treatments and verify operating times instantly while your staff focuses on service.',
-          items: [
-            'Professional branded website showcasing treatments and staff credentials',
-            'Real-time appointment booking synchronized with calendars',
-            'Customer AI assistant answering pricing, services, and policies',
-            'AI call agent taking incoming booking calls during busy salon hours',
-            'Local SEO and Google Maps optimization for nearby customer discovery',
-            'Social video content showcasing transformations and client testimonials'
+            'Interactive property showcase with unit filtering and floor plan views',
+            'Direct WhatsApp inquiry actions for immediate investor and buyer connection',
+            'Mobile-first responsive presentation for investors on smartphones',
+            'AI assistants capable of answering common unit, pricing, and location questions',
+            'Technical SEO ensuring property discoveries on Google and local searches',
+            'AI-generated property marketing video reels for social campaigns'
           ]
         },
         {
           id: 'restaurants',
-          name: 'Restaurants',
-          headline: 'Dynamic Menu Presentations & Automated Table Inquiries',
-          desc: 'Eliminate missed reservation calls during dinner rushes with responsive telephone and web assistants.',
+          name: 'Restaurants and Cafes',
+          headline: 'Fast Mobile Menus & Frictionless Customer Contact',
+          desc: 'Replace slow PDF menus with interactive, mobile-optimized culinary platforms and direct WhatsApp ordering.',
           items: [
-            'Modern culinary business website with mobile-first menu hierarchy',
-            'Interactive menu showcase with dietary indicators and pricing',
-            'Reservation system integration for instant table requests',
-            'AI customer assistant answering location, parking, and event questions',
-            'Call support agent picking up incoming telephone queries',
-            'Promotional videos spotlighting signature dishes across social platforms'
+            'Mobile-first culinary websites with clear menu hierarchy and dietary filters',
+            'Direct WhatsApp ordering and reservation inquiry routing',
+            'Instant Google Maps directions, branch hours, and local search visibility',
+            'AI assistant answering location, parking, and catering questions',
+            'Promotional AI video content highlighting signature dishes and promotions'
           ]
         },
         {
-          id: 'professional-services',
-          name: 'Professional Services',
-          headline: 'Authority-Building Lead Generation & Calendar Management',
-          desc: 'Position your firm as an industry authority and automatically qualify consultative prospects.',
+          id: 'car-rental',
+          name: 'Car Rental Businesses',
+          headline: 'Fleet Showcases & Fast WhatsApp Booking Inquiries',
+          desc: 'Display vehicle categories, rental conditions, and allow customers to request availability instantly.',
           items: [
-            'Executive corporate website reflecting high-trust brand credentials',
-            'Automated consultation request forms with qualifying screening',
-            'AI research assistant indexing practice areas and publications',
-            'Telephone answering voice agent handling business inquiries',
-            'Authoritative SEO targeting high-value commercial search terms',
-            'Corporate thought-leadership videos for LinkedIn and website'
+            'Digital fleet showcase organized by vehicle class, features, and rates',
+            'Instant booking inquiry submission connected directly to team WhatsApp',
+            'Clear FAQs covering license requirements, insurance options, and deposits',
+            'Local SEO optimization for airport and neighborhood car rental searches',
+            'Voice and chat automation for after-hours reservation availability queries'
+          ]
+        },
+        {
+          id: 'smes',
+          name: 'Small and Medium Enterprises',
+          headline: 'Trust-Building Digital Presence & Practical Automation',
+          desc: 'Establish strong credibility in the Saudi market, capture qualified leads, and reduce repetitive manual tasks.',
+          items: [
+            'Bilingual Arabic and English corporate website establishing brand trust',
+            'Qualified customer inquiry forms routing directly to management',
+            'Practical AI assistants answering routine inquiries 24/7',
+            'Workflow automations connecting forms, notifications, and client records',
+            'Search engine visibility setup with Google Search Console verification'
           ]
         }
       ]
     },
     whyTitan: {
-      badge: 'Core Principles',
-      heading: 'WHY WORK WITH TITAN AI AGENCY?',
-      subtitle: 'We build digital systems that deliver tangible operational value, designed for real businesses that value clarity and reliability.',
+      badge: 'Trust & Credibility',
+      heading: 'WHY CHOOSE TITAN AI AGENCY',
+      subtitle: 'We build dependable digital systems that deliver real operational value for businesses in Saudi Arabia.',
       points: [
         {
           num: '01',
-          title: 'BUSINESS-FIRST',
-          desc: 'We start with the problem, not the technology.',
-          detail: 'Technology without business purpose is wasted capital. We examine repetitive tasks that take up your time first and only build what delivers real value for your business.'
+          title: 'CUSTOM SOLUTIONS',
+          desc: 'Tailored around how your business actually operates.',
+          detail: 'We do not rely on rigid templates. Every website and AI workflow is custom-engineered around your specific workflows, services, and customer requirements.'
         },
         {
           num: '02',
-          title: 'CUSTOM SOLUTIONS',
-          desc: 'Every solution is designed around the needs of the business.',
-          detail: 'We do not force rigid cookie-cutter templates. Systems are built around your real team structure, customer queries, and operating requirements.'
+          title: 'RESPONSIVE WEBSITE DESIGN',
+          desc: 'Fast, mobile-first performance on every screen size.',
+          detail: 'Over 80% of local traffic comes from mobile devices. We engineer responsive, lightweight websites that load quickly and deliver smooth user experiences.'
         },
         {
           num: '03',
-          title: 'CONNECTED TECHNOLOGY',
-          desc: 'Websites, AI, search, voice and video can work together.',
-          detail: 'Instead of five disconnected vendors, TITAN unifies your digital presence into one cohesive lead-generation and operational pipeline.'
+          title: 'DIRECT COMMUNICATION',
+          desc: 'Work directly with the technical team.',
+          detail: 'No middle managers or agency bureaucracy. You communicate directly with the engineer developing your project for clear, responsive collaboration.'
         },
         {
           num: '04',
-          title: 'MODERN EXPERIENCE',
-          desc: 'Professional design and modern technology without unnecessary complexity.',
-          detail: 'Clean typography, fast performance, intuitive customer navigation, and zero bloated software that your team will abandon.'
+          title: 'TRANSPARENT PROJECT SCOPE',
+          desc: 'Clear deliverables, fixed pricing, and no surprise fees.',
+          detail: 'Before development begins, we provide an agreed scope with transparent pricing and milestone dates, so you always know what to expect.'
         },
         {
           num: '05',
-          title: 'SUPPORT AFTER LAUNCH',
-          desc: 'We help clients understand and manage what we build.',
-          detail: 'Every project includes 30 days of dedicated free support, comprehensive team walkthroughs, and 100% client code and IP ownership.'
+          title: 'OPTIONAL MAINTENANCE & SUPPORT',
+          desc: '30 days included with flexible ongoing care.',
+          detail: 'Every completed project includes 30 days of complimentary technical support. Optional monthly maintenance packages are available if you want ongoing updates.'
+        },
+        {
+          num: '06',
+          title: 'PRACTICAL AI INTEGRATION',
+          desc: 'Tested, business-ready AI where it actually adds value.',
+          detail: 'We focus on practical tools: customer assistants that answer real questions, automated lead routing, and tested voice prototypes that save your team time.'
         }
       ]
     },
@@ -547,29 +919,29 @@ export const TRANSLATIONS: Record<Language, Translations> = {
         {
           id: 'website',
           label: 'I NEED A BETTER WEBSITE',
-          serviceName: 'AI-Powered Websites',
-          explanation: 'We create modern, fast, conversion-focused websites that combine professional design with built-in AI chatbots, lead capture, and WhatsApp routing.',
+          serviceName: 'AI Website Development',
+          explanation: 'We create modern, fast, conversion-focused websites combining custom design with lead capture, bilingual support, and WhatsApp routing.',
           ctaText: 'BUILD MY WEBSITE'
         },
         {
           id: 'visibility',
           label: 'I NEED MORE VISIBILITY',
-          serviceName: 'SEO & AI Search Optimization',
-          explanation: 'Help high-value clients discover your business across traditional search engines (Google) and modern AI discovery engines (ChatGPT, Perplexity, Gemini).',
+          serviceName: 'Search Engine Optimization',
+          explanation: 'Help high-value clients discover your business across traditional search engines (Google) and local search listings.',
           ctaText: 'IMPROVE MY VISIBILITY'
         },
         {
           id: 'automate',
           label: 'I WANT TO AUTOMATE TASKS',
-          serviceName: 'Custom AI Agents',
-          explanation: 'We build specialized AI agents designed to handle customer interactions, retrieve internal company documents, and eliminate routine manual work.',
+          serviceName: 'AI Agents',
+          explanation: 'We build specialized AI agents designed to handle customer interactions, qualify inquiries, and eliminate routine manual work.',
           ctaText: 'BUILD MY AI AGENT'
         },
         {
           id: 'calls',
           label: 'I NEED HELP HANDLING CALLS',
           serviceName: 'AI Call Agents',
-          explanation: 'Build AI-powered voice systems that answer customer calls, answer common questions, qualify inquiries, book appointments, and escalate to humans.',
+          explanation: 'Build AI-powered voice systems that answer customer calls, answer common questions, qualify inquiries, and route priority calls.',
           ctaText: 'BUILD MY AI CALL AGENT'
         },
         {
@@ -609,31 +981,39 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     faqs: {
       badge: 'Frequently Asked Questions',
       heading: 'Clear Answers for Business Owners',
-      subtitle: 'Everything you need to know about partnering with TITAN AI AGENCY, project scopes, and post-launch support.',
+      subtitle: 'Helpful information about pricing, delivery, bilingual support, client ownership, and ongoing maintenance.',
       items: [
         {
-          question: 'What services does TITAN AI AGENCY provide?',
-          answer: 'TITAN AI AGENCY provides five core services: Website Design & Development, AI Agents for autonomous task assistance, AI Voice Agents for phone call handling, Search Optimization (SEO) for Google and AI platforms, and AI Video Creation for promotional content.'
+          question: 'How much does a website cost?',
+          answer: 'Our Starter Website package begins at SAR 500. More advanced solutions are quoted according to project requirements.'
         },
         {
-          question: 'Can you redesign or upgrade an existing website?',
-          answer: 'Yes. We can modernize your current website to elevate its corporate design, optimize it for mobile speed, improve local search visibility, and integrate automated enquiry workflows like direct WhatsApp routing.'
+          question: 'Does the price include a domain?',
+          answer: 'Domain registration and paid third-party services are quoted separately unless explicitly included in the approved proposal.'
         },
         {
-          question: 'Can you build custom solutions for specific industries?',
-          answer: 'Yes. Our websites, conversational assistants, and automated workflows are tailored to your unique operational processes. Whether you run real estate, medical clinics, hospitality, or consulting, we build around your specific constraints.'
+          question: 'Can I update my website after launch?',
+          answer: 'Yes. Website editing capabilities depend on the agreed package. Optional maintenance services may also be available.'
         },
         {
-          question: 'How is project pricing determined?',
-          answer: 'Project pricing is based strictly on your written scope and required functionality. Before development begins, we agree on a transparent milestone schedule with fixed pricing. There are no surprise fees or hidden costs.'
+          question: 'Do you create Arabic and English websites?',
+          answer: 'Arabic and English website development can be included depending on the project requirements and package.'
         },
         {
-          question: 'What support is provided after launch?',
-          answer: 'Every completed project includes 30 days of complimentary post-launch support to resolve any questions and verify that all integrations perform smoothly. Ongoing maintenance packages are also available.'
+          question: 'Can I add AI features later?',
+          answer: 'Additional AI capabilities can be discussed and quoted separately, subject to technical feasibility.'
         },
         {
-          question: 'How do we get started?',
-          answer: 'Getting started is straightforward. Message us directly on WhatsApp at +966 53 418 2945 with a brief summary of what you want to achieve. Founder Saad Naeem will review your request and outline clear next steps.'
+          question: 'Do you provide maintenance?',
+          answer: 'Optional maintenance starts from SAR 100 per month, with the final scope confirmed in the service agreement.'
+        },
+        {
+          question: 'Does the client own the website and source code?',
+          answer: 'Yes, 100%. Upon project completion and handover, you own all source code, design assets, and content. We believe in zero vendor lock-in, meaning you are free to host, modify, or expand your platform whenever you choose.'
+        },
+        {
+          question: 'What are the typical project delivery timelines?',
+          answer: 'Most standard business websites are completed within 2 to 4 weeks, depending on design complexity and feedback turnaround. More comprehensive platforms with custom workflows or AI integrations generally take 3 to 6 weeks.'
         }
       ]
     },
@@ -694,6 +1074,91 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       fastReply: 'Fast Reply',
       openChat: 'Open Direct WhatsApp Chat',
       ariaLabel: 'Contact TITAN on WhatsApp'
+    },
+    simplifiedServices: {
+      badge: 'Core Services',
+      heading: 'Everything Your Business Needs to Grow Online',
+      subtitle: 'Clear, modern digital solutions tailored for companies in Saudi Arabia. Simple to understand, fast to launch.',
+      learnMore: 'Learn More',
+      viewAllServices: 'View Full Technical Details',
+      categories: {
+        websites: {
+          title: 'Website Development',
+          desc: 'Fast, high-converting websites custom-built to showcase your business and attract customers.',
+          items: [
+            'Business websites',
+            'Real estate websites',
+            'Booking and inquiry systems'
+          ],
+          route: '/services/website-design'
+        },
+        ai: {
+          title: 'AI Solutions',
+          desc: 'Smart 24/7 customer assistants, automated phone calling, and streamlined business workflows.',
+          items: [
+            'AI chat assistants',
+            'AI call agents',
+            'Business automation'
+          ],
+          route: '/services/ai-agents'
+        },
+        marketing: {
+          title: 'Digital Marketing',
+          desc: 'Search engine optimization and engaging video content to reach more local customers.',
+          items: [
+            'SEO (Search Engine Optimization)',
+            'AI promotional videos',
+            'Marketing content'
+          ],
+          route: '/services/seo'
+        }
+      }
+    },
+    simplifiedPricing: {
+      viewAllFeatures: 'View All Features',
+      hideFeatures: 'Hide Extra Features',
+      topFeaturesNotice: 'Key package highlights. Click below for complete feature breakdown.',
+      aiCardTitle: 'AI Solutions & Automation',
+      aiCardSubtitle: 'Custom AI assistants, telephone call agents, and system automation tailored to your exact business workflow.',
+      aiCardPrice: 'Custom Quote',
+      aiCardBadge: 'Flexible Scope',
+      aiCardFeatures: [
+        'AI customer support assistants (24/7 response)',
+        'AI phone call agents for bookings & inquiries',
+        'Business automation linking forms, CRM & WhatsApp',
+        'AI promotional video creation & voiceovers'
+      ],
+      aiCardCta: 'Request Custom AI Quote',
+      maintenanceCardTitle: 'Website Maintenance',
+      maintenanceCardSubtitle: 'Ongoing technical care and security updates to keep your website fast, safe, and up to date.',
+      maintenanceCardPrice: 'From SAR 100/mo',
+      maintenanceCardFeatures: [
+        'Regular platform and security updates',
+        'Monthly reliable website backups',
+        'Continuous uptime and broken-link monitoring',
+        'Minor text, phone, and image updates'
+      ],
+      maintenanceCardCta: 'Inquire About Maintenance'
+    },
+    homepageContact: {
+      badge: 'Get in Touch',
+      heading: 'Let’s Discuss Your Next Project',
+      subtitle: 'Send a quick inquiry or message founder Saad Naeem directly on WhatsApp. We provide transparent scopes and clear fixed quotes.',
+      cardTitle: 'Request a Free Quote',
+      cardSubtitle: 'No complicated forms. Tell us what your business needs, and we’ll reply within hours.',
+      nameLabel: 'Your Name *',
+      namePlaceholder: 'e.g. Tariq Al-Mansoor',
+      phoneLabel: 'Phone / WhatsApp *',
+      phonePlaceholder: '+966 5X XXX XXXX',
+      serviceLabel: 'Service Needed *',
+      servicePlaceholder: 'e.g. Starter Website, AI Assistant, SEO',
+      messageLabel: 'Project Details / Goal *',
+      messagePlaceholder: 'Tell us briefly about your business and what you want to achieve...',
+      submitBtn: 'Send Project Inquiry',
+      whatsappDirect: 'Chat Directly on WhatsApp',
+      whatsappDirectDesc: 'Prefer instant chat? Connect directly with founder Saad Naeem on WhatsApp.',
+      chatWhatsappBtn: 'Open WhatsApp Chat (+966 53 418 2945)',
+      trustNote: 'Direct founder engineering · Transparent pricing · 30 days free support'
     }
   },
 
@@ -701,8 +1166,11 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     nav: {
       home: 'الرئيسية',
       services: 'الخدمات',
+      pricing: 'الأسعار والباقات',
       about: 'من نحن',
       missionVision: 'الرسالة والرؤية',
+      portfolio: 'أعمالنا',
+      aiDemo: 'تجربة الذكاء الاصطناعي',
       blog: 'المدونة',
       contact: 'تواصل معنا',
       startProject: 'ابدأ مشروعك',
@@ -710,19 +1178,222 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       switchLang: 'EN',
       currentLangName: 'العربية'
     },
+    pricing: {
+      badge: 'الأسعار والباقات الشفافة',
+      heading: 'باقات احترافية للشركات في المملكة العربية السعودية',
+      subtitle: 'تقديرات سعرية واضحة، نطاق عمل مفصل، وتنفيذ برمجي موثوق. نبني مواقع وحلول ذكاء اصطناعي دون تكاليف خفية.',
+      currency: 'ريال',
+      startingFrom: 'ابتداءً من',
+      recommendedBadge: 'الخيار الموصى به من تيتان',
+      termsTitle: 'شروط وبنود التسعير ونطاق العمل',
+      terms: [
+        'جميع الأسعار المعروضة بالريال السعودي (SAR).',
+        'الأسعار الموضحة هي تقديرات أولية للبدء وليست عروض أسعار نهائية ملزمة.',
+        'يعتمد السعر النهائي على المتطلبات الفعلية ونطاق العمل الفني المتفق عليه.',
+        'تُسعَّر رسوم تسجيل النطاق (Domain) والاستضافة السحابية المدفوعة بشكل منفصل.',
+        'لا تشمل الأسعار تلقائياً اشتراكات المنصات الخارجية أو تكاليف استهلاك واجهات برمجة الذكاء الاصطناعي (API).',
+        'قد تتطلب عمليات الربط البرمجي المعقدة والأنظمة الخاصة تكلفة إضافية بناءً على دراستها.',
+        'جولات التعديل محددة بحسب نطاق كل باقة (لا نقدم جولات تعديل غير محدودة).',
+        'تبقى جميع الاتفاقيات والعقود الحالية مع العملاء سارية دون أي تغيير.'
+      ],
+      websitePackages: {
+        starter: {
+          id: 'starter-website',
+          name: 'الموقع الأساسي (Starter)',
+          price: '500 ريال',
+          priceNumeric: 500,
+          desc: 'مصممة للشركات والمتاجر الناشئة التي تحتاج إلى تواجد رقمي احترافي.',
+          cta: 'ابدأ الآن',
+          features: [
+            'موقع إلكتروني احترافي للشركة',
+            'تصميم متجاوب وسريع للهواتف الذكية',
+            'حتى 3 صفحات أو أقسام مكافئة',
+            'زر تواصل مباشر عبر واتساب',
+            'إعداد أساسي لتهيئة محركات البحث (SEO)',
+            'عرض معلومات وخدمات المنشأة',
+            'ربط خرائط جوجل عند الطلب',
+            'روابط منصات التواصل الاجتماعي',
+            'المساعدة في النشر والإطلاق',
+            'جولة واحدة من المراجعات والتعديلات'
+          ]
+        },
+        professional: {
+          id: 'professional-website',
+          name: 'الموقع الاحترافي (Professional)',
+          price: '1,200 ريال',
+          priceNumeric: 1200,
+          desc: 'مصممة للشركات المتنامية التي تحتاج إلى ميزات متقدمة وتصميم مخصص.',
+          cta: 'اختر الباقة الاحترافية',
+          isRecommended: true,
+          features: [
+            'كل ما تشمله الباقة الأساسية',
+            'حتى 7 صفحات كاملة',
+            'تصميم مخصص يعكس هوية شركتك',
+            'دعم اللغتين العربية والإنجليزية حسب النطاق',
+            'نماذج تواصل واستفسار متقدمة',
+            'إعداد متكامل لتهيئة محركات البحث (SEO)',
+            'معرض أعمال أو كتالوج للمنتجات',
+            'تجربة تصفح محسنة ومثالية للهواتف',
+            'تحسين سرعة الأداء والاستجابة',
+            'حتى جولتين من المراجعات والتعديلات'
+          ]
+        },
+        advanced: {
+          id: 'advanced-business-website',
+          name: 'موقع الأعمال المتقدم (Advanced)',
+          price: '2,000 ريال',
+          priceNumeric: 2000,
+          desc: 'مصممة للشركات التي تحتاج إلى وظائف مخصصة ومواقع متطورة وديناميكية.',
+          cta: 'طلب عرض مخصص',
+          features: [
+            'كل ما تشمله الباقة الاحترافية',
+            'وظائف برمجية مخصصة للعمليات',
+            'قوائم ديناميكية تفاعلية',
+            'أنظمة بحث وتصفية متقدمة',
+            'لوحة تحكم إدارية حسب النطاق المتفق عليه',
+            'إمكانات إدارة وتحديث المحتوى',
+            'إدارة وتنظيم استفسارات العملاء',
+            'ربط متقدم مع الأنظمة وفق التسعير',
+            'سيو تقني متقدم ومحسن لمحركات البحث',
+            'اختبارات دقيقة ونشر كامل',
+            'تعديلات ومراجعات محددة حسب متطلبات المشروع'
+          ]
+        }
+      },
+      aiSolutions: {
+        badge: 'حلول الذكاء الاصطناعي والأتمتة',
+        heading: 'أنظمة ذكاء اصطناعي وصوت مخصصة للشركات',
+        subtitle: 'من فرز الاستفسارات الروتينية إلى وكلاء الاتصال الصوتي وإنتاج الفيديو التسويقي.',
+        notice: 'شفافية هندسية: نميز بوضوح بين الخدمات الإنتاجية الجاهزة والنماذج التجريبية قيد التطوير المخصص. لا نعرض أي نظام غير مختبر على أنه جاهز للإنتاج.',
+        customQuote: 'عرض أسعار مخصص',
+        cards: [
+          {
+            id: 'ai-customer-support-agents',
+            title: 'وكلاء دعم العملاء بالذكاء الاصطناعي',
+            desc: 'مساعدون أذكياء مصممون لمساعدة الشركات في الرد على الاستفسارات الروتينية، وجمع بيانات العملاء، وتحسين مسارات الاستجابة.',
+            pricing: 'عرض أسعار مخصص',
+            status: 'متاح للتطوير المخصص',
+            isWorkingService: true
+          },
+          {
+            id: 'ai-call-agents',
+            title: 'وكلاء الاتصال الصوتي بالذكاء الاصطناعي',
+            desc: 'أنظمة ذكاء اصطناعي صوتية للرد على استفسارات الهاتف الروتينية ودعم عمليات خدمة العملاء.',
+            pricing: 'عرض أسعار مخصص',
+            status: 'نموذج تجريبي قيد الاختبار',
+            isWorkingService: false
+          },
+          {
+            id: 'ai-business-automation',
+            title: 'أتمتة الأعمال والعمليات',
+            desc: 'حلول أتمتة للمهام المتكررة، وتأهيل استفسارات العملاء، وإدارة الفرص التسويقية، وربط مسارات العمل.',
+            pricing: 'عرض أسعار مخصص',
+            status: 'متاح للتطوير المخصص',
+            isWorkingService: true
+          },
+          {
+            id: 'ai-video-creation',
+            title: 'إنتاج الفيديو التسويقي بالذكاء الاصطناعي',
+            desc: 'إنتاج مقاطع فيديو ترويجية، ومحتوى تسويقي، وإعلانات لمنصات التواصل الاجتماعي بالذكاء الاصطناعي.',
+            pricing: 'عرض أسعار مخصص',
+            status: 'جاهز للتنفيذ والإنتاج',
+            isWorkingService: true
+          },
+          {
+            id: 'seo-optimization-service',
+            title: 'تحسين محركات البحث SEO',
+            desc: 'خدمات سيو تركز على التحسينات التقنية، وسرعة الموقع، والبيانات المنظمة، ودعم الفهرسة، والظهور في نتائج البحث.',
+            pricing: 'عرض أسعار مخصص',
+            status: 'خدمة نشطة ومباشرة',
+            isWorkingService: true
+          }
+        ]
+      },
+      maintenance: {
+        badge: 'الدعم الفني والعناية المستمرة',
+        heading: 'صيانة المواقع والدعم الفني',
+        subtitle: 'حافظ على أمان موقعك وتحديثه واستقراره التشغيلي من خلال خطة صيانة شهرية اختيارية.',
+        planTitle: 'خطة العناية بالموقع (Care Plan)',
+        price: '100 ريال',
+        period: '/ شهرياً',
+        desc: 'خدمات محتملة مشمولة، تخضع للاتفاقية المعتمدة:',
+        cta: 'طلب خطة الصيانة',
+        notice: 'خدمات الصيانة اختيارية. سيتم تأكيد النطاق الدقيق للدعم، وحدود التحديثات، وأوقات الاستجابة، وأي نفقات خارجية مسبقاً قبل الاشتراك.',
+        features: [
+          'تحديثات طفيفة على محتوى الموقع',
+          'استبدال النصوص والصور',
+          'فحوصات دورية لسلامة وظائف الموقع',
+          'دعم فني واستشاري أساسي',
+          'إصلاح الأخطاء الطفيفة ضمن النطاق المتفق عليه',
+          'المساعدة في ضبط إعدادات الموقع القائم'
+        ]
+      },
+      quoteModal: {
+        title: 'طلب عرض سعر / مقترح مشروع',
+        subtitle: 'أدخل تفاصيل مشروعك للحصول على نطاق عمل محدد وتسعيرة واضحة ومباشرة من المؤسس سعد نعيم.',
+        selectedPackageLabel: 'الباقة أو الخدمة المختارة',
+        nameLabel: 'الاسم الكريم *',
+        businessLabel: 'اسم المنشأة أو الشركة *',
+        phoneLabel: 'رقم الهاتف / واتساب *',
+        serviceLabel: 'الخدمة المطلوبة *',
+        requirementsLabel: 'متطلبات المشروع والتحدي المطلوب حله *',
+        messageLabel: 'تفاصيل إضافية (اختياري)',
+        submitBtn: 'إرسال طلب المشروع',
+        whatsappBtn: 'محادثة مباشرة عبر واتساب',
+        successTitle: 'تم إعداد تفاصيل الطلب بنجاح!',
+        successMessage: 'تم تجهيز تفاصيل طلبك. يمكنك الآن إرسالها مباشرة إلى المؤسس سعد نعيم عبر واتساب لمراجعتها بسرعة.',
+        openWhatsappNow: 'فتح محادثة واتساب الآن',
+        closeBtn: 'إغلاق'
+      },
+      trustApproach: {
+        badge: 'معايير تيتان الهندسية والمصداقية',
+        heading: 'نهجنا الملتزم في كل مشروع',
+        subtitle: 'نبني أنظمة رقمية موثوقة تحقق عائداً تشغيلياً حقيقياً للشركات في المملكة العربية السعودية.',
+        principles: [
+          {
+            title: 'نطاق عمل واضح ومكتوب',
+            desc: 'نحدد كل ميزة، وجدول تسليم، ومخرجات المشروع كتابياً قبل بدء التطوير لضمان وضوح كامل.'
+          },
+          {
+            title: 'تطوير برمجي مخصص',
+            desc: 'شيفرة برمجية نظيفة مبنية خصيصاً لمتطلبات عملك دون حشو أو قوالب مسبقة معقدة.'
+          },
+          {
+            title: 'تصميم متجاوب وسريع',
+            desc: 'تجربة مستخدم سريعة ومتناسقة تماماً على شاشات الهواتف والأجهزة اللوحية والحواسيب.'
+          },
+          {
+            title: 'شفافية كاملة في التسعير',
+            desc: 'تسعير واضح ومفصل وجداول دفعات مرتبطة بالإنجاز. لا توجد أي تكاليف خفية أو مفاجئة.'
+          },
+          {
+            title: 'اختبارات شاملة قبل التسليم',
+            desc: 'فحص دقيق لكافة المتصفحات والأجهزة وفحص الروابط والأداء قبل إطلاق الموقع للجمهور.'
+          },
+          {
+            title: 'دعم فني اختياري مستمر',
+            desc: '30 يوماً من الدعم الفني المجاني مشمولة مع كل مشروع، إلى جانب خطط صيانة شهرية اختيارية.'
+          },
+          {
+            title: 'حلول عملية تركز على النتائج',
+            desc: 'نختار التقنيات التي تحل اختناقات العمل الفعلية وتجلب عملاء جادين، بعيداً عن مجرد المظاهر.'
+          }
+        ]
+      }
+    },
     hero: {
-      badge: 'حلول الذكاء الاصطناعي للشركات الحديثة',
-      headlineLine1: 'مواقع إلكترونية احترافية.',
-      headlineLine2: 'وحلول ذكاء اصطناعي لأعمالك.',
-      supportingText: 'نطوّر مواقع إلكترونية ومساعدين بالذكاء الاصطناعي ووكلاء للمكالمات وحلول أتمتة تساعدك على عرض خدماتك والرد على الاستفسارات وتقليل المهام المتكررة.',
-      primaryButton: 'ناقش مشروعك معنا',
-      secondaryButton: 'استعرض أعمالنا',
+      badge: 'مواقع وحلول ذكاء اصطناعي للشركات السعودية',
+      headlineLine1: 'نبني مواقع إلكترونية و',
+      headlineLine2: 'حلول ذكاء اصطناعي لأعمالك',
+      supportingText: 'مواقع احترافية، ومساعدين أذكياء، وحلول رقمية لمساعدة عملك على الوصول إلى المزيد من العملاء.',
+      primaryButton: 'احصل على عرض سعر مجاني',
+      secondaryButton: 'شاهد أعمالنا',
       serviceLine: {
-        websites: 'مواقع إلكترونية',
+        websites: 'تطوير المواقع',
         seo: 'تحسين محركات البحث SEO',
-        aiAgents: 'وكلاء ذكاء اصطناعي',
-        callAgents: 'وكلاء مكالمات',
-        aiVideo: 'فيديو بالذكاء الاصطناعي'
+        aiAgents: 'مساعدين أذكياء',
+        callAgents: 'وكلاء اتصال صوتي',
+        aiVideo: 'فيديوهات ترويجية'
       }
     },
     dashboard: {
@@ -750,36 +1421,36 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       step3: 'تحويل مباشر إلى واتساب فريق العمل'
     },
     servicesSection: {
-      label: 'خدماتنا',
-      heading: 'حلول ذكاء اصطناعي مصممة لتنمية أعمالك',
-      supportingText: 'من المواقع الذكية إلى الأتمتة المتقدمة، نبني حلولاً رقمية حديثة تحقق نمواً حقيقياً لأعمالك.',
+      label: 'الخدمات الأساسية',
+      heading: 'حلول عملية للمواقع والذكاء الاصطناعي',
+      supportingText: 'طُورت خصيصاً للشركات في المملكة العربية السعودية لاستقطاب العملاء، والرد على الاستفسارات الروتينية، وأتمتة مسارات العمل.',
       exploreDetails: 'تفاصيل الخدمة',
       popularBadge: 'الأكثر طلباً',
       cards: {
         websites: {
-          title: 'مواقع بالذكاء الاصطناعي',
-          desc: 'مواقع سريعة وعصرية وذكية مصممة لتحويل الزوار إلى عملاء دائمين.',
-          tags: ['تصميم متجاوب', 'تكامل الذكاء الاصطناعي', 'أداء فائق السرعة']
+          title: 'تطوير المواقع بالذكاء الاصطناعي',
+          desc: 'مواقع إلكترونية احترافية تدعم اللغتين العربية والإنجليزية، منصات عقارية، معارض أعمال، أنظمة حجز، ونماذج استفسارات العملاء.',
+          tags: ['عربي / إنجليزي ثنائي اللغة', 'منصات عقارية متطورة', 'سرعة وأداء فائق']
         },
         seo: {
-          title: 'تحسين محركات البحث SEO',
-          desc: 'عزز ظهورك في محركات البحث وساعد المزيد من العملاء في العثور على نشاطك التجاري.',
-          tags: ['تهيئة البحث', 'سيو محلي', 'تحسين الأداء']
+          title: 'تحسين محركات البحث (SEO)',
+          desc: 'تهيئة تقنية متقدمة، تحسين البيانات الوصفية، تسريع أداء الهواتف، رفع الظهور في نتائج البحث، وإعداد Google Search Console.',
+          tags: ['تهيئة تقنية SEO', 'Google Search Console', 'سرعة الهواتف']
         },
         agents: {
           title: 'وكلاء الذكاء الاصطناعي',
-          desc: 'وكلاء أذكياء لدعم العملاء، أتمتة المهام اليومية، وإدارة تدفقات العمل بكفاءة.',
-          tags: ['خدمة العملاء', 'إدارة العملاء المهتمين', 'أتمتة الأعمال']
+          desc: 'مساعدون أذكياء للإجابة عن أسئلة العملاء الروتينية، وجمع بيانات العملاء المهتمين، وأتمتة العمليات اليومية بعد اختبارها.',
+          tags: ['استفسارات العملاء', 'تأهيل العملاء المهتمين', 'أتمتة الأعمال']
         },
         calls: {
-          title: 'وكلاء الاتصال بالذكاء الاصطناعي',
-          desc: 'وكلاء صوتيون ذكيون للرد على المكالمات الهاتفية، والتواصل مع العملاء، والإجابة عن الاستفسارات الشائعة.',
-          tags: ['صوت ذكي طبيعي', 'معالجة المكالمات', 'متاح 24/7']
+          title: 'وكلاء الاتصال الصوتي بالذكاء الاصطناعي',
+          desc: 'حلول أتمتة صوتية للتعامل مع استفسارات الأعمال الروتينية (عرض توضيحي وتكامل مخصص متاح للمنشآت).',
+          tags: ['أتمتة صوتية', 'استفسارات هاتفية', 'نموذج تجريبي / قيد التطوير']
         },
         video: {
-          title: 'فيديو بالذكاء الاصطناعي',
-          desc: 'محتوى مرئي احترافي مولد بالذكاء الاصطناعي للإعلانات ومنصات التواصل والتسويق التجاري.',
-          tags: ['فيديوهات تسويقية', 'محتوى اجتماعي', 'إنتاج احترافي بالذكاء الاصطناعي']
+          title: 'إنتاج الفيديو بالذكاء الاصطناعي',
+          desc: 'محتوى مرئي ترويجي بالذكاء الاصطناعي، إعلانات المنتجات، وفيديوهات تسويقية مصممة لشبكات التواصل والحملات التجارية.',
+          tags: ['محتوى ترويجي', 'إعلانات منتجات', 'فيديو تسويقي']
         }
       }
     },
@@ -841,132 +1512,137 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     },
     howItWorks: {
       badge: 'منهجية واضحة في 4 خطوات',
-      heading: 'من فكرة التحدي إلى حل تقني يعمل',
-      subtitle: 'خطوات عمل منظمة ومدروسة تضمن بناء حلول رقمية عملية لأعمالك دون تعقيد غير مبرر.',
+      heading: 'كيف نعمل في وكالة تيتان',
+      subtitle: 'مسار عمل واضح ومنظم من أربع خطوات لتصميم وبناء حلول عملية لأعمالك دون تعقيدات غير ضرورية.',
       steps: [
         {
           num: '01',
-          title: 'الاستكشاف والفهم',
-          desc: 'نتعرف بعمق على طبيعة عملك، وعملائك، والتحديات اليومية التي تواجه فريقك.',
-          badge: 'جلسة استكشافية'
+          title: 'أخبرنا عن عملك',
+          desc: 'نتعرف على طبيعة نشاطك التجاري، وكيفية تواصل عملائك، والأهداف أو التحديات المحددة التي تسعى لحلها.',
+          badge: '01 · جلسة استكشافية'
         },
         {
           num: '02',
-          title: 'التخطيط والهيكلة',
-          desc: 'نحدد الحل الأنسب سواء كان موقعاً إلكترونياً، أو وكيلاً ذكياً، أو مسار أتمتة متكاملاً.',
-          badge: 'التخطيط الهندسي'
+          title: 'راجع عرضك المخصص',
+          desc: 'نقدم لك نطاق عمل مفصلاً ومكتوباً بوضوح، يحدد الجدول الزمني ومراحل التسليم والتكلفة الثابتة والشفافة.',
+          badge: '02 · العرض ونطاق العمل'
         },
         {
           num: '03',
-          title: 'التطوير والتنفيذ',
-          desc: 'يقوم فريق تيتان بتصميم وتطوير النظام وربطه مع أدواتك الحالية وفق أعلى معايير الجودة.',
-          badge: 'التطوير البرمجي'
+          title: 'التصميم والتطوير',
+          desc: 'نقوم بتصميم وتطوير موقعك الإلكتروني أو نظامك الذكي بأحدث المعايير البرمجية وأعلى درجات السرعة والأمان.',
+          badge: '03 · التطوير الهندسي'
         },
         {
           num: '04',
-          title: 'الإطلاق والدعم المستمر',
-          desc: 'نختبر النظام بالكامل، ونطلقه رسمياً، ونوفر دعماً تقنياً مجانياً لمدة 30 يوماً بعد الإطلاق.',
-          badge: 'إطلاق ودعم 30 يوماً'
+          title: 'الاختبار والإطلاق والدعم',
+          desc: 'نختبر النظام عبر مختلف الأجهزة والمتصفحات، ونطلقه رسمياً، مع تقديم 30 يوماً من الدعم الفني المجاني.',
+          badge: '04 · الإطلاق ودعم 30 يوماً'
         }
       ]
     },
     useCases: {
-      badge: 'حلول مخصصة للقطاعات',
-      heading: 'حلول مصممة وفق طبيعة نشاطك التجاري',
-      subtitle: 'سواء كنت تدير شركة عقارية، أو عيادة، أو مطعماً، أو شركة استشارية، نوائم تقنياتنا مع واقع عملك اليومي.',
+      badge: 'القطاعات التي نخدمها',
+      heading: 'حلول مخصصة للقطاعات الرئيسية',
+      subtitle: 'نبني حلولاً رقمية مصممة خصيصاً لتلائم الواقع التشغيلي اليومي للشركات في المملكة العربية السعودية.',
       industries: [
         {
           id: 'real-estate',
-          name: 'العقارات',
-          headline: 'تسويق عقاري مؤتمت واستقبال فوري للمستثمرين المهتمين',
-          desc: 'استقبل استفسارات المشترين والمستأجرين على مدار الساعة وافرز طلباتهم دون تأخير.',
+          name: 'الشركات العقارية',
+          headline: 'منصات عقارية عالية الأداء واستقبال فوري للمستثمرين',
+          desc: 'تمتلك تيتان خبرة عملية مثبتة في تطوير المواقع العقارية الفاخرة لعرض المشاريع الكبرى وجذب المستثمرين المهتمين.',
+          isFeatured: true,
+          highlightBadge: 'خبرة متخصصة',
           items: [
-            'موقع عقاري متطور مع عرض تفاعلي للوحدات وتصفح المخططات',
-            'وكيل ذكاء اصطناعي يجيب على أسئلة الأسعار والمواقع والمساحات',
-            'تأهيل آلي للعملاء وتحديد الميزانية وفترة الشراء المتوقعة',
-            'وكيل مكالمات صوتية لتلقي الاتصالات الهاتفية خارج أوقات العمل الرسمية',
-            'فيديوهات ترويجية للعقارات مناسبة للنشر في ريلز وشبكات التواصل',
-            'تهيئة محركات البحث لضمان العثور على عقاراتك في منطقتك'
-          ]
-        },
-        {
-          id: 'salons',
-          name: 'الصالونات والعيادات',
-          headline: 'جدولة حجوزات سهلة وتخفيف ضغط الاتصالات اليومية',
-          desc: 'مكّن العملاء من حجز المواعيد ومعرفة أوقات العمل فورياً ليتفرغ فريقك لتقديم الخدمة.',
-          items: [
-            'موقع تعريفي احترافي يستعرض الخدمات والكوادر المعتمدة',
-            'نظام حجز مواعيد فوري متزامن مباشرة مع جداول العمل',
-            'مساعد محادثة ذكي يجيب على أسئلة الأسعار والخدمات والشروط',
-            'وكيل مكالمات صوتية لتلقي اتصالات الحجز أثناء انشغال الكادر',
-            'تهيئة سيو محلي وخرائط جوجل لزيادة زوار العيادة أو الصالون',
-            'محتوى مرئي تسويقي يعرض نتائج الخدمات وآراء العملاء'
+            'مواقع عقارية تفاعلية تعرض الوحدات والمخططات الهندسية بدقة',
+            'إجراءات استفسار فورية عبر واتساب للربط المباشر مع المستثمرين والمشترين',
+            'تصميم متجاوب وسريع ومخصص لتصفح المستثمرين عبر الهواتف الذكية',
+            'مساعد ذكي مدرب للرد على أسئلة المساحات، والأسعار، والمواقع',
+            'تهيئة محركات البحث (SEO) لضمان ظهور العقارات في عمليات البحث المحلية',
+            'إنتاج مقاطع فيديو ترويجية للعقارات مناسبة لمنصات التواصل والحملات'
           ]
         },
         {
           id: 'restaurants',
           name: 'المطاعم والمقاهي',
-          headline: 'عرض ذكي لقائمة الطعام واستقبال حجوزات الطاولات تلقائياً',
-          desc: 'تجنب فقدان حجوزات الطاولات في ساعات الذروة بمساعدين صوتيين وتفاعليين فائقي السرعة.',
+          headline: 'قوائم طعام تفاعلية سريعة وتواصل فوري عبر واتساب',
+          desc: 'استبدل ملفات الـ PDF البطيئة بقوائم طعام رقمية عصرية وسريعة للهواتف تتيح الطلب السريع وحجز الطاولات.',
           items: [
-            'موقع عصري وسريع للهواتف يعرض القائمة والأسعار بوضوح',
-            'قائمة طعام تفاعلية تشمل المكونات ومسببات الحساسية',
-            'ربط نظام الحجوزات لتلقي طلبات الطاولات على الفور',
-            'مساعد ذكي للرد على أسئلة الفروع والمواقف والفعاليات',
-            'وكيل صوتي للرد على الاتصالات والاستفسارات الهاتفية الشائعة',
-            'مقاطع فيديو ترويجية تبرز الأطباق المميزة على شبكات التواصل'
+            'مواقع طعام متطورة ومصممة للهواتف مع فرز المكونات ومسببات الحساسية',
+            'توجيه مباشر للطلبات واستفسارات الحجوزات إلى واتساب المطعم',
+            'ربط خرائط جوجل وساعات العمل لتعزيز الظهور المحلي بالقرب من العملاء',
+            'مساعد ذكي للرد على أسئلة الفروع، ومواقف السيارات، والحفلات الخارجية',
+            'إنتاج فيديو تسويقي بالذكاء الاصطناعي لإبراز الأطباق المميزة والعروض'
           ]
         },
         {
-          id: 'professional-services',
-          name: 'الخدمات المهنية والشركات',
-          headline: 'بناء المصداقية واستقطاب العملاء وتنسيق المواعيد تلقائياً',
-          desc: 'رسخ مكانة منشأتك كمرجع موثوق في مجالك وأهّل الاستفسارات الاستشارية آلياً.',
+          id: 'car-rental',
+          name: 'شركات تأجير السيارات',
+          headline: 'عرض ذكي لأسطول السيارات واستقبال طلبات الحجز فورياً',
+          desc: 'استعرض فئات السيارات ومواصفاتها وشروط التأجير مع استقبال طلبات الحجز المباشرة عبر واتساب.',
           items: [
-            'موقع تنفيذي يعكس ريادة شركتك وموثوقية خدماتك أمام العملاء',
-            'نماذج طلب استشارة مؤتمتة تفرز وتحدد متطلبات العميل مسبقاً',
-            'مساعد ذكاء اصطناعي مفهرس لمجالات الخبرة والمقالات المتخصصة',
-            'وكيل مكالمات صوتي يستقبل اتصالات الأعمال ويوجهها للشخص المناسب',
-            'تهيئة متقدمة لمحركات البحث تستهدف الكلمات التجارية الأكثر أهمية',
-            'مقاطع فيديو تعزز القيادة الفكرية لشركتك على لينكد إن والموقع'
+            'كاتالوج رقمي يعرض أسطول السيارات حسب الفئة والميزات وتكلفة التأجير',
+            'نموذج حجز فوري واستفسار مباشر يرتبط بواتساب فريق المبيعات',
+            'قسم أسئلة شائعة يوضح متطلبات الرخص، والتأمين، ومبالغ التأمين المستردة',
+            'سيو محلي لظهور خدمات التأجير في نتائج البحث قرب المطارات والمناطق الحيوية',
+            'أنظمة محادثة وصوت للرد على استفسارات توفر السيارات خارج أوقات العمل'
+          ]
+        },
+        {
+          id: 'smes',
+          name: 'الشركات الصغيرة والمتوسطة',
+          headline: 'تواجد رقمي موثوق وأتمتة عملية للمهام والعمليات',
+          desc: 'رسخ مصداقية شركتك في السوق السعودي، واستقبل استفسارات العملاء المؤهلين، وتخلص من المهام اليدوية المتكررة.',
+          items: [
+            'موقع تنفيذي ثنائي اللغة (عربي / إنجليزي) يبني الثقة أمام العملاء والشركاء',
+            'نماذج تواصل مخصصة تفرز وتؤهل العملاء الجادين تلقائياً',
+            'مساعدون أذكياء للرد على الأسئلة الشائعة على مدار الساعة',
+            'أتمتة مسارات العمل بين النماذج والبريد الإلكتروني وتنبيهات واتساب',
+            'تهيئة محركات البحث وإعداد Google Search Console لضمان فهرسة متكاملة'
           ]
         }
       ]
     },
     whyTitan: {
-      badge: 'مبادئنا الأساسية',
-      heading: 'لماذا تختار الشراكة مع وكالة تيتان؟',
-      subtitle: 'نبني أنظمة رقمية تحقق عائداً ملموساً لأعمالك، مصممة لأصحاب الأعمال الذين يقدرون الوضوح والموثوقية.',
+      badge: 'المصداقية والثقة',
+      heading: 'لماذا تختار التعامل مع وكالة تيتان؟',
+      subtitle: 'نبني أنظمة رقمية موثوقة تحقق عائداً تشغيلياً حقيقياً للشركات في المملكة العربية السعودية.',
       points: [
         {
           num: '01',
-          title: 'الأعمال أولاً',
-          desc: 'نبدأ من فهم التحدي التجاري، وليس من التقنية لمجرد التقنية.',
-          detail: 'التقنية بدون هدف تجاري استنزاف للموارد. ندرس أولاً المهام المتكررة التي تضيع وقتك، ونبني فقط ما يضيف قيمة حقيقية وقابلة للقياس لأعمالك.'
+          title: 'حلول مخصصة',
+          desc: 'مصممة بالكامل وفق طبيعة عمل منشأتك.',
+          detail: 'لا نعتمد على قوالب مسبقة ومستهلكة. كل موقع إلكتروني أو مسار أتمتة يُبنى خصيصاً ليناسب نموذج عملك وخدماتك وتوقعات عملائك.'
         },
         {
           num: '02',
-          title: 'حلول مخصصة',
-          desc: 'كل نظام نصممه مصمم خصيصاً ليناسب احتياجات منشأتك.',
-          detail: 'لا نفرض قوالب جاهزة ومستهلكة. نبني حلولنا لتتناسب تماماً مع هيكل فريقك، وطبيعة استفسارات عملائك، وأسلوب تشغيلك اليومي.'
+          title: 'تصميم مواقع متجاوب فائق السرعة',
+          desc: 'تجربة سلسة ومحسنة للهواتف الذكية أولاً.',
+          detail: 'أكثر من 80% من زوار المواقع في السعودية يتصفحون عبر الهواتف. نهندس مواقع سريعة وخفيفة ومتوافقة مع مؤشرات أداء الويب الأساسية.'
         },
         {
           num: '03',
-          title: 'تقنيات مترابطة',
-          desc: 'المواقع، والذكاء الاصطناعي، والبحث، والأنظمة الصوتية تعمل معاً كمنظومة متكاملة.',
-          detail: 'بدلاً من تشتيت أعمالك بين عدة جهات، توحد تيتان تواجدك الرقمي في مسار تشغيلي وتسويقي واحد متماسك وفعال.'
+          title: 'تواصل مباشر مع الفريق التقني',
+          desc: 'تعامل مباشر دون حواجز أو وسطاء إداريين.',
+          detail: 'لا توجد طبقات إدارة معقدة. تتواصل مباشرة مع المهندس الذي يطور مشروعك لضمان سرعة التنفيذ ودقة الاستجابة لأفكارك.'
         },
         {
           num: '04',
-          title: 'تجربة عصرية سلسة',
-          desc: 'تصميم احترافي وتقنيات متقدمة بعيداً عن التعقيد الزائد.',
-          detail: 'خطوط واضحة، وسرعة فائقة، وسهولة تصفح لعملائك، دون برمجيات ثقيلة قد يصعب على فريقك استخدامها.'
+          title: 'نطاق عمل واضح وشفاف',
+          desc: 'مخرجات محددة، وتكلفة ثابتة بلا رسوم مفاجئة.',
+          detail: 'قبل البدء في كتابة أول سطر برمجي، نقدم لك نطاق عمل مكتوباً بالتفصيل مع جدول مراحل واضح وتكلفة ثابتة تضمن راحة بالك.'
         },
         {
           num: '05',
-          title: 'دعم كامل بعد الإطلاق',
-          desc: 'نساعدك على فهم وإدارة كل ما نبنيه لك بكل ثقة.',
-          detail: 'يشمل كل مشروع 30 يوماً من الدعم التقني المجاني، وتدريباً كاملاً لفريقك، مع ملكية كاملة بنسبة 100% للشيفرة البرمجية والأصول.'
+          title: 'صيانة ودعم فني اختياري',
+          desc: '30 يوماً مشمولة مجاناً مع خيارات دعم مرنة.',
+          detail: 'يتضمن كل مشروع مكتمل 30 يوماً من الدعم التقني المجاني. كما نوفر باقات صيانة شهرية اختيارية لمن يرغب في تحديثات دورية ومستمرة.'
+        },
+        {
+          num: '06',
+          title: 'تكامل ذكاء اصطناعي عملي',
+          desc: 'أدوات ذكية مختبرة تضيف قيمة حقيقية لأعمالك.',
+          detail: 'نبتعد تماماً عن الوعود التسويقية غير الواقعية، ونركز على أدوات عملية: مساعدين للإجابة عن أسئلة العملاء، وتوجيه الطلبات، وتوفير وقت فريقك.'
         }
       ]
     },
@@ -978,29 +1654,29 @@ export const TRANSLATIONS: Record<Language, Translations> = {
         {
           id: 'website',
           label: 'أحتاج موقعاً إلكترونياً أفضل',
-          serviceName: 'مواقع بالذكاء الاصطناعي',
-          explanation: 'نطوّر مواقع حديثة وسريعة مصممة لزيادة التحويلات والمبيعات مع مساعد آلي مدمج وتوجيه سريع لاستفسارات واتساب.',
+          serviceName: 'تطوير المواقع بالذكاء الاصطناعي',
+          explanation: 'نطوّر مواقع حديثة وسريعة تجمع بين التصميم المخصص، ودعم اللغتين، ونماذج جذب العملاء والربط المباشر مع واتساب.',
           ctaText: 'ابنِ موقعي الإلكتروني'
         },
         {
           id: 'visibility',
           label: 'أحتاج لزيادة الظهور والوصول للعملاء',
-          serviceName: 'تحسين محركات البحث والذكاء الاصطناعي',
-          explanation: 'ساعد العملاء في العثور على شركتك عبر محركات البحث التقليدية (جوجل) ومنصات البحث بالذكاء الاصطناعي (ChatGPT وغيرها).',
+          serviceName: 'تحسين محركات البحث SEO',
+          explanation: 'ساعد العملاء في العثور على شركتك عبر محركات البحث التقليدية (Google) ونتائج البحث المحلية.',
           ctaText: 'عزز ظهور شركتي'
         },
         {
           id: 'automate',
           label: 'أريد أتمتة المهام اليومية المتكررة',
-          serviceName: 'وكلاء الذكاء الاصطناعي المخصصون',
-          explanation: 'نبني وكلاء أذكياء للتعامل مع استفسارات العملاء، والبحث في مستندات الشركة، والتخلص من الأعمال الروتينية المستنزفة للوقت.',
+          serviceName: 'وكلاء الذكاء الاصطناعي',
+          explanation: 'نبني وكلاء أذكياء للتعامل مع استفسارات العملاء، وتأهيل الطلبات الجادة، والتخلص من الأعمال الروتينية المستنزفة للوقت.',
           ctaText: 'صمم وكيل الذكاء الاصطناعي'
         },
         {
           id: 'calls',
           label: 'أحتاج للمساعدة في الرد على الاتصالات',
-          serviceName: 'وكلاء المكالمات الصوتية بالذكاء الاصطناعي',
-          explanation: 'أنظمة صوتية تجيب على اتصالات العملاء بلباقة، وتجيب عن الأسئلة، وتحجز المواعيد، وتحول الحالات الخاصة لموظفيك.',
+          serviceName: 'وكلاء الاتصال الصوتي بالذكاء الاصطناعي',
+          explanation: 'أنظمة صوتية تجيب على اتصالات العملاء بلباقة، وتجيب عن الأسئلة الشائعة، وتوجه المكالمات المهمة للمختصين.',
           ctaText: 'صمم وكيل المكالمات'
         },
         {
@@ -1039,32 +1715,40 @@ export const TRANSLATIONS: Record<Language, Translations> = {
     },
     faqs: {
       badge: 'الأسئلة الشائعة',
-      heading: 'إجابات واضحة ومباشرة لأصحاب الأعمال',
-      subtitle: 'كل ما تحتاج لمعرفته حول التعاون مع تيتان، ونطاق المشاريع، والدعم الفني بعد التسليم.',
+      heading: 'إجابات واضحة لأصحاب الأعمال',
+      subtitle: 'معلومات مفيدة حول الأسعار، ومدة التنفيذ، ودعم اللغتين، وملكية الموقع، والصيانة المستمرة.',
       items: [
         {
-          question: 'ما هي الخدمات الرئيسية التي تقدمها وكالة تيتان؟',
-          answer: 'نقدم خمس خدمات أساسية: تصميم وتطوير المواقع الإلكترونية، وكلاء الذكاء الاصطناعي للمهام والمحادثات، وكلاء المكالمات الهاتفية الصوتية، تحسين محركات البحث والظهور في منصات الذكاء الاصطناعي، وإنتاج مقاطع الفيديو بالذكاء الاصطناعي.'
+          question: 'كم تبلغ تكلفة إنشاء الموقع الإلكتروني؟',
+          answer: 'تبدأ باقة الموقع الأساسي (Starter) لدينا من 500 ريال سعودي. بينما تُسعَّر الحلول الأكثر تقدماً بدقة بناءً على متطلبات ونطاق المشروع.'
         },
         {
-          question: 'هل يمكنكم إعادة تصميم أو تطوير موقعنا الحالي؟',
-          answer: 'نعم بالتأكيد. يمكننا تحديث موقعك الحالي لترقية تصميمه، وتسريعه على الهواتف الذكية، وتحسين ظهوره في محركات البحث، وربطه بمسارات تواصل ذكية مثل واتساب المباشر.'
+          question: 'هل يشمل السعر حجز النطاق (الدومين)؟',
+          answer: 'تُسعَّر رسوم تسجيل النطاق والخدمات السحابية والاشتراكات الخارجية المدفوعة بشكل منفصل، ما لم تُذكر صراحة ضمن مقترح المشروع المعتمد.'
         },
         {
-          question: 'هل تبنون حلولاً مخصصة لقطاعات وتخصصات معينة؟',
-          answer: 'نعم. نصمم المواقع والمساعدين ومسارات الأتمتة لتتناسب مع إجراءات عملك بدقة، سواء في العقارات، أو المراكز الطبية والعيادات، أو المطاعم، أو الشركات الاستشارية والخدمية.'
+          question: 'هل يمكنني تعديل وتحديث الموقع بعد إطلاقه؟',
+          answer: 'نعم. تعتمد إمكانات تعديل الموقع على الباقة المتفق عليها. كما نوفر باقات صيانة ودعم فني اختيارية للعناية المستمرة بالموقع.'
         },
         {
-          question: 'كيف يتم تحديد تكلفة المشروع؟',
-          answer: 'تُحدد التكلفة بناءً على نطاق العمل المكتوب والوظائف المطلوبة تحديداً. نتفق قبل بدء التطوير على جدول تسليمات واضح وتكلفة ثابتة وشفافة بمراحل محددة دون أي رسوم مفاجئة.'
+          question: 'هل تطورون مواقع تدعم اللغتين العربية والإنجليزية؟',
+          answer: 'نعم، يمكن تضمين تطوير المواقع باللغتين العربية والإنجليزية بشكل متكامل، اعتماداً على باقة واحتياجات المشروع المعتمدة.'
         },
         {
-          question: 'ما هو الدعم المقدم بعد إطلاق المشروع؟',
-          answer: 'يتضمن كل مشروع مكتمل 30 يوماً من الدعم التقني المجاني للإجابة عن الاستفسارات والتأكد من عمل كافة عمليات التكامل بشكل مثالي، مع توفر باقات صيانة شهرية اختيارية لمن يرغب.'
+          question: 'هل يمكنني إضافة ميزات الذكاء الاصطناعي لاحقاً؟',
+          answer: 'نعم، يمكن مناقشة وإضافة ميزات الذكاء الاصطناعي لاحقاً وتحديد تكلفتها بشكل منفصل وفقاً للجدوى الفنية لعملياتك.'
         },
         {
-          question: 'كيف نبدأ التعاون معكم؟',
-          answer: 'البدء سهل ومباشر. راسلنا مباشرة عبر واتساب على الرقم 966534182945+ مع ملخص موجز لما تود تنفيذه، وسيقوم المؤسس سعد نعيم بمراجعة متطلباتك ومناقشة الحل الأنسب وتوضيح الخطوات التالية.'
+          question: 'هل تقدمون خدمات الصيانة والدعم الفني للمواقع؟',
+          answer: 'نعم، تبدأ خدمات الصيانة والدعم الفني الاختيارية من 100 ريال سعودي شهرياً، مع تأكيد نطاق الدعم وحدود التحديثات بدقة في اتفاقية الخدمة.'
+        },
+        {
+          question: 'هل يمتلك العميل الكود المصدري والموقع بالكامل؟',
+          answer: 'نعم، بنسبة 100%. عند اكتمال المشروع وتسليمه، تمتلك شركتك كافة الأكواد البرمجية، وتصميمات الواجهات، والمحتوى. نؤمن بمبدأ عدم تقييد العميل (Zero Lock-in)، مما يمنحك الحرية الكاملة لاستضافة موقعك أو تطويره مستقبلاً كما تشاء.'
+        },
+        {
+          question: 'ما هي المدة الزمنية لتسليم مشروع الموقع؟',
+          answer: 'تستغرق معظم مواقع الأعمال المعتادة ما بين أسبوعين إلى 4 أسابيع، اعتماداً على تفاصيل التصميم وسرعة تبادل الملاحظات. أما المنصات الأكبر التي تتضمن مسارات عمل مخصصة أو تكاملات ذكاء اصطناعي فتستغرق عادة من 3 إلى 6 أسابيع.'
         }
       ]
     },
@@ -1125,6 +1809,91 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       fastReply: 'رد سريع ومباشر',
       openChat: 'فتح محادثة واتساب المباشرة',
       ariaLabel: 'تواصل مع تيتان عبر واتساب'
+    },
+    simplifiedServices: {
+      badge: 'الخدمات الأساسية',
+      heading: 'كل ما تحتاجه أعمالك للنمو رقمياً',
+      subtitle: 'حلول رقمية ذكية ومباشرة تناسب الشركات في المملكة العربية السعودية. واضحة الفهم وسريعة الإطلاق.',
+      learnMore: 'اعرف المزيد',
+      viewAllServices: 'استعراض كافة التفاصيل والمواصفات',
+      categories: {
+        websites: {
+          title: 'تطوير المواقع الإلكترونية',
+          desc: 'مواقع سريعة ومصممة خصيصاً لعرض خدماتك، استقبال طلبات العملاء، وتحويل الزوار إلى مبيعات.',
+          items: [
+            'مواقع الشركات والأعمال',
+            'مواقع العقارات والمشاريع',
+            'أنظمة الحجز واستقبال الطلبات'
+          ],
+          route: '/services/website-design'
+        },
+        ai: {
+          title: 'حلول الذكاء الاصطناعي',
+          desc: 'مساعدين أذكياء للرد على العملاء على مدار الساعة، مكالمات هاتفية آلية، وأتمتة توفر وقت فريقك.',
+          items: [
+            'مساعدين أذكياء للمحادثة (AI Chat)',
+            'وكلاء اتصال هاتفي صوتي (AI Calls)',
+            'أتمتة الأعمال والربط مع واتساب'
+          ],
+          route: '/services/ai-agents'
+        },
+        marketing: {
+          title: 'التسويق الرقمي',
+          desc: 'تحسين ظهورك في قوقل وفيديوهات ترويجية جذابة لمساعدة العملاء في السعودية على العثور عليك.',
+          items: [
+            'تحسين محركات البحث (SEO)',
+            'فيديوهات ترويجية بالذكاء الاصطناعي',
+            'محتوى تسويقي متخصص'
+          ],
+          route: '/services/seo'
+        }
+      }
+    },
+    simplifiedPricing: {
+      viewAllFeatures: 'عرض كافة الميزات',
+      hideFeatures: 'إخفاء الميزات الإضافية',
+      topFeaturesNotice: 'أهم ميزات الباقة. اضغط على الزر أدناه لمعاينة التفاصيل الكاملة.',
+      aiCardTitle: 'حلول الذكاء الاصطناعي والأتمتة',
+      aiCardSubtitle: 'مساعدين أذكياء ووكلاء اتصال صوتي وأتمتة مخصصة بالكامل وفق طبيعة عملك وبياناتك.',
+      aiCardPrice: 'عرض سعر مخصص',
+      aiCardBadge: 'نطاق مرن',
+      aiCardFeatures: [
+        'مساعدين أذكياء لخدمة العملاء (استجابة 24/7)',
+        'وكلاء مكالمات هاتفية للحجوزات والاستفسارات',
+        'أتمتة العمليات والربط بين النماذج وواتساب وCRM',
+        'إنتاج فيديوهات ترويجية وتعليق صوتي بالذكاء الاصطناعي'
+      ],
+      aiCardCta: 'طلب تسعيرة ذكاء اصطناعي',
+      maintenanceCardTitle: 'صيانة ورعاية المواقع',
+      maintenanceCardSubtitle: 'عناية تقنية وتحديثات أمان مستمرة لضمان بقاء موقعك سريعاً وآمناً ومحدثاً باستمرار.',
+      maintenanceCardPrice: 'ابتداءً من 100 ريال / شهرياً',
+      maintenanceCardFeatures: [
+        'تحديثات دورية لمنصة الموقع والأمان',
+        'نسخ احتياطي شهري موثوق لقاعدة البيانات',
+        'مراقبة مستمرة لاستقرار الموقع والروابط',
+        'تعديلات طفيفة على النصوص والصور وأرقام التواصل'
+      ],
+      maintenanceCardCta: 'الاستفسار عن خطة الصيانة'
+    },
+    homepageContact: {
+      badge: 'تواصل معنا',
+      heading: 'دعنا نناقش مشروعك القادم',
+      subtitle: 'أرسل تفاصيل مشروعك أو تواصل مباشرة مع المؤسس سعد نعيم عبر واتساب للحصول على استشارة وتسعيرة دقيقة.',
+      cardTitle: 'احصل على عرض سعر مجاني',
+      cardSubtitle: 'بدون نماذج معقدة. أخبرنا باحتياج عملك وسنرد عليك خلال ساعات.',
+      nameLabel: 'الاسم الكريم *',
+      namePlaceholder: 'مثال: طارق المنصور',
+      phoneLabel: 'رقم الجوال / واتساب *',
+      phonePlaceholder: '+966 5X XXX XXXX',
+      serviceLabel: 'الخدمة المطلوبة *',
+      servicePlaceholder: 'مثال: موقع Starter، مساعد ذكي، SEO',
+      messageLabel: 'تفاصيل المشروع والهدف *',
+      messagePlaceholder: 'أخبرنا باختصار عن عملك والهدف الذي ترغب في تحقيقه...',
+      submitBtn: 'إرسال طلب المشروع',
+      whatsappDirect: 'محادثة مباشرة عبر واتساب',
+      whatsappDirectDesc: 'تفضل الرد الفوري المباشر؟ تواصل مباشرة مع المؤسس سعد نعيم عبر واتساب.',
+      chatWhatsappBtn: 'فتح محادثة واتساب (+966 53 418 2945)',
+      trustNote: 'هندسة برمجية مباشرة مع المؤسس · تسعير شفاف · دعم فني مجاني 30 يوماً'
     }
   }
 };

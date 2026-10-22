@@ -19,6 +19,8 @@ import { SERVICES_DATA } from '../data/servicesData';
 import { ServiceModal } from '../components/ServiceModal';
 import { ServiceItem } from '../types';
 import { ProcessSection } from '../components/ProcessSection';
+import { PricingPackagesSection } from '../components/pricing/PricingPackagesSection';
+import { WebsiteMaintenanceSection } from '../components/pricing/WebsiteMaintenanceSection';
 import { FAQSection } from '../components/FAQSection';
 import { FinalCTA } from '../components/FinalCTA';
 import { usePageSEO } from '../hooks/usePageSEO';
@@ -400,13 +402,19 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. PROCESS SECTION */}
+      {/* 4. PRICING & PACKAGES SECTION */}
+      <PricingPackagesSection />
+
+      {/* 5. WEBSITE MAINTENANCE CARE PLAN */}
+      <WebsiteMaintenanceSection />
+
+      {/* 6. PROCESS SECTION */}
       <ProcessSection />
 
-      {/* 5. FAQS SECTION */}
+      {/* 7. FAQS SECTION */}
       <FAQSection />
 
-      {/* 6. FINAL CTA */}
+      {/* 8. FINAL CTA */}
       <FinalCTA />
 
       {/* Interactive Service Deep-Dive Modal */}
