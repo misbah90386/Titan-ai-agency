@@ -20,7 +20,6 @@ import { AboutPage } from './pages/AboutPage';
 import { MissionVisionPage } from './pages/MissionVisionPage';
 import { ContactPage } from './pages/ContactPage';
 import { PortfolioPage } from './pages/PortfolioPage';
-import { AiDemoPage } from './pages/AiDemoPage';
 import { BlogPage } from './pages/BlogPage';
 import { BlogArticlePage } from './pages/BlogArticlePage';
 import { PageTransition, InitialPageLoader, DesktopCursorGlow } from './components/motion/MotionComponents';

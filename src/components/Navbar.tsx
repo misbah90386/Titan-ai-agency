@@ -41,18 +41,18 @@ export const Navbar: React.FC = () => {
           : 'bg-[#04142E]/70 backdrop-blur-md border-b border-white/[0.06]'
       }`}
     >
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16' : 'h-20'}`}>
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-300 ${scrolled ? 'h-16' : 'h-16 sm:h-20'}`}>
         {/* Brand Logo Lockup */}
         <Link
           to="/"
           id="nav-brand-logo"
-          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform duration-300 hover:scale-[1.01] whitespace-nowrap"
+          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform duration-300 hover:scale-[1.01] whitespace-nowrap shrink-0"
         >
           <TitanLogo
             variant="dark"
-            iconClassName={`transition-all duration-300 drop-shadow-[0_0_16px_rgba(0,209,255,0.4)] ${scrolled ? 'w-10 h-10 sm:w-11 sm:h-11' : 'w-12 h-12 sm:w-[50px] sm:h-[50px]'}`}
-            titleClassName="text-[22px] sm:text-[24px] md:text-[26px] tracking-[0.16em]"
-            subtitleClassName="text-[12px] sm:text-[13px] tracking-[0.28em]"
+            iconClassName={`transition-all duration-300 drop-shadow-[0_0_16px_rgba(0,209,255,0.4)] ${scrolled ? 'w-9 h-9 sm:w-11 sm:h-11' : 'w-10 h-10 sm:w-12 sm:h-12'}`}
+            titleClassName="text-[20px] sm:text-[24px] md:text-[26px] tracking-[0.16em]"
+            subtitleClassName="text-[10px] sm:text-[12px] md:text-[13px] tracking-[0.28em]"
           />
         </Link>
 
@@ -137,43 +137,21 @@ export const Navbar: React.FC = () => {
           </Link>
         </div>
 
-        {/* Mobile Header: Language Switcher, Phone, CTA & Hamburger */}
-        <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
-          {/* Mobile Direct Language Toggle */}
+        {/* Mobile Header: Hamburger Menu Button Only */}
+        <div className="flex items-center lg:hidden">
           <button
             type="button"
-            onClick={toggleLanguage}
-            id="mobile-language-toggle-btn"
-            aria-label="Toggle language between English and Arabic"
-            className="px-2 py-1 rounded-lg bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-bold text-[#00D1FF] hover:bg-[#00D1FF]/20 transition-colors cursor-pointer"
-          >
-            {language === 'en' ? 'العربية' : 'EN'}
-          </button>
-
-          <a
-            href="https://wa.me/966534182945?text=Hello%20TITAN%20AI%20AGENCY,%20I%20would%20like%20to%20inquire%20about%20your%20services."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 rounded-lg text-slate-400 hover:text-[#00D1FF] transition-colors"
-            aria-label="WhatsApp"
-          >
-            <MessageCircle className="w-4 h-4" />
-          </a>
-
-          <Link
-            to="/contact"
-            className="btn-titan-primary px-3 py-1.5 text-xs font-bold"
-          >
-            {t.nav.startProject}
-          </Link>
-
-          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             id="mobile-menu-toggle-btn"
-            aria-label="Toggle Navigation Menu"
-            className="p-2 rounded-lg text-[#EAF7FF] hover:text-white hover:bg-white/[0.08] focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+            className="p-2 sm:p-2.5 rounded-xl text-[#EAF7FF] hover:text-[#00D1FF] bg-white/[0.06] hover:bg-white/[0.12] border border-[#00D1FF]/30 focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 transition-all cursor-pointer"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6 text-[#00D1FF]" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-[#00D1FF]" />
+            ) : (
+              <Menu className="w-6 h-6 text-[#EAF7FF]" />
+            )}
           </button>
         </div>
       </div>
@@ -182,76 +160,78 @@ export const Navbar: React.FC = () => {
       <div
         id="mobile-nav-drawer"
         aria-hidden={!mobileMenuOpen}
-        className={`lg:hidden bg-[#04142E] border-b border-[#00D1FF]/20 shadow-2xl overflow-hidden transition-all duration-250 ease-out ${
+        className={`lg:hidden bg-[#04142E] border-b border-[#00D1FF]/20 shadow-2xl overflow-hidden transition-all duration-300 ease-out ${
           mobileMenuOpen
-            ? 'max-h-[560px] opacity-100 py-3 px-4 translate-y-0 pointer-events-auto'
-            : 'max-h-0 opacity-0 py-0 px-4 -translate-y-2 pointer-events-none'
+            ? 'max-h-[calc(100vh-4rem)] opacity-100 py-4 px-4 sm:px-6 translate-y-0 pointer-events-auto overflow-y-auto'
+            : 'max-h-0 opacity-0 py-0 px-4 sm:px-6 -translate-y-2 pointer-events-none'
         }`}
       >
-        <div className="space-y-2">
-          {/* Mobile In-Drawer Language Switch */}
-          <div className="pb-2 border-b border-white/[0.08] flex items-center justify-between">
+        <div className="space-y-4 pb-2">
+          {/* Navigation Links: Home, Services, Pricing, Our Work, About, Contact */}
+          <div className="space-y-1">
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.path;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block px-4 py-3 rounded-xl text-base font-semibold transition-all ${
+                    isActive
+                      ? 'text-[#00D1FF] bg-[#0B1F4B] border border-[#00D1FF]/40 shadow-[0_0_15px_rgba(0,209,255,0.15)]'
+                      : 'text-[#EAF7FF]/85 hover:text-white hover:bg-white/[0.05]'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </div>
+
+          {/* In-Drawer Language Switcher: English / العربية */}
+          <div className="pt-3 pb-1 border-t border-white/[0.08] flex items-center justify-between">
             <span className="text-xs font-mono uppercase text-[#8FA0BA] flex items-center gap-1.5">
               <Globe className="w-3.5 h-3.5 text-[#00D1FF]" />
               <span>Language / اللغة</span>
             </span>
-            <div className="flex items-center rounded-lg bg-white/[0.06] border border-[#00D1FF]/30 p-0.5 text-xs font-bold">
+            <div
+              className="flex items-center rounded-lg bg-white/[0.06] border border-[#00D1FF]/30 p-0.5 text-xs font-bold"
+              role="group"
+              aria-label="Mobile Language selection / اختيار اللغة"
+            >
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
-                className={`px-3 py-1 rounded-md transition-all ${
+                className={`px-3 py-1.5 rounded-md transition-all cursor-pointer ${
                   language === 'en'
                     ? 'bg-[#00D1FF] text-[#04142E] font-bold shadow-sm'
-                    : 'text-[#EAF7FF]/70'
+                    : 'text-[#EAF7FF]/70 hover:text-white'
                 }`}
+                aria-pressed={language === 'en'}
               >
                 English
               </button>
               <button
                 type="button"
                 onClick={() => setLanguage('ar')}
-                className={`px-3 py-1 rounded-md transition-all font-arabic ${
+                className={`px-3 py-1.5 rounded-md transition-all font-arabic cursor-pointer ${
                   language === 'ar'
                     ? 'bg-[#00D1FF] text-[#04142E] font-bold shadow-sm'
-                    : 'text-[#EAF7FF]/70'
+                    : 'text-[#EAF7FF]/70 hover:text-white'
                 }`}
+                aria-pressed={language === 'ar'}
               >
                 العربية
               </button>
             </div>
           </div>
 
-          {navItems.map((item) => {
-            const isActive = location.pathname === item.path;
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-xl text-base font-semibold transition-colors ${
-                  isActive
-                    ? 'text-[#00D1FF] bg-[#0B1F4B] border border-[#00D1FF]/30'
-                    : 'text-[#EAF7FF]/80 hover:text-white hover:bg-white/[0.05]'
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-          <div className="pt-3 space-y-2.5">
-            <a
-              href="https://wa.me/966534182945?text=Hello%20TITAN%20AI%20AGENCY,%20I%20would%20like%20to%20inquire%20about%20your%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-white/[0.06] border border-[#3BA9FF]/30 text-[#EAF7FF] text-sm font-semibold"
-            >
-              <MessageCircle className="w-4 h-4 text-[#00D1FF]" />
-              <span dir="ltr">WhatsApp: +966 53 418 2945</span>
-            </a>
+          {/* Prominent CTA: Start Your Project */}
+          <div className="pt-1">
             <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="btn-titan-primary flex items-center justify-center gap-2 w-full py-3 text-base"
+              className="btn-titan-primary flex items-center justify-center gap-2 w-full py-3.5 px-6 text-base font-bold uppercase tracking-wider rounded-xl shadow-[0_4px_20px_rgba(0,209,255,0.35)] hover:shadow-[0_0_25px_rgba(0,209,255,0.55)] transition-all cursor-pointer"
             >
               <span>{t.nav.startProject}</span>
               <ArrowRight className={`w-4 h-4 stroke-[2.5] ${isRtl ? 'rotate-180' : ''}`} />
