@@ -3,12 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight, MessageCircle, Globe } from 'lucide-react';
 import { TitanLogo } from './TitanLogo';
 import { useLanguage } from '../context/LanguageContext';
+import { useQuote } from '../context/QuoteContext';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { language, isRtl, setLanguage, toggleLanguage, t } = useLanguage();
+  const { openQuote } = useQuote();
 
   const navItems = [
     { name: t.nav.home, path: '/' },
@@ -127,14 +129,15 @@ export const Navbar: React.FC = () => {
             <span className="font-mono text-[11px] text-slate-400 group-hover:text-slate-200 transition-colors duration-200" dir="ltr">+966 53 418 2945</span>
           </a>
 
-          <Link
-            to="/contact"
+          <button
+            type="button"
             id="nav-get-started-btn"
-            className="group btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold shadow-[0_4px_16px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.45)] hover:-translate-y-0.5 hover:brightness-105 transition-all duration-300"
+            onClick={() => openQuote()}
+            className="group btn-titan-primary inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold shadow-[0_4px_16px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.45)] hover:-translate-y-0.5 hover:brightness-105 transition-all duration-300 cursor-pointer"
           >
-            <span>Get a Quote</span>
+            <span>{language === 'ar' ? 'طلب عرض سعر' : 'Get a Quote'}</span>
             <ArrowRight className={`w-4 h-4 stroke-[2.5] ${isRtl ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform duration-200`} />
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Header: Hamburger Menu Button Only */}
@@ -228,14 +231,17 @@ export const Navbar: React.FC = () => {
 
           {/* Prominent CTA: Start Your Project */}
           <div className="pt-1">
-            <Link
-              to="/contact"
-              onClick={() => setMobileMenuOpen(false)}
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                openQuote();
+              }}
               className="btn-titan-primary flex items-center justify-center gap-2 w-full py-3.5 px-6 text-base font-bold uppercase tracking-wider rounded-xl shadow-[0_4px_20px_rgba(0,209,255,0.35)] hover:shadow-[0_0_25px_rgba(0,209,255,0.55)] transition-all cursor-pointer"
             >
               <span>{t.nav.startProject}</span>
               <ArrowRight className={`w-4 h-4 stroke-[2.5] ${isRtl ? 'rotate-180' : ''}`} />
-            </Link>
+            </button>
           </div>
         </div>
       </div>

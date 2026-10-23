@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { useQuote } from '../context/QuoteContext';
 import { CinematicVideoHero } from '../components/home/CinematicVideoHero';
 import { SimplifiedServicesSection } from '../components/home/SimplifiedServicesSection';
 import { FeaturedWork } from '../components/FeaturedWork';
@@ -8,12 +9,11 @@ import { WhyTitanSection } from '../components/home/WhyTitanSection';
 import { HowTitanWorksSection } from '../components/home/HowTitanWorksSection';
 import { FAQSection } from '../components/FAQSection';
 import { HomepageContactSection } from '../components/home/HomepageContactSection';
-import { QuoteModal } from '../components/pricing/QuoteModal';
 import { usePageSEO } from '../hooks/usePageSEO';
 
 export const HomePage: React.FC = () => {
   const { language } = useLanguage();
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const { openQuote } = useQuote();
 
   usePageSEO({
     title: language === 'ar'
@@ -44,7 +44,14 @@ export const HomePage: React.FC = () => {
   return (
     <div id="home-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33]">
       {/* 1. HERO — What Titan does */}
-      <CinematicVideoHero onGetQuote={() => setIsQuoteModalOpen(true)} />
+      <CinematicVideoHero
+        onGetQuote={() =>
+          openQuote({
+            id: 'free-quote-inquiry',
+            name: language === 'ar' ? 'استشارة وعرض سعر مجاني' : 'Free Project Quote'
+          })
+        }
+      />
 
       {/* 2. THREE MAIN SERVICE CATEGORIES */}
       <SimplifiedServicesSection />
@@ -66,16 +73,6 @@ export const HomePage: React.FC = () => {
 
       {/* 8. CONTACT */}
       <HomepageContactSection />
-
-      {/* Interactive Quick Quote Modal */}
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
-        initialPackage={{
-          id: 'free-quote-inquiry',
-          name: language === 'ar' ? 'استشارة وعرض سعر مجاني' : 'Free Project Quote'
-        }}
-      />
     </div>
   );
 };

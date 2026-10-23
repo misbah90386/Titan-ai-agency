@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { TitanIcon } from './TitanLogo';
 import { FadeIn, FloatingParticles } from './motion/MotionComponents';
+import { useLanguage } from '../context/LanguageContext';
+import { useQuote } from '../context/QuoteContext';
 
 export const FinalCTA: React.FC = () => {
+  const { language, isRtl } = useLanguage();
+  const { openQuote } = useQuote();
+
   const whatsappUrl =
     'https://wa.me/966534182945?text=' +
     encodeURIComponent('Hello TITAN AI AGENCY, let’s discuss building our next digital or AI solution.');
@@ -38,14 +43,15 @@ export const FinalCTA: React.FC = () => {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                to="/contact"
+              <button
+                type="button"
                 id="cta-start-project-btn"
-                className="group btn-titan-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold shadow-[0_4px_18px_rgba(0,209,255,0.3)] hover:shadow-[0_0_24px_rgba(0,209,255,0.5)] hover:-translate-y-0.5 hover:brightness-105 transition-all duration-300"
+                onClick={() => openQuote()}
+                className="group btn-titan-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold shadow-[0_4px_18px_rgba(0,209,255,0.3)] hover:shadow-[0_0_24px_rgba(0,209,255,0.5)] hover:-translate-y-0.5 hover:brightness-105 transition-all duration-300 cursor-pointer"
               >
-                <span>START YOUR PROJECT</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.5] group-hover:translate-x-[5px] transition-transform duration-250" />
-              </Link>
+                <span>{language === 'ar' ? 'ابدأ مشروعك' : 'START YOUR PROJECT'}</span>
+                <ArrowRight className={`w-4 h-4 stroke-[2.5] ${isRtl ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform duration-250`} />
+              </button>
 
               <a
                 href={whatsappUrl}

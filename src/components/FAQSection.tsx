@@ -18,20 +18,20 @@ export const FAQSection: React.FC = () => {
   const whatsappUrl = 'https://wa.me/966534182945?text=' + encodeURIComponent(whatsappMessage);
 
   return (
-    <section id="faqs" className="relative py-20 sm:py-28 bg-[#FFFFFF] border-t border-slate-200/80">
+    <section id="faqs" className="relative py-12 sm:py-20 lg:py-28 bg-[#FFFFFF] border-t border-slate-200/80">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
         <FadeIn direction="up">
-          <div className="text-center mb-14">
+          <div className="text-center mb-8 sm:mb-14">
             <div className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2 flex items-center justify-center gap-1.5">
               <HelpCircle className="w-4 h-4 text-[#3BA9FF]" />
               <span>{t.faqs.badge}</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
               {t.faqs.heading}
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-[#536477] leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-[#536477] leading-relaxed max-w-2xl mx-auto">
               {t.faqs.subtitle}
             </p>
           </div>

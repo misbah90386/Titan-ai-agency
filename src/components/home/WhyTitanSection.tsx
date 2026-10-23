@@ -18,7 +18,7 @@ export const WhyTitanSection: React.FC = () => {
   ];
 
   return (
-    <section id="why-titan" className="relative py-20 sm:py-28 bg-[#04142E] text-white border-t border-[#00D1FF]/20 overflow-hidden">
+    <section id="why-titan" className="relative py-12 sm:py-20 lg:py-28 bg-[#04142E] text-white border-t border-[#00D1FF]/20 overflow-hidden">
       <div className="absolute inset-0 bg-digital-grid-dark opacity-35 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-gradient-to-r from-[#00D1FF]/10 to-[#3BA9FF]/10 rounded-full blur-[140px] pointer-events-none" />
 
@@ -26,17 +26,17 @@ export const WhyTitanSection: React.FC = () => {
         
         {/* Header */}
         <FadeIn direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 space-y-2.5 sm:space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-[#00D1FF]/30 text-xs font-mono font-bold text-[#00D1FF] uppercase tracking-widest">
               <TitanIcon className="w-4 h-4" />
               <span>{t.whyTitan.badge}</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight uppercase">
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight uppercase">
               {t.whyTitan.heading}
             </h2>
 
-            <p className="text-base sm:text-lg text-[#8FA0BA] leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-[#8FA0BA] leading-relaxed">
               {t.whyTitan.subtitle}
             </p>
           </div>

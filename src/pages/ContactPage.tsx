@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ArrowRight, MessageCircle, CheckCircle2, ShieldCheck, FileCheck, Code2, Rocket, MessageSquare, Sparkles } from 'lucide-react';
+import { MessageCircle, ArrowRight, ShieldCheck, FileCheck, Code2, Rocket, MessageSquare, Sparkles } from 'lucide-react';
 import { usePageSEO } from '../hooks/usePageSEO';
 import { TitanIcon } from '../components/TitanLogo';
 import { FadeIn } from '../components/motion/MotionComponents';
 import { useLanguage } from '../context/LanguageContext';
-
-export const YOUR_WHATSAPP_NUMBER = '+966 53 418 2945';
-const WHATSAPP_API_NUMBER = YOUR_WHATSAPP_NUMBER.replace(/[^0-9]/g, '');
+import { QuotationForm } from '../components/pricing/QuotationForm';
+import { VERIFIED_WHATSAPP_DISPLAY, VERIFIED_WHATSAPP_TARGET } from '../data/quotationServices';
 
 export const ContactPage: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const { language, isRtl, t } = useLanguage();
+  const { language } = useLanguage();
+
+  const pkgParam = searchParams.get('package') || undefined;
+  const srvParam = searchParams.get('service') || undefined;
 
   usePageSEO({
     title: language === 'ar'
       ? 'ابدأ مشروعك واطلب عرض سعر | وكالة تيتان للذكاء الاصطناعي'
-      : 'Start Your Project & Request a Quote | TITAN AI Agency',
+      : 'Start Your Project & Request a Quote | Titan AI Agency',
     description: language === 'ar'
       ? 'ابدأ مشروعك مع وكالة تيتان. باقات مواقع تبدأ من 500 ريال، وحلول ذكاء اصطناعي وأتمتة وصيانة شهرية للشركات في السعودية.'
-      : 'Start your project with TITAN AI Agency. Professional websites from SAR 500, custom AI agents, call agents, and monthly maintenance for Saudi businesses.',
+      : 'Start your project with Titan AI Agency. Professional websites from SAR 500, custom AI agents, call agents, and monthly maintenance for Saudi businesses.',
     canonicalPath: '/contact',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'ContactPage',
-      name: 'Contact TITAN AI Agency',
+      name: 'Contact Titan AI Agency',
       url: 'https://titan-ai-agency.vercel.app/contact',
       description:
-        'Start your project with TITAN AI Agency. Tell us what you want to improve—websites, SEO, AI agents, call agents, or video creation.',
+        'Start your project with Titan AI Agency. Tell us what you want to improve—websites, SEO, AI agents, call agents, or video creation.',
       mainEntity: {
         '@type': 'Organization',
-        name: 'TITAN AI Agency',
+        name: 'Titan AI Agency',
         url: 'https://titan-ai-agency.vercel.app/',
         logo: 'https://titan-ai-agency.vercel.app/titan-logo.png',
         contactPoint: {
@@ -43,414 +45,114 @@ export const ContactPage: React.FC = () => {
     },
   });
 
-  // Form State
-  const [formData, setFormData] = useState({
-    name: '',
-    businessName: '',
-    email: '',
-    phone: '',
-    businessType: '',
-    websiteUrl: '',
-    selectedPackage: '',
-    neededService: 'Website Development',
-    mainChallenge: '',
-    budget: 'SAR 1,200 (Professional Website)',
-    preferredContactMethod: 'WhatsApp',
-    additionalNotes: ''
-  });
-
-  const [submitted, setSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-
-  // Prefill from URL query params
-  useEffect(() => {
-    const pkgParam = searchParams.get('package');
-    const srvParam = searchParams.get('service');
-
-    if (pkgParam) {
-      setFormData((prev) => ({
-        ...prev,
-        selectedPackage: pkgParam,
-        budget: pkgParam.includes('500') || pkgParam.toLowerCase().includes('starter')
-          ? 'SAR 500 (Starter Website)'
-          : pkgParam.includes('1200') || pkgParam.includes('1,200') || pkgParam.toLowerCase().includes('professional')
-          ? 'SAR 1,200 (Professional Website)'
-          : pkgParam.includes('2000') || pkgParam.includes('2,000') || pkgParam.toLowerCase().includes('advanced')
-          ? 'SAR 2,000+ (Advanced Business Website)'
-          : pkgParam.includes('100') || pkgParam.toLowerCase().includes('maintenance')
-          ? 'SAR 100 / Month (Website Maintenance)'
-          : 'Custom AI Solution Quote'
-      }));
-    }
-
-    if (srvParam) {
-      setFormData((prev) => ({
-        ...prev,
-        neededService: srvParam
-      }));
-    }
-  }, [searchParams]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.name.trim() || !formData.businessName.trim() || !formData.phone.trim() || !formData.mainChallenge.trim()) {
-      setErrorMessage(
-        language === 'ar'
-          ? 'يرجى تعبئة الحقول المطلوبة (الاسم، المنشأة، الهاتف، ومتطلبات المشروع).'
-          : 'Please complete all required fields (Name, Business Name, Phone/WhatsApp, Project Requirements).'
-      );
-      return;
-    }
-
-    setSubmitted(true);
-    setErrorMessage('');
-
-    const message = `*TITAN AI Project Inquiry*\n` +
-      `--------------------------------\n` +
-      `*Client Name:* ${formData.name}\n` +
-      `*Business Name:* ${formData.businessName} (${formData.businessType || 'N/A'})\n` +
-      `*Email:* ${formData.email || 'N/A'}\n` +
-      `*Phone/WhatsApp:* ${formData.phone}\n` +
-      `*Selected Package:* ${formData.selectedPackage || 'Custom Scope'}\n` +
-      `*Service Required:* ${formData.neededService}\n` +
-      `*Budget Range:* ${formData.budget}\n` +
-      `*Current Website:* ${formData.websiteUrl || 'None'}\n` +
-      `*Challenge / Requirements:* ${formData.mainChallenge}\n` +
-      (formData.additionalNotes ? `*Additional Notes:* ${formData.additionalNotes}\n` : '') +
-      `--------------------------------\n` +
-      `Please review this inquiry and provide a custom proposal.`;
-
-    const targetUrl = `https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURIComponent(message)}`;
-    
-    // Open WhatsApp after a brief delay
-    setTimeout(() => {
-      window.open(targetUrl, '_blank');
-    }, 400);
-  };
-
-  const serviceOptions = [
-    'Website Development',
-    'SEO Optimization',
-    'AI Support Agents',
-    'AI Call Agents',
-    'AI Video Creation',
-    'Website Maintenance'
-  ];
-
-  const budgetRanges = [
-    'SAR 500 (Starter Website)',
-    'SAR 1,200 (Professional Website)',
-    'SAR 2,000+ (Advanced Business Website)',
-    'SAR 100 / Month (Website Maintenance)',
-    'Custom AI Solution Quote',
-    'To Be Discussed'
-  ];
-
   const trustSteps = [
-    { num: '01', title: 'Review', desc: 'We review your request and business context.', icon: MessageSquare },
-    { num: '02', title: 'Consultation', desc: 'We discuss your business and requirements.', icon: ShieldCheck },
-    { num: '03', title: 'Proposal', desc: 'We propose the right solution and project scope.', icon: FileCheck },
-    { num: '04', title: 'Build', desc: 'After approval, dedicated development begins.', icon: Code2 },
-    { num: '05', title: 'Launch', desc: 'We test, launch and support the solution.', icon: Rocket }
+    {
+      num: '01',
+      title: language === 'ar' ? 'مراجعة المتطلبات' : 'Scope Review',
+      desc: language === 'ar' ? 'ندرس متطلبات نشاطك بعناية.' : 'We review your business context and goals.',
+      icon: MessageSquare
+    },
+    {
+      num: '02',
+      title: language === 'ar' ? 'استشارة متخصصة' : 'Consultation',
+      desc: language === 'ar' ? 'نحدد الحل التقني الأنسب لاحتياجاتك.' : 'We discuss details directly on WhatsApp.',
+      icon: ShieldCheck
+    },
+    {
+      num: '03',
+      title: language === 'ar' ? 'عرض السعر وخطة العمل' : 'Clear Proposal',
+      desc: language === 'ar' ? 'عرض سعر شفاف ومواعيد واضحة.' : 'Itemized quote, features, and timeline.',
+      icon: FileCheck
+    },
+    {
+      num: '04',
+      title: language === 'ar' ? 'التطوير الهندسي' : 'Custom Build',
+      desc: language === 'ar' ? 'بناء احترافي مخصص دون قوالب مكررة.' : 'High-performance engineering and custom code.',
+      icon: Code2
+    },
+    {
+      num: '05',
+      title: language === 'ar' ? 'الفحص والإطلاق' : 'Launch & Support',
+      desc: language === 'ar' ? 'اختبار شامل مع 30 يوماً دعم مجاني.' : 'Browser testing with 30 days free support.',
+      icon: Rocket
+    }
   ];
+
+  const directChatUrl = `https://wa.me/${VERIFIED_WHATSAPP_TARGET}?text=${encodeURIComponent(
+    language === 'ar'
+      ? 'مرحباً وكالة تيتان، أود الاستفسار حول خدماتكم ومشروعي القادم.'
+      : 'Hello Titan AI Agency, I would like to discuss my project requirements.'
+  )}`;
 
   return (
     <div id="contact-page-root" className="min-h-screen bg-[#F8FAFF] text-[#071A33] pt-24 pb-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-digital-grid opacity-50 pointer-events-none" />
 
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
+        {/* Page Header */}
         <FadeIn direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono text-[#0B1F4B] font-bold uppercase tracking-widest">
-              <TitanIcon className="w-4 h-4" />
-              <span>Project Scoping & Contact</span>
+          <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono text-[#0284C7] font-bold uppercase tracking-widest shadow-xs">
+              <TitanIcon className="w-4 h-4 text-[#00D1FF]" />
+              <span>{language === 'ar' ? 'طلب عرض سعر واستشارة' : 'Project Quotation & Scoping'}</span>
             </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#071A33] tracking-tight leading-tight">
-              Start Your Project
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+              {language === 'ar' ? 'ابدأ مشروعك مع تيتان' : 'Start Your Project'}
             </h1>
 
-            <p className="text-base sm:text-xl text-[#536477] font-normal leading-relaxed">
-              Tell us what problem you want to solve. We’ll analyze your requirements and propose the right digital or AI solution.
+            <p className="text-sm sm:text-base text-[#536477] font-normal leading-relaxed">
+              {language === 'ar'
+                ? 'أدخل متطلبات مشروعك أدناه للحصول على تفاصيل دقيقة وعرض سعر واضح، وتواصل معنا مباشرة عبر واتساب.'
+                : 'Select your required service and describe your project scope. We provide clear starting estimates and transparent engineering.'}
             </p>
           </div>
         </FadeIn>
 
-        {/* Project Form Container */}
+        {/* Unified Quotation Form Container */}
         <FadeIn delay={0.1} direction="up" distance={16}>
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 sm:p-12 mb-16">
-            
-            {submitted ? (
-              <div className="text-center py-10 space-y-4">
-                <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
-                  <CheckCircle2 className="w-8 h-8" />
-                </div>
-                <h3 className="font-display text-2xl font-bold text-[#071A33]">
-                  {language === 'ar' ? 'تم تجهيز تفاصيل طلبك بنجاح!' : 'Project Inquiry Formulated!'}
-                </h3>
-                <p className="text-sm text-[#536477] max-w-md mx-auto leading-relaxed">
-                  {language === 'ar'
-                    ? 'طلبك جاهز للإرسال. اضغط على الزر أدناه لإرسال تفاصيل مشروعك مباشرة إلى المؤسس سعد نعيم عبر واتساب لمراجعتها.'
-                    : 'Your inquiry details are ready. Click the button below to send directly to founder Saad Naeem on WhatsApp for fast review.'}
-                </p>
-                <div className="pt-2">
-                  <a
-                    href={`https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURIComponent(
-                      `Hello TITAN AI AGENCY, my name is ${formData.name} from ${formData.businessName}. Selected package: ${formData.selectedPackage || formData.neededService}.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-titan-primary inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold uppercase tracking-wider"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>{language === 'ar' ? 'إرسال عبر واتساب الآن' : 'Send on WhatsApp Now'}</span>
-                  </a>
-                </div>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-8">
-                {errorMessage && (
-                  <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-700 font-medium">
-                    {errorMessage}
-                  </div>
-                )}
+          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl p-6 sm:p-10 mb-14 text-start">
+            <div className="flex items-center gap-2 pb-5 mb-5 border-b border-slate-100">
+              <Sparkles className="w-4 h-4 text-[#0284C7]" />
+              <h2 className="font-display text-lg sm:text-xl font-bold text-[#071A33]">
+                {language === 'ar' ? 'بيانات طلب عرض السعر' : 'Quotation Inquiry Details'}
+              </h2>
+            </div>
 
-                {/* Selected Package Notice */}
-                {formData.selectedPackage && (
-                  <div className="p-4 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <Sparkles className="w-4 h-4 text-[#0284C7]" />
-                      <span className="text-xs font-mono font-bold text-[#071A33]">
-                        {language === 'ar' ? 'الباقة المحددة:' : 'Selected Package:'} <span className="text-[#0284C7]">{formData.selectedPackage}</span>
-                      </span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => setFormData({ ...formData, selectedPackage: '' })}
-                      className="text-[11px] font-mono text-slate-500 hover:text-slate-800 underline"
-                    >
-                      {language === 'ar' ? 'تغيير' : 'Change'}
-                    </button>
-                  </div>
-                )}
-                
-                {/* 1. Contact & Business Details */}
-                <div>
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-4">
-                    01 — Contact & Company Information
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-xs font-bold text-[#071A33] mb-1.5 font-mono uppercase">
-                        Your Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="e.g. Tariq Al-Mansoor"
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/20"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-[#071A33] mb-1.5 font-mono uppercase">
-                        Business Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.businessName}
-                        onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                        placeholder="e.g. Apex Property Group"
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/20"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-[#071A33] mb-1.5 font-mono uppercase">
-                        Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="tariq@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/20"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-[#071A33] mb-1.5 font-mono uppercase">
-                        Phone / WhatsApp *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+966 5X XXX XXXX"
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/20"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-[#071A33] mb-1.5 font-mono uppercase">
-                        Business Type
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.businessType}
-                        onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                        placeholder="e.g. Real Estate, Clinic, Restaurant, Advisory"
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/20"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-[#071A33] mb-1.5 font-mono uppercase">
-                        Website URL <span className="text-slate-400 font-normal">(Optional)</span>
-                      </label>
-                      <input
-                        type="url"
-                        value={formData.websiteUrl}
-                        onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
-                        placeholder="https://yourwebsite.com"
-                        className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/20"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* 2. What do you need? */}
-                <div className="pt-4 border-t border-slate-100">
-                  <label className="block text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-3">
-                    02 — What Do You Need? *
-                  </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
-                    {serviceOptions.map((opt) => (
-                      <button
-                        type="button"
-                        key={opt}
-                        onClick={() => setFormData({ ...formData, neededService: opt })}
-                        className={`p-3 rounded-xl text-xs font-bold transition-all text-center border ${
-                          formData.neededService === opt
-                            ? 'bg-[#04142E] text-white border-[#00D1FF] shadow-md'
-                            : 'bg-[#F8FAFF] hover:bg-slate-100 text-[#071A33] border-slate-200'
-                        }`}
-                      >
-                        {opt}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 3. Main Business Challenge */}
-                <div className="pt-4 border-t border-slate-100">
-                  <label className="block text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold mb-2">
-                    03 — Main Business Challenge *
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={formData.mainChallenge}
-                    onChange={(e) => setFormData({ ...formData, mainChallenge: e.target.value })}
-                    placeholder="Tell us what problem you want to solve (e.g. 'We miss customer calls after hours', 'Our website does not generate leads', 'Employees spend hours answering repetitive inquiries')."
-                    className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/20"
-                  />
-                </div>
-
-                {/* 4. Budget & Contact Channel */}
-                <div className="pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold mb-2">
-                      Estimated Project Budget (Optional)
-                    </label>
-                    <select
-                      value={formData.budget}
-                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#F8FAFF] border border-slate-200 text-sm text-[#071A33] focus:outline-none focus:border-[#00D1FF]"
-                    >
-                      {budgetRanges.map((b) => (
-                        <option key={b} value={b}>
-                          {b}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold mb-2">
-                      Contact Channel
-                    </label>
-                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#F8FAFF] border border-emerald-500/30 text-sm text-[#071A33]">
-                      <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
-                        <MessageCircle className="w-4 h-4 fill-emerald-500/20" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="text-xs font-bold text-[#071A33] flex items-center gap-1.5">
-                          <span>WhatsApp</span>
-                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                          <span className="text-[10px] text-emerald-600 font-mono font-medium">Direct Chat</span>
-                        </div>
-                        <div className="text-[11px] text-[#536477] font-mono truncate">
-                          {YOUR_WHATSAPP_NUMBER}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Submit Button */}
-                <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-xs text-[#8FA0BA] font-mono">
-                    Direct Founder Review · Response within 24 hours
-                  </div>
-
-                  <button
-                    type="submit"
-                    id="submit-start-project-btn"
-                    className="btn-titan-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-9 py-4 text-sm font-bold uppercase tracking-wider shadow-lg"
-                  >
-                    <span>START MY PROJECT</span>
-                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-                  </button>
-                </div>
-
-              </form>
-            )}
-
+            <QuotationForm
+              isModal={false}
+              initialPackageName={pkgParam}
+              initialServiceId={srvParam}
+            />
           </div>
         </FadeIn>
 
         {/* Trust Information Section (What happens after you contact TITAN?) */}
         <FadeIn delay={0.2} direction="up" distance={20}>
-          <div className="rounded-3xl bg-[#04142E] text-white p-8 sm:p-12 border border-[#00D1FF]/25 shadow-xl mb-16">
-            <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
+          <div className="rounded-3xl bg-[#04142E] text-white p-7 sm:p-10 border border-[#00D1FF]/25 shadow-xl mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
               <span className="text-xs font-mono uppercase tracking-widest text-[#00D1FF] font-bold">
-                Clear Steps Ahead
+                {language === 'ar' ? 'خطوات واضحة وموثوقة' : 'Clear Steps Ahead'}
               </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-white uppercase">
-                WHAT HAPPENS AFTER YOU CONTACT TITAN?
+              <h2 className="font-display text-xl sm:text-2xl lg:text-3xl font-extrabold text-white uppercase tracking-tight">
+                {language === 'ar' ? 'ماذا يحدث بعد إرسال طلبك؟' : 'WHAT HAPPENS AFTER YOU CONTACT TITAN?'}
               </h2>
               <p className="text-xs sm:text-sm text-[#8FA0BA]">
-                A disciplined, predictable process that eliminates project risk and uncertainty.
+                {language === 'ar'
+                  ? 'عملية منظمة وشفافة تضمن وضوح النطاق والجدول الزمني قبل البدء.'
+                  : 'A disciplined, predictable process that eliminates project risk and uncertainty.'}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
               {trustSteps.map((st) => {
                 const IconComp = st.icon;
                 return (
-                  <div key={st.num} className="p-4 rounded-2xl bg-[#0B1F4B]/60 border border-white/10 space-y-2">
+                  <div key={st.num} className="p-4 rounded-2xl bg-[#0B1F4B]/60 border border-white/10 space-y-2 text-start">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-xs font-bold text-[#00D1FF]">
-                        Step {st.num}
+                        {st.num}
                       </span>
                       <IconComp className="w-4 h-4 text-[#00D1FF]" />
                     </div>
@@ -467,27 +169,28 @@ export const ContactPage: React.FC = () => {
           </div>
         </FadeIn>
 
-        {/* Minimal Direct WhatsApp Card Alternative */}
+        {/* Direct WhatsApp Card Alternative */}
         <FadeIn delay={0.3} direction="up">
-          <div className="max-w-md mx-auto text-center p-8 rounded-3xl bg-white border border-slate-200 shadow-md">
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-3">
+          <div className="max-w-md mx-auto text-center p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-md">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-3 shadow-xs">
               <MessageCircle className="w-6 h-6" />
             </div>
-            <h3 className="font-display font-bold text-lg text-[#071A33] mb-1">
-              Prefer Direct Chat?
+            <h3 className="font-display font-bold text-base sm:text-lg text-[#071A33] mb-1">
+              {language === 'ar' ? 'تفضل المحادثة المباشرة؟' : 'Prefer Direct Chat?'}
             </h3>
-            <p className="text-xs text-[#536477] mb-4">
-              Message founder Saad Naeem directly on WhatsApp for immediate scoping questions.
+            <p className="text-xs text-[#536477] mb-4 leading-relaxed">
+              {language === 'ar'
+                ? `تواصل مباشرة مع المؤسس سعد نعيم عبر واتساب (${VERIFIED_WHATSAPP_DISPLAY}) للاستفسارات السريعة.`
+                : `Message founder Saad Naeem directly on WhatsApp (${VERIFIED_WHATSAPP_DISPLAY}) for fast scoping questions.`}
             </p>
             <a
-              href={`https://wa.me/${WHATSAPP_API_NUMBER}?text=${encodeURIComponent(
-                'Hello TITAN AI AGENCY, I would like to discuss a project.'
-              )}`}
+              href={directChatUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all"
+              className="w-full min-h-[46px] inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md transition-all active:scale-[0.98]"
             >
-              <span>Chat on WhatsApp ({YOUR_WHATSAPP_NUMBER})</span>
+              <MessageCircle className="w-4 h-4" />
+              <span>{language === 'ar' ? 'محادثة عبر واتساب' : `Chat on WhatsApp`}</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

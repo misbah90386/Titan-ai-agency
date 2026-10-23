@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Check, Sparkles, ArrowRight, Info, ChevronDown, ChevronUp, Bot, Wrench } from 'lucide-react';
 import { FadeIn } from '../motion/MotionComponents';
 import { useLanguage } from '../../context/LanguageContext';
-import { QuoteModal } from './QuoteModal';
+import { useQuote } from '../../context/QuoteContext';
 
 export const PricingPackagesSection: React.FC = () => {
   const { language, isRtl, t } = useLanguage();
-  const [selectedPackage, setSelectedPackage] = useState<{ id: string; name: string; price?: string } | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { openQuote } = useQuote();
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
   const [showTerms, setShowTerms] = useState(false);
 
@@ -37,15 +36,14 @@ export const PricingPackagesSection: React.FC = () => {
   };
 
   const handleSelectPackage = (pkg: { id: string; name: string; price: string }) => {
-    setSelectedPackage(pkg);
-    setIsModalOpen(true);
+    openQuote(pkg);
   };
 
   return (
     <section
       id="pricing"
       data-section="pricing-packages"
-      className="relative py-20 sm:py-28 bg-[#FFFFFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]"
+      className="relative py-12 sm:py-20 lg:py-28 bg-[#FFFFFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]"
     >
       {/* Subtle Light Ice Blue Ambient Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[450px] bg-gradient-to-r from-sky-100/60 via-blue-50/40 to-sky-100/60 rounded-full blur-[140px] pointer-events-none" />
@@ -54,17 +52,17 @@ export const PricingPackagesSection: React.FC = () => {
         
         {/* Section Header */}
         <FadeIn direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 space-y-2.5 sm:space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200/90 text-xs font-mono font-bold uppercase tracking-widest text-[#0284C7] shadow-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF]" />
               <span>{t.pricing.badge}</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
               {t.pricing.heading}
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
               {t.pricing.subtitle}
             </p>
           </div>
@@ -346,13 +344,6 @@ export const PricingPackagesSection: React.FC = () => {
         </FadeIn>
 
       </div>
-
-      {/* Quote Dialog */}
-      <QuoteModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        initialPackage={selectedPackage}
-      />
     </section>
   );
 };

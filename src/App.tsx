@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
+import { QuoteProvider } from './context/QuoteContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -27,13 +28,14 @@ import { PageTransition, InitialPageLoader, DesktopCursorGlow } from './componen
 export default function App() {
   return (
     <LanguageProvider>
-      <Router>
-        <InitialPageLoader />
-        <DesktopCursorGlow />
-        <ScrollToTop />
-        <div className="flex flex-col min-h-screen bg-[#F8FAFF] text-[#071A33] antialiased selection:bg-[#00D1FF] selection:text-[#04142E]">
-          <Navbar />
-          <main className="flex-grow">
+      <QuoteProvider>
+        <Router>
+          <InitialPageLoader />
+          <DesktopCursorGlow />
+          <ScrollToTop />
+          <div className="flex flex-col min-h-screen bg-[#F8FAFF] text-[#071A33] antialiased selection:bg-[#00D1FF] selection:text-[#04142E]">
+            <Navbar />
+            <main className="flex-grow">
             <PageTransition>
               <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -68,6 +70,7 @@ export default function App() {
           <FloatingWhatsApp />
         </div>
       </Router>
-    </LanguageProvider>
+    </QuoteProvider>
+  </LanguageProvider>
   );
 }

@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import { LifeBuoy, Check, AlertCircle, ArrowRight, Shield } from 'lucide-react';
 import { FadeIn } from '../motion/MotionComponents';
 import { useLanguage } from '../../context/LanguageContext';
-import { QuoteModal } from './QuoteModal';
+import { useQuote } from '../../context/QuoteContext';
 
 export const WebsiteMaintenanceSection: React.FC = () => {
   const { language, isRtl, t } = useLanguage();
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { openQuote } = useQuote();
 
   const main = t.pricing.maintenance;
 
   const handleOpenMaintenanceQuote = () => {
-    setIsModalOpen(true);
+    openQuote({
+      id: 'website-maintenance',
+      name: language === 'ar' ? 'صيانة المواقع والدعم الفني (100 ريال / شهرياً)' : 'Website Maintenance (From SAR 100/mo)',
+      price: language === 'ar' ? '100 ريال / شهرياً' : 'SAR 100 / Mo'
+    });
   };
 
   return (
@@ -124,17 +128,6 @@ export const WebsiteMaintenanceSection: React.FC = () => {
         </FadeIn>
 
       </div>
-
-      {/* Quote Dialog */}
-      <QuoteModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        initialPackage={{
-          id: 'website-care-plan',
-          name: 'Website Care Plan (SAR 100 / Month)',
-          price: 'SAR 100 / Mo'
-        }}
-      />
     </section>
   );
 };

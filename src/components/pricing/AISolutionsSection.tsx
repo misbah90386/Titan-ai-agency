@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Bot, PhoneCall, Workflow, Video, Search, ArrowRight, ShieldCheck, HelpCircle } from 'lucide-react';
 import { FadeIn } from '../motion/MotionComponents';
 import { useLanguage } from '../../context/LanguageContext';
-import { QuoteModal } from './QuoteModal';
+import { useQuote } from '../../context/QuoteContext';
 
 export const AISolutionsSection: React.FC = () => {
   const { language, isRtl, t } = useLanguage();
-  const [selectedSolution, setSelectedSolution] = useState<{ id: string; name: string; price?: string } | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { openQuote } = useQuote();
 
   const solutionIcons: Record<string, React.ElementType> = {
     'ai-customer-support-agents': Bot,
@@ -18,12 +17,11 @@ export const AISolutionsSection: React.FC = () => {
   };
 
   const handleSelectSolution = (sol: { id: string; title: string; pricing: string }) => {
-    setSelectedSolution({
+    openQuote({
       id: sol.id,
       name: sol.title,
       price: sol.pricing
     });
-    setIsModalOpen(true);
   };
 
   return (
@@ -131,13 +129,6 @@ export const AISolutionsSection: React.FC = () => {
         </FadeIn>
 
       </div>
-
-      {/* Quote Dialog */}
-      <QuoteModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        initialPackage={selectedSolution}
-      />
     </section>
   );
 };

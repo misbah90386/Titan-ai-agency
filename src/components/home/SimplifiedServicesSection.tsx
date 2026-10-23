@@ -39,7 +39,7 @@ export const SimplifiedServicesSection: React.FC = () => {
     <section
       id="services-preview-section"
       data-section="simplified-services"
-      className="relative py-20 sm:py-28 bg-[#FFFFFF] border-t border-slate-100 overflow-hidden text-[#071A33]"
+      className="relative py-12 sm:py-20 lg:py-28 bg-[#FFFFFF] border-t border-slate-100 overflow-hidden text-[#071A33]"
     >
       {/* Subtle light ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-sky-100/50 via-blue-50/40 to-sky-100/50 rounded-full blur-[130px] pointer-events-none" />
@@ -47,29 +47,29 @@ export const SimplifiedServicesSection: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <FadeIn direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 space-y-2.5 sm:space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-50 border border-sky-200/90 text-xs font-mono font-bold uppercase tracking-widest text-[#0284C7] shadow-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF]" />
               <span>{s.badge}</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight">
               {s.heading}
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto">
               {s.subtitle}
             </p>
           </div>
         </FadeIn>
 
         {/* 3 Main Service Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 items-stretch mb-8 sm:mb-12">
           {categories.map((cat, idx) => (
             <FadeIn key={cat.id} delay={idx * 0.08} direction="up" distance={16}>
               <div
                 id={`category-card-${cat.id}`}
-                className="group relative bg-white rounded-3xl p-8 sm:p-9 flex flex-col justify-between h-full border border-slate-200/90 shadow-sm hover:border-sky-300 hover:shadow-lg hover:-translate-y-1.5 transition-all duration-250 text-start"
+                className="group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-9 flex flex-col justify-between h-full border border-slate-200/90 shadow-sm hover:border-sky-300 hover:shadow-lg hover:-translate-y-1.5 transition-all duration-250 text-start"
               >
                 <div>
                   {/* Top Bar with Icon & Tag */}

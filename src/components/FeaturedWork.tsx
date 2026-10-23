@@ -83,7 +83,7 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   };
 
   return (
-    <section id={id} data-section="featured-work" className="relative py-20 sm:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]">
+    <section id={id} data-section="featured-work" className="relative py-12 sm:py-20 lg:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]">
       {/* Subtle Digital Grid */}
       <div className="absolute inset-0 bg-digital-grid opacity-60 pointer-events-none" />
 
@@ -91,23 +91,23 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
         
         {/* Section Header */}
         <FadeIn direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 space-y-2.5 sm:space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold">
               <span>{sectionBadge}</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight uppercase">
+            <h2 className="font-display text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A33] tracking-tight uppercase">
               {sectionTitle}
             </h2>
 
-            <p className="text-base sm:text-lg text-[#536477] leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-[#536477] leading-relaxed">
               {sectionSubtitle}
             </p>
           </div>
         </FadeIn>
 
         {/* 3 Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           {FEATURED_PROJECTS.slice(0, 3).map((rawProject, idx) => {
             const project = getLocalizedProject(rawProject);
             const isExpanded = !!expandedDetails[project.id];
