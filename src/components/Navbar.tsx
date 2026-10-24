@@ -52,9 +52,7 @@ export const Navbar: React.FC = () => {
         >
           <TitanLogo
             variant="dark"
-            iconClassName={`transition-all duration-300 drop-shadow-[0_0_16px_rgba(0,209,255,0.4)] ${scrolled ? 'w-9 h-9 sm:w-11 sm:h-11' : 'w-10 h-10 sm:w-12 sm:h-12'}`}
-            titleClassName="text-[20px] sm:text-[24px] md:text-[26px] tracking-[0.16em]"
-            subtitleClassName="text-[10px] sm:text-[12px] md:text-[13px] tracking-[0.28em]"
+            iconClassName={`transition-all duration-300 drop-shadow-[0_0_12px_rgba(0,209,255,0.3)] ${scrolled ? 'h-9 sm:h-11 w-auto' : 'h-10 sm:h-12 w-auto'}`}
           />
         </Link>
 

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { ExternalLink, ArrowRight, ChevronDown } from 'lucide-react';
+import { ExternalLink, ArrowRight, ChevronDown, CheckCircle2, Globe, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { FadeIn } from './motion/MotionComponents';
 import { useLanguage } from '../context/LanguageContext';
-import { FEATURED_PROJECTS, ProjectItem } from '../data/projects';
-
-const WHATSAPP_BASE = 'https://wa.me/966534182945?text=';
+import { useQuote } from '../context/QuoteContext';
+import { PORTFOLIO_PROJECTS, ProjectItem } from '../data/projects';
 
 export interface FeaturedWorkProps {
   id?: string;
@@ -20,70 +20,32 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
   subtitle,
 }) => {
   const { language, isRtl, t } = useLanguage();
+  const { openQuote } = useQuote();
   const [expandedDetails, setExpandedDetails] = useState<Record<string, boolean>>({});
 
   const toggleDetails = (projectId: string) => {
     setExpandedDetails((prev) => ({ ...prev, [projectId]: !prev[projectId] }));
   };
 
-  const sectionBadge = badge || t.featuredWork.badge;
-  const sectionTitle = title || t.featuredWork.heading;
-  const sectionSubtitle = subtitle || t.featuredWork.subtitle;
+  const isAr = language === 'ar';
 
-  const getLocalizedProject = (p: ProjectItem) => {
-    if (language === 'ar') {
-      if (p.id === 'real-estate-concept') {
-        const ar = t.featuredWork.projects.realEstate;
-        return {
-          ...p,
-          name: ar.name,
-          category: ar.category,
-          description: ar.solution,
-          problem: ar.problem,
-          solution: ar.solution,
-          outcome: ar.outcome,
-          technology: 'موقع إلكتروني / تكامل ذكاء اصطناعي / تهيئة سيو / واتساب',
-          whatsappMessage: 'مرحباً وكالة تيتان، اطلعت على نموذج المنصة العقارية وأود مناقشة مشروع مماثل.'
-        };
-      }
-      if (p.id === 'custom-cake-bakery') {
-        const ar = t.featuredWork.projects.bakery;
-        return {
-          ...p,
-          name: ar.name,
-          category: ar.category,
-          description: ar.solution,
-          problem: ar.problem,
-          solution: ar.solution,
-          outcome: ar.outcome,
-          technology: 'موقع إلكتروني / مخصص طلبات تفاعلي / توجيه واتساب',
-          whatsappMessage: 'مرحباً وكالة تيتان، اطلعت على نموذج مخبز الكيك وأود مناقشة نظام طلبات تفاعلي.'
-        };
-      }
-      if (p.id === 'chicken-restaurant') {
-        const ar = t.featuredWork.projects.restaurant;
-        return {
-          ...p,
-          name: ar.name,
-          category: ar.category,
-          description: ar.solution,
-          problem: ar.problem,
-          solution: ar.solution,
-          outcome: ar.outcome,
-          technology: 'موقع إلكتروني / سرعة فائقة للهواتف / سيو محلي',
-          whatsappMessage: 'مرحباً وكالة تيتان، اطلعت على نموذج منصة المطاعم وأود مناقشة موقع لمطعمنا.'
-        };
-      }
-    }
-    return p;
-  };
+  const sectionBadge = badge || (isAr ? 'أعمالنا ونماذجنا' : 'OUR PORTFOLIO');
+  const sectionTitle = title || (isAr ? 'مواقع حقيقية ونماذج رقمية' : 'Featured Digital Projects');
+  const sectionSubtitle = subtitle || (isAr
+    ? 'استعرض نماذج مشاريعنا التفاعلية واطلب موقعاً مشابهاً لنشاطك التجاري بنفس الدقة والسرعة.'
+    : 'Explore interactive website projects built by Titan and request a similar custom website for your business.');
 
-  const getWhatsAppUrl = (message: string) => {
-    return `${WHATSAPP_BASE}${encodeURIComponent(message)}`;
+  const handleRequestSimilar = (project: ProjectItem) => {
+    const projectName = isAr ? project.nameAr : project.nameEn;
+    openQuote({
+      id: 'professional-website',
+      name: isAr ? `موقع إلكتروني مشابه لـ: ${projectName}` : `Website similar to: ${projectName}`,
+      price: isAr ? 'ابتداءً من 1,200 ريال' : 'From SAR 1,200'
+    });
   };
 
   return (
-    <section id={id} data-section="featured-work" className="relative py-12 sm:py-20 lg:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]">
+    <section id={id} data-section="featured-work" className="relative py-14 sm:py-20 lg:py-28 bg-[#F8FAFF] border-t border-slate-200/80 overflow-hidden text-[#071A33]">
       {/* Subtle Digital Grid */}
       <div className="absolute inset-0 bg-digital-grid opacity-60 pointer-events-none" />
 
@@ -91,8 +53,9 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
         
         {/* Section Header */}
         <FadeIn direction="up">
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-14 space-y-2.5 sm:space-y-3">
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16 space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EAF7FF] border border-[#3BA9FF]/30 text-xs font-mono uppercase tracking-widest text-[#0B1F4B] font-bold">
+              <Sparkles className="w-3.5 h-3.5 text-[#00D1FF]" />
               <span>{sectionBadge}</span>
             </div>
 
@@ -106,151 +69,155 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
           </div>
         </FadeIn>
 
-        {/* 3 Project Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
-          {FEATURED_PROJECTS.slice(0, 3).map((rawProject, idx) => {
-            const project = getLocalizedProject(rawProject);
+        {/* 3 Featured Project Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
+          {PORTFOLIO_PROJECTS.slice(0, 3).map((project, idx) => {
             const isExpanded = !!expandedDetails[project.id];
-            const isRealEstate = project.id === 'real-estate-concept';
-            const isBakery = project.id === 'custom-cake-bakery';
-            const isRestaurant = project.id === 'chicken-restaurant';
+            const name = isAr ? project.nameAr : project.nameEn;
+            const category = isAr ? project.categoryAr : project.categoryEn;
+            const description = isAr ? project.descriptionAr : project.descriptionEn;
+            const features = isAr ? project.featuresAr : project.featuresEn;
+            const problem = isAr ? project.problemAr : project.problemEn;
+            const solution = isAr ? project.solutionAr : project.solutionEn;
+            const tech = isAr ? project.technologyAr : project.technologyEn;
+            const outcome = isAr ? project.outcomeAr : project.outcomeEn;
 
             return (
               <FadeIn key={project.id} delay={idx * 0.08} direction="up" distance={16} duration={0.48}>
-                <div className="card-titan-light group flex flex-col p-6 sm:p-7 h-full hover:-translate-y-1.5 hover:border-sky-300 hover:shadow-[0_12px_28px_rgba(2,132,199,0.14)] transition-all duration-220 text-start">
+                <div className="card-titan-light group flex flex-col p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-[#00D1FF]/60 hover:shadow-[0_12px_32px_rgba(2,132,199,0.12)] transition-all duration-300 text-start h-full">
                   
-                  {/* Browser Frame with Genuine Screenshot & scale reveal */}
-                  <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/60 group-hover:shadow-[0_8px_24px_rgba(0,209,255,0.2)] transition-all duration-300 mb-5">
+                  {/* Browser Mockup Frame */}
+                  <div className="rounded-xl bg-[#04142E] border border-slate-800 overflow-hidden shadow-md flex flex-col group-hover:border-[#00D1FF]/60 transition-all duration-300 mb-5 shrink-0">
                     <div className="flex items-center justify-between px-3 py-2 bg-[#0B1F4B] border-b border-white/[0.08] text-[11px] font-mono text-slate-300" dir="ltr">
                       <div className="flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-rose-500/80" />
-                        <span className="w-2 h-2 rounded-full bg-amber-500/80" />
-                        <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                       </div>
-                      <div className="px-2 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#00D1FF] animate-pulse shrink-0" />
+                      <div className="px-2.5 py-0.5 rounded bg-black/40 text-slate-200 text-[10px] flex items-center gap-1.5 truncate max-w-[170px]">
+                        <Globe className="w-3 h-3 text-[#00D1FF] shrink-0" />
                         <span className="truncate">{project.domain}</span>
                       </div>
-                      <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Live Demo</span>
+                      <span className="text-[10px] text-[#00D1FF] font-semibold shrink-0">Demo</span>
                     </div>
 
-                    {/* Screenshot Container with scale animation */}
-                    <div className={`relative w-full overflow-hidden bg-slate-950 ${isRealEstate ? 'aspect-[2.14/1]' : isBakery || isRestaurant ? 'aspect-[1.83/1]' : 'h-44'}`}>
+                    {/* Screenshot Container */}
+                    <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-950">
                       <img
                         src={project.screenshotUrl}
-                        alt={isRealEstate ? 'Luxury real estate demo website with navy and gold design.' : isBakery ? 'L’Étoile bakery website demo with navy and gold design and a floral wedding cake.' : isRestaurant ? 'Restaurant demo website featuring fried chicken, burgers, and family deals.' : project.name}
-                        className={`absolute inset-0 w-full h-full ${isRealEstate || isBakery || isRestaurant ? 'object-contain' : 'object-cover'} object-center scale-[1.04] group-hover:scale-100 transition-transform duration-500 ease-out opacity-95 group-hover:opacity-100`}
+                        alt={name}
+                        className="w-full h-full object-cover object-top scale-[1.02] group-hover:scale-105 transition-transform duration-500 ease-out"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#04142E]/70 via-transparent to-transparent pointer-events-none" />
-                      <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-white/90">
-                        <span className="px-2 py-0.5 rounded bg-black/50 backdrop-blur-xs border border-white/20">
-                          {project.category}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#04142E]/60 via-transparent to-transparent pointer-events-none" />
+                      
+                      {/* Top Badges overlay */}
+                      <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
+                        <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-slate-900/80 backdrop-blur-md text-white border border-white/20">
+                          {category}
                         </span>
-                        <span className="px-2 py-0.5 rounded bg-[#00D1FF]/20 text-[#00D1FF] border border-[#00D1FF]/40 font-semibold">
-                          {language === 'ar' ? 'معاينة حية' : 'Live Preview'}
+                        <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold bg-amber-500/90 backdrop-blur-md text-slate-950 shadow-xs">
+                          {isAr ? 'نموذج استعراضي (ديمو)' : 'Concept Demo'}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Concise Card Content */}
+                  {/* Card Content Body */}
                   <div className="flex-1 flex flex-col space-y-3.5">
                     
-                    {/* Badge: Concept Demo & Category */}
-                    <div className="flex items-center justify-between">
-                      <span className="px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-700 border border-amber-500/30">
-                        {t.featuredWork.illustrativeConcept}
-                      </span>
-                      <span className="text-xs font-mono text-[#536477]">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    {/* Project Name (shown once) */}
-                    <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#0B1F4B] transition-colors">
-                      {project.name}
+                    {/* Project Title */}
+                    <h3 className="font-display text-xl font-bold text-[#071A33] tracking-tight group-hover:text-[#0284C7] transition-colors">
+                      {name}
                     </h3>
 
-                    {/* Concise Description */}
-                    <p className="text-sm text-[#536477] leading-relaxed">
-                      {project.description}
+                    {/* Short Description */}
+                    <p className="text-xs sm:text-sm text-[#536477] leading-relaxed">
+                      {description}
                     </p>
 
-                    {/* Expandable Project Details (Problem / Solution / Technology / Outcome) */}
+                    {/* Verified Key Features (Up to 3) */}
+                    <div className="pt-1 pb-1 space-y-1.5 border-t border-slate-100">
+                      <span className="text-[10px] font-mono uppercase font-bold text-slate-400 tracking-wider block">
+                        {isAr ? 'أبرز مميزات المنصة:' : 'Key Verified Features:'}
+                      </span>
+                      <ul className="space-y-1 text-xs text-slate-700">
+                        {features.slice(0, 3).map((feat, fIdx) => (
+                          <li key={fIdx} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                            <span className="leading-tight">{feat}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Expandable Case Details */}
                     <div className="pt-1">
                       <button
                         type="button"
                         onClick={() => toggleDetails(project.id)}
-                        className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#0284C7] hover:text-[#0369A1] transition-colors focus:outline-none py-1"
+                        className="flex items-center gap-1.5 text-xs font-mono font-bold text-[#0284C7] hover:text-[#0369A1] transition-colors focus:outline-none py-1 cursor-pointer"
                         aria-expanded={isExpanded}
                       >
-                        <span>{language === 'ar' ? 'تفاصيل المشروع' : 'Project details'}</span>
+                        <span>{isAr ? 'تفاصيل وحل المشكلة' : 'View Problem & Solution'}</span>
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} />
                       </button>
 
                       {isExpanded && (
-                        <div className="mt-3 p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3 text-xs animate-in fade-in duration-250">
+                        <div className="mt-2.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5 text-xs animate-in fade-in duration-200">
                           <div>
-                            <span className="font-mono font-bold text-rose-600 uppercase tracking-wider block mb-1">
-                              {t.featuredWork.problemLabel}
+                            <span className="font-mono font-bold text-rose-600 uppercase tracking-wider block mb-0.5 text-[10px]">
+                              {isAr ? 'التحدي والمشكلة:' : 'Problem:'}
                             </span>
-                            <p className="text-[#536477] leading-relaxed">
-                              {project.problem}
-                            </p>
+                            <p className="text-[#536477] leading-relaxed">{problem}</p>
                           </div>
 
                           <div>
-                            <span className="font-mono font-bold text-[#0284C7] uppercase tracking-wider block mb-1">
-                              {t.featuredWork.solutionLabel}
+                            <span className="font-mono font-bold text-[#0284C7] uppercase tracking-wider block mb-0.5 text-[10px]">
+                              {isAr ? 'حل تيتان المبتكر:' : 'Titan Solution:'}
                             </span>
-                            <p className="text-[#536477] leading-relaxed">
-                              {project.solution}
-                            </p>
+                            <p className="text-[#536477] leading-relaxed">{solution}</p>
                           </div>
 
                           <div>
-                            <span className="font-mono font-bold text-[#071A33] uppercase tracking-wider block mb-1">
-                              {language === 'ar' ? 'التقنيات المستخدمة:' : 'Technology:'}
+                            <span className="font-mono font-bold text-slate-700 uppercase tracking-wider block mb-0.5 text-[10px]">
+                              {isAr ? 'التقنيات المستخدمة:' : 'Tech Stack:'}
                             </span>
                             <span className="inline-block px-2 py-0.5 rounded bg-white border border-slate-200 text-[#071A33] font-mono text-[10px]">
-                              {project.technology}
+                              {tech}
                             </span>
                           </div>
 
                           <div>
-                            <span className="font-mono font-bold text-emerald-600 uppercase tracking-wider block mb-1">
-                              {t.featuredWork.outcomeLabel}
+                            <span className="font-mono font-bold text-emerald-600 uppercase tracking-wider block mb-0.5 text-[10px]">
+                              {isAr ? 'النتيجة والغرض:' : 'Purpose & Outcome:'}
                             </span>
-                            <p className="text-[#536477] leading-relaxed italic">
-                              {project.outcome}
-                            </p>
+                            <p className="text-[#536477] leading-relaxed italic">{outcome}</p>
                           </div>
                         </div>
                       )}
                     </div>
 
-                    {/* Action Links */}
-                    <div className="mt-auto pt-5 space-y-2">
+                    {/* Action Buttons */}
+                    <div className="mt-auto pt-4 flex flex-col gap-2.5">
                       <a
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-titan-primary w-full inline-flex items-center justify-center gap-2 px-4 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider group/btn shadow-[0_4px_14px_rgba(0,209,255,0.25)] hover:shadow-[0_0_22px_rgba(0,209,255,0.5)] hover:-translate-y-0.5 transition-all duration-300"
+                        className="btn-titan-primary w-full min-h-[42px] inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-bold uppercase tracking-wider shadow-[0_4px_14px_rgba(0,209,255,0.2)] hover:shadow-[0_0_20px_rgba(0,209,255,0.4)] transition-all duration-300"
                       >
-                        <span>{t.featuredWork.openDemo}</span>
-                        <ExternalLink className="w-4 h-4 stroke-[2.5] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                        <span>{isAr ? 'معاينة الموقع مباشرة' : 'View Live Demo'}</span>
+                        <ExternalLink className="w-3.5 h-3.5 stroke-[2.5]" />
                       </a>
 
-                      <a
-                        href={getWhatsAppUrl(project.whatsappMessage)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-titan-secondary w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold hover:-translate-y-0.5 transition-all duration-300 group/sec"
+                      <button
+                        type="button"
+                        onClick={() => handleRequestSimilar(project)}
+                        className="btn-titan-secondary w-full min-h-[42px] inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold hover:-translate-y-0.5 transition-all duration-300 group/sec cursor-pointer"
                       >
-                        <span>{t.featuredWork.discussSimilar}</span>
-                        <ArrowRight className={`w-3.5 h-3.5 text-[#00D1FF] ${isRtl ? 'rotate-180 group-hover/sec:-translate-x-1' : 'group-hover/sec:translate-x-1'} transition-transform`} />
-                      </a>
+                        <span>{isAr ? 'طلب موقع إلكتروني مشابه' : 'Request Similar Website'}</span>
+                        <ArrowRight className={`w-3.5 h-3.5 text-[#0284C7] ${isRtl ? 'rotate-180 group-hover/sec:-translate-x-1' : 'group-hover/sec:translate-x-1'} transition-transform`} />
+                      </button>
                     </div>
 
                   </div>
@@ -258,6 +225,17 @@ export const FeaturedWork: React.FC<FeaturedWorkProps> = ({
               </FadeIn>
             );
           })}
+        </div>
+
+        {/* Single Primary Action Button: "Explore All Projects" */}
+        <div className="text-center">
+          <Link
+            to="/portfolio"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-[#04142E] hover:bg-[#0B1F4B] text-white font-bold text-sm uppercase tracking-wider shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+          >
+            <span>{isAr ? 'استكشف كافة المشاريع والنماذج' : 'Explore All Projects'}</span>
+            <ArrowRight className={`w-4 h-4 text-[#00D1FF] ${isRtl ? 'rotate-180' : ''}`} />
+          </Link>
         </div>
 
       </div>

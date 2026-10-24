@@ -111,10 +111,14 @@ export const HeroRobotVisual: React.FC = () => {
           {/* 3D Robot Artwork - Enlarged 25-35% as focal centerpiece */}
           <div className="relative w-[320px] sm:w-[380px] md:w-[420px] lg:w-[450px] xl:w-[470px] animate-robot-breathe rounded-3xl overflow-hidden shadow-[0_24px_70px_rgba(0,10,30,0.92)] border border-[#00D1FF]/35 bg-gradient-to-b from-[#04142E]/95 via-[#020B1A]/95 to-[#010814]">
             <img
-              src="/images/titan_robot_focal.jpg"
+              src="/images/titan_robot_focal.webp"
               alt="TITAN AI Assistant Robot"
               className="w-full h-auto object-cover object-center transform scale-[1.01] hover:scale-[1.03] transition-transform duration-700"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              width={450}
+              height={450}
             />
 
             {/* Futuristic Tech Overlay Badges on Character Frame */}

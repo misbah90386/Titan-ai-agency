@@ -11,7 +11,7 @@ function netlifyDevMiddlewarePlugin(): Plugin {
         const url = new URL(req.url || '/', 'http://localhost:3000');
         if (url.pathname === '/api/blogs' || url.pathname === '/.netlify/functions/blogs') {
           try {
-            const { handler } = await import('./netlify/functions/blogs');
+            const { handler } = await import('./netlify/functions/blogs.js');
             const queryStringParameters: Record<string, string> = {};
             url.searchParams.forEach((val, key) => {
               queryStringParameters[key] = val;
@@ -44,7 +44,27 @@ export default defineConfig(() => {
     plugins: [react(), tailwindcss(), netlifyDevMiddlewarePlugin()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve('.'),
+      },
+    },
+    build: {
+      target: 'esnext',
+      cssCodeSplit: true,
+      minify: 'esbuild',
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+                return 'react-vendor';
+              }
+              if (id.includes('lucide-react')) {
+                return 'lucide-icons';
+              }
+              return 'vendor';
+            }
+          },
+        },
       },
     },
     server: {

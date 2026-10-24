@@ -1,4 +1,4 @@
-import { FALLBACK_BLOG_POSTS } from '../../src/data/blogFallbackData';
+import { FALLBACK_BLOG_POSTS } from '../../src/data/blogFallbackData.js';
 
 interface NetlifyEvent {
   httpMethod: string;

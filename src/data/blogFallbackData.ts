@@ -1,4 +1,4 @@
-import { BlogPost } from '../types/blog';
+import { BlogPost } from '../types/blog.js';
 
 export const FALLBACK_BLOG_POSTS: BlogPost[] = [
   {

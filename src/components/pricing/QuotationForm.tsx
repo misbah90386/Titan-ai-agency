@@ -45,14 +45,24 @@ export const QuotationForm: React.FC<QuotationFormProps> = ({
   const [preparedUrl, setPreparedUrl] = useState('');
   const [activeInquiry, setActiveInquiry] = useState<QuotationInquiry | null>(null);
 
-  // Sync initial service when opened or changed
+  // Sync initial service & pre-fill description when opened or changed
   useEffect(() => {
     if (initialServiceId) {
       setSelectedServiceId(initialServiceId);
     } else if (initialPackageName) {
       setSelectedServiceId(matchServiceId(initialPackageName));
     }
-  }, [initialServiceId, initialPackageName]);
+
+    if (initialPackageName && (initialPackageName.toLowerCase().includes('similar to') || initialPackageName.includes('مشابه'))) {
+      const isAr = language === 'ar';
+      const cleanName = initialPackageName.replace(/^(Website similar to:|موقع إلكتروني مشابه لـ:)\s*/i, '');
+      const prefill = isAr
+        ? `أود طلب موقع إلكتروني مشابه لمشروع "${cleanName}". المتطلبات والتعديلات الخاصة بنشاطي التجاري:`
+        : `I am interested in a website similar to "${cleanName}". My business requirements and customizations:`;
+      
+      setDescription((prev) => (prev.trim() === '' || prev.includes('similar to') || prev.includes('مشابه') ? prefill : prev));
+    }
+  }, [initialServiceId, initialPackageName, language]);
 
   const selectedService = TITAN_SERVICES.find((s) => s.id === selectedServiceId) || TITAN_SERVICES[1];
   const selectedBudget = BUDGET_OPTIONS.find((b) => b.id === budgetTier);
