@@ -51,8 +51,8 @@ export const Navbar: React.FC = () => {
           className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#00D1FF]/50 rounded-lg p-1 transition-transform duration-300 hover:scale-[1.01] whitespace-nowrap shrink-0"
         >
           <TitanLogo
-            variant="dark"
-            iconClassName={`transition-all duration-300 drop-shadow-[0_0_12px_rgba(0,209,255,0.3)] ${scrolled ? 'h-9 sm:h-11 w-auto' : 'h-10 sm:h-12 w-auto'}`}
+            variant="light"
+            iconClassName={`transition-all duration-300 drop-shadow-[0_0_12px_rgba(0,209,255,0.3)] ${scrolled ? 'h-9 sm:h-10 w-auto' : 'h-10 sm:h-11 w-auto'}`}
           />
         </Link>
 

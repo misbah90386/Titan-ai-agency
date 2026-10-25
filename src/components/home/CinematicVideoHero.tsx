@@ -121,7 +121,7 @@ export const CinematicVideoHero: React.FC<CinematicVideoHeroProps> = ({ onGetQuo
         <div className="hero-reveal-buttons flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-1 sm:pt-2 w-full max-w-xs sm:max-w-none mx-auto">
           <button
             type="button"
-            id="hero-glass-cta-btn"
+            id="hero-primary-cta-btn"
             onClick={() => {
               if (onGetQuote) {
                 onGetQuote();
@@ -129,18 +129,10 @@ export const CinematicVideoHero: React.FC<CinematicVideoHeroProps> = ({ onGetQuo
                 openQuote();
               }
             }}
-            className="group relative w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-white text-sm sm:text-base font-semibold shadow-[0_8px_30px_rgba(0,209,255,0.25)] hover:shadow-[0_12px_40px_rgba(0,209,255,0.4)] transition-all duration-250 cursor-pointer active:scale-[0.98] inline-flex items-center justify-center gap-2.5 text-center"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(0,209,255,0.15) 100%)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              border: '1px solid rgba(159, 224, 255, 0.4)',
-            }}
+            className="group relative w-full sm:w-auto min-h-[48px] px-7 sm:px-9 py-3.5 sm:py-4 rounded-full bg-[#168EEA] hover:bg-[#1A98FA] text-white text-sm sm:text-base font-bold shadow-[0_4px_20px_rgba(22,142,234,0.35)] hover:shadow-[0_6px_24px_rgba(22,142,234,0.5)] transition-all duration-200 cursor-pointer active:scale-[0.98] inline-flex items-center justify-center gap-2.5 text-center shrink-0"
           >
-            {/* Top highlight line */}
-            <span className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none" />
             <span>{t.hero.primaryButton}</span>
-            <ArrowRight className={`w-4 h-4 text-[#9FE0FF] ${isRtl ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform duration-200`} />
+            <ArrowRight className={`w-4 h-4 text-white ${isRtl ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'} transition-transform duration-200`} />
           </button>
 
           <a
@@ -150,7 +142,7 @@ export const CinematicVideoHero: React.FC<CinematicVideoHeroProps> = ({ onGetQuo
               const el = document.getElementById('portfolio') || document.getElementById('services-preview-section');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="w-full sm:w-auto min-h-[48px] px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-medium text-[#C5D2E2] hover:text-white transition-colors cursor-pointer border border-white/15 hover:border-white/30 bg-white/[0.05] inline-flex items-center justify-center text-center"
+            className="w-full sm:w-auto min-h-[48px] px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold text-[#EAF7FF] hover:text-white transition-all duration-200 cursor-pointer border border-white/20 hover:border-white/40 bg-white/[0.06] hover:bg-white/[0.12] inline-flex items-center justify-center text-center shrink-0"
           >
             <span>{t.hero.secondaryButton}</span>
           </a>

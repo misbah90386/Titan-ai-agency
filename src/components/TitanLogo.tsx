@@ -27,19 +27,31 @@ export interface TitanFullLogoProps {
 }
 
 export const TitanFullLogo: React.FC<TitanFullLogoProps> = ({
-  className = 'h-11 sm:h-12 w-auto'
+  variant = 'light',
+  className = 'h-10 sm:h-12 w-auto'
 }) => {
+  const isDark = variant === 'dark';
   return (
-    <img
-      src="/titan-logo.webp"
-      alt="TITAN AI AGENCY"
-      className={`object-contain rounded-xl shadow-xs transition-transform duration-200 ${className}`}
-      loading="eager"
-      fetchPriority="high"
-      decoding="async"
-      width={180}
-      height={48}
-    />
+    <div className="flex items-center gap-2.5 sm:gap-3 select-none shrink-0 whitespace-nowrap">
+      <img
+        src="/titan-icon.webp"
+        alt="TITAN AI Emblem"
+        className={`object-contain rounded-xl shrink-0 transition-transform duration-200 group-hover:scale-[1.02] ${className}`}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
+        width={44}
+        height={44}
+      />
+      <div className="flex flex-col text-left leading-tight shrink-0 whitespace-nowrap">
+        <span className={`font-display font-extrabold text-base sm:text-lg lg:text-xl tracking-wider ${isDark ? 'text-[#071A33]' : 'text-white'}`}>
+          TITAN <span className="text-[#00D1FF]">AI</span>
+        </span>
+        <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.26em] text-[#00D1FF] font-bold uppercase">
+          AGENCY
+        </span>
+      </div>
+    </div>
   );
 };
 
@@ -55,8 +67,8 @@ interface TitanLogoProps {
 }
 
 export const TitanLogo: React.FC<TitanLogoProps> = ({
-  variant = 'dark',
-  showTagline = false,
+  variant = 'light',
+  showTagline = true,
   showText = true,
   className = '',
   iconClassName = 'h-10 sm:h-12 w-auto',
@@ -69,17 +81,27 @@ export const TitanLogo: React.FC<TitanLogoProps> = ({
   }
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-2.5 sm:gap-3 select-none shrink-0 whitespace-nowrap ${className}`}>
       <img
-        src="/titan-logo.webp"
-        alt="TITAN AI AGENCY"
-        className={`object-contain rounded-xl bg-white/95 p-1 border border-white/20 shadow-xs transition-transform duration-200 group-hover:scale-[1.02] ${iconClassName}`}
+        src="/titan-icon.webp"
+        alt="TITAN AI Emblem"
+        className={`object-contain rounded-xl shrink-0 transition-transform duration-200 group-hover:scale-[1.02] ${iconClassName}`}
         loading="eager"
         fetchPriority="high"
         decoding="async"
-        width={180}
-        height={48}
+        width={44}
+        height={44}
       />
+      {showText && (
+        <div className="flex flex-col text-left leading-tight shrink-0 whitespace-nowrap">
+          <span className={`font-display font-extrabold text-base sm:text-lg lg:text-xl tracking-wider ${isDark ? 'text-[#071A33]' : 'text-white'}`}>
+            TITAN <span className="text-[#00D1FF]">AI</span>
+          </span>
+          <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.26em] text-[#00D1FF] font-bold uppercase">
+            AGENCY
+          </span>
+        </div>
+      )}
     </div>
   );
 };

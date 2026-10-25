@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
             {/* Column 1: Agency Brand & Identity */}
             <div className="lg:col-span-2 space-y-4">
               <Link to="/" className="inline-block group">
-                <TitanLogo variant="dark" iconClassName="h-12 sm:h-14 w-auto drop-shadow-[0_0_14px_rgba(0,209,255,0.3)]" />
+                <TitanLogo variant="light" iconClassName="h-10 sm:h-12 w-auto drop-shadow-[0_0_14px_rgba(0,209,255,0.3)]" />
               </Link>
 
               <p className="text-sm text-[#8FA0BA] max-w-sm leading-relaxed mt-2">
